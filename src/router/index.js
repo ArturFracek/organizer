@@ -20,25 +20,19 @@ const routes = [
       import(/* webpackChunkName: "organise" */ "../views/Organise.vue"),
   },
   {
-    path: "/login",
-    name: "Log-in",
-    component: () =>
-      import(/* webpackChunkName: "Log-in" */ "../views/Log-in.vue"),
-  },
-  {
-    path: "/TheNavigation",
-    name: "TheNavigation",
+    path: "/Add-Routine",
+    name: "MyRoutines",
     component: () =>
       import(
-        /* webpackChunkName: "TheNavigation" */ "../components/TheNavigation.vue"
+        /* webpackChunkName: "MyRoutines" */ "../views/MyRoutines.vue"
       ),
   },
   {
-    path: "/days",
-    name: "daysOfTheWeek",
+    path: "/Add-Activities",
+    name: "MyActivities",
     component: () =>
       import(
-        /* webpackChunkName: "daysOfTheWeek" */ "../components/daysOfTheWeek.vue"
+        /* webpackChunkName: "MyActivities" */ "../views/MyActivities.vue"
       ),
   },
 ];

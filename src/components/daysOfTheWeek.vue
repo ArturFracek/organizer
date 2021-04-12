@@ -1,17 +1,24 @@
 <template>
-  <div class="grid">
-      <div class="day_box">{{ WEEKDAYS[0] }}</div>
-      <div class="day_box">{{ WEEKDAYS[1] }}</div>
-      <div class="day_box">{{ WEEKDAYS[2] }}</div>
-      <div class="day_box">{{ WEEKDAYS[3] }}</div>
-      <div class="day_box friday">{{ WEEKDAYS[4] }}</div>
-      <div class="day_box saturday">{{ WEEKDAYS[5] }}</div>
-      <div class="day_box sunday">{{ WEEKDAYS[6] }}</div>
+  <div class="flex-box">
+    <div class="day_box">{{ WEEKDAYS[0] }}</div>
+    <div class="day_box">{{ WEEKDAYS[1] }}</div>
+    <div class="day_box">{{ WEEKDAYS[2] }}</div>
+    <div class="day_box">{{ WEEKDAYS[3] }}</div>
+    <div class="day_box friday">{{ WEEKDAYS[4] }}</div>
+    <div class="day_box saturday">{{ WEEKDAYS[5] }}</div>
+    <div class="day_box sunday">{{ WEEKDAYS[6] }}</div>
   </div>
+    <!-- <router-link class="day_box">{{ WEEKDAYS[0] }}</router-link>
+    <router-link class="day_box">{{ WEEKDAYS[1] }}</router-link>
+    <router-link class="day_box">{{ WEEKDAYS[2] }}</router-link>
+    <router-link class="day_box">{{ WEEKDAYS[3] }}</router-link>
+    <router-link class="day_box">{{ WEEKDAYS[4] }}</router-link>
+    <router-link class="day_box">{{ WEEKDAYS[5] }}</router-link>
+    <router-link class="day_box">{{ WEEKDAYS[6] }}</router-link> -->
 </template>
 
 <script>
-import { WEEKDAYS } from "@/constants"
+import { WEEKDAYS } from "@/constants";
 
 export default {
   name: "daysOfTheWeek",
@@ -22,10 +29,13 @@ export default {
 </script>
 
 <style scoped>
-.grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-gap: 20px;
+.flex-box {
+  max-height: 90%;
+  display: flex;
+  flex-flow: row;
+  justify-content: center;
+  align-items: flex-start;
+  flex-wrap: wrap;
 
 }
 
@@ -38,23 +48,6 @@ export default {
   height: 7em;
   color: white;
   font-weight: bold;
-}
-
-.friday {
-  width: auto;
-  grid-column-start: 1;
-  grid-column-end: 3;
-}
-
-.saturday {
-  width: auto;
-  grid-column-start: 1;
-  grid-column-end: 3;
-}
-
-.sunday {
-  width: auto;
-  grid-column-start: 1;
-  grid-column-end: 3;
+  margin: 10px;
 }
 </style>

@@ -6,6 +6,6 @@ export const WEEKDAYS = [
   "Friday",
   "Saturday",
   "Sunday",
-]
+];
 
-export const DEFAULT_TIME_FORMAT = 'HH:mm'
+export const DEFAULT_TIME_FORMAT = "HH:mm";
