@@ -11,9 +11,6 @@
 import TheNavigation from "@/components/TheNavigation.vue";
 
 export default {
-  setup() {
-
-  },
   components: {
     TheNavigation,
   },
@@ -23,19 +20,16 @@ export default {
 <style>
 @import url("https://fonts.googleapis.com/css2?family=Antic&display=swap");
 
-*{
-  padding: 0;
-  margin: 0;
-}
-
 #app {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   font-family: "Antic", sans-serif;
+  margin: 0;
+  padding: 0;
 }
 
 .nav a.router-link-exact-active {
   color: #ffffff;
-  text-shadow: 0px 10px 10px  #332d2d;
+  text-shadow: 0px 10px 10px #332d2d;
 }
 </style>

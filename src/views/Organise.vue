@@ -1,32 +1,26 @@
 <template>
   <div class="wrapper">
-    <div class="grid_wrapper">
-      <dayOfTheWeek />
-    </div>
+    <daysOfTheWeek />
   </div>
 </template>
 
 <script>
-import dayOfTheWeek from "@/components/dayOfTheWeek.vue";
+import daysOfTheWeek from "@/components/daysOfTheWeek.vue";
 
 export default {
   name: "Organise",
   components: {
-    dayOfTheWeek,
-  }
-}
+    daysOfTheWeek,
+  },
+};
 </script>
 
 <style scoped>
 .wrapper {
-  height: 100vh;
-  width: 100vw;
-  padding: 20px;
+  height: 80vh;
+  width: auto;
   display: flex;
   justify-content: center;
   align-items: center;
 }
-
 </style>
-
-

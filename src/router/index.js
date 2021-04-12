@@ -19,6 +19,28 @@ const routes = [
     component: () =>
       import(/* webpackChunkName: "organise" */ "../views/Organise.vue"),
   },
+  {
+    path: "/login",
+    name: "Log-in",
+    component: () =>
+      import(/* webpackChunkName: "Log-in" */ "../views/Log-in.vue"),
+  },
+  {
+    path: "/TheNavigation",
+    name: "TheNavigation",
+    component: () =>
+      import(
+        /* webpackChunkName: "TheNavigation" */ "../components/TheNavigation.vue"
+      ),
+  },
+  {
+    path: "/days",
+    name: "daysOfTheWeek",
+    component: () =>
+      import(
+        /* webpackChunkName: "daysOfTheWeek" */ "../components/daysOfTheWeek.vue"
+      ),
+  },
 ];
 
 const router = new VueRouter({
