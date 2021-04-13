@@ -1,14 +1,15 @@
 <template>
   <div class="wrapper">
     <div class="nav2">
+
     <router-link :to="{ name: 'MyRoutines' }" class="MyRoutines organise_element"
     >Routines</router-link>
-    <router-link :to="{ name: 'MyActivities' }" class="MyActivities organise_element"
+     <router-link :to="{ name: 'MyActivities' }" class="MyActivities organise_element"
     >My Activities</router-link>
     </div>
-    <div class="week_days">
+
     <daysOfTheWeek />
-    </div>
+
   </div>
 </template>
 

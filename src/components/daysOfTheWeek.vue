@@ -36,7 +36,6 @@ export default {
   justify-content: center;
   align-items: flex-start;
   flex-wrap: wrap;
-
 }
 
 .day_box {
