@@ -1,5 +1,6 @@
 <template>
 <div class="wrapper">
+  <Modal />
   <h1 class="title">{{ title }}</h1>
   <div class="addActivities">
     <div class="instruction">Add activity name, and after " , " write priority number from 1 to 5.</div>
@@ -15,6 +16,7 @@
 </template>
 
 <script>
+import Modal from "@/components/Modal.vue"
 
 export default {
   data() {
@@ -27,6 +29,9 @@ export default {
         { title: "Strzelanie", priority: 2/5, id: 2},
       ]
     };
+  },
+  components: {
+    Modal
   },
   methods: {
     addActivities() {
@@ -46,6 +51,7 @@ export default {
 .wrapper {
   display: flex;
   flex-flow: column;
+  align-items: center;
 }
 .activityTile {
   display: flex;
