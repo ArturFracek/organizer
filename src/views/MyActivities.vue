@@ -8,15 +8,15 @@
     <button class="button" @click="addActivities">Add</button>
   </div>
   <div class="activities">
-    <div v-for="activity in activities" :key="activity.id" class="activityTile">
-     <router-link :to="{ name: 'newActivity', params: { activity: activity.id } }" class="insideTile">{{ activity.title }}</router-link>
+    <div v-for="activity in activities" :key="activity.id" class="activityHolder">
+      <ActivityModal :newActivity="newActivity" />
     </div>
   </div>
 </div>
 </template>
 
 <script>
-import ActivityModal from "@/components/Modal.vue"
+import ActivityModal from "@/components/ActivityModal.vue"
 
 export default {
   data() {
@@ -52,17 +52,6 @@ export default {
   display: flex;
   flex-flow: column;
   align-items: center;
-}
-.activityTile {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: rgb(31, 31, 66);
-  width: 9em;
-  height: 7em;
-  color: white;
-  font-weight: bold;
-  margin: 10px;
 }
 
 .title {
@@ -103,10 +92,18 @@ export default {
 
 .activities {
   max-height: 90%;
+  width: 100vw;
   display: flex;
   flex-flow: row;
   justify-content: center;
   align-items: flex-start;
   flex-wrap: wrap;
+}
+
+.activityHolder {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 15px;
 }
 </style>

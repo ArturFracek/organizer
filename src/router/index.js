@@ -29,9 +29,7 @@ const routes = [
     path: "/Add-Routine",
     name: "MyRoutines",
     component: () =>
-      import(
-        /* webpackChunkName: "MyRoutines" */ "../views/MyRoutines.vue"
-      ),
+      import(/* webpackChunkName: "MyRoutines" */ "../views/MyRoutines.vue"),
   },
   {
     path: "/Add-Activities",
@@ -39,14 +37,6 @@ const routes = [
     component: () =>
       import(
         /* webpackChunkName: "MyActivities" */ "../views/MyActivities.vue"
-      ),
-  },
-  {
-    path: "/Activity/:activity",
-    name: "newActivity",
-    component: () =>
-      import(
-        /* webpackChunkName: "newActivity" */ "../views/newActivity.vue"
       ),
   },
 ];

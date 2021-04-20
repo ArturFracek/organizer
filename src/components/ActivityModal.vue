@@ -1,13 +1,14 @@
 <template>
   <div class="modalWrapper">
-    <button class="modalButton" @click="showModal = true">Show Modal</button>
+    <button class="modalButton" @click="showModal = true">{{ newActivity }}</button>
     <transition name="fade" appear>
       <div class="modalOverlay" v-if="showModal" @click="showModal = false"></div>
     </transition>
     <transition name="slide" appear>
       <div class="modal" v-if="showModal">
-        <h1>Some text to check how it works</h1>
-        <p>Even more text bla bla some text bla bla bla;sufhgsu;fhgsfughs;fghs;fugh;sfoghs;fuogha79rysufhga;sfh</p>
+        <h1>Define your Activity</h1>
+        <input type="text" placeholder="Activity name">
+        <Slider></Slider>
         <button class="modalButton" @click="showModal = false">Close Modal</button>
       </div>
     </transition>
@@ -15,14 +16,21 @@
 </template>
 
 <script>
+import Slider from "@/components/Slider.vue";
 
 export default {
   name: "ActivityModal",
   data() {
     return {
-      showModal: true
-    }
+      showModal: false,
+    };
   },
+  components: {
+    Slider,
+  },
+  props: [
+    "newActivity",
+  ]
 }
 </script>
 
@@ -110,7 +118,7 @@ export default {
   color: #666;
   font-size: 18px;
   font-weight: 400;
-  margin-bottom: 15px;;
+  margin-bottom: 15px;
 }
 
 .slide-enter-active,
@@ -120,6 +128,6 @@ export default {
 
 .slide-enter,
 .slide-leave-to {
-  transform: translateY(-50%) translateX(100vw);
+  transform: translateY(-50%) translateX(300%);
 }
 </style>
