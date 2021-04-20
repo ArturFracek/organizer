@@ -46,7 +46,7 @@ export default {
   justify-content: center;
   align-items: center;
   background-color: rgb(31, 31, 66);
-  width: 9em;
+  width: 14em;
   height: 7em;
   color: white;
   font-weight: bold;

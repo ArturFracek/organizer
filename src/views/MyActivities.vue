@@ -8,13 +8,14 @@
   </div>
   <div class="activities">
     <div v-for="activity in activities" :key="activity.id" class="activityTile">
-     {{ activity.title }}
+     <router-link :to="{ name: 'newActivity', params: { activity: activity.id } }" class="insideTile">{{ activity.title }}</router-link>
     </div>
   </div>
 </div>
 </template>
 
 <script>
+
 export default {
   data() {
     return {
@@ -31,8 +32,13 @@ export default {
     addActivities() {
       this.activities.push({ title: this.newActivity, priority: this.newPriority, id: Math.random() })
       this.newActivity=""
-    }
-  }
+    },
+    activity() {
+      return this.activities.find(
+        (activity) => activity.title === this.activity
+      );
+    },
+  },
 };
 </script>
 
