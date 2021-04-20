@@ -1,6 +1,6 @@
 <template>
 <div class="wrapper">
-  <Modal />
+  <ActivityModal />
   <h1 class="title">{{ title }}</h1>
   <div class="addActivities">
     <div class="instruction">Add activity name, and after " , " write priority number from 1 to 5.</div>
@@ -16,7 +16,7 @@
 </template>
 
 <script>
-import Modal from "@/components/Modal.vue"
+import ActivityModal from "@/components/Modal.vue"
 
 export default {
   data() {
@@ -31,7 +31,7 @@ export default {
     };
   },
   components: {
-    Modal
+    ActivityModal,
   },
   methods: {
     addActivities() {

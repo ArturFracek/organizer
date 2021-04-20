@@ -17,7 +17,7 @@
 <script>
 
 export default {
-  name: "Modal",
+  name: "ActivityModal",
   data() {
     return {
       showModal: true
