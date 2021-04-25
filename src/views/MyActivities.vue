@@ -19,6 +19,7 @@
 import ActivityModal from "@/components/ActivityModal.vue"
 
 export default {
+  name: "MyActivities",
   data() {
     return {
       title: "My Activities",
@@ -48,6 +49,8 @@ export default {
   display: flex;
   flex-flow: column;
   align-items: center;
+  max-height: 60%;
+  width: 50vw;
 }
 
 .title {
@@ -87,8 +90,6 @@ export default {
 }
 
 .activities {
-  max-height: 90%;
-  width: 100vw;
   display: flex;
   flex-flow: row;
   justify-content: center;

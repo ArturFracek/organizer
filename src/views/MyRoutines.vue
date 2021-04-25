@@ -16,6 +16,7 @@
 
 <script>
 export default {
+  name: "MyRoutines",
   data() {
     return {
       title: "My Routines",
@@ -40,6 +41,10 @@ export default {
 .wrapper {
   display: flex;
   flex-flow: column;
+  align-items: center;
+  max-height: 60%;
+  width: 50vw;
+  background-color: khaki;
 }
 .routineTile {
   display: flex;

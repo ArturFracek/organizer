@@ -1,11 +1,8 @@
 <template>
   <div class="wrapper">
-    <div class="nav2">
-
-    <router-link :to="{ name: 'MyRoutines' }" class="MyRoutines organise_element"
-    >Routines</router-link>
-     <router-link :to="{ name: 'MyActivities' }" class="MyActivities organise_element"
-    >My Activities</router-link>
+    <div class="upperContainer">
+      <MyActivities />
+      <MyRoutines />
     </div>
 
     <daysOfTheWeek />
@@ -15,10 +12,14 @@
 
 <script>
 import daysOfTheWeek from "@/components/daysOfTheWeek.vue";
+import MyActivities from "@/views/MyActivities.vue";
+import MyRoutines from "@/views/MyRoutines.vue";
 
 export default {
   name: "Organise",
   components: {
+    MyActivities,
+    MyRoutines,
     daysOfTheWeek,
   },
 };
@@ -34,11 +35,8 @@ export default {
   width: auto;
 }
 
-.nav2 {
+.upperContainer {
   display: flex;
-  justify-content:space-around;
-  align-items: stretch;
-  margin: 30px;
 }
 
 .organise_element {
