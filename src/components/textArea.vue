@@ -1,9 +1,6 @@
 <template>
   <div class="textArea">
-    <textarea class="textarea"
-      cols="30"
-      rows="10"
-      @input="resize($event)"
+    <textarea class="area"
       placeholder="Description"
     ></textarea>
   </div>
@@ -14,25 +11,28 @@
 
 export default {
   name: "textArea",
-  methods: {
-    resize(e) {
-      e.target.style.height = 'auto'
-      e.target.style.height = `${e.target.scroll.Height}px`
-    }
-  }
 }
+
 </script>
 
 <style scoped>
 
-.textarea {
+.textArea {
+  width: 80%;
+  height: 60%;
+  margin-bottom: 15px;
+}
+
+textarea {
   width: 100%;
+  height: 100%;
   border: 2px solid #ddd;
   border-radius: 10px;
   font-size: inherit;
   outline: none;
   padding: 20px;
-  min-height: 80px;
+  min-height: 90px;
   box-sizing: border-box;
 }
+
 </style>

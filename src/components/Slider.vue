@@ -1,7 +1,7 @@
 <template>
 <div class="container">
   <input @change="warning()" v-model="value" type="range" class="Slider" min="0" max="10">
-  <div :style="warning()" class="rangeValue">{{ value }}</div>
+    <div :style="warning()" class="rangeValue">{{ value }}</div>
 </div>
 </template>
 
@@ -11,7 +11,7 @@ export default {
   name: "Slider",
   data() {
     return {
-      value: "10"
+      value: "5"
     }
   },
   methods: {
@@ -19,7 +19,7 @@ export default {
       if(this.value > 6) {
         return {
           color: "#e74c3c",
-          animation:"anim 0.9s ease-in 1 alternate"
+          animation: "anim 0.9s ease-in 1 alternate",
         }
       }
     }
@@ -34,6 +34,9 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
+  width: 80%;
+  transform: rorate(-90deg) translate(-50%, -50%);
+  transform-origin: 0 0;
 }
 
 .container .Slider {
@@ -45,9 +48,12 @@ export default {
   background-color: #000000;
   border-radius: 20px;
   outline: none;
-  opacity: 0.7;
+  opacity: 0.8;
   transition: opacity 0.2s ease-in;
   -webkit-transition: opacity 0.3s ease-in;
+  transform: rorate(-90deg);
+  transform-origin: 0 0;
+  background-image: linear-gradient(90deg, #fbff22 0%, #ff2525 100%);
 }
 
 .container .Slider:hover{
@@ -60,11 +66,11 @@ export default {
   height: 30px;
   width: 30px;
   border-radius: 50%;
-  background-color: #e74c3c;
+  background-color: #616060;
   cursor: pointer;
   -webkit-transition: all 0.3 ease-in;
   transition: all 0.3s ease-in;
-  border: 2px solid #b61111;
+  border: 2px solid #000000;
 }
 
 .container .Slider::-moz-range-thumb {
@@ -73,7 +79,7 @@ export default {
   height: 30px;
   width: 30px;
   border-radius: 50%;
-  background-color: #e74c3c;
+  background-color: #686868;
   cursor: pointer;
   -moz-transition: all 0.3 ease-in;
   transition: all 0.3s ease-in;
@@ -81,23 +87,18 @@ export default {
 }
 
 .container .Slider::webkit-slider-thumb:hover{
-  box-shadow: 6px 6px 20px 20px rgba(0, 0, 0, 0.4);
+  box-shadow: 6px 6px 20px 20px rgb(0, 0, 0);
 }
 
-.container .rangeValue {
-  margin: 10px;
+.rangeValue {
   height: 40px;
   width: 40px;
-  border: 2px solid rgb(0, 0, 0, 1);
-  background-color: transparent;
-  background: none;
-  background-size: 0;
   color: rgb(0, 0, 0);
   font-weight: 600;
   text-align: center;
   line-height: 38px;
   font-size: 22px;
-  clip-path: polygon(100% 0%, 75% 50%, 100% 100%, 25% 100%, 0% 50%, 25% 0%);
+  border: 3px solid rgb(0, 0, 0, 1);
 }
 
 @keyframes anim {
