@@ -4,12 +4,12 @@
   <h1 class="title">{{ title }}</h1>
   <div class="addActivities">
     <div class="instruction">Add activity name, and after " , " write priority number from 1 to 5.</div>
-    <input class="input" type="text" placeholder="Add activity" v-model="newActivity" @keyup.enter="addActivities">
+    <input class="input" type="text" placeholder="Add activity" v-model="activityObject" @keyup.enter="addActivities">
     <button class="button" @click="addActivities">Add</button>
   </div>
   <div class="activities">
     <div v-for="activity in activities" :key="activity.id" class="activityHolder">
-      <ActivityModal :newActivity="newActivity" />
+      <ActivityModal :activityObject="activity" />
     </div>
   </div>
 </div>
@@ -22,7 +22,7 @@ export default {
   data() {
     return {
       title: "My Activities",
-      newActivity: "",
+      activityObject: "",
       newPriority: "1",
       activities: [
         { title: "Bieganie", priority: 3/5, id: 1},
@@ -35,8 +35,8 @@ export default {
   },
   methods: {
     addActivities() {
-      this.activities.push({ title: this.newActivity, priority: this.newPriority, id: Math.random() })
-      this.newActivity=""
+      this.activities.push({ title: this.activityObject, priority: this.newPriority, id: Math.random() })
+      this.activityObject=""
     },
     activity() {
       return this.activities.find(

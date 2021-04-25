@@ -1,13 +1,15 @@
 <template>
   <div class="modalWrapper">
-    <button class="modalButton" @click="showModal = true">{{ newActivity }}</button>
+    <button class="modalButton" @click="showModal = true">{{ activityObject.title }}</button>
     <transition name="fade" appear>
       <div class="modalOverlay" v-if="showModal" @click="showModal = false"></div>
     </transition>
     <transition name="slide" appear>
       <div class="modal" v-if="showModal">
         <h1>Define your Activity</h1>
-        <input type="text" placeholder="Activity name">
+        <span class="modalElement">Activity Name: {{ activityObject.title }}</span>
+        <textArea />
+        <input class="modalElement" type="text" placeholder="Description">
         <Slider></Slider>
         <button class="modalButton" @click="showModal = false">Close Modal</button>
       </div>
@@ -17,6 +19,7 @@
 
 <script>
 import Slider from "@/components/Slider.vue";
+import textArea from "@/components/textArea.vue";
 
 export default {
   name: "ActivityModal",
@@ -27,10 +30,14 @@ export default {
   },
   components: {
     Slider,
+    textArea,
   },
-  props: [
-    "newActivity",
-  ]
+  props: {
+    activityObject: {
+      type: String,
+      default: 'hggh',
+    },
+  }
 }
 </script>
 
@@ -90,6 +97,8 @@ export default {
 }
 
 .modal {
+  display: flex;
+  flex-flow: column;
   position: absolute;
   top: 50%;
   left: 50%;
@@ -97,7 +106,9 @@ export default {
   z-index: 99;
 
   width: 100%;
-  max-width: 400px;
+  max-width: 50%;
+  height: 100%;
+  max-height: 40%;
   background-color: #FFF;
   border-radius: 16px;
 
@@ -105,11 +116,15 @@ export default {
 
 }
 
-.h1 { 
+.h1 {
   color: #222;
   font-size: 32px;
   font-weight: 900;
   margin-bottom: 15px;
+}
+
+.modalElement {
+  margin: 10px;
 }
 
 .p {
