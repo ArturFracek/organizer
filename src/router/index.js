@@ -25,20 +25,6 @@ const routes = [
     component: () =>
       import(/* webpackChunkName: "Login" */ "../views/Login.vue"),
   },
-  {
-    path: "/Add-Routine",
-    name: "MyRoutines",
-    component: () =>
-      import(/* webpackChunkName: "MyRoutines" */ "../views/MyRoutines.vue"),
-  },
-  {
-    path: "/Add-Activities",
-    name: "MyActivities",
-    component: () =>
-      import(
-        /* webpackChunkName: "MyActivities" */ "../views/MyActivities.vue"
-      ),
-  },
 ];
 
 const router = new VueRouter({

@@ -1,6 +1,5 @@
 <template>
 <div class="wrapper">
-  <ActivityModal />
   <h1 class="title">{{ title }}</h1>
   <div class="addActivities">
     <div class="instruction">Add activity name, and after " , " write priority number from 1 to 5.</div>
@@ -16,13 +15,13 @@
 </template>
 
 <script>
-import ActivityModal from "@/components/ActivityModal.vue"
+import ActivityModal from "@/components/ActivityModal.vue";
 
 export default {
   name: "MyActivities",
   data() {
     return {
-      title: "My Activities",
+      title: "Activities",
       activityObject: {},
       activityObjectName: "",
       newPriority: "1",
@@ -57,14 +56,15 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
+  margin: 10px 0 0 0;
 }
 
 .instruction {
   display: flex;
   justify-self: center;
   align-items: center;
-  margin: 10px;
   font-size: 1.4em;
+  text-align: center;
 }
 
 .addActivities {
@@ -72,7 +72,7 @@ export default {
   flex-flow: column;
   justify-content: center;
   align-items: center;
-  margin: 10px 0 6em;
+  margin: 10px 0 0 0;
 }
 
 .input {
@@ -93,14 +93,15 @@ export default {
   display: flex;
   flex-flow: row;
   justify-content: center;
-  align-items: flex-start;
+  align-items: flex-end;
   flex-wrap: wrap;
+  margin-top: 10px;
 }
 
 .activityHolder {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 15px;
+  margin: 7px 7px;
 }
 </style>

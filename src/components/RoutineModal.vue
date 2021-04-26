@@ -1,12 +1,12 @@
 <template>
-  <div class="modalWrapper">
-    <button type="button" class="modalButton" @click="showModal = true">{{ activityObject.title }}</button>
+  <div class="routineModalWrapper">
+    <button type="button" class="routineModalButton" @click="showModal = true">{{ routineObject.title }}</button>
     <transition name="fade" appear>
       <div class="modalOverlay" v-if="showModal" @click="showModal = false"></div>
     </transition>
     <transition name="slide" appear>
       <div class="modal" v-if="showModal">
-        <h1>{{ activityObject.title }}</h1>
+        <h1>{{ routineObject.title }}</h1>
         <textArea />
         <Slider></Slider>
         <div class="bottomContainer">
@@ -23,7 +23,7 @@ import Slider from "@/components/Slider.vue";
 import textArea from "@/components/textArea.vue";
 
 export default {
-  name: "ActivityModal",
+  name: "RoutineModal",
   data() {
     return {
       showModal: false,
@@ -34,7 +34,7 @@ export default {
     textArea,
   },
   props: {
-    activityObject: {
+    routineObject: {
       type: Object,
       required: false,
     },
@@ -48,14 +48,14 @@ export default {
   padding: 0;
 }
 
-.modalWrapper {
+.routineModalWrapper {
   display: flex;
   justify-content: center;
   align-items: center;
   width: 100%;
 }
 
-.modalButton {
+.routineModalButton {
   border: none;
   background: none;
   cursor: pointer;
@@ -73,7 +73,7 @@ export default {
 
 }
 
-.modalButton:Hover {
+.routineModalButton:Hover {
   box-shadow: 6px 6px 6px 6px rgba(0, 0, 0, 0.6);
 }
 
