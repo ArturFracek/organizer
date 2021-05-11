@@ -1,8 +1,14 @@
 <template>
   <div class="routineModalWrapper">
-    <button type="button" class="routineModalButton" @click="showModal = true">{{ routineObject.title }}</button>
+    <button type="button" class="routineModalButton" @click="showModal = true">
+      {{ routineObject.title }}
+    </button>
     <transition name="fade" appear>
-      <div class="modalOverlay" v-if="showModal" @click="showModal = false"></div>
+      <div
+        class="modalOverlay"
+        v-if="showModal"
+        @click="showModal = false"
+      ></div>
     </transition>
     <transition name="slide" appear>
       <div class="modal" v-if="showModal">
@@ -10,8 +16,14 @@
         <textArea />
         <Slider></Slider>
         <div class="bottomContainer">
-        <button type="button" class="saveButton">save</button>
-        <button type="button" class="modalButtonClose" @click="showModal = false">go back</button>
+          <button type="button" class="saveButton">save</button>
+          <button
+            type="button"
+            class="modalButtonClose"
+            @click="showModal = false"
+          >
+            go back
+          </button>
         </div>
       </div>
     </transition>
@@ -38,8 +50,8 @@ export default {
       type: Object,
       required: false,
     },
-  }
-}
+  },
+};
 </script>
 
 <style scoped>
@@ -61,7 +73,7 @@ export default {
   cursor: pointer;
 
   padding: 10px 10px;
-  background-image: linear-gradient(to right, #CC2E5D, #FF5858);
+  background-image: linear-gradient(to right, #cc2e5d, #ff5858);
   border-radius: 8px;
 
   color: #fff;
@@ -70,17 +82,16 @@ export default {
 
   box-shadow: 3px 3px 3px 3px rgba(0, 0, 0, 0.4);
   transition: 0.4s ease-out;
-
 }
 
-.routineModalButton:Hover {
+.routineModalButton:hover {
   box-shadow: 6px 6px 6px 6px rgba(0, 0, 0, 0.6);
 }
 
 .bottomContainer {
   width: 100%;
   display: flex;
-  justify-content: center
+  justify-content: center;
 }
 
 .modalButtonClose {
@@ -107,7 +118,7 @@ export default {
   transition: 0.4s ease-out;
 }
 
-.modalButtonClose:Hover {
+.modalButtonClose:hover {
   box-shadow: 6px 6px 6px 6px rgba(0, 0, 0, 0.6);
 }
 
@@ -135,10 +146,9 @@ export default {
   transition: 0.4s ease-out;
 }
 
-.saveButton:Hover {
+.saveButton:hover {
   box-shadow: 6px 6px 6px 6px rgba(0, 0, 0, 0.6);
 }
-
 
 .modalOverlay {
   position: absolute;
@@ -180,7 +190,16 @@ export default {
 
   padding: 25px;
 
-  clip-path: polygon(20% 0%, 80% 0%, 100% 20%, 100% 80%, 80% 100%, 20% 100%, 0% 80%, 0% 20%);
+  clip-path: polygon(
+    20% 0%,
+    80% 0%,
+    100% 20%,
+    100% 80%,
+    80% 100%,
+    20% 100%,
+    0% 80%,
+    0% 20%
+  );
 }
 
 h1 {

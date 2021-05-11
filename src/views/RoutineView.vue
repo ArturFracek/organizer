@@ -1,15 +1,11 @@
 <template>
-    <div class="routineWrapper">
-
-    </div>
+  <div class="routineWrapper"></div>
 </template>
 
 <script>
 export default {
-  name: "RoutineView"
-}
+  name: "RoutineView",
+};
 </script>
 
-<style lang="scss" scoped>
-
-</style>
+<style lang="scss" scoped></style>

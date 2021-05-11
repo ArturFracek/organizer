@@ -6,7 +6,6 @@
     </div>
 
     <daysOfTheWeek />
-
   </div>
 </template>
 

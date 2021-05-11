@@ -1,17 +1,29 @@
 <template>
-<div class="wrapper">
-  <h1 class="title">{{ title }}</h1>
-  <div class="addActivities">
-    <div class="instruction">Add activity name, and after " , " write priority number from 1 to 5.</div>
-    <input class="input" type="text" placeholder="Add activity" v-model="activityObjectName" @keyup.enter="addActivities">
-    <button class="button" @click="addActivities">Add</button>
-  </div>
-  <div class="activities">
-    <div v-for="activity in activities" :key="activity.id" class="activityHolder">
-      <ActivityModal :activityObject="activity" />
+  <div class="wrapper">
+    <h1 class="title">{{ title }}</h1>
+    <div class="addActivities">
+      <div class="instruction">
+        Add activity name, and after " , " write priority number from 1 to 5.
+      </div>
+      <input
+        class="input"
+        type="text"
+        placeholder="Add activity"
+        v-model="activityObjectName"
+        @keyup.enter="addActivities"
+      />
+      <button class="button" @click="addActivities">Add</button>
+    </div>
+    <div class="activities">
+      <div
+        v-for="activity in activities"
+        :key="activity.id"
+        class="activityHolder"
+      >
+        <ActivityModal :activityObject="activity" />
+      </div>
     </div>
   </div>
-</div>
 </template>
 
 <script>
@@ -26,9 +38,9 @@ export default {
       activityObjectName: "",
       newPriority: "1",
       activities: [
-        { title: "Bieganie", priority: 3/5, id: 1},
-        { title: "Strzelanie", priority: 2/5, id: 2},
-      ]
+        { title: "Bieganie", priority: 3 / 5, id: 1 },
+        { title: "Strzelanie", priority: 2 / 5, id: 2 },
+      ],
     };
   },
   components: {
@@ -36,8 +48,12 @@ export default {
   },
   methods: {
     addActivities() {
-      this.activities.push({ title: this.activityObjectName, priority: this.newPriority, id: Math.random() })
-      this.activityObjectName= "";
+      this.activities.push({
+        title: this.activityObjectName,
+        priority: this.newPriority,
+        id: Math.random(),
+      });
+      this.activityObjectName = "";
     },
   },
 };

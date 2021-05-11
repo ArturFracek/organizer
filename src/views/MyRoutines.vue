@@ -1,17 +1,25 @@
 <template>
-<div class="wrapper">
-  <h1 class="title">{{ title }}</h1>
-  <div class="addRoutines">
-    <div class="instruction">Create your routines, chose days you want to organise</div>
-    <input class="input" type="text" placeholder="Add new routine" v-model="routineObjectName" @keyup.enter="addRoutines">
-    <button class="button" @click="addRoutines">Add routine</button>
-  </div>
-  <div class="routines">
-    <div v-for="routine in routines" :key="routine.id" class="routineHolder">
-     <RoutineModal :routineObject ="routine" />
+  <div class="wrapper">
+    <h1 class="title">{{ title }}</h1>
+    <div class="addRoutines">
+      <div class="instruction">
+        Create your routines, chose days you want to organise
+      </div>
+      <input
+        class="input"
+        type="text"
+        placeholder="Add new routine"
+        v-model="routineObjectName"
+        @keyup.enter="addRoutines"
+      />
+      <button class="button" @click="addRoutines">Add routine</button>
+    </div>
+    <div class="routines">
+      <div v-for="routine in routines" :key="routine.id" class="routineHolder">
+        <RoutineModal :routineObject="routine" />
+      </div>
     </div>
   </div>
-</div>
 </template>
 
 <script>
@@ -26,9 +34,9 @@ export default {
       routineObject: {},
       newPriority: "1",
       routines: [
-        { title: "Programowanie mocno", id: 1},
-        { title: "Focus na gitare", id: 2},
-      ]
+        { title: "Programowanie mocno", id: 1 },
+        { title: "Focus na gitare", id: 2 },
+      ],
     };
   },
   components: {
@@ -36,10 +44,14 @@ export default {
   },
   methods: {
     addRoutines() {
-      this.routines.push({ title: this.routineObjectName, priority: this.newPriority, id: Math.random() })
-      this.newRoutine=""
+      this.routines.push({
+        title: this.routineObjectName,
+        priority: this.newPriority,
+        id: Math.random(),
+      });
+      this.newRoutine = "";
     },
-  }
+  },
 };
 </script>
 
@@ -103,6 +115,6 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 7px 7px
+  margin: 7px 7px;
 }
 </style>

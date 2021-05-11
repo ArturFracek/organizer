@@ -1,35 +1,39 @@
 <template>
-<div class="container">
-  <input @change="warning()" v-model="value" type="range" class="Slider" min="0" max="10">
+  <div class="container">
+    <input
+      @change="warning()"
+      v-model="value"
+      type="range"
+      class="Slider"
+      min="0"
+      max="10"
+    />
     <div :style="warning()" class="rangeValue">{{ value }}</div>
-</div>
+  </div>
 </template>
 
 <script>
-
 export default {
   name: "Slider",
   data() {
     return {
-      value: "5"
-    }
+      value: "5",
+    };
   },
   methods: {
-    warning:function(){
-      if(this.value > 6) {
+    warning: function () {
+      if (this.value > 6) {
         return {
           color: "#e74c3c",
           animation: "anim 0.9s ease-in 1 alternate",
-        }
+        };
       }
-    }
-  }
+    },
+  },
 };
 </script>
 
-
 <style scoped>
-
 .container {
   display: flex;
   justify-content: center;
@@ -56,7 +60,7 @@ export default {
   background-image: linear-gradient(90deg, #fbff22 0%, #ff2525 100%);
 }
 
-.container .Slider:hover{
+.container .Slider:hover {
   opacity: 1;
 }
 
@@ -86,7 +90,7 @@ export default {
   border: 2px solid #d3d3d33d;
 }
 
-.container .Slider::webkit-slider-thumb:hover{
+.container .Slider::webkit-slider-thumb:hover {
   box-shadow: 6px 6px 20px 20px rgb(0, 0, 0);
 }
 
@@ -108,13 +112,13 @@ export default {
   25% {
     right: -10px;
   }
-  50%{
+  50% {
     right: -30px;
   }
-  70%{
+  70% {
     right: -10px;
   }
-  100%{
+  100% {
     right: -20px;
   }
 }

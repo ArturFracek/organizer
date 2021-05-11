@@ -1,15 +1,9 @@
 <template>
-    <div class="Sunday">Sunday</div>
+  <div class="Sunday">Sunday</div>
 </template>
 
 <script>
-
-export default {
-
-}
-
+export default {};
 </script>
 
-<style scoped>
-
-</style>
+<style scoped></style>
