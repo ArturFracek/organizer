@@ -1,22 +1,16 @@
 <template>
   <div class="textArea">
-    <textarea class="area"
-      placeholder="Description"
-    ></textarea>
+    <textarea class="area" placeholder="Description"></textarea>
   </div>
 </template>
 
 <script>
-
-
 export default {
   name: "textArea",
-}
-
+};
 </script>
 
 <style scoped>
-
 .textArea {
   width: 80%;
   height: 60%;
@@ -34,5 +28,4 @@ textarea {
   min-height: 90px;
   box-sizing: border-box;
 }
-
 </style>

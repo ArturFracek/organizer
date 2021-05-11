@@ -8,7 +8,7 @@
     <div class="day_box saturday">{{ WEEKDAYS[5] }}</div>
     <div class="day_box sunday">{{ WEEKDAYS[6] }}</div>
   </div>
-    <!-- <router-link class="day_box">{{ WEEKDAYS[0] }}</router-link>
+  <!-- <router-link class="day_box">{{ WEEKDAYS[0] }}</router-link>
     <router-link class="day_box">{{ WEEKDAYS[1] }}</router-link>
     <router-link class="day_box">{{ WEEKDAYS[2] }}</router-link>
     <router-link class="day_box">{{ WEEKDAYS[3] }}</router-link>
