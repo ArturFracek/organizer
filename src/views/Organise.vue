@@ -4,22 +4,21 @@
       <MyActivities />
       <MyRoutines />
     </div>
-
-    <daysOfTheWeek />
+    <RoutineCalendar />
   </div>
 </template>
 
 <script>
-import daysOfTheWeek from "@/components/daysOfTheWeek.vue";
 import MyActivities from "@/views/MyActivities.vue";
 import MyRoutines from "@/views/MyRoutines.vue";
+import RoutineCalendar from "@/components/RoutineCalendar.vue";
 
 export default {
   name: "Organise",
   components: {
     MyActivities,
     MyRoutines,
-    daysOfTheWeek,
+    RoutineCalendar,
   },
 };
 </script>
