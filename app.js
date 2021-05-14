@@ -69,6 +69,10 @@ app.post('/routines', (req, res) => {
     return res.json(newRoutine)
 })
 
+//Bring in the User route
+const users = require('./routes/api/users');
+app.use('/api/users', users);
+
 const PORT = process.env.PORT || 5000;
 
 
