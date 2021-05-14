@@ -1,10 +1,7 @@
 <template>
-  <div class="wrapper">
+  <div class="routinesWrapper">
     <h1 class="title">{{ title }}</h1>
     <div class="addRoutines">
-      <div class="instruction">
-        Create your routines, chose days you want to organise
-      </div>
       <input
         class="input"
         type="text"
@@ -12,7 +9,7 @@
         v-model="routineObjectName"
         @keyup.enter="addRoutines"
       />
-      <button class="button" @click="addRoutines">Add routine</button>
+      <button class="button" @click="addRoutines">Add</button>
     </div>
     <div class="routines">
       <div v-for="routine in routines" :key="routine.id" class="routineHolder">
@@ -34,8 +31,8 @@ export default {
       routineObject: {},
       newPriority: "1",
       routines: [
-        { title: "Programowanie mocno", id: 1 },
-        { title: "Focus na gitare", id: 2 },
+        { title: "Holidays", id: 1 },
+        { title: "January- Work focus", id: 2 },
       ],
     };
   },
@@ -49,19 +46,19 @@ export default {
         priority: this.newPriority,
         id: Math.random(),
       });
-      this.newRoutine = "";
+      this.routineObjectName = "";
     },
   },
 };
 </script>
 
 <style scoped>
-.wrapper {
+.routinesWrapper {
   display: flex;
   flex-flow: column;
   align-items: center;
   max-height: 60%;
-  width: 50vw;
+  width: 50%;
   background-color: khaki;
 }
 
@@ -92,6 +89,7 @@ export default {
   width: 214px;
   padding: 0;
   margin: 0;
+  text-align: center;
 }
 
 .input {
@@ -100,6 +98,8 @@ export default {
   width: 210px;
   padding: 0;
   margin: 0;
+  text-align: center;
+  border: 2px black solid;
 }
 
 .routines {
