@@ -3,22 +3,33 @@ const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 const path = require("path");
 const cors = require("cors");
+const passport = require('passport')
+
+
 // Initialize the app
-
-
 const app = express();
 
 //Middlewares
+
 //Form Data Middleware
 app.use(bodyParser.urlencoded({
     extended: false
 }));
+
 //Json Body Middleware
 app.use(bodyParser.json());
+
 //Cors Middleware
 app.use(cors());
+
 //Setting up static directory
-//app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, 'public')));
+
+// User the passport Middlewere
+app.use(passport.initialize());
+
+//Brin in the Passport Strategy
+require('./config/passport')(passport)
 
 // Bring in the Database configuration adn connect with database
 const db = require("./config/keys").mongoURI;
