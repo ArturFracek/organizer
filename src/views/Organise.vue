@@ -4,7 +4,7 @@
       <MyActivities />
       <MyRoutines />
     </div>
-    <RoutineCalendar class="calendar"/>
+    <RoutineCalendar class="calendar" />
   </div>
 </template>
 
@@ -24,7 +24,6 @@ export default {
 </script>
 
 <style scoped>
-
 .wrapper {
   padding: 0 10%;
 }
