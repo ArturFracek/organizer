@@ -13,17 +13,17 @@ const User = require("../../model/User");
  */
 
 router.post("/register", (req, res) => {
-  let { name, username, email, password, confirm_password } = req.body;
+  let { name, username, email, password, confirm_password } = req.body
   if (password !== confirm_password) {
     return res.status(400).json({
-      msg: "Password do not match.",
+      msg: "Password do not match."
     });
   }
   //Check for the unique Username
   User.findOne({ username: username }).then((user) => {
     if (user) {
       return res.status(400).json({
-        msg: "Username is already taken.",
+        msg: "Username is already taken."
       });
     }
   });
@@ -31,8 +31,8 @@ router.post("/register", (req, res) => {
   // Chceck for the unique Email
 
   User.findOne({
-    email: email,
-  }).then((user) => {
+    email: email
+  }).then(user => {
     if (user) {
       return res.status(400).json({
         msg: "Email is arleady taken.",
@@ -59,8 +59,10 @@ router.post("/register", (req, res) => {
           msg: "User is now registered.",
         });
       });
+    });
   });
 });
+
 
 /**
  * @route POST api/users/login
@@ -125,8 +127,8 @@ router.get(
   }),
   (req, res) => {
     return res.json({
-      user: req.user,
+      user: req.user
     });
-  }
-);
+  });
+
 module.exports = router;
