@@ -1,10 +1,7 @@
 <template>
-  <div class="wrapper">
+  <div class="activitiesWrapper">
     <h1 class="title">{{ title }}</h1>
     <div class="addActivities">
-      <div class="instruction">
-        Add activity name, and after " , " write priority number from 1 to 5.
-      </div>
       <input
         class="input"
         type="text"
@@ -38,8 +35,8 @@ export default {
       activityObjectName: "",
       newPriority: "1",
       activities: [
-        { title: "Bieganie", priority: 3 / 5, id: 1 },
-        { title: "Strzelanie", priority: 2 / 5, id: 2 },
+        { title: "Planning", priority: 3 / 5, id: 1 },
+        { title: "Sleeping", priority: 2 / 5, id: 2 },
       ],
     };
   },
@@ -60,12 +57,12 @@ export default {
 </script>
 
 <style scoped>
-.wrapper {
+.activitiesWrapper {
   display: flex;
   flex-flow: column;
   align-items: center;
   max-height: 60%;
-  width: 50vw;
+  width: 50%;
 }
 
 .title {
@@ -97,6 +94,8 @@ export default {
   width: 210px;
   padding: 0;
   margin: 0;
+  text-align: center;
+  border: 2px black solid;
 }
 
 .button {

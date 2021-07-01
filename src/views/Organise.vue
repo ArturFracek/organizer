@@ -4,13 +4,13 @@
       <MyActivities />
       <MyRoutines />
     </div>
-    <RoutineCalendar />
+    <RoutineCalendar class="calendar" />
   </div>
 </template>
 
 <script>
-import MyActivities from "@/views/MyActivities.vue";
-import MyRoutines from "@/views/MyRoutines.vue";
+import MyActivities from "@/components/MyActivities.vue";
+import MyRoutines from "@/components/MyRoutines.vue";
 import RoutineCalendar from "@/components/RoutineCalendar.vue";
 
 export default {
@@ -24,17 +24,12 @@ export default {
 </script>
 
 <style scoped>
-.week_days {
-  display: flex;
-  flex-flow: column;
-  justify-content: center;
-  align-items: center;
-  height: 70vh;
-  width: auto;
+.wrapper {
+  padding: 0 10%;
 }
-
 .upperContainer {
   display: flex;
+  margin-bottom: 2vh;
 }
 
 .organise_element {
@@ -42,5 +37,8 @@ export default {
   text-decoration: none;
   color: black;
   font-weight: bold;
+}
+
+.calendar {
 }
 </style>
