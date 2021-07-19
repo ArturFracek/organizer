@@ -18,6 +18,19 @@
                     v-model="username"
                     class="form-control">
                 </div>
+                <div class="form-group">
+                  <label for="password">Password</label>
+                  <input
+                    id="password"
+                    type="password"
+                    placeholder="Password"
+                    name="password"
+                    v-model="passowrd"
+                    class="form-control">
+                </div>
+                <button class="btn btn-primary">Login</button>
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                <router-link to="/register" class="card-link">Need an account</router-link>
               </form>
           </div>
       </div>
@@ -26,7 +39,12 @@
 
 <script>
 export default {
-
+  data(){
+    return {
+      username: "",
+      password: "",
+    }
+  }
 }
 </script>
 
