@@ -4,7 +4,7 @@
     <router-link :to="{ name: 'Organise' }" class="organise nav_link">
       O r g a n i s e
     </router-link>
-    <router-link :to="{ name: 'Log-in' }" class="nav_link">Log-in</router-link>
+    <router-link :to="{ name: 'Login' }" class="nav_link">Log-in</router-link>
     <router-link :to="{ name: 'Register' }" class="nav_link">Register</router-link>
     <router-link :to="{ name: 'Profile' }" class="nav_link">Profile</router-link>
     <a :to="{ name: 'Log-out' }" class="nav_link">Log-out</a>
