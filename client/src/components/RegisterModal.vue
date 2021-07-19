@@ -69,7 +69,15 @@
 
 <script>
 export default {
-
+    data() {
+      return {
+        name: "",
+        password: "",
+        username: "",
+        confirm_password: "",
+        email: ""
+      }
+    }
 }
 </script>
 
