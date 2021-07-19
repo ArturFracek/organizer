@@ -84,7 +84,7 @@ app.post("/routines", (req, res) => {
   return res.json(newRoutine);
 });
 
-//Bring in the User route
+//Bring in the Users route
 const users = require("./routes/api/users");
 app.use("/api/users", users);
 
