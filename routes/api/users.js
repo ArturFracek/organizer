@@ -99,6 +99,7 @@ router.post("/login", (req, res) => {
           (err, token) => {
             res.status(200).json({
               success: true,
+              user: user,
               token: `Bearer ${token}`,
               msg: "You are now logged in.",
             });

@@ -7,7 +7,7 @@
               <h4>Login</h4>
           </div>
           <div class="card-body">
-              <form>
+              <form @submit.prevent="loginUser">
                 <div class="form-group">
                   <label for="username">Username</label>
                   <input
@@ -25,10 +25,10 @@
                     type="password"
                     placeholder="Password"
                     name="password"
-                    v-model="passowrd"
+                    v-model="password"
                     class="form-control">
                 </div>
-                <button class="btn btn-primary">Login</button>
+                <input type='submit' class="btn btn-primary" value="Login"/>
                 &nbsp;&nbsp;&nbsp;&nbsp;
                 <router-link to="/register" class="card-link">Need an account</router-link>
               </form>
@@ -38,12 +38,30 @@
 </template>
 
 <script>
+import { mapActions } from "vuex";
 export default {
   data(){
     return {
       username: "",
       password: "",
     }
+  },
+  methods: {
+    ...mapActions(['login']),
+   loginUser(){
+     let user = {
+       username: this.username,
+       password: this.password,
+     };
+     this.login(user)
+     .then(res => {
+       if(res.data.success){
+         this.$router.push('/profile')
+       }
+     }).catch(err=>{
+       console.log(err)
+     });
+   } 
   }
 }
 </script>

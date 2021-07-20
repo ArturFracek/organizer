@@ -4,15 +4,26 @@
     <router-link :to="{ name: 'Organise' }" class="organise nav_link">
       O r g a n i s e
     </router-link>
-    <router-link :to="{ name: 'Login' }" class="nav_link">Log-in</router-link>
-    <router-link :to="{ name: 'Register' }" class="nav_link">Register</router-link>
-    <router-link :to="{ name: 'Profile' }" class="nav_link">Profile</router-link>
-    <a :to="{ name: 'Log-out' }" class="nav_link">Log-out</a>
+    <router-link :to="{ name: 'Login' }" class="nav_link" v-if="!isLoggedIn">Log-in</router-link>
+    <router-link :to="{ name: 'Register' }" class="nav_link" v-if="!isLoggedIn">Register</router-link>
+    <router-link :to="{ name: 'Profile' }" class="nav_link" v-if="isLoggedIn">Profile</router-link>
+    <a :to="{ name: 'Log-out' }" class="nav_link" v-if="isLoggedIn" @click.prevent='logoutUser'>Logout</a>
   </div>
 </template>
 
 <script>
-export default {};
+import { mapGetters, mapActions} from "vuex"
+export default {
+  computed:{
+    ...mapGetters(["isLoggedIn"])
+  },
+  methods: {
+    ...mapActions(["logout"]),
+    logoutUser(){
+      this.logout();
+    }
+  }
+};
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
