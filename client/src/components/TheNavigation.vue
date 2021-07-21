@@ -1,7 +1,7 @@
 <template>
   <div class="nav">
     <router-link to="/" class="nav_link">Home</router-link>
-    <router-link :to="{ name: 'Organise' }" class="organise nav_link">
+    <router-link :to="{ name: 'Organise' }" class="organise nav_link" v-if="isLoggedIn">
       O r g a n i s e
     </router-link>
     <router-link :to="{ name: 'Login' }" class="nav_link" v-if="!isLoggedIn">Log-in</router-link>
@@ -12,7 +12,7 @@
 </template>
 
 <script>
-import { mapGetters, mapActions} from "vuex"
+import { mapGetters, mapActions } from "vuex";
 export default {
   computed:{
     ...mapGetters(["isLoggedIn"])

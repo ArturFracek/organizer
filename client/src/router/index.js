@@ -1,7 +1,7 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
 import Home from "../views/Home.vue";
-import store from "../store/index";
+import store from "../store";
 
 Vue.use(VueRouter);
 
@@ -30,8 +30,8 @@ const routes = [
       }
   },
   {
-    path: "/Register",
-    name: "Register",
+    path: "/register",
+    name: "register",
     component: () =>
       import("../components/RegisterModal.vue"),
       meta:{
@@ -39,10 +39,10 @@ const routes = [
       }
   },
   {
-    path: "/profile",
-    name: "profile",
+    path: "/Profile",
+    name: "Profile",
     component: () =>
-      import(/* webpackChunkName: "profile" */ "../components/ProfileModal.vue"),
+      import("../components/ProfileModal.vue"),
       meta:{
         requiresAuth: true
       }
@@ -56,16 +56,16 @@ const router = new VueRouter({
 });
 
 router.beforeEach((to, from, next) => {
-  if(to.matched.some(record => record.meta.requiresAuth)){
-    if(!store.getters.isLoggedIn) {
+  if (to.matched.some(record => record.meta.requiresAuth)){
+    if (!store.getters.isLoggedIn) {
       // Redirect to the Login Page
-      next('/login')
+      next('/Login')
     } else {
       next();
     }
   } else if (to.matched.some(record => record.meta.requiresGuest)){
-      if(store.getters.isLoggedIn) {
-        next('/profile');
+      if (store.getters.isLoggedIn) {
+        next('/Profile');
       } else {
         next();
       }
