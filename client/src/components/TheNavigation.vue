@@ -6,17 +6,17 @@
         O r g a n i s e
       </router-link>
     </div>
+    <a href="" class="toggle-button">
+      <span class="bar"></span>
+      <span class="bar"></span>
+      <span class="bar"></span>
+    </a>
     <div class="lower_links">
       <router-link :to="{ name: 'Login' }" class="nav_link" v-if="!isLoggedIn">Sign in</router-link>
       <router-link :to="{ name: 'Register' }" class="nav_link" v-if="!isLoggedIn">Register</router-link>
       <router-link :to="{ name: 'Profile' }" class="nav_link" v-if="isLoggedIn">Profile</router-link>
       <a :to="{ name: 'Log-out' }" class="nav_link" v-if="isLoggedIn" @click.prevent='logoutUser'>Logout</a>
     </div>
-    <a href="" class="toggle-button">
-        <span class="bar"></span>
-        <span class="bar"></span>
-        <span class="bar"></span>
-    </a>
   </div>
 </template>
 
@@ -28,7 +28,7 @@ const toggleButton = document.getElementsByClassName("toggle-button")[0]
 const lower_links = document.getElementsByClassName("lower_links")[0]
 
 toggleButton.addEventListener("click", () => {
-  lower_links.classList.toggle("active")
+ lower_links.classList.toggle("active")
 })
 
 
@@ -143,12 +143,13 @@ justify-content: center;
 }
 
 .lower_links {
+  display: none;
   width: 100%;
   flex-direction: column;
 }
 
-.nav_link.active {
- display: flexbo;
+.lower_links.active {
+ display: flexbox;
 }
 
 }
