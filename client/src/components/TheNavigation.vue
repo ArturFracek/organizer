@@ -2,11 +2,11 @@
   <div class="nav">
     <div class="nav_logo">
       <router-link to="/" class="main_link">About organizing</router-link>
-    </div>
-    <div class="lower_links">
-      <router-link :to="{ name: 'Organise' }" class="main_link" v-if="isLoggedIn">
+       <router-link :to="{ name: 'Organise' }" class="main_link" v-if="isLoggedIn">
         O r g a n i s e
       </router-link>
+    </div>
+    <div class="lower_links">
       <router-link :to="{ name: 'Login' }" class="nav_link" v-if="!isLoggedIn">Sign in</router-link>
       <router-link :to="{ name: 'Register' }" class="nav_link" v-if="!isLoggedIn">Register</router-link>
       <router-link :to="{ name: 'Profile' }" class="nav_link" v-if="isLoggedIn">Profile</router-link>
@@ -22,6 +22,16 @@
 
 <script>
 import { mapGetters, mapActions } from "vuex";
+//import { toggleButton, nav_link } from "../constants"
+
+const toggleButton = document.getElementsByClassName("toggle-button")[0]
+const lower_links = document.getElementsByClassName("lower_links")[0]
+
+toggleButton.addEventListener("click", () => {
+  lower_links.classList.toggle("active")
+})
+
+
 export default {
   computed:{
     ...mapGetters(["isLoggedIn"])
@@ -30,9 +40,10 @@ export default {
     ...mapActions(["logout"]),
     logoutUser(){
       this.logout();
-    }
+    },
   }
 };
+
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
@@ -119,6 +130,11 @@ justify-content: center;
   display: flex;
   width: 100%;
   justify-content: center;
+  padding: 0.3rem;
+}
+
+.nav_link:nth-child(1) {
+  border-bottom: 0.5px solid black;
 }
 
 .nav {
@@ -129,6 +145,10 @@ justify-content: center;
 .lower_links {
   width: 100%;
   flex-direction: column;
+}
+
+.nav_link.active {
+ display: flexbo;
 }
 
 }
