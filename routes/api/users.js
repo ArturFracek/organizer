@@ -20,7 +20,9 @@ router.post("/register", (req, res) => {
     });
   }
   //Check for the unique Username
-  User.findOne({ username: username }).then((user) => {
+  User.findOne({
+     username: username
+     }).then((user) => {
     if (user) {
       return res.status(400).json({
         msg: "Username is already taken."

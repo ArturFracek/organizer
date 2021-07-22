@@ -1,6 +1,6 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
-import Home from "../views/Home.vue";
+import AboutOrganizing from "../views/AboutOrganizing.vue";
 import store from "../store";
 
 Vue.use(VueRouter);
@@ -8,8 +8,8 @@ Vue.use(VueRouter);
 const routes = [
   {
     path: "/",
-    name: "Home",
-    component: Home,
+    name: "AboutOrganizing",
+    component: AboutOrganizing,
   },
   {
     path: "/Organise",
@@ -30,8 +30,8 @@ const routes = [
       }
   },
   {
-    path: "/register",
-    name: "register",
+    path: "/Register",
+    name: "Register",
     component: () =>
       import("../components/RegisterModal.vue"),
       meta:{

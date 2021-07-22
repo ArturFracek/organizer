@@ -4,15 +4,22 @@
     <transition name="moveUp" mode="out-in">
       <router-view :key="$route.path" />
     </transition>
+    <Errors v-if="error" :msg="error" />
   </div>
 </template>
 
 <script>
 import TheNavigation from "@/components/TheNavigation.vue";
+import Errors from "@/components/Errors.vue";
+import { mapGetters } from "vuex";
 
 export default {
   components: {
     TheNavigation,
+    Errors,
+  },
+  computed: {
+    ...mapGetters(["error"])
   },
 };
 </script>

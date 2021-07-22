@@ -5,7 +5,7 @@ const state = {
   token: localStorage.getItem("token") || "",
   user: {},
   status: "",
-  error: null
+  error: null,
 };
 
 const getters = {
@@ -27,8 +27,8 @@ const actions = {
   async login({
     commit
     }, user) {
-      try {
       commit('auth_request');
+      try {
       let res = await axios.post('http://localhost:5000/api/users/login', user)
       if (res.data.success){
         const token = res.data.token;
@@ -41,7 +41,7 @@ const actions = {
       }
     return res
       } catch (err){
-        commit(auth_error, err);
+        commit("auth_error", err);
       }
     },
     //Register user
@@ -83,26 +83,31 @@ const actions = {
 
 const mutations = {
   auth_request(state) {
-    state.status = 'loading'
+    state.error = null;
+    state.status = 'loading';
   },
   auth_success(state, token, user){
     state.token = token;
     state.user = user;
     state.status = 'success';
+    state.error = null;
   },
   auth_error(state, err){
-    state.error = error.response.data.msg
+    state.error = err.response.data.msg
   },
   register_request(state){
+    state.error = null;
     state.status = 'loading';
   },
   register_success(state){
+    state.error = null
     state.status = 'success';
   },
   register_error(state, err){
-    state.error = error.response.data.msg
+    state.error = err.response.data.msg;
   },
   logout(state){
+    state.error = null;
     state.status = '';
     state.token = '';
     state.user = '';

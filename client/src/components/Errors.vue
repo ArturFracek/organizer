@@ -1,10 +1,10 @@
 <template>
-  <div class="alert alert-danger"> {{ msg }}</div>
+  <div class="alert alert-danger">{{ msg }}</div>
 </template>
 
 <script>
 export default {
-proprs:["msg"]
+props: ["msg"]
 }
 </script>
 
