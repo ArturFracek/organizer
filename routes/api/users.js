@@ -20,7 +20,9 @@ router.post("/register", (req, res) => {
     });
   }
   //Check for the unique Username
-  User.findOne({ username: username }).then((user) => {
+  User.findOne({
+     username: username
+     }).then((user) => {
     if (user) {
       return res.status(400).json({
         msg: "Username is already taken."
@@ -99,6 +101,7 @@ router.post("/login", (req, res) => {
           (err, token) => {
             res.status(200).json({
               success: true,
+              user: user,
               token: `Bearer ${token}`,
               msg: "You are now logged in.",
             });
