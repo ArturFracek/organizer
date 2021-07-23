@@ -1,14 +1,14 @@
 <template>
-  <div>
-      <h2>Login</h2>
+  <div class="login_container">
+      <div class="title">Login to your's Organizer</div>
       <div class="row"></div>
-      <div class="card mx-auto">
-          <div class="card-header text-white bg-primary">
+      <div class="card form_container">
+          <div class="form_header">
               <h4>Login</h4>
           </div>
-          <div class="card-body">
+          <div class="form_body">
               <form @submit.prevent="loginUser">
-                <div class="form-group">
+                <div class="form_group">
                   <label for="username">Username</label>
                   <input
                     id="username"
@@ -16,9 +16,9 @@
                     placeholder="Username"
                     name="username"
                     v-model="username"
-                    class="form-control">
+                    class="form_control">
                 </div>
-                <div class="form-group">
+                <div class="form_group">
                   <label for="password">Password</label>
                   <input
                     id="password"
@@ -26,11 +26,11 @@
                     placeholder="Password"
                     name="password"
                     v-model="password"
-                    class="form-control">
+                    class="form_control">
                 </div>
-                <input type='submit' class="btn btn-primary" value="Login"/>
+                <input type='submit' class="btn btn_primary" value="Login"/>
                 &nbsp;&nbsp;&nbsp;&nbsp;
-                <router-link to="/register" class="card-link">Need an account</router-link>
+                <router-link to="/register" class="form_link">Need an account</router-link>
               </form>
           </div>
       </div>

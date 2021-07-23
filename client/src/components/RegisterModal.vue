@@ -2,7 +2,7 @@
     <div>
       <h2>Register</h2>
       <div class="row"></div>
-      <div class="card mx-auto">
+      <div class="card form_container">
           <div class="card-header text-white bg-primary">
               <h4>Register</h4>
           </div>
