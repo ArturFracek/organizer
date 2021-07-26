@@ -9,10 +9,10 @@
                   <input
                     id="username"
                     type="text"
-                    placeholder=""
+                    placeholder=" "
                     name="username"
                     v-model="username"
-                    class="login_input"
+                    class="input"
                   >
                   <label for="username" class="form_label_login">Username</label>
                 </div>
@@ -20,14 +20,16 @@
                   <input
                     id="password"
                     type="password"
-                    placeholder=""
+                    placeholder=" "
                     name="password"
                     v-model="password"
                     class="password_input"
                   >
                   <label for="password" class="form_label_password">Password</label>
                 </div>
-                <input type='submit' class="btn btn_primary" value="Login"/>
+                <div class="form_group">
+                <input type='submit' class="btn btn_primary" value="Login" placeholder=""/>
+                </div>
                 &nbsp;&nbsp;&nbsp;&nbsp;
                 <router-link to="/register" class="form_link">Need an account</router-link>
               </form>
@@ -151,12 +153,20 @@ input {
     background-color: none;
   }
 
-input:focus ~ .form_label_login {
+input:focus ~ .form_label_login, input:focus ~ .form_label_password {
+  color: turquoise;
+}
+
+input:focus ~ .form_label_login,
+input:not(:placeholder-shown).input:not(:focus)
+~ .form_label_login {
   top: 0.3rem;
   font-size: 95%;
 }
 
-input:focus ~ .form_label_password {
+input:focus ~ .form_label_password,
+input:not(:placeholder-shown).input:not(:focus)
+ ~ .form_label_password {
   top: 5rem;
   font-size: 95%;
 }
@@ -173,5 +183,6 @@ input:focus ~ .form_label_password {
 .btn {
   color: white;
   border-radius: 0;
+  padding: 0.9rem 0;
 }
 </style>
