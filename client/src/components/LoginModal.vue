@@ -94,7 +94,7 @@ export default {
   position: relative;
   width: 20rem;
   margin-bottom: auto;
-  margin-top: 4rem;
+  margin-top: 2rem;
 }
 
 .form_group {
@@ -189,14 +189,52 @@ input:not(:placeholder-shown).input:not(:focus)
 
 
 .title {
-  color: white;
+  color: rgb(230, 230, 230);
   display: flex;
   justify-content: center;
   align-items: center;
   margin-top: 2rem;
   font-weight: bold;
-  font-size: 1.5rem;
+  font-size: 1.8rem;
   color: rgb(251, 255, 254);
+  margin-top: 12rem;
+  animation: text1 2s ease;
+  text-shadow: 0.2rem 0px 0.2rem turquoise;
+}
+
+@keyframes text1 {
+  0%{
+    color: rgb(55, 21, 87);
+    opacity: 0;
+    text-shadow: 
+       0.6rem 0rem  0.8rem turquoise,
+      -0.6rem 0rem 0.8rem turquoise,
+       0rem 0.6rem 0.8rem turquoise,
+       0rem -0.6rem 0.8rem turquoise;
+  }
+  20%{
+    opacity: 0.8;
+  }
+  70%{
+    opacity: 1;
+    text-shadow:
+    0.3rem 0rem  0.8rem turquoise,
+      -0.3rem 0rem 0.8rem turquoise,
+       0rem 0.3rem 0.8rem turquoise,
+       0rem -0.3rem 0.8rem turquoise;
+  }
+  90% {
+    opacity: 1;
+    text-shadow: 
+    0.2rem 0rem  1.2rem turquoise,
+      -0.2rem 0rem 1.2rem turquoise,
+       0rem 0.2rem 1.2em turquoise,
+       0rem -0.2rem 1.2rem turquoise;
+  }
+  100%{
+    opacity: 1;
+    text-shadow: 0.2rem 0px 0.2rem turquoise;
+  }
 }
 
 .btn {
@@ -207,13 +245,16 @@ input:not(:placeholder-shown).input:not(:focus)
   font-weight: bold;
 }
 
+.btn:focus {
+  color: turquoise;
+}
+
 .registration_wrap {
   height: 2rem;
   width: 10rem;
   display: flex;
   justify-content: center;
   align-items: center;
-  transition: opacity 3s ease-in;
 
 }
 
@@ -223,7 +264,20 @@ input:not(:placeholder-shown).input:not(:focus)
   font-weight: bold;
   text-shadow: 1px 1px 10px whitesmoke;
   opacity: 1;
-  transition: opacity 3s ease-in;
+  animation: shown 1s;
+}
+
+.registration_link_two:focus {
+  color: turquoise;
+}
+
+@keyframes shown {
+  0%{
+    opacity: 0;
+  }
+  100%{
+    opacity: 1;
+  }
 }
 
 .registration_link_two {
@@ -233,18 +287,25 @@ input:not(:placeholder-shown).input:not(:focus)
   font-weight: bold;
   text-shadow: 1px 1px 10px whitesmoke;
   opacity: 0;
-  transition: opacity 3s ease-in;
+  animation: shown 1s;
+}
+
+@keyframes shown {
+  0%{
+    opacity: 0;
+  }
+  100%{
+    opacity: 1;
+  }
 }
 
 .registration_wrap:hover  .registration_link {
   display: none;
   opacity: 0;
-  transition: opacity 3s ease-out;
 }
 .registration_wrap:hover .registration_link_two {
   display: flex;
   opacity: 1;
-  transition: opacity 3s ease-in;
 }
 
 
