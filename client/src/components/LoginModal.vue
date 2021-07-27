@@ -23,15 +23,17 @@
                     placeholder=" "
                     name="password"
                     v-model="password"
-                    class="password_input"
+                    class="input"
                   >
                   <label for="password" class="form_label_password">Password</label>
                 </div>
                 <div class="form_group">
                 <input type='submit' class="btn btn_primary" value="Login" placeholder=""/>
                 </div>
-                &nbsp;&nbsp;&nbsp;&nbsp;
-                <router-link to="/register" class="form_link">Need an account</router-link>
+                <div class="registration_wrap">
+                  <router-link to="/register" class="registration_link">Need an Account ?</router-link>
+                  <router-link to="/register" class="registration_link_two">Register now</router-link>
+                </div>
               </form>
           </div>
       </div>
@@ -43,12 +45,12 @@ import { mapActions } from "vuex";
 import router from "../router";
 
 export default {
-  //data(){
-   // return {
-      //username: "",
-    //  password: "",
-//    }
-  //},
+  data(){
+    return {
+      username: "",
+      password: "",
+    }
+  },
   methods: {
     ...mapActions(['login']),
    loginUser(){
@@ -117,6 +119,7 @@ form {
   top: 1.75rem;
   left: 2rem;
   background-color: rgb(55, 21, 87);
+  font-weight: bold;
 }
 
 .form_label_password {
@@ -130,6 +133,7 @@ form {
   top: 6.5rem;
   left: 2rem;
   background-color: rgb(55, 21, 87);
+  font-weight: bold;
 }
 
 input {
@@ -144,14 +148,28 @@ input {
   border-radius: 0.5rem;
 }
 
- input:hover {
-    border-color: rgb(216, 25, 25);
-  }
+input:hover {
+  border-color: rgb(216, 25, 25);
+  color: rgb(216, 25, 25);
+}
 
-  input:focus {
-    border-color: turquoise;
-    background-color: none;
-  }
+input:hover ~ .form_label_login {
+  color: rgb(216, 25, 25);
+}
+input:hover ~ .form_label_password {
+  color: rgb(216, 25, 25);
+}
+input:hover ~ .btn {
+  color: rgb(216, 25, 25);
+}
+
+
+
+
+input:focus {
+  border-color: turquoise;
+  background-color: none;
+}
 
 input:focus ~ .form_label_login, input:focus ~ .form_label_password {
   color: turquoise;
@@ -161,14 +179,12 @@ input:focus ~ .form_label_login,
 input:not(:placeholder-shown).input:not(:focus)
 ~ .form_label_login {
   top: 0.3rem;
-  font-size: 95%;
 }
 
 input:focus ~ .form_label_password,
 input:not(:placeholder-shown).input:not(:focus)
  ~ .form_label_password {
   top: 5rem;
-  font-size: 95%;
 }
 
 
@@ -178,11 +194,58 @@ input:not(:placeholder-shown).input:not(:focus)
   justify-content: center;
   align-items: center;
   margin-top: 2rem;
+  font-weight: bold;
+  font-size: 1.5rem;
+  color: rgb(251, 255, 254);
 }
 
 .btn {
   color: white;
   border-radius: 0;
   padding: 0.9rem 0;
+  color: rgb(241, 255, 252);
+  font-weight: bold;
 }
+
+.registration_wrap {
+  height: 2rem;
+  width: 10rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: opacity 3s ease-in;
+
+}
+
+.registration_link {
+  text-decoration: none;
+  color: whitesmoke;
+  font-weight: bold;
+  text-shadow: 1px 1px 10px whitesmoke;
+  opacity: 1;
+  transition: opacity 3s ease-in;
+}
+
+.registration_link_two {
+  display: none;
+  text-decoration: none;
+  color: whitesmoke;
+  font-weight: bold;
+  text-shadow: 1px 1px 10px whitesmoke;
+  opacity: 0;
+  transition: opacity 3s ease-in;
+}
+
+.registration_wrap:hover  .registration_link {
+  display: none;
+  opacity: 0;
+  transition: opacity 3s ease-out;
+}
+.registration_wrap:hover .registration_link_two {
+  display: flex;
+  opacity: 1;
+  transition: opacity 3s ease-in;
+}
+
+
 </style>
