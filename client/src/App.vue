@@ -1,10 +1,11 @@
 <template>
   <div id="app">
     <TheNavigation />
+    <Errors v-if="error" :msg="error" />
     <transition name="moveUp" mode="out-in">
       <router-view :key="$route.path" />
     </transition>
-    <Errors v-if="error" :msg="error" />
+    
   </div>
 </template>
 
@@ -25,15 +26,17 @@ export default {
 </script>
 
 <style>
-@import url("https://fonts.googleapis.com/css2?family=Antic&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Hahmlet:wght@300&family=Merriweather&family=Roboto+Slab&display=swap');
 
 #app {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  font-family: "Antic", sans-serif;
+  font-family: 'Hahmlet', serif;
+font-family: 'Merriweather', serif;
+font-family: 'Roboto Slab', serif;
   margin: 0;
   padding: 0;
-  width: 100vw;
+  width: 100%;
   height: 100vh;
 }
 

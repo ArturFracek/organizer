@@ -1,6 +1,6 @@
 <template>
   <div class="login_container">
-      <div class="title">Login to your's Organizer</div>
+      <div class="title">Login to your Organizer</div>
       <div class="row"></div>
       <div class="form_container">
           <div class="form_body">
@@ -74,7 +74,6 @@ export default {
 <style>
 
 .login_container {
-  background-color: rgb(55, 21, 87);
   display: flex;
   flex-flow: column;
   justify-content: center;
@@ -82,6 +81,10 @@ export default {
   width: 100%;
 }
 
+.login_container {
+  background: 
+ repeating-linear-gradient(270deg, rgba(0, 0, 0, 0.11) 0px, rgba(0, 0, 0, 0.11) 12px, rgba(1, 1, 1, 0.16) 12px, rgba(1, 1, 1, 0.16) 24px, rgba(0, 0, 0, 0.14) 24px, rgba(0, 0, 0, 0.14) 36px, rgba(0, 0, 0, 0.23) 36px, rgba(0, 0, 0, 0.23) 48px, rgba(0, 0, 0, 0.12) 48px, rgba(0, 0, 0, 0.12) 60px, rgba(1, 1, 1, 0.07) 60px, rgba(1, 1, 1, 0.07) 72px, rgba(0, 0, 0, 0.21) 72px, rgba(0, 0, 0, 0.21) 84px, rgba(0, 0, 0, 0.24) 84px, rgba(0, 0, 0, 0.24) 96px, rgba(1, 1, 1, 0.23) 96px, rgba(1, 1, 1, 0.23) 108px, rgba(1, 1, 1, 0.07) 108px, rgba(1, 1, 1, 0.07) 120px, rgba(0, 0, 0, 0.01) 120px, rgba(0, 0, 0, 0.01) 132px, rgba(1, 1, 1, 0.22) 132px, rgba(1, 1, 1, 0.22) 144px, rgba(1, 1, 1, 0.24) 144px, rgba(1, 1, 1, 0.24) 156px, rgba(0, 0, 0, 0) 156px, rgba(0, 0, 0, 0) 168px, rgba(0, 0, 0, 0.12) 168px, rgba(0, 0, 0, 0.12) 180px), repeating-linear-gradient(360deg, rgba(1, 1, 1, 0.01) 0px, rgba(1, 1, 1, 0.01) 12px, rgba(1, 1, 1, 0.15) 12px, rgba(1, 1, 1, 0.15) 24px, rgba(0, 0, 0, 0.09) 24px, rgba(0, 0, 0, 0.09) 36px, rgba(0, 0, 0, 0.02) 36px, rgba(0, 0, 0, 0.02) 48px, rgba(0, 0, 0, 0.1) 48px, rgba(0, 0, 0, 0.1) 60px, rgba(1, 1, 1, 0.07) 60px, rgba(1, 1, 1, 0.07) 72px, rgba(1, 1, 1, 0.15) 72px, rgba(1, 1, 1, 0.15) 84px, rgba(0, 0, 0, 0.18) 84px, rgba(0, 0, 0, 0.18) 96px, rgba(1, 1, 1, 0.15) 96px, rgba(1, 1, 1, 0.15) 108px, rgba(1, 1, 1, 0.09) 108px, rgba(1, 1, 1, 0.09) 120px, rgba(1, 1, 1, 0.07) 120px, rgba(1, 1, 1, 0.07) 132px, rgba(1, 1, 1, 0.05) 132px, rgba(1, 1, 1, 0.05) 144px, rgba(0, 0, 0, 0.1) 144px, rgba(0, 0, 0, 0.1) 156px, rgba(1, 1, 1, 0.18) 156px, rgba(1, 1, 1, 0.18) 168px), repeating-linear-gradient(315deg, rgba(0, 0, 0, 0.24) 0px, rgba(0, 0, 0, 0.24) 16px, rgba(1, 1, 1, 0.06) 16px, rgba(1, 1, 1, 0.06) 32px, rgba(0, 0, 0, 0.16) 32px, rgba(0, 0, 0, 0.16) 48px, rgba(1, 1, 1, 0) 48px, rgba(1, 1, 1, 0) 64px, rgba(1, 1, 1, 0.12) 64px, rgba(1, 1, 1, 0.12) 80px, rgba(1, 1, 1, 0.22) 80px, rgba(1, 1, 1, 0.22) 96px, rgba(0, 0, 0, 0.24) 96px, rgba(0, 0, 0, 0.24) 112px, rgba(0, 0, 0, 0.25) 112px, rgba(0, 0, 0, 0.25) 128px, rgba(1, 1, 1, 0.12) 128px, rgba(1, 1, 1, 0.12) 144px, rgba(0, 0, 0, 0.18) 144px, rgba(0, 0, 0, 0.18) 160px, rgba(1, 1, 1, 0.03) 160px, rgba(1, 1, 1, 0.03) 176px, rgba(1, 1, 1, 0.1) 176px, rgba(1, 1, 1, 0.1) 192px), repeating-linear-gradient(405deg, rgba(1, 1, 1, 0.18) 0px, rgba(1, 1, 1, 0.18) 3px, rgba(0, 0, 0, 0.09) 3px, rgba(0, 0, 0, 0.09) 6px, rgba(0, 0, 0, 0.08) 6px, rgba(0, 0, 0, 0.08) 9px, rgba(1, 1, 1, 0.05) 9px, rgba(1, 1, 1, 0.05) 12px, rgba(0, 0, 0, 0.01) 12px, rgba(0, 0, 0, 0.01) 15px, rgba(1, 1, 1, 0.12) 15px, rgba(1, 1, 1, 0.12) 18px, rgba(0, 0, 0, 0.05) 18px, rgba(0, 0, 0, 0.05) 21px, rgba(1, 1, 1, 0.16) 21px, rgba(1, 1, 1, 0.16) 24px, rgba(1, 1, 1, 0.07) 24px, rgba(1, 1, 1, 0.07) 27px, rgba(1, 1, 1, 0.23) 27px, rgba(1, 1, 1, 0.23) 30px, rgba(0, 0, 0, 0.2) 30px, rgba(0, 0, 0, 0.2) 33px, rgba(0, 0, 0, 0.18) 33px, rgba(0, 0, 0, 0.18) 36px, rgba(1, 1, 1, 0.12) 36px, rgba(1, 1, 1, 0.12) 39px, rgba(1, 1, 1, 0.13) 39px, rgba(1, 1, 1, 0.13) 42px, rgba(1, 1, 1, 0.2) 42px, rgba(1, 1, 1, 0.2) 45px, rgba(1, 1, 1, 0.18) 45px, rgba(1, 1, 1, 0.18) 48px, rgba(0, 0, 0, 0.2) 48px, rgba(0, 0, 0, 0.2) 51px, rgba(1, 1, 1, 0) 51px, rgba(1, 1, 1, 0) 54px, rgba(0, 0, 0, 0.03) 54px, rgba(0, 0, 0, 0.03) 57px, rgba(1, 1, 1, 0.06) 57px, rgba(1, 1, 1, 0.06) 60px, rgba(1, 1, 1, 0) 60px, rgba(1, 1, 1, 0) 63px, rgba(0, 0, 0, 0.1) 63px, rgba(0, 0, 0, 0.1) 66px, rgba(1, 1, 1, 0.19) 66px, rgba(1, 1, 1, 0.19) 69px), linear-gradient(360deg, rgb(33,250,250), rgb(4,0,5));
+}
 .form_container {
   display: grid;
   justify-content: center;
@@ -99,7 +102,7 @@ export default {
 
 .form_group {
   width: 100%;
-  padding: 0.9rem 0;
+  padding: 1.4rem 0;
 }
 
 form {
@@ -116,9 +119,9 @@ form {
   transition: top 200ms ease-in;
     left: 200ms ease-in;
     font-size: 200ms ease-in;
-  top: 1.75rem;
+  top: 2.2rem;
   left: 2rem;
-  background-color: rgb(55, 21, 87);
+  background-color: none;
   font-weight: bold;
 }
 
@@ -130,9 +133,9 @@ form {
   transition: top 200ms ease-in;
     left: 200ms ease-in;
     font-size: 200ms ease-in;
-  top: 6.5rem;
+  top: 7.9rem;
   left: 2rem;
-  background-color: rgb(55, 21, 87);
+  background-color: none;
   font-weight: bold;
 }
 
@@ -140,12 +143,19 @@ input {
   width: 100%;
   height: 100%;
   border-radius: 2px;
-  color: white;
+  color: rgb(0, 0, 0);
   padding: 0.7rem;
   background: none;
   outline: none;
-  border: 2px solid rgb(250, 242, 242);
+  border: 2px solid rgb(35, 166, 170);
   border-radius: 0.5rem;
+  background: transparent;
+  box-shadow: 0 25px 25px rgba(3, 96, 112, 0.1);
+  backdrop-filter: blur(10px) drop-shadow(4px 4px 10px rgb(2, 141, 160));
+}
+
+input[type=text], input[type=password] {
+  color: whitesmoke;
 }
 
 input:hover {
@@ -166,25 +176,29 @@ input:hover ~ .btn {
 
 
 
-input:focus {
+input:focus, textarea {
+  color: turquoise;
   border-color: turquoise;
   background-color: none;
+  box-shadow: 0 25px 25px rgba(3, 96, 112, 0.1);
+  backdrop-filter: blur(10px) drop-shadow(4px 4px 10px rgb(7, 207, 233));
 }
 
 input:focus ~ .form_label_login, input:focus ~ .form_label_password {
   color: turquoise;
+  text-shadow: 0px 0px 0.1rem turquoise;
 }
 
 input:focus ~ .form_label_login,
 input:not(:placeholder-shown).input:not(:focus)
 ~ .form_label_login {
-  top: 0.3rem;
+  top: 0.2rem;
 }
 
 input:focus ~ .form_label_password,
 input:not(:placeholder-shown).input:not(:focus)
  ~ .form_label_password {
-  top: 5rem;
+  top: 5.85rem;
 }
 
 
@@ -195,16 +209,16 @@ input:not(:placeholder-shown).input:not(:focus)
   align-items: center;
   margin-top: 2rem;
   font-weight: bold;
-  font-size: 1.8rem;
+  font-size: 1.6rem;
   color: rgb(251, 255, 254);
   margin-top: 12rem;
-  animation: text1 2s ease;
+  animation: text1 1.8s ease;
   text-shadow: 0.2rem 0px 0.2rem turquoise;
 }
 
 @keyframes text1 {
   0%{
-    color: rgb(55, 21, 87);
+    color: rgb(0, 0, 0);
     opacity: 0;
     text-shadow: 
        0.6rem 0rem  0.8rem turquoise,
@@ -226,10 +240,10 @@ input:not(:placeholder-shown).input:not(:focus)
   90% {
     opacity: 1;
     text-shadow: 
-    0.2rem 0rem  1.2rem turquoise,
-      -0.2rem 0rem 1.2rem turquoise,
-       0rem 0.2rem 1.2em turquoise,
-       0rem -0.2rem 1.2rem turquoise;
+    0.2rem 0rem  1.4rem turquoise,
+      -0.2rem 0rem 1.4rem turquoise,
+       0rem 0.2rem 1.4em turquoise,
+       0rem -0.2rem 1.4rem turquoise;
   }
   100%{
     opacity: 1;
@@ -307,6 +321,4 @@ input:not(:placeholder-shown).input:not(:focus)
   display: flex;
   opacity: 1;
 }
-
-
 </style>
