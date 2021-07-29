@@ -41,7 +41,7 @@ font-family: 'Roboto Slab', serif;
 }
 
 .nav a.router-link-exact-active {
-  color: #ffffff;
-  text-shadow: 0px 10px 10px #332d2d;
+  color: turquoise;
+  text-shadow: 0px 0px 10px turquoise;
 }
 </style>

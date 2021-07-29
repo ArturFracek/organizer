@@ -151,7 +151,7 @@ input {
   border-radius: 0.5rem;
   background: transparent;
   box-shadow: 0 25px 25px rgba(3, 96, 112, 0.1);
-  backdrop-filter: blur(10px) drop-shadow(4px 4px 10px rgb(2, 141, 160));
+  backdrop-filter: blur(10px) drop-shadow(4px 4px 10px rgb(17, 185, 207));
 }
 
 input[type=text], input[type=password] {
@@ -181,7 +181,7 @@ input:focus, textarea {
   border-color: turquoise;
   background-color: none;
   box-shadow: 0 25px 25px rgba(3, 96, 112, 0.1);
-  backdrop-filter: blur(10px) drop-shadow(4px 4px 10px rgb(7, 207, 233));
+  backdrop-filter: blur(15px) drop-shadow(4px 4px 10px rgb(7, 207, 233));
 }
 
 input:focus ~ .form_label_login, input:focus ~ .form_label_password {
