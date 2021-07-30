@@ -177,7 +177,7 @@ form {
     left: 200ms ease-in;
     font-size: 200ms ease-in;
   top: 2.3rem;
-  left: 34.2rem;
+  left: 34rem;
   background-color: none;
   font-weight: bold;
 }
@@ -219,7 +219,7 @@ form {
     left: 200ms ease-in;
     font-size: 200ms ease-in;
   top: 14rem;
-  left: 28.2rem;
+  left: 28rem;
   background-color: none;
   font-weight: bold;
 }
@@ -457,7 +457,7 @@ form{
   transition: top 200ms ease-in;
     left: 200ms ease-in;
     font-size: 200ms ease-in;
-  top: 14.2rem;
+  top: 12rem;
   left: 12.2rem;
   background-color: none;
   font-weight: bold;
@@ -471,7 +471,7 @@ form{
   transition: top 200ms ease-in;
     left: 200ms ease-in;
     font-size: 200ms ease-in;
-  top: 7.1rem;
+  top: 6.9rem;
   left: 12.2rem;
   background-color: none;
   font-weight: bold;
@@ -491,6 +491,10 @@ form{
   font-weight: bold;
 }
 
+.login_wrap {
+  flex-basis: 0;
+}
+
 .form_label_password2 {
   position: absolute;
   color: whitesmoke;
@@ -499,7 +503,7 @@ form{
   transition: top 200ms ease-in;
     left: 200ms ease-in;
     font-size: 200ms ease-in;
-  top: 14rem;
+  top: 17rem;
   left: 12.2rem;
   background-color: none;
   font-weight: bold;
@@ -513,7 +517,7 @@ form{
   transition: top 200ms ease-in;
     left: 200ms ease-in;
     font-size: 200ms ease-in;
-  top: 14rem;
+  top: 22.2rem;
   left: 12.2rem;
   background-color: none;
   font-weight: bold;
@@ -522,31 +526,31 @@ form{
 input:focus ~ .form_label_login,
 input:not(:placeholder-shown).input:not(:focus)
 ~ .form_label_login {
-  top: 6rem;
+  top: 9.8rem;
 }
 
 input:focus ~ .form_label_name,
 input:not(:placeholder-shown).input:not(:focus)
  ~ .form_label_name {
-  top: 0.1rem;
+  top: 4.7rem;
 }
 
 input:focus ~ .form_label_email,
 input:not(:placeholder-shown).input:not(:focus)
  ~ .form_label_email {
-  top: 0.1rem;
+  top: -0.4rem;
 }
 
 input:focus ~ .form_label_password2,
 input:not(:placeholder-shown).input:not(:focus)
  ~ .form_label_password2 {
-   top: 11.8rem;
+   top: 14.8rem;
 }
 
 input:focus ~ .form_label_confirm_password,
 input:not(:placeholder-shown).input:not(:focus)
  ~ .form_label_confirm_password {
-  top: 11.8rem;
+  top: 19.9rem;
 }
 
 }
