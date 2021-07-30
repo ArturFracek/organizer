@@ -5,7 +5,6 @@
     <transition name="moveUp" mode="out-in">
       <router-view :key="$route.path" />
     </transition>
-    
   </div>
 </template>
 
@@ -28,16 +27,23 @@ export default {
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Hahmlet:wght@300&family=Merriweather&family=Roboto+Slab&display=swap');
 
+html,body{
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
 #app {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   font-family: 'Hahmlet', serif;
-font-family: 'Merriweather', serif;
-font-family: 'Roboto Slab', serif;
   margin: 0;
   padding: 0;
-  width: 100%;
-  height: 100vh;
+  width: 100vw;
+  height: 100%;
+  box-sizing: border-box;
+  overflow-x: hidden;
+  overflow-y: hidden;
 }
 
 .nav a.router-link-exact-active {

@@ -85,6 +85,7 @@ export default {
 
 .lower_links {
   margin-left: auto;
+  margin-right: 1rem;
 }
 
 .nav_link {
@@ -101,7 +102,7 @@ export default {
 }
 
 .main_link {
-
+  letter-spacing: 0.1rem;
   font-size: 2.0rem;
   margin: .5rem;
   font-weight: bold;
@@ -139,7 +140,7 @@ export default {
 }
 
 
-@media (max-width: 600px) {
+@media (max-width: 760px) {
 
 .toggle-button {
   display: flex;
