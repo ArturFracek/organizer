@@ -163,7 +163,7 @@ form {
     left: 200ms ease-in;
     font-size: 200ms ease-in;
   top: 8.2rem;
-  left: 17.4rem;
+  left: 17.3rem;
   background-color: none;
   font-weight: bold;
 }

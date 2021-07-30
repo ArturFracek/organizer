@@ -1,7 +1,7 @@
 <template>
   <div class="main_container">
     <div class="about_organizing">
-      Organizer is here to help you plan, organize, and track your time.
+      Organizer is here to help you plan, organize, and track your activities time.
     </div>
     <div class="about_app">
 
@@ -56,12 +56,26 @@ export default {
   color: whitesmoke
 }
 
+.movies {
+  border-top: 3px solid rgba(72, 234, 255, 0.2);
+  border-right: 3px solid rgba(72, 234, 255, 0.2);
+}
+.articles {
+  border-top: 3px solid rgba(72, 234, 255, 0.2);
+}
+.books {
+  border-top: 3px solid rgba(72, 234, 255, 0.2);
+  border-left: 3px solid rgba(72, 234, 255, 0.2);
+}
+
 .movie {
   text-decoration: none;
   color: whitesmoke;
 }
 
 .article {
+  display: flex;
+  justify-content: center;
   text-decoration: none;
   color: whitesmoke;
 }
@@ -78,4 +92,5 @@ export default {
   text-decoration: none;
   color: whitesmoke;
 }
+
 </style>
