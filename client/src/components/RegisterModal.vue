@@ -68,7 +68,7 @@
 </template>
 
 <script>
-import { mapActions} from 'vuex';
+import { mapActions } from 'vuex';
 export default {
     data() {
       return {
@@ -105,8 +105,8 @@ export default {
   display: flex;
   flex-flow: column;
   justify-content: center;
-  height: 90vh;
   width: 100%;
+  height: 100%;
 }
 
 .registration_container {
@@ -448,79 +448,34 @@ form{
   padding: 1rem;
 }
 
-
-.form_label_login {
-  position: absolute;
-  color: whitesmoke;
-  display: flex;
-  cursor: text;
-  transition: top 200ms ease-in;
-    left: 200ms ease-in;
-    font-size: 200ms ease-in;
-  top: 12rem;
-  left: 12.2rem;
-  background-color: none;
-  font-weight: bold;
-}
-
-.form_label_name {
-  position: absolute;
-  color: whitesmoke;
-  display: flex;
-  cursor: text;
-  transition: top 200ms ease-in;
-    left: 200ms ease-in;
-    font-size: 200ms ease-in;
-  top: 6.9rem;
-  left: 12.2rem;
-  background-color: none;
-  font-weight: bold;
-}
-
-.form_label_email {
-  position: absolute;
-  color: whitesmoke;
-  display: flex;
-  cursor: text;
-  transition: top 200ms ease-in;
-    left: 200ms ease-in;
-    font-size: 200ms ease-in;
-  top: 1.8rem;
-  left: 12.2rem;
-  background-color: none;
-  font-weight: bold;
-}
-
 .login_wrap {
   flex-basis: 0;
 }
 
+.form_label_login {
+  top: 12rem;
+  left: 12.2rem;
+}
+
+.form_label_name {
+  top: 6.9rem;
+  left: 12.2rem;
+}
+
+.form_label_email {
+  top: 1.8rem;
+  left: 12.2rem;
+}
+
 .form_label_password2 {
-  position: absolute;
-  color: whitesmoke;
-  display: flex;
-  cursor: text;
-  transition: top 200ms ease-in;
-    left: 200ms ease-in;
-    font-size: 200ms ease-in;
   top: 17rem;
   left: 12.2rem;
-  background-color: none;
-  font-weight: bold;
+
 }
 
 .form_label_confirm_password {
-  position: absolute;
-  color: whitesmoke;
-  display: flex;
-  cursor: text;
-  transition: top 200ms ease-in;
-    left: 200ms ease-in;
-    font-size: 200ms ease-in;
   top: 22.2rem;
   left: 12.2rem;
-  background-color: none;
-  font-weight: bold;
 }
 
 input:focus ~ .form_label_login,
