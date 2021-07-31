@@ -1,7 +1,7 @@
 <template>
   <div class="nav">
     <div class="nav_logo">
-      <router-link to="/" class="main_link" v-if="!isLoggedIn">About organizing</router-link>
+      <router-link to="/" class="main_link" v-if="!isLoggedIn">About Organizer</router-link>
        <router-link :to="{ name: 'Organise' }" class="main_link" v-if="isLoggedIn">
         O r g a n i s e
       </router-link>

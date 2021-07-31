@@ -1,25 +1,46 @@
 <template>
   <div class="main_container">
     <div class="about_organizing">
-      Organizer is here to help you plan, organize, and track your activities time.
+      Organizer is a tool to help you plan, organize, and track your activities time.
     </div>
     <div class="about_app">
-
+      In the Organizer, you create your activities, prioritize and describe them,
+      then create routines by setteling your activities in week time. After preparing first
+      routine it's time to test it in practice, track activities time, and adjust everyting
+      so you can get most out of your lifetime.
+      <br>
+      <br>Why ?
+      <br>The importance of structurizing time and balancing it with chaos is
+      something most of us are aware, however we also know the first part is harder
+      to maintain. There are a great many reasons why you should probably organize
+      your time better. Some of them are obvious, like putting your potential
+      on the right track, the satisfaction that comes from growing,
+      having value that you bring to the lives of others, or having
+      more enjoyable and effective leisure time. However, I encourage you
+      to deepen you knowledge in these areas and be inspired by them.
+      <br>
+      <br>Below are sources that, like this app,
+      will help in the process of self-organization.
+      <br>Good luck.
     </div>
     <div class="organizing_info">
       <div class="movies">
         <div class="title">Videos</div>
-        <a href="https://www.youtube.com/watch?v=1NFq_FbmcDk" 
+        <a href="https://www.youtube.com/watch?v=1NFq_FbmcDk"
         class="movie"
         >Why you should organize your life by Dr Jordan Peterson
         </a>
       </div>
       <div class="articles">
         <div class="title">Articles</div>
-        <a href="https://hbr.org/2020/01/time-management-is-about-more-than-life-hacks" 
+        <a href="https://hbr.org/2020/01/time-management-is-about-more-than-life-hacks"
         class="article"
         >Time Management Is About More Than Life Hacks
         by Erich C. Dierdorff
+        </a>
+        <a href="https://zhuanlan.zhihu.com/p/344578596" 
+        class="article"
+        >Stop wasting the time by Dr Jordan Peterson
         </a>
       </div>
       <div class="books">
@@ -53,19 +74,37 @@ export default {
 .about_organizing {
   display: flex;
   justify-content: center;
-  color: whitesmoke
+  color: whitesmoke;
+  margin-top: 3rem;
+}
+
+.about_app {
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  color: rgb(125, 248, 236);
+  padding: 0 20rem;
+  padding-bottom: 1rem;
+  margin-top: 0;
+  font-weight: bold;
+  font-size: 1.1rem;
+  text-shadow: 0 0 8px turquoise;
+  letter-spacing: 2px;
 }
 
 .movies {
   border-top: 3px solid rgba(72, 234, 255, 0.2);
   border-right: 3px solid rgba(72, 234, 255, 0.2);
+  padding: 1rem;
 }
 .articles {
   border-top: 3px solid rgba(72, 234, 255, 0.2);
+  padding: 1rem;
 }
 .books {
   border-top: 3px solid rgba(72, 234, 255, 0.2);
   border-left: 3px solid rgba(72, 234, 255, 0.2);
+  padding: 1rem;
 }
 
 .movie {
@@ -78,6 +117,7 @@ export default {
   justify-content: center;
   text-decoration: none;
   color: whitesmoke;
+  text-align: center;
 }
 
 .organizing_info {
