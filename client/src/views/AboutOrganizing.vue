@@ -1,15 +1,13 @@
 <template>
   <div class="main_container">
     <div class="about_organizing">
-      Organizer is a tool to help you plan, organize, and track your activities time.
-    </div>
-    <div class="about_app">
       In the Organizer, you create your activities, prioritize and describe them,
       then create routines by setteling your activities in week time. After preparing first
       routine it's time to test it in practice, track activities time, and adjust everyting
       so you can get most out of your lifetime.
-      <br>
-      <br>Why ?
+    </div>
+    <div class="about_app">
+      Why ?
       <br>The importance of structurizing time and balancing it with chaos is
       something most of us are aware, however we also know the first part is harder
       to maintain. There are a great many reasons why you should probably organize
@@ -26,25 +24,43 @@
     <div class="organizing_info">
       <div class="movies">
         <div class="title">Videos</div>
-        <a href="https://www.youtube.com/watch?v=1NFq_FbmcDk"
-        class="movie"
-        >Why you should organize your life by Dr Jordan Peterson
-        </a>
+        <ul>
+          <li>
+            <a href="https://www.youtube.com/watch?v=1NFq_FbmcDk"
+            >Why you should organize your life by Dr Jordan Peterson
+            </a>
+          </li>
+        </ul>
       </div>
       <div class="articles">
         <div class="title">Articles</div>
-        <a href="https://hbr.org/2020/01/time-management-is-about-more-than-life-hacks"
-        class="article"
-        >Time Management Is About More Than Life Hacks
-        by Erich C. Dierdorff
-        </a>
-        <a href="https://zhuanlan.zhihu.com/p/344578596" 
-        class="article"
-        >Stop wasting the time by Dr Jordan Peterson
-        </a>
+        <ul>
+          <li>
+            <a href="https://hbr.org/2020/01/time-management-is-about-more-than-life-hacks"
+              >Time Management Is About More Than Life Hacks
+              by Erich C. Dierdorff
+            </a>
+          </li>
+          <li>
+            <a href="https://zhuanlan.zhihu.com/p/344578596" 
+             >Stop wasting the time by Dr Jordan Peterson
+            </a>
+          </li>
+        </ul>
       </div>
       <div class="books">
         <div class="title">Books</div>
+        <ul>
+          <li>
+            <a>The 7 Habits of Highly Effective People: 
+            Powerful Lessons in Personal Change by Stephen R. Covey
+            </a>
+          </li>
+          <li>
+            <a>Essentialism: The Disciplined Pursuit of Less by Greg McKeown
+            </a>
+          </li>
+        </ul>
       </div>
     </div>
 
@@ -72,20 +88,27 @@ export default {
 }
 
 .about_organizing {
+  text-align: center;
   display: flex;
   justify-content: center;
-  color: whitesmoke;
-  margin-top: 3rem;
+  color: rgb(125, 248, 236);
+  padding: 2rem 15rem 0rem 15rem;
+  padding-bottom: 1rem;
+  margin-top: 0;
+  font-weight: bold;
+  font-size: 1.1rem;
+  text-shadow: 0 0 8px turquoise;
+  letter-spacing: 2px;
 }
 
 .about_app {
   text-align: center;
   display: flex;
+  flex-flow: row;
   justify-content: center;
+  align-items: flex-start;
   color: rgb(125, 248, 236);
-  padding: 0 20rem;
-  padding-bottom: 1rem;
-  margin-top: 0;
+  padding: 0 15rem 1rem 15rem;
   font-weight: bold;
   font-size: 1.1rem;
   text-shadow: 0 0 8px turquoise;
@@ -95,29 +118,37 @@ export default {
 .movies {
   border-top: 3px solid rgba(72, 234, 255, 0.2);
   border-right: 3px solid rgba(72, 234, 255, 0.2);
-  padding: 1rem;
+  padding: 0.3rem 0.5rem;
 }
 .articles {
   border-top: 3px solid rgba(72, 234, 255, 0.2);
-  padding: 1rem;
+  padding: 0.3rem 0.5rem;
 }
 .books {
   border-top: 3px solid rgba(72, 234, 255, 0.2);
   border-left: 3px solid rgba(72, 234, 255, 0.2);
-  padding: 1rem;
+  padding: 0.3rem 0.5rem;
 }
 
-.movie {
+ul > li {
+  list-style-type: square;
+  list-style-position: inside;
+  color: rgb(90, 221, 210);
+  text-shadow: 0 0 4px rgb(248, 255, 254);
+}
+.movies > ul > li > a,
+.articles > ul > li > a,
+.books > ul > li > a {
+  list-style-type: square;
   text-decoration: none;
   color: whitesmoke;
 }
 
-.article {
-  display: flex;
-  justify-content: center;
-  text-decoration: none;
+.books > ul {
+  white-space: pre-wrap;
+}
+.book {
   color: whitesmoke;
-  text-align: center;
 }
 
 .organizing_info {
