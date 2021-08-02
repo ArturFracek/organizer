@@ -1,25 +1,27 @@
 <template>
   <div class="main_container">
-    <div class="about_organizing">
-      In the Organizer, you create your activities, prioritize and describe them,
-      then create routines by setteling your activities in week time. After preparing first
-      routine it's time to test it in practice, track activities time, and adjust everyting
-      so you can get most out of your lifetime.
-    </div>
-    <div class="about_app">
-      Why ?
-      <br>The importance of structurizing time and balancing it with chaos is
-      something most of us are aware, however we also know the first part is harder
-      to maintain. There are a great many reasons why you should probably organize
-      your time better. Some of them are obvious, like putting your potential
-      on the right track, the satisfaction that comes from growing,
-      having value that you bring to the lives of others, or having
-      more enjoyable and effective leisure time. However, I encourage you
-      to deepen you knowledge in these areas and be inspired by them.
-      <br>
-      <br>Below are sources that, like this app,
-      will help in the process of self-organization.
-      <br>Good luck.
+    <div class="upper_container">
+      <div class="about_organizing">
+        In the Organizer, you create your activities, prioritize and describe them,
+        then create routines by setteling your activities in week time. After preparing first
+        routine it's time to test it in practice, track activities time, and adjust everyting
+        so you can get most out of your lifetime.
+      </div>
+      <div class="about_app">
+        Why ?
+        <br>The importance of structurizing time and balancing it with chaos is
+        something most of us are aware, however we also know the first part is harder
+        to maintain. There are a great many reasons why you should probably organize
+        your time better. Some of them are obvious, like putting your potential
+        on the right track, the satisfaction that comes from growing,
+        having value that you bring to the lives of others, or having
+        more enjoyable and effective leisure time. However, I encourage you
+        to deepen you knowledge in these areas and be inspired by them.
+        <br>
+        <br>Below are sources that, like this app,
+        will help in the process of self-organization.
+        <br>Good luck.
+      </div>
     </div>
     <div class="organizing_info">
       <div class="movies">
@@ -87,18 +89,26 @@ export default {
   grid-template-rows: 1fr 1fr 3fr;
 }
 
+.upper_container {
+  min-height: 60vh;
+  overflow-y: scroll;
+  border-bottom: 3px solid rgba(72, 234, 255, 0.911);
+}
+
 .about_organizing {
+  text-overflow: ellipsis;
   text-align: center;
   display: flex;
   justify-content: center;
+  white-space: pre-wrap;
   color: rgb(125, 248, 236);
-  padding: 2rem 15rem 0rem 15rem;
+  padding: 2rem 15rem 1rem 15rem;
   padding-bottom: 1rem;
   margin-top: 0;
   font-weight: bold;
   font-size: 1.1rem;
   text-shadow: 0 0 8px turquoise;
-  letter-spacing: 2px;
+  letter-spacing: 1px;
 }
 
 .about_app {
@@ -108,11 +118,11 @@ export default {
   justify-content: center;
   align-items: flex-start;
   color: rgb(125, 248, 236);
-  padding: 0 15rem 1rem 15rem;
+  padding: 1.5rem 15rem 1rem 15rem;
   font-weight: bold;
   font-size: 1.1rem;
   text-shadow: 0 0 8px turquoise;
-  letter-spacing: 2px;
+  letter-spacing: 1px;
 }
 
 .movies {
@@ -133,15 +143,17 @@ export default {
 ul > li {
   list-style-type: square;
   list-style-position: inside;
-  color: rgb(90, 221, 210);
-  text-shadow: 0 0 4px rgb(248, 255, 254);
+  color: rgb(255, 255, 255);
+  text-shadow: 0 0 2px rgb(248, 255, 254);
+  font-weight: bold;
+  padding-bottom: 0.5rem;
 }
 .movies > ul > li > a,
 .articles > ul > li > a,
 .books > ul > li > a {
   list-style-type: square;
   text-decoration: none;
-  color: whitesmoke;
+  color: rgb(255, 255, 255);
 }
 
 .books > ul {
@@ -154,6 +166,8 @@ ul > li {
 .organizing_info {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
+  overflow-y: scroll;
+  height: 28vh;
 }
 
 .title {
@@ -161,7 +175,64 @@ ul > li {
   font-weight: bold;
   text-align: center;
   text-decoration: none;
-  color: whitesmoke;
+  color: rgba(49, 255, 238, 0.8);
+  text-shadow: 0 0 3px turquoise;
 }
 
+@media (max-width: 1045px) {
+
+.about_organizing {
+  color: rgb(125, 248, 236);
+  padding: 2rem 5rem 1rem 5rem;
+
+}
+.about_app {
+
+  color: rgb(125, 248, 236);
+  padding: 0 5rem 1rem 5rem;
+} 
+}
+
+@media (max-width: 720px) {
+
+.upper_container {
+  overflow-y: scroll;
+}
+
+.about_organizing {
+  color: rgb(125, 248, 236);
+  padding: 2rem 1rem 1rem 1rem;
+
+}
+.about_app {
+  color: rgb(125, 248, 236);
+  padding: 0 1rem 1rem 1rem;
+}
+.organizing_info {
+  display: flex;
+  flex-wrap: wrap;
+  overflow-y: scroll;
+  height: 28vh;
+}
+
+.movies {
+  text-align: center;
+  width: 100vw;
+  padding: 0.3rem 0.5rem;
+}
+.articles {
+  text-align: center;
+  width: 100vw;
+  border-top: 3px solid rgba(72, 234, 255, 0.2);
+  padding: 0.3rem 0.5rem;
+}
+.books {
+  text-align: center;
+  width: 100vw;
+  border-top: 3px solid rgba(72, 234, 255, 0.2);
+  border-left: none;
+  padding: 0.3rem 0.5rem;
+}
+
+}
 </style>
