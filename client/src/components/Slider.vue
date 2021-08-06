@@ -24,7 +24,7 @@ export default {
     warning: function () {
       if (this.value > 6) {
         return {
-          color: "#e74c3c",
+          color: "#40e0d0",
           animation: "anim 0.9s ease-in 1 alternate",
         };
       }
@@ -57,7 +57,8 @@ export default {
   -webkit-transition: opacity 0.3s ease-in;
   transform: rorate(-90deg);
   transform-origin: 0 0;
-  background-image: linear-gradient(90deg, #fbff22 0%, #ff2525 100%);
+  background-image: linear-gradient(90deg, #dbf833 0%, #7cf1fa 60%, #8ef6fd 100%);
+  box-shadow: 0 0 20px white;
 }
 
 .container .Slider:hover {
@@ -95,6 +96,10 @@ export default {
 }
 
 .rangeValue {
+  margin: 0.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   height: 40px;
   width: 40px;
   color: rgb(0, 0, 0);
@@ -102,10 +107,10 @@ export default {
   text-align: center;
   line-height: 38px;
   font-size: 22px;
-  border: 3px solid rgb(0, 0, 0, 1);
+  border: 1px solid rgb(22, 235, 250);
 }
 
-@keyframes anim {
+@keyframes animation {
   0% {
     right: -20px;
   }

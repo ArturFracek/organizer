@@ -16,7 +16,7 @@
         <textArea />
         <Slider></Slider>
         <div class="bottomContainer">
-          <button type="button" class="saveButton">save</button>
+          <input type='submit' class="btn_save" value="Save" placeholder=""/>
           <button
             type="button"
             class="modalButtonClose"
@@ -124,28 +124,28 @@ export default {
   box-shadow: 6px 6px 6px 6px rgba(0, 0, 0, 0.6);
 }
 
-.saveButton {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border: none;
+.btn_save {
+  height: 50%;
+  width: 20%;
+  text-justify: auto;
+  text-align: center;
+  font-weight: bold;
+  border-radius: 2px;
+  color: rgba(253, 253, 250, 0.945);
+  font-weight: bold;
+  text-shadow: 0 0 1rem white;
   background: none;
-  cursor: pointer;
-  width: 30%;
-  height: 5%;
-  margin: 10px;
-
-  margin-top: 15px;
-  padding: 10px 10px;
-  background-image: linear-gradient(to right, #8f8f8f, #d6d6d6);
-  border-radius: 10px;
-
-  color: #fff;
-  font-size: 14px;
-  font-weight: 700;
-
-  box-shadow: 3px 3px 3px 3px rgba(0, 0, 0, 0.4);
+  outline: none;
+  border: 2px solid rgb(255, 255, 255);
+  border-radius: 0.5rem;
+  background: transparent;
+  box-shadow: 0 25px 25px rgba(3, 96, 112, 0.1);
+  backdrop-filter: blur(10px) drop-shadow(4px 4px 10px rgb(248, 248, 248));
   transition: 0.4s ease-out;
+}
+
+.btn:focus {
+  color: turquoise;
 }
 
 .saveButton:hover {
