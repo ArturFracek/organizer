@@ -1,41 +1,41 @@
 <template>
   <div class="login_container">
-      <div class="title_login">Login to your Organizer</div>
-      <div class="form_container">
-          <div class="form_body">
-              <form @submit.prevent="loginUser">
-                <div class="form_group">
-                  <input
-                    id="username"
-                    type="text"
-                    placeholder=" "
-                    name="username"
-                    v-model="username"
-                    class="input"
-                  >
-                  <label for="username" class="form_label_login">Username</label>
-                </div>
-                <div class="form_group">
-                  <input
-                    id="password"
-                    type="password"
-                    placeholder=" "
-                    name="password"
-                    v-model="password"
-                    class="input"
-                  >
-                  <label for="password" class="form_label_password">Password</label>
-                </div>
-                <div class="form_group">
-                  <input type='submit' class="btn btn_primary" value="Login" placeholder=""/>
-                </div>
-                <div class="registration_wrap">
-                  <router-link to="/register" class="registration_link">Need an Account ?</router-link>
-                  <router-link to="/register" class="registration_link_two">Register now</router-link>
-                </div>
-              </form>
+    <div class="title_login">Login to your Organizer</div>
+    <div class="form_container">
+      <div class="form_body">
+        <form @submit.prevent="loginUser">
+          <div class="form_group">
+            <input
+              id="username"
+              type="text"
+              placeholder=" "
+              name="username"
+              v-model="username"
+              class="input"
+            >
+            <label for="username" class="form_label_login">Username</label>
           </div>
+          <div class="form_group">
+            <input
+              id="password"
+              type="password"
+              placeholder=" "
+              name="password"
+              v-model="password"
+              class="input"
+            >
+            <label for="password" class="form_label_password">Password</label>
+          </div>
+          <div class="form_group">
+            <input type='submit' class="btn btn_primary" value="Login" placeholder=""/>
+          </div>
+          <div class="registration_wrap">
+            <router-link to="/register" class="registration_link">Need an Account ?</router-link>
+            <router-link to="/register" class="registration_link_two">Register now</router-link>
+          </div>
+        </form>
       </div>
+    </div>
   </div>
 </template>
 
@@ -52,15 +52,15 @@ export default {
   },
   methods: {
     ...mapActions(['login']),
-   loginUser(){
+    loginUser(){
      let user = {
-       username: this.username,
-       password: this.password,
+      username: this.username,
+      password: this.password,
      };
      this.login(user)
      .then(res => {
        if(res.data.success){
-         this.$router.push('/profile')
+        this.$router.push('/profile')
        }
      }).catch(err=>{
        console.log(err)

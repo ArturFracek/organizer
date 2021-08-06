@@ -1,6 +1,6 @@
 <template>
   <div class="modalWrapper">
-    <button type="button" class="modalButton" @click="showModal = true">
+    <button type="button" class="btn" @click="showModal = true">
       {{ activityObject.title }}
     </button>
     <transition name="fade" appear>
@@ -67,20 +67,22 @@ export default {
   width: 100%;
 }
 
-.modalButton {
-  border: none;
+.btn {
+  text-align: center;
+  width: 100%;
+  height: 100%;
+  border-radius: 2px;
+  color: rgba(253, 253, 250, 0.945);
+  font-weight: bold;
+  text-shadow: 0 0 1rem white;
+  padding: 0.7rem;
   background: none;
-  cursor: pointer;
-
-  padding: 10px 10px;
-  background-image: linear-gradient(to right, #cc2e5d, #ff5858);
-  border-radius: 8px;
-
-  color: #fff;
-  font-size: 18px;
-  font-weight: 700;
-
-  box-shadow: 3px 3px 3px 3px rgba(0, 0, 0, 0.4);
+  outline: none;
+  border: 2px solid rgb(255, 255, 255);
+  border-radius: 0.5rem;
+  background: transparent;
+  box-shadow: 0 25px 25px rgba(3, 96, 112, 0.1);
+  backdrop-filter: blur(10px) drop-shadow(4px 4px 10px rgb(248, 248, 248));
   transition: 0.4s ease-out;
 }
 
@@ -182,24 +184,20 @@ export default {
   background-color: rgb(100, 100, 100);
   z-index: 99;
 
-  width: 100%;
-  max-width: 60%;
-  height: 100%;
-  max-height: 40%;
-  border-radius: 16px;
+  text-align: center;
+  width: 80%;
+  height: 60%;
+  border-radius: 2px;
+  color: rgb(0, 0, 0);
+  padding: 0.7rem;
+  background: none;
+  outline: none;
+  border: 2px solid rgb(35, 166, 170);
+  border-radius: 0.5rem;
+  background: transparent;
+  box-shadow: 0 25px 25px rgba(3, 96, 112, 0.1);
+  backdrop-filter: blur(10px) drop-shadow(4px 4px 10px rgb(17, 185, 207));
 
-  padding: 25px;
-
-  clip-path: polygon(
-    20% 0%,
-    80% 0%,
-    100% 20%,
-    100% 80%,
-    80% 100%,
-    20% 100%,
-    0% 80%,
-    0% 20%
-  );
 }
 
 h1 {

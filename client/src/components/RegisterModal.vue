@@ -1,101 +1,103 @@
 <template>
-      <div class="registration_container">
-          <div class="title_register">Register</div>
-          <div class="form_container">
-            <div class="form_body">
-                <form @submit.prevent="registerUser">
-                     <div class="form_group">
-                    <input
-                      id="email"
-                      type="text"
-                      placeholder=" "
-                      name="username"
-                      v-model="email"
-                      class="input">
-                      <label for="email" class="form_label_email">Email</label>
-                  </div>
-                  <div class="form_group">
-                    <input
-                      id="name"
-                      type="text"
-                      placeholder=" "
-                      name="Name"
-                      v-model="name"
-                      class="input">
-                      <label for="name" class="form_label_name">Name</label>
-                  </div>
-                   <div class="form_group form_group_login">
-                    <input
-                      id="username"
-                      type="text"
-                      placeholder=" "
-                      name="username"
-                      v-model="username"
-                      class="input">
-                      <label for="username" class="form_label_login">Username</label>
-                  </div>
-                  <div class="form_group">
-                    <input
-                      id="password"
-                      type="password"
-                      placeholder=" "
-                      name="password"
-                      v-model="password"
-                      class="input">
-                      <label for="password" class="form_label_password2">Password</label>
-                  </div>
-                  <div class="form_group">
-                    <input
-                      id="confirm_password"
-                      type="password"
-                      placeholder=" "
-                      name="confirm_password"
-                      v-model="confirm_password"
-                      class="input">
-                      <label for="confirm_password" class="form_label_confirm_password">Confirm Password</label>
-                  </div>
-                  <div class="form_group form_group_btn">
-                    <input type="submit" class="btn btn-primary" value="Register" placeholder=""/>
-                  </div>
-                  <div class="login_wrap">
-                    <router-link to="/login" class="login_link">Arleady have an account ?</router-link>
-                    <router-link to="/login" class="login_link_two">Sign in now</router-link>
-                  </div>
-                </form>
-            </div>
-        </div>
+  <div class="registration_container">
+    <div class="title_register">Register</div>
+    <div class="form_container">
+      <div class="form_body">
+        <form @submit.prevent="registerUser">
+          <div class="form_group">
+            <input
+              id="email"
+              type="text"
+              placeholder=" "
+              name="username"
+              v-model="email"
+              class="input"
+              >
+            <label for="email" class="form_label_email">Email</label>
+          </div>
+          <div class="form_group">
+            <input
+              id="name"
+              type="text"
+              placeholder=" "
+              name="Name"
+              v-model="name"
+              lass="input"
+              >
+            <label for="name" class="form_label_name">Name</label>
+          </div>
+          <div class="form_group form_group_login">
+            <input
+              id="username"
+              type="text"
+              placeholder=" "
+              name="username"
+              v-model="username"
+              class="input">
+            <label for="username" class="form_label_login">Username</label>
+          </div>
+          <div class="form_group">
+            <input
+              id="password"
+              type="password"
+              placeholder=" "
+              name="password"
+              v-model="password"
+              class="input">
+            <label for="password" class="form_label_password2">Password</label>
+          </div>
+          <div class="form_group">
+            <input
+              id="confirm_password"
+              type="password"
+              placeholder=" "
+              name="confirm_password"
+              v-model="confirm_password"
+              class="input">
+            <label for="confirm_password" class="form_label_confirm_password">Confirm Password</label>
+          </div>
+          <div class="form_group form_group_btn">
+            <input type="submit" class="btn btn-primary" value="Register" placeholder=""/>
+          </div>
+          <div class="login_wrap">
+            <router-link to="/login" class="login_link">Arleady have an account ?</router-link>
+            <router-link to="/login" class="login_link_two">Sign in now</router-link>
+          </div>
+        </form>
       </div>
+    </div>
+  </div>
 </template>
 
 <script>
 import { mapActions } from 'vuex';
 export default {
-    data() {
-      return {
-        name: "",
-        password: "",
-        username: "",
-        confirm_password: "",
-        email: ""
-      }
-    },
-    methods:{
-      ...mapActions(['register']),
-      registerUser(){
-        let user = {
-          username: this.username,
-          password: this.password,
-          confirm_password: this.confirm_password,
-          email: this.email,
-          name: this.name
-        };
-        this.register(user).then(res => {
-          if(res.data.succes) {
-            this.$router.push("login");
-          }
-        });
-      }
+  data() {
+    return {
+      name: "",
+      password: "",
+      username: "",
+      confirm_password: "",
+      email: ""
     }
+  },
+  methods:{
+    ...mapActions(['register']),
+    registerUser(){
+      let user = {
+        username: this.username,
+        password: this.password,
+        confirm_password: this.confirm_password,
+        email: this.email,
+        name: this.name
+      };
+      this.register(user).then(res => {
+        if(res.data.succes) {
+        this.$router.push("login");
+        }
+      });
+    }
+  }
 }
 </script>
 
