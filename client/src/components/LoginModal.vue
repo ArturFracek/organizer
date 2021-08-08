@@ -165,16 +165,16 @@ input:hover {
   border-color: rgb(216, 25, 25);
   color: rgb(216, 25, 25);
 }
-
+input:hover ~ .btn {
+  color: rgb(216, 25, 25);
+}
 input:hover ~ .form_label_login {
   color: rgb(216, 25, 25);
 }
 input:hover ~ .form_label_password {
   color: rgb(216, 25, 25);
 }
-input:hover ~ .btn {
-  color: rgb(216, 25, 25);
-}
+
 
 input:focus, textarea {
   color: turquoise;

@@ -28,6 +28,14 @@
             @click="showModal = false"
           />
         </div>
+        <button 
+            class="btn_delete"
+            type="button"
+            value="Delete"
+            aria-placeholder=""
+            >
+            Delete
+          </button>
       </div>
     </transition>
   </div>
@@ -202,17 +210,17 @@ export default {
   background: transparent;
   box-shadow: 0 25px 25px rgba(3, 96, 112, 0.1);
   backdrop-filter: blur(10px) drop-shadow(4px 4px 10px rgb(17, 185, 207));
-
 }
 
 h1 {
   display: flex;
   justify-content: center;
   align-items: center;
-  color: #222;
-  font-size: 20px;
+  color: rgb(255, 255, 255);
+  font-size: 1.5rem;
   font-weight: 900;
   margin-bottom: 15px;
+  text-shadow: 0 0 1rem white;
 }
 
 .modalElement {
@@ -236,5 +244,29 @@ h1 {
 .slide-enter,
 .slide-leave-to {
   transform: translateY(-50%) translateX(300%);
+}
+
+.btn_delete {
+  position: fixed;
+  height: 3rem;
+  width: 5%;
+  top: 32rem;
+  left: 64rem;
+  text-justify: auto;
+  text-align: center;
+  font-weight: bold;
+  border-radius: 2px;
+  color: rgba(253, 253, 250, 0.945);
+  font-size: 1rem;
+  text-shadow: 0 0 1rem white;
+  background: none;
+  outline: none;
+  border: 1px rgb(255, 255, 255);
+  border-radius: 0.5rem;
+  background: transparent;
+  box-shadow: 0 25px 25px rgba(3, 96, 112, 0.1);
+  backdrop-filter: blur(10px) drop-shadow(4px 4px 10px rgb(248, 248, 248));
+  transition: 0.2s ease-out;
+  margin: 0 1.2rem;
 }
 </style>

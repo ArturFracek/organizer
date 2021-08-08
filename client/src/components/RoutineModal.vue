@@ -1,6 +1,6 @@
 <template>
   <div class="routineModalWrapper">
-    <button type="button" class="routineModalButton" @click="showModal = true">
+    <button type="button" class="btn" @click="showModal = true">
       {{ routineObject.title }}
     </button>
     <transition name="fade" appear>
@@ -16,13 +16,25 @@
         <textArea />
         <Slider></Slider>
         <div class="bottomContainer">
-          <button type="button" class="saveButton">save</button>
+          <input 
+            type='submit' 
+            class="btn_save" 
+            value="Save" 
+            placeholder=""/>
           <button
             type="button"
-            class="modalButtonClose"
+            class="btn_save"
             @click="showModal = false"
           >
-            go back
+            Go back
+          </button>
+          <button 
+            class="btn_delete"
+            type="button"
+            value="Delete"
+            aria-placeholder=""
+            >
+            Delete
           </button>
         </div>
       </div>
@@ -67,55 +79,34 @@ export default {
   width: 100%;
 }
 
-.routineModalButton {
-  border: none;
-  background: none;
-  cursor: pointer;
-
-  padding: 10px 10px;
-  background-image: linear-gradient(to right, #cc2e5d, #ff5858);
-  border-radius: 8px;
-
-  color: #fff;
-  font-size: 18px;
-  font-weight: 700;
-
-  box-shadow: 3px 3px 3px 3px rgba(0, 0, 0, 0.4);
-  transition: 0.4s ease-out;
-}
-
 .routineModalButton:hover {
   box-shadow: 6px 6px 6px 6px rgba(0, 0, 0, 0.6);
 }
 
 .bottomContainer {
   width: 100%;
+  height: 20%;
   display: flex;
   justify-content: center;
 }
 
-.modalButtonClose {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border: none;
+.btn {
+  text-align: center;
+  width: 100%;
+  height: 100%;
+  border-radius: 2px;
+  color: rgba(253, 253, 250, 0.945);
+  font-weight: bold;
+  text-shadow: 0 0 1rem white;
+  padding: 0.7rem;
   background: none;
-  cursor: pointer;
-  width: 30%;
-  height: 5%;
-  margin: 10px;
-
-  margin-top: 15px;
-  padding: 10px 10px;
-  background-image: linear-gradient(to right, #8f8f8f, #d6d6d6);
-  border-radius: 10px;
-
-  color: #fff;
-  font-size: 14px;
-  font-weight: 700;
-
-  box-shadow: 3px 3px 3px 3px rgba(0, 0, 0, 0.4);
-  transition: 0.4s ease-out;
+  outline: none;
+  border: 2px solid rgb(255, 255, 255);
+  border-radius: 0.5rem;
+  background: transparent;
+  box-shadow: 0 25px 25px rgba(3, 96, 112, 0.1);
+  backdrop-filter: blur(10px) drop-shadow(4px 4px 10px rgb(248, 248, 248));
+  transition: 0.1s ease-out;
 }
 
 .modalButtonClose:hover {
@@ -181,35 +172,30 @@ export default {
   transform: translate(-50%, -50%);
   background-color: rgb(100, 100, 100);
   z-index: 99;
-
-  width: 100%;
-  max-width: 60%;
-  height: 100%;
-  max-height: 40%;
-  border-radius: 16px;
-
-  padding: 25px;
-
-  clip-path: polygon(
-    20% 0%,
-    80% 0%,
-    100% 20%,
-    100% 80%,
-    80% 100%,
-    20% 100%,
-    0% 80%,
-    0% 20%
-  );
+  text-align: center;
+  width: 80%;
+  height: 60%;
+  border-radius: 2px;
+  color: rgb(0, 0, 0);
+  padding: 0.7rem;
+  background: none;
+  outline: none;
+  border: 2px solid rgb(35, 166, 170);
+  border-radius: 0.5rem;
+  background: transparent;
+  box-shadow: 0 25px 25px rgba(3, 96, 112, 0.1);
+  backdrop-filter: blur(10px) drop-shadow(4px 4px 10px rgb(17, 185, 207));
 }
 
 h1 {
   display: flex;
   justify-content: center;
   align-items: center;
-  color: #222;
-  font-size: 20px;
+  color: rgb(255, 255, 255);
+  font-size: 1.5rem;
   font-weight: 900;
   margin-bottom: 15px;
+  text-shadow: 0 0 1rem white;
 }
 
 .modalElement {
@@ -233,5 +219,58 @@ h1 {
 .slide-enter,
 .slide-leave-to {
   transform: translateY(-50%) translateX(300%);
+}
+
+input:hover, .btn_save:hover, .btn_delete:hover  {
+  border-color: rgb(216, 25, 25);
+  color: rgb(216, 25, 25);
+}
+input:hover ~ .btn {
+  color: rgb(216, 25, 25);
+}
+
+.btn_save {
+  height: 3rem;
+  width: 20%;
+  text-justify: auto;
+  text-align: center;
+  font-weight: bold;
+  border-radius: 2px;
+  color: rgba(253, 253, 250, 0.945);
+  font-weight: bold;
+  text-shadow: 0 0 1rem white;
+  background: none;
+  outline: none;
+  border: 2px solid rgb(255, 255, 255);
+  border-radius: 0.5rem;
+  background: transparent;
+  box-shadow: 0 25px 25px rgba(3, 96, 112, 0.1);
+  backdrop-filter: blur(10px) drop-shadow(4px 4px 10px rgb(248, 248, 248));
+  transition: 0.2s ease-out;
+  margin: 0 1.2rem;
+}
+
+.btn_delete {
+  position: fixed;
+  height: 3rem;
+  width: 5%;
+  top: 32rem;
+  left: 64rem;
+  text-justify: auto;
+  text-align: center;
+  font-weight: bold;
+  border-radius: 2px;
+  color: rgba(253, 253, 250, 0.945);
+  font-size: 1rem;
+  text-shadow: 0 0 1rem white;
+  background: none;
+  outline: none;
+  border: 1px rgb(255, 255, 255);
+  border-radius: 0.5rem;
+  background: transparent;
+  box-shadow: 0 25px 25px rgba(3, 96, 112, 0.1);
+  backdrop-filter: blur(10px) drop-shadow(4px 4px 10px rgb(248, 248, 248));
+  transition: 0.2s ease-out;
+  margin: 0 1.2rem;
 }
 </style>

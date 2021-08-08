@@ -1,15 +1,16 @@
 <template>
-  <div class="routinesWrapper">
+  <div class="routines_container">
     <h1 class="title">{{ title }}</h1>
     <div class="addRoutines">
       <input
         class="input"
         type="text"
-        placeholder="Add new routine"
+        placeholder=" "
         v-model="routineObjectName"
         @keyup.enter="addRoutines"
       />
-      <button class="button" @click="addRoutines">Add</button>
+      <label for="activity" class="form_label_add_routines">Add Routine</label>
+      <button class="btn" @click="addRoutines">Add</button>
     </div>
     <div class="routines">
       <div v-for="routine in routines" :key="routine.id" class="routineHolder">
@@ -53,13 +54,13 @@ export default {
 </script>
 
 <style scoped>
-.routinesWrapper {
+.routines_container {
   display: flex;
   flex-flow: column;
   align-items: center;
   max-height: 60%;
-  width: 50%;
-  background-color: khaki;
+  width: 80%;
+  background: none;
 }
 
 .title {
@@ -82,7 +83,8 @@ export default {
   flex-flow: column;
   justify-content: center;
   align-items: center;
-  margin: 10px 0 0 0;
+  margin: 2rem 0 2rem 0;
+  position: absolute;
 }
 
 .button {
@@ -108,7 +110,7 @@ export default {
   justify-content: center;
   align-items: flex-end;
   flex-wrap: wrap;
-  margin-top: 10px;
+  margin-top: 2.5rem;
 }
 
 .routineHolder {
@@ -116,5 +118,97 @@ export default {
   justify-content: center;
   align-items: center;
   margin: 7px 7px;
+}
+
+.btn {
+  border-radius: 0;
+  color: rgb(88, 249, 255);
+  text-shadow: 0 0 8px turquoise;
+  font-weight: bold;
+  position: relative;
+  left: 12rem;
+  top: -4.6rem;
+  text-align: center;
+  border-radius: 2px;
+  padding: 0.7rem;
+  background: none;
+  outline: none;
+  border: 2px solid rgb(35, 166, 170);
+  border-radius: 0.5rem;
+  background: transparent;
+  box-shadow: 0 25px 25px rgba(38, 221, 253, 0.1);
+  backdrop-filter: blur(10px) drop-shadow(4px 4px 2px rgb(17, 185, 207));
+  display: none;
+}
+
+.input {
+  margin-left: 0;
+  text-align: center;
+  width: 100%;
+  height: 100%;
+  border-radius: 2px;
+  color: rgb(0, 0, 0);
+  font-weight: bold;
+  text-shadow: 0 0 1rem turquoise;
+  padding: 0.7rem;
+  background: none;
+  outline: none;
+  border: 2px solid rgb(35, 166, 170);
+  border-radius: 0.5rem;
+  background: transparent;
+  box-shadow: 0 25px 25px rgba(3, 96, 112, 0.1);
+  backdrop-filter: blur(10px) drop-shadow(4px 4px 10px rgb(17, 185, 207));
+}
+
+input[type=text], input[type=password] {
+  color: whitesmoke;
+}
+
+input:hover {
+  border-color: rgb(216, 25, 25);
+  color: rgb(216, 25, 25);
+}
+
+input:hover ~ .form_label_add_routines {
+  color: rgb(216, 25, 25);
+}
+
+
+input:focus, textarea {
+  color: turquoise;
+  border-color: turquoise;
+  background-color: none;
+  box-shadow: 0 25px 25px rgba(3, 96, 112, 0.1);
+  backdrop-filter: blur(15px) drop-shadow(4px 4px 10px rgb(7, 207, 233));
+}
+
+input:focus ~ .form_label_add_routines {
+  color: turquoise;
+  text-shadow: 0px 0px 0.1rem turquoise;
+}
+
+input:focus ~ .form_label_add_routines,
+input:not(:placeholder-shown).input:not(:focus)
+ ~ .form_label_add_routines {
+  top: -4.4rem;
+}
+
+input:not(:placeholder-shown)
+ ~ .btn {
+  display: block;
+}
+
+.form_label_add_routines {
+  position: relative;
+  color: whitesmoke;
+  display: flex;
+  cursor: text;
+  transition: top 200ms ease-in;
+    left: 200ms ease-in;
+    font-size: 200ms ease-in;
+  top: -2.2rem;
+  left: 0.2rem;
+  background-color: none;
+  font-weight: bold;
 }
 </style>

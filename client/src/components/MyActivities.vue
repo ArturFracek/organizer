@@ -68,10 +68,10 @@ export default {
 }
 
 .title {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin: 10px 0 0 0;
+color: white;
+margin-bottom: 2rem;
+font-weight: bold;
+font-size: 1.5rem;
 }
 
 .instruction {
@@ -87,7 +87,8 @@ export default {
   flex-flow: column;
   justify-content: center;
   align-items: center;
-  margin: 0 0 0 0;
+  position: absolute;
+  margin: 4rem;
 }
 
 .input {
@@ -127,7 +128,7 @@ export default {
   justify-content: space-evenly;
   align-items: flex-end;
   flex-wrap: wrap;
-  margin-top: 10px;
+  margin-top: 4rem;
 }
 
 .activityHolder {
@@ -138,6 +139,7 @@ export default {
 }
 
 .input {
+  margin-left: 0;
   text-align: center;
   width: 100%;
   height: 100%;

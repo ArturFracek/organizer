@@ -71,11 +71,13 @@ export default {
   height: 30px;
   width: 30px;
   border-radius: 50%;
-  background-color: #616060;
+  background: none;
   cursor: pointer;
   -webkit-transition: all 0.3 ease-in;
   transition: all 0.3s ease-in;
-  border: 2px solid #000000;
+  border: 2px solid #ffffff;
+  box-shadow: 0 0 0.2rem white;
+  backdrop-filter: blur(10px) drop-shadow(4px 4px 10px rgb(255, 255, 255));
 }
 
 .container .Slider::-moz-range-thumb {
@@ -88,7 +90,7 @@ export default {
   cursor: pointer;
   -moz-transition: all 0.3 ease-in;
   transition: all 0.3s ease-in;
-  border: 2px solid #d3d3d33d;
+  border: 2px solid #64faff;
 }
 
 .container .Slider::webkit-slider-thumb:hover {
