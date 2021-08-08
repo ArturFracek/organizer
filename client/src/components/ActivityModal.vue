@@ -16,14 +16,17 @@
         <textArea />
         <Slider></Slider>
         <div class="bottomContainer">
-          <input type='submit' class="btn_save" value="Save" placeholder=""/>
-          <button
-            type="button"
-            class="modalButtonClose"
+          <input 
+          type='submit' 
+          class="btn_save" 
+          value="Save" 
+          placeholder=""/>
+          <input
+            type="submit"
+            class="btn_save"
+            value="Go back"
             @click="showModal = false"
-          >
-            go back
-          </button>
+          />
         </div>
       </div>
     </transition>
@@ -83,7 +86,7 @@ export default {
   background: transparent;
   box-shadow: 0 25px 25px rgba(3, 96, 112, 0.1);
   backdrop-filter: blur(10px) drop-shadow(4px 4px 10px rgb(248, 248, 248));
-  transition: 0.4s ease-out;
+  transition: 0.2s ease-out;
 }
 
 .modalButton:hover {
@@ -92,6 +95,7 @@ export default {
 
 .bottomContainer {
   width: 100%;
+  height: 20%;
   display: flex;
   justify-content: center;
 }
@@ -117,7 +121,7 @@ export default {
   font-weight: 700;
 
   box-shadow: 3px 3px 3px 3px rgba(0, 0, 0, 0.4);
-  transition: 0.4s ease-out;
+  transition: 0.2s ease-out;
 }
 
 .modalButtonClose:hover {
@@ -141,7 +145,8 @@ export default {
   background: transparent;
   box-shadow: 0 25px 25px rgba(3, 96, 112, 0.1);
   backdrop-filter: blur(10px) drop-shadow(4px 4px 10px rgb(248, 248, 248));
-  transition: 0.4s ease-out;
+  transition: 0.2s ease-out;
+  margin: 0 1.2rem;
 }
 
 .btn:focus {

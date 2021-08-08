@@ -49,7 +49,7 @@ export default {
   appearance: none;
   width: 80%;
   height: 18px;
-  background-color: #000000;
+  background-color: #ffffff;
   border-radius: 20px;
   outline: none;
   opacity: 0.8;
@@ -102,7 +102,7 @@ export default {
   align-items: center;
   height: 40px;
   width: 40px;
-  color: rgb(0, 0, 0);
+  color: rgb(255, 255, 255);
   font-weight: 600;
   text-align: center;
   line-height: 38px;

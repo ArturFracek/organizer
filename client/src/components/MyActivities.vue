@@ -10,7 +10,7 @@
         v-model="activityObjectName"
         @keyup.enter="addActivities"
       />
-       <label for="username" class="form_label_add_activity">Add Activity</label>
+       <label for="activity" class="form_label_add_activity">Add Activity</label>
       <button class="btn" @click="addActivities">Add</button>
     </div>
     <div class="activities">
@@ -87,7 +87,7 @@ export default {
   flex-flow: column;
   justify-content: center;
   align-items: center;
-  margin: 10px 0 0 0;
+  margin: 0 0 0 0;
 }
 
 .input {
@@ -105,9 +105,9 @@ export default {
   color: rgb(88, 249, 255);
   text-shadow: 0 0 8px turquoise;
   font-weight: bold;
-  position: absolute;
-  left: 48rem;
-  top: 21.6rem;
+  position: relative;
+  left: 12rem;
+  top: -4.6rem;
   text-align: center;
   border-radius: 2px;
   padding: 0.7rem;
@@ -185,7 +185,7 @@ input:focus ~ .form_label_add_activity {
 input:focus ~ .form_label_add_activity,
 input:not(:placeholder-shown).input:not(:focus)
  ~ .form_label_add_activity {
-  top: 20.2rem;
+  top: -4.4rem;
 }
 
 input:not(:placeholder-shown)
@@ -194,15 +194,15 @@ input:not(:placeholder-shown)
 }
 
 .form_label_add_activity {
-  position: absolute;
+  position: relative;
   color: whitesmoke;
   display: flex;
   cursor: text;
   transition: top 200ms ease-in;
     left: 200ms ease-in;
     font-size: 200ms ease-in;
-  top: 22.5rem;
-  left: 34.5rem;
+  top: -2.2rem;
+  left: 0.2rem;
   background-color: none;
   font-weight: bold;
 }
