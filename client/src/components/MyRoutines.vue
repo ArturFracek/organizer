@@ -59,15 +59,18 @@ export default {
   flex-flow: column;
   align-items: center;
   max-height: 60%;
-  width: 80%;
+  width: 90%;
   background: none;
 }
 
 .title {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin: 10px 0 0 0;
+  position: relative;
+  top: 2.4rem;
+  align-self: flex-start;
+  color: white;
+  margin-bottom: 2rem;
+  font-weight: bold;
+  font-size: 1.5rem;
 }
 
 .instruction {

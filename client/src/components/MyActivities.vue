@@ -64,22 +64,17 @@ export default {
   flex-flow: column;
   align-items: center;
   max-height: 60%;
-  width: 80%;
+  width: 90%;
 }
 
 .title {
-color: white;
-margin-bottom: 2rem;
-font-weight: bold;
-font-size: 1.5rem;
-}
-
-.instruction {
-  display: flex;
-  justify-self: center;
-  align-items: center;
-  font-size: 1.4em;
-  text-align: center;
+  position: relative;
+  top: 2.4rem;
+  align-self: flex-start;
+  color: white;
+  margin-bottom: 2rem;
+  font-weight: bold;
+  font-size: 1.5rem;
 }
 
 .addActivities {
@@ -88,17 +83,8 @@ font-size: 1.5rem;
   justify-content: center;
   align-items: center;
   position: absolute;
-  margin: 4rem;
-}
-
-.input {
-  display: flex;
-  justify-content: center;
-  width: 210px;
-  padding: 0;
-  margin: 0;
-  text-align: center;
-  border: 2px black solid;
+  margin: 2rem;
+  overflow: initial;
 }
 
 .btn {
@@ -128,7 +114,7 @@ font-size: 1.5rem;
   justify-content: space-evenly;
   align-items: flex-end;
   flex-wrap: wrap;
-  margin-top: 4rem;
+  margin-top: 2.5rem;
 }
 
 .activityHolder {

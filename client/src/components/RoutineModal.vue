@@ -86,6 +86,7 @@ export default {
 .bottomContainer {
   width: 100%;
   height: 20%;
+  margin-left: 5%;
   display: flex;
   justify-content: center;
 }
@@ -251,11 +252,11 @@ input:hover ~ .btn {
 }
 
 .btn_delete {
-  position: fixed;
+  position: relative;
   height: 3rem;
   width: 5%;
-  top: 32rem;
-  left: 64rem;
+  top: 0rem;
+  left: 14rem;
   text-justify: auto;
   text-align: center;
   font-weight: bold;
@@ -270,7 +271,7 @@ input:hover ~ .btn {
   background: transparent;
   box-shadow: 0 25px 25px rgba(3, 96, 112, 0.1);
   backdrop-filter: blur(10px) drop-shadow(4px 4px 10px rgb(248, 248, 248));
-  transition: 0.2s ease-out;
   margin: 0 1.2rem;
 }
+
 </style>

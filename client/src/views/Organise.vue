@@ -4,21 +4,21 @@
       <MyRoutines />
       <MyActivities />
     </div>
-    <RoutineCalendar class="calendar" />
+    <TimeNet/>
   </div>
 </template>
 
 <script>
 import MyActivities from "@/components/MyActivities.vue";
 import MyRoutines from "@/components/MyRoutines.vue";
-import RoutineCalendar from "@/components/RoutineCalendar.vue";
+import TimeNet from "@/components/TimeNet.vue";
 
 export default {
   name: "Organise",
   components: {
     MyActivities,
     MyRoutines,
-    RoutineCalendar,
+    TimeNet,
   },
 };
 </script>
@@ -33,8 +33,7 @@ export default {
   width: 100vw;
   height: 100%;
   box-sizing: border-box;
-  overflow-x: hidden;
-  overflow-y: hidden;
+  overflow: scroll;
 }
 .upperContainer {
   display: flex;
@@ -50,6 +49,8 @@ export default {
   font-weight: bold;
 }
 
-.calendar {
+.TimeNet {
+  width: 100%;
+  height: 100%;
 }
 </style>
