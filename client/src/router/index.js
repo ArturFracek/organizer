@@ -47,15 +47,6 @@ const routes = [
         requiresAuth: true
       }
   },
-  {
-    path: "/TimeNet",
-    name: "TimeNet",
-    component: () =>
-      import("../components/TimeNet.vue"),
-      meta:{
-        requiresAuth: true
-      }
-  },
 ];
 
 const router = new VueRouter({

@@ -64,17 +64,23 @@ export default {
   flex-flow: column;
   align-items: center;
   max-height: 60%;
-  width: 90%;
+  width: 100%;
+  position: relative;
+  border: 2px solid rgb(35, 166, 170);
+  border-radius: 0.5rem;
+  padding: 0 1rem 1rem 1rem;
+  box-shadow: 0 0 0.5rem rgb(132, 242, 250);;
 }
 
 .title {
   position: relative;
-  top: 2.4rem;
+  top: 0.5rem;
   align-self: flex-start;
   color: white;
   margin-bottom: 2rem;
   font-weight: bold;
-  font-size: 1.5rem;
+  font-size: 1.4rem;
+  letter-spacing: 1px;
 }
 
 .addActivities {
@@ -84,7 +90,6 @@ export default {
   align-items: center;
   position: absolute;
   margin: 2rem;
-  overflow: initial;
 }
 
 .btn {

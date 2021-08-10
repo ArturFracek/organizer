@@ -103,9 +103,10 @@ export default {
 
 .bottomContainer {
   width: 100%;
-  height: 20%;
+  height: 5%;
   display: flex;
   justify-content: center;
+  align-items: flex-end;
 }
 
 .modalButtonClose {
@@ -116,7 +117,7 @@ export default {
   background: none;
   cursor: pointer;
   width: 30%;
-  height: 5%;
+  height: 100%;
   margin: 10px;
 
   margin-top: 15px;
@@ -137,7 +138,7 @@ export default {
 }
 
 .btn_save {
-  height: 50%;
+  height: 100%;
   width: 20%;
   text-justify: auto;
   text-align: center;
@@ -166,7 +167,7 @@ export default {
 }
 
 .modalOverlay {
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   right: 0;
@@ -190,7 +191,7 @@ export default {
   flex-flow: column;
   justify-content: center;
   align-items: center;
-  position: absolute;
+  position: fixed;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
@@ -202,7 +203,6 @@ export default {
   height: 60%;
   border-radius: 2px;
   color: rgb(0, 0, 0);
-  padding: 0.7rem;
   background: none;
   outline: none;
   border: 2px solid rgb(35, 166, 170);
@@ -233,7 +233,6 @@ h1 {
   color: #666;
   font-size: 18px;
   font-weight: 400;
-  margin-bottom: 15px;
 }
 
 .slide-enter-active,
