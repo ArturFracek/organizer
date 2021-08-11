@@ -16,18 +16,19 @@
         <textArea />
         <Slider></Slider>
         <div class="bottomContainer">
-          <input 
-          type='submit' 
-          class="btn_save" 
-          value="Save" 
-          placeholder=""/>
-          <input
-            type="submit"
-            class="btn_save"
-            value="Go back"
-            @click="showModal = false"
-          />
-        </div>
+          <div class="lower_mid_container">
+            <input 
+              type='submit' 
+              class="btn_save" 
+              value="Save" 
+              placeholder=""/>
+              <input
+              type="submit"
+              class="btn_save"
+              value="Go back"
+              @click="showModal = false"
+            />
+          </div>
         <button 
             class="btn_delete"
             type="button"
@@ -36,6 +37,7 @@
             >
             Delete
           </button>
+        </div>
       </div>
     </transition>
   </div>
@@ -102,39 +104,20 @@ export default {
 }
 
 .bottomContainer {
-  width: 100%;
-  height: 5%;
+ width: 85%;
+  height: 10%;
+  margin-left: 5%;
   display: flex;
   justify-content: center;
   align-items: flex-end;
 }
 
-.modalButtonClose {
+.lower_mid_container {
+  width: 100%;
+  height: 3rem;
   display: flex;
   justify-content: center;
-  align-items: center;
-  border: none;
-  background: none;
-  cursor: pointer;
-  width: 30%;
-  height: 100%;
-  margin: 10px;
-
-  margin-top: 15px;
-  padding: 10px 10px;
-  background-image: linear-gradient(to right, #8f8f8f, #d6d6d6);
-  border-radius: 10px;
-
-  color: #fff;
-  font-size: 14px;
-  font-weight: 700;
-
-  box-shadow: 3px 3px 3px 3px rgba(0, 0, 0, 0.4);
-  transition: 0.2s ease-out;
-}
-
-.modalButtonClose:hover {
-  box-shadow: 6px 6px 6px 6px rgba(0, 0, 0, 0.6);
+  align-items: flex-end;
 }
 
 .btn_save {
@@ -246,11 +229,8 @@ h1 {
 }
 
 .btn_delete {
-  position: fixed;
   height: 3rem;
   width: 5%;
-  top: 32rem;
-  left: 64rem;
   text-justify: auto;
   text-align: center;
   font-weight: bold;
@@ -266,6 +246,5 @@ h1 {
   box-shadow: 0 25px 25px rgba(3, 96, 112, 0.1);
   backdrop-filter: blur(10px) drop-shadow(4px 4px 10px rgb(248, 248, 248));
   transition: 0.2s ease-out;
-  margin: 0 1.2rem;
 }
 </style>

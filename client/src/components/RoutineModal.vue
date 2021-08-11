@@ -16,18 +16,20 @@
         <textArea />
         <Slider></Slider>
         <div class="bottomContainer">
-          <input 
-            type='submit' 
-            class="btn_save" 
-            value="Save" 
-            placeholder=""/>
-          <button
-            type="button"
-            class="btn_save"
-            @click="showModal = false"
-          >
-            Go back
-          </button>
+          <div class="lower_mid_section">
+            <input 
+              type='submit' 
+              class="btn_save" 
+              value="Save" 
+              placeholder=""/>
+            <button
+              type="button"
+              class="btn_save"
+              @click="showModal = false"
+            >
+              Go back
+            </button>
+          </div>
           <button 
             class="btn_delete"
             type="button"
@@ -84,11 +86,20 @@ export default {
 }
 
 .bottomContainer {
-  width: 100%;
-  height: 20%;
+  width: 85%;
+  height: 10%;
   margin-left: 5%;
   display: flex;
   justify-content: center;
+  align-items: flex-end;
+}
+
+.lower_mid_section {
+  width: 100%;
+  height: 3rem;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
 }
 
 .btn {
@@ -111,34 +122,6 @@ export default {
 }
 
 .modalButtonClose:hover {
-  box-shadow: 6px 6px 6px 6px rgba(0, 0, 0, 0.6);
-}
-
-.saveButton {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border: none;
-  background: none;
-  cursor: pointer;
-  width: 30%;
-  height: 5%;
-  margin: 10px;
-
-  margin-top: 15px;
-  padding: 10px 10px;
-  background-image: linear-gradient(to right, #8f8f8f, #d6d6d6);
-  border-radius: 10px;
-
-  color: #fff;
-  font-size: 14px;
-  font-weight: 700;
-
-  box-shadow: 3px 3px 3px 3px rgba(0, 0, 0, 0.4);
-  transition: 0.4s ease-out;
-}
-
-.saveButton:hover {
   box-shadow: 6px 6px 6px 6px rgba(0, 0, 0, 0.6);
 }
 
@@ -249,14 +232,14 @@ input:hover ~ .btn {
   backdrop-filter: blur(10px) drop-shadow(4px 4px 10px rgb(248, 248, 248));
   transition: 0.2s ease-out;
   margin: 0 1.2rem;
+  white-space: nowrap;
 }
 
 .btn_delete {
   position: relative;
+  top: 50%;
   height: 3rem;
   width: 5%;
-  top: 0rem;
-  left: 14rem;
   text-justify: auto;
   text-align: center;
   font-weight: bold;
@@ -271,7 +254,6 @@ input:hover ~ .btn {
   background: transparent;
   box-shadow: 0 25px 25px rgba(3, 96, 112, 0.1);
   backdrop-filter: blur(10px) drop-shadow(4px 4px 10px rgb(248, 248, 248));
-  margin: 0 1.2rem;
 }
 
 </style>
