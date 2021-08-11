@@ -227,6 +227,7 @@ export default {
   align-items: center;
   color: white;
   border-bottom: 1px dashed turquoise;
+  white-space: nowrap;
 }
 
 </style>

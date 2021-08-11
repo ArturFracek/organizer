@@ -1,9 +1,9 @@
 <template>
   <div class="main_container">
     <div class="upper_container">
-      <div class="profile_pic">
-        <img src="../assets/profile_cat.jpg" id="photo">
-        <input type="file" id="file" accept="image/*">
+      <input type="file" name="file" id="file" accept="image/*">
+      <div class="profile_pic_container" id="profile_pic_id">
+        <img src=" " class="photo">
         <label for="file" id="upload_btn">Add Photo</label>
       </div>
       <div class="card" v-if="user">
@@ -15,34 +15,40 @@
   </div>
 </template>
 
+
 <script>
 import { mapActions, mapGetters } from "vuex";
+//../assets/profile_cat.jpg
 export default {
   computed: mapGetters(['user']),
   methods: mapActions(['getProfile']),
   created(){
     this.getProfile()
-  }
+  },
+  mounted() {
+    const file = document.getElementById("file");
+    const previewContainer = document.getElementById("profile_pic_id");
+    const previewImage = previewContainer.querySelector(".photo");
+
+    file.addEventListener("change", function() {
+      const file = this.files[0];
+
+      if(file) {
+        const reader = new FileReader();
+
+        previewImage.style.display = "block"
+
+        reader.addEventListener("load", function() {
+          previewImage.setAttribute("src", this.result)
+        });
+        reader.readAsDataURL(file);
+      } else {
+        previewImage.style.display = null;
+        previewImage.setAttribute("src", "")
+      }
+    })
+  },
 };
-
-const imgDiv = document.querySelector('.profile_pic');
-const img = document.querySelector('#photo');
-const file = document.querySelector('#file');
-const upload_btn = document.querySelector("#upload_btn");
-
-file.addEventListener('change', function() {
-  const choosedFile = this.files[0]
-     if(choosedFile) {
-       const reader = new FileReader();
-
-       reader.addEventListener('load', function() {
-         img.setAttribute('src', reader.result);
-       });
-
-       reader.readAsDataURL(choosedFile)
-     }
-})
-
 </script>
 
 <style scoped>
@@ -63,11 +69,11 @@ file.addEventListener('change', function() {
   display: flex;
 }
 
-.profile_pic {
+.profile_pic_container {
   height: 8rem;
   width: 10rem;
 }
-img{
+.photo {
   height: inherit;
   width: inherit;
   border-radius: 30%;
