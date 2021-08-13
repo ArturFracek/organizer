@@ -12,9 +12,27 @@
         <li class="list_group_item">Email: {{ user.email }}</li>
       </div>
     </div>
-    <div class="mid_container_border">
-      <div class="mid_container">
-
+    <div class="mid_container">
+      <div class="mid_title">
+        Time Statistics
+      </div>
+    </div>
+    <div class="bottom_container">
+      <div class="bottom_title">
+        Goals
+        <div class="user_goals">
+          <form action="">
+            <label for="">Goals</label>
+            <input type="text" v-model.lazy="goals.title" required />
+            <label for="">Content</label>
+            <textarea v-model.lazy="goals.content" name="" id="" cols="30" rows="10"></textarea>
+          </form>
+          <div class="preview">
+            <h3>Preview</h3>
+            <p>Titleee: {{ goals.title }}</p>
+            <p>conteenttt: {{ goals.content }}</p>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -24,6 +42,14 @@
 <script>
 import { mapActions, mapGetters } from "vuex";
 export default {
+  data() {
+    return {
+      goals: {
+       title: "",
+       content: "",
+      },
+    };
+  },
   computed: mapGetters(['user']),
   methods: mapActions(['getProfile']),
   created(){
@@ -124,7 +150,7 @@ img:hover ~ #upload_btn, #upload_btn:hover {
   display: flex;
 }
 
-.mid_container_border {
+.mid_container {
   height: 30%;
   max-height: 60%;
   width: 80%;
@@ -132,9 +158,40 @@ img:hover ~ #upload_btn, #upload_btn:hover {
   padding: 1rem;
   border-style: solid;
   border-width: 1px;
-  border-image: linear-gradient(to bottom, rgb(164, 253, 249), rgb(248, 120, 120)) 1;
+  border-image: linear-gradient(to bottom, rgb(164, 253, 249), rgb(250, 127, 127)) 1;
   border-image-repeat: stretch;
-  backdrop-filter: blur(4px) drop-shadow(4px 4px 6px rgb(207, 17, 17)) hue-rotate(180deg) opacity(40%);
+  backdrop-filter: blur(4px) drop-shadow(4px 4px 6px rgb(207, 17, 17)) hue-rotate(180deg) opacity(80%);
+  display: flex;
+  justify-content: center;
+  margin-bottom: 2rem;
+}
+
+.mid_title {
+  font-size: 1.2rem;
+  color: turquoise;
+  letter-spacing: 1px;
+}
+
+.bottom_title {
+  font-size: 1.2rem;
+  color: rgb(243, 71, 71);
+  letter-spacing: 1px;
+}
+
+.bottom_container {
+  height: 30%;
+  max-height: 60%;
+  width: 80%;
+  position: relative;
+  padding: 1rem;
+  border-style: solid;
+  border-width: 1px;
+  border-image: linear-gradient(to top, rgb(164, 253, 249), rgb(248, 120, 120)) 1;
+  border-image-repeat: stretch;
+  backdrop-filter: blur(4px) drop-shadow(4px 4px 20px rgb(86, 221, 245)) hue-rotate(180deg) opacity(90%);
+  display: flex;
+  justify-content: center;
+  overflow-y: scroll;
 }
 
 
