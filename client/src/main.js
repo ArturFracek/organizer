@@ -5,6 +5,9 @@ import store from "./store";
 import vuetify from "./plugins/vuetify";
 import axios from "axios";
 
+
+
+
 Vue.config.productionTip = false;
 
 //Setting default vue's http modules for api calls

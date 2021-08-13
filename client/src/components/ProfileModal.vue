@@ -26,6 +26,7 @@
             <input type="text" v-model.lazy="goals.title" required />
             <label for="">Content</label>
             <textarea v-model.lazy="goals.content" name="" id="" cols="30" rows="10"></textarea>
+            <button type="submit" @click.prevent="postGoals()">Save</button>
           </form>
           <div class="preview">
             <h3>Preview</h3>
@@ -41,6 +42,8 @@
 
 <script>
 import { mapActions, mapGetters } from "vuex";
+import axios from "axios";
+
 export default {
   data() {
     return {
@@ -50,8 +53,10 @@ export default {
       },
     };
   },
-  computed: mapGetters(['user']),
-  methods: mapActions(['getProfile']),
+  computed: 
+  mapGetters(['user']),
+  methods:
+  mapActions(['getProfile']),
   created(){
     this.getProfile()
   },
@@ -78,7 +83,14 @@ export default {
       }
     })
   },
-};
+    postGoals() {
+      const goals = {
+       title: this.goals.title,
+       content: this.goals.content,
+    };
+      console.log(goals)
+    }
+}
 </script>
 
 <style scoped>
