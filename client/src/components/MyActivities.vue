@@ -109,7 +109,6 @@ export default {
   border-radius: 0.5rem;
   background: transparent;
   box-shadow: 0 25px 25px rgba(38, 221, 253, 0.1);
-  backdrop-filter: blur(10px) drop-shadow(4px 4px 2px rgb(17, 185, 207));
   display: none;
 }
 

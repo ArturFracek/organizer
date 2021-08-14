@@ -6,8 +6,6 @@ import vuetify from "./plugins/vuetify";
 import axios from "axios";
 
 
-
-
 Vue.config.productionTip = false;
 
 //Setting default vue's http modules for api calls
@@ -28,4 +26,3 @@ new Vue({
   vuetify,
   render: (h) => h(App),
 }).$mount("#app");
-

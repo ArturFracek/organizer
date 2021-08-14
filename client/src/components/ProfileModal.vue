@@ -22,10 +22,10 @@
         Goals
         <div class="user_goals">
           <form action="">
-            <label for="">Goals</label>
+            <label for="title">goals</label>
             <input type="text" v-model.lazy="goals.title" required />
-            <label for="">Content</label>
-            <textarea v-model.lazy="goals.content" name="" id="" cols="30" rows="10"></textarea>
+            <label for="content">content</label>
+            <textarea v-model.lazy="goals.content" name="" id="content" cols="30" rows="10"></textarea>
             <button type="submit" @click.prevent="postGoals()">Save</button>
           </form>
           <div class="preview">
@@ -48,17 +48,34 @@ export default {
   data() {
     return {
       goals: {
-       title: "",
-       content: "",
+       title: '',
+       content: '',
       },
     };
   },
-  computed: 
-  mapGetters(['user']),
-  methods:
-  mapActions(['getProfile']),
+  computed: {
+    ...mapGetters(['user']),
+  },
+  methods: {
+    ...mapActions(['getProfile']),
+    postGoals() {
+      const goals = {
+        title: this.goals.title,
+        content: this.goals.content,
+      };
+    console.log(goals)
+    axios.post("/data/db")
+    .then((response) =>  {
+      console.log(response);
+    })
+    .catch((error) => {
+      console.log(error)
+    });
+    },
+  },
   created(){
-    this.getProfile()
+    this.getProfile(),
+    this.postGoals()
   },
   mounted() {
     const file = document.getElementById("file");
@@ -79,17 +96,10 @@ export default {
         reader.readAsDataURL(file);
       } else {
         previewImage.style.display = null;
-        previewImage.setAttribute("src", "")
+        previewImage.setAttribute("src", "");
       }
     })
   },
-    postGoals() {
-      const goals = {
-       title: this.goals.title,
-       content: this.goals.content,
-    };
-      console.log(goals)
-    }
 }
 </script>
 
