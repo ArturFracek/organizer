@@ -1,7 +1,8 @@
 <template>
   <div class="main_container">
     <div class="upper_container">
-      <input type="file" name="file" id="file" accept="image/*">
+      <input type="file" @change="on_file_selected" name="file" id="file" accept="image/*">
+      <button @click="on_upload">Upload</button>
       <div class="profile_pic_container" id="profile_pic_id">
         <img src="../assets/profile_cat.jpg" class="photo">
         <label for="file" id="upload_btn">Upload Photo</label>
@@ -51,6 +52,7 @@ export default {
        title: '',
        content: '',
       },
+      selected_file: null,
     };
   },
   computed: {
@@ -64,7 +66,7 @@ export default {
         content: this.goals.content,
       };
     console.log(goals)
-    axios.post("/data/db")
+    axios.post("")
     .then((response) =>  {
       console.log(response);
     })
@@ -72,6 +74,17 @@ export default {
       console.log(error)
     });
     },
+    on_file_selected(event) {
+      this.selected_file = event.target.files[0]
+    },
+    on_upload() {
+      const fd = new FormData();
+      fd.append('image', this.selected_file, this.selected_file.name)
+      axios.post('http://localhost:5000/api/users/profile', fd)
+      .then( res => {
+        console.log(res)
+      })
+    }
   },
   created(){
     this.getProfile(),

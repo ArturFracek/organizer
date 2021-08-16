@@ -68,7 +68,6 @@ const actions = {
     commit('user_profile', res.data.user)
     return res;
   },
-
   //Logout the user
   async logout({
     commit
