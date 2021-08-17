@@ -91,27 +91,6 @@ export default {
     this.postGoals()
   },
   mounted() {
-    const file = document.getElementById("file");
-    const previewContainer = document.getElementById("profile_pic_id");
-    const previewImage = previewContainer.querySelector(".photo");
-
-    file.addEventListener("change", function() {
-      const file = this.files[0];
-
-      if(file) {
-        const reader = new FileReader();
-
-        previewImage.style.display = "block"
-
-        reader.addEventListener("load", function() {
-          previewImage.setAttribute("src", this.result)
-        });
-        reader.readAsDataURL(file);
-      } else {
-        previewImage.style.display = null;
-        previewImage.setAttribute("src", "");
-      }
-    })
   },
 }
 </script>
