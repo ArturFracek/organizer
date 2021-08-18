@@ -64,7 +64,7 @@ export default {
         content: this.goals.content,
       };
     console.log(goals)
-    axios.post("/data/db")
+    axios.post("/api/posts")
     .then((response) =>  {
       console.log(response);
     })
