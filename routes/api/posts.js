@@ -1,7 +1,8 @@
-const express = require('express');
-const mongodb = require('mongodb');
+const express = require("express");
+const mongodb = require("mongodb");
 
 const router = express.Router();
+
 
 // Get Posts
 router.get('/', async (req, res) => {
@@ -25,8 +26,10 @@ router.post('/', async (req, res) => {
 async function loadPostsCollection() {
   const client = await mongodb.MongoClient
   .connect('mongodb+srv://Setius:123@cluster0.setab.mongodb.net/organiser_auth?retryWrites=true&w=majority',
-  { useNewUrlParser: true });
-  return client.db('organiser_auth').collection('posts')
-};
+  { 
+    useNewUrlParser: true 
+  });
+  return client.db("organiser_auth").collection("posts");
+}
 
 module.exports = router;

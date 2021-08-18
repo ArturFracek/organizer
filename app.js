@@ -19,7 +19,7 @@ app.use("/api/posts", posts);
 //Form Data Middleware
 app.use(
   bodyParser.urlencoded({
-    extended: false,
+    extended: true,
   })
 );
 
