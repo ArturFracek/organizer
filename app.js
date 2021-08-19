@@ -10,19 +10,15 @@ const app = express();
 
 //Middlewares
 
-const posts = require("./routes/api/posts");
-
-app.use("/api/posts", posts);
-
 //Form Data Middleware
 app.use(
-  bodyParser.urlencoded({
+  express.urlencoded({
     extended: true,
   })
 );
 
 //Json Body Middleware
-app.use(bodyParser.json());
+app.use(express.json());
 
 //Cors Middleware
 app.use(cors());
@@ -87,6 +83,10 @@ app.post("/routines", (req, res) => {
   routines.push(newRoutine);
   return res.json(newRoutine);
 });
+
+//Bring in the Posts route
+const posts = require("./routes/api/posts");
+app.use("/api/posts", posts);
 
 //Bring in the Users route
 const users = require("./routes/api/users");
