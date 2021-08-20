@@ -1,28 +1,25 @@
 <template>
   <div class="posts_container">
-    <div class="text_container">
-      <div class="post_adding">
-        <div class="title">Goals</div>
-        <input
-          class="input"
-          type="text"
-          id="create_post"
-          v-model="text"
-          placeholder=" "
-        />
-        <label class="goals_label" for="create_post">Add Goal</label>
-        <button class="btn" v-on:click="createPost">Add Goal</button>
-      </div>
-      <div
-        class="post"
-        v-for="(post, index) in posts"
-        v-bind:item="post"
-        v-bind:index="index"
-        v-bind:key="post._id"
-        v-on:dblclick="deletePost(post._id)"
-      >
-        <p class="text">{{ post.text }}</p>
-      </div>
+    <div class="post_adding">
+      <input
+        class="input"
+        type="text"
+        id="create_post"
+        v-model="text"
+        placeholder=" "
+      />
+      <label class="goals_label" for="create_post">Add Goal</label>
+      <button class="btn" v-on:click="createPost">Add Goal</button>
+    </div>
+    <div
+      class="post"
+      v-for="(post, index) in posts"
+      v-bind:item="post"
+      v-bind:index="index"
+      v-bind:key="post._id"
+      v-on:dblclick="deletePost(post._id)"
+    >
+      <p class="text">{{ post.text }}</p>
     </div>
   </div>
 </template>
@@ -51,11 +48,11 @@ export default {
       await PostService.insertPost(this.text);
       this.posts = await PostService.getPosts();
     },
-     async deletePost(id) {
+    async deletePost(id) {
       await PostService.deletePost(id);
       this.posts = await PostService.getPosts();
     },
-  }
+  },
 };
 </script>
 
@@ -86,23 +83,18 @@ export default {
   overflow-y: hidden;
 }
 
-.text_container {
-  align-self: flex-start;
-  width: 100%;
-}
-
 .post_adding {
-display: flex;
-flex-flow: row;
-width: 100%;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  height: 5rem;
 }
 
 .input {
-  justify-self: center;
-  margin-left: 5%;
+  margin-left: 0;
   text-align: center;
-  width: 100%;
-  height: 100%;
+  width: 50%;
+  height: 50%;
   border-radius: 2px;
   color: rgb(0, 0, 0);
   font-weight: bold;
@@ -117,15 +109,15 @@ width: 100%;
 }
 
 .goals_label {
-  position: relative;
+  position: absolute;
   color: whitesmoke;
   display: flex;
   cursor: text;
   transition: top 200ms ease-in;
-    left: 200ms ease-in;
-    font-size: 200ms ease-in;
-  top: -2.2rem;
-  left: 0.2rem;
+  left: 200ms ease-in;
+  font-size: 200ms ease-in;
+  top: 0.8rem;
+  right: 46%;
   background-color: none;
   font-weight: bold;
   white-space: nowrap;
@@ -152,7 +144,8 @@ width: 100%;
   display: none;
 }
 
-input[type=text], input[type=password] {
+input[type="text"],
+input[type="password"] {
   color: whitesmoke;
 }
 
@@ -165,8 +158,8 @@ input:hover ~ .goals_label {
   color: rgb(216, 25, 25);
 }
 
-
-input:focus, textarea {
+input:focus,
+textarea {
   color: turquoise;
   border-color: turquoise;
   background-color: none;
@@ -180,13 +173,11 @@ input:focus ~ .goals_label {
 }
 
 input:focus ~ .goals_label,
-input:not(:placeholder-shown).input:not(:focus)
- ~ .goals_label {
-  top: 2.4rem;
+input:not(:placeholder-shown).input:not(:focus) ~ .goals_label {
+  top: -1rem;
 }
 
-input:not(:placeholder-shown)
- ~ .btn {
+input:not(:placeholder-shown) ~ .btn {
   display: block;
 }
 </style>
