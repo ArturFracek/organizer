@@ -17,25 +17,7 @@
         Time Statistics
       </div>
     </div>
-    <div class="bottom_container">
-      <div class="bottom_title">
-        Goals
-        <div class="user_goals">
-          <form action="">
-            <label for="title">goals</label>
-            <input type="text" v-model.lazy="goals.title" required />
-            <label for="content">content</label>
-            <textarea v-model.lazy="goals.content" name="" id="content" cols="30" rows="10"></textarea>
-            <button type="submit" @click.prevent="postGoals()">Save</button>
-          </form>
-          <div class="preview">
-            <h3>Preview</h3>
-            <p>Titleee: {{ goals.title }}</p>
-            <p>conteenttt: {{ goals.content }}</p>
-          </div>
-        </div>
-      </div>
-    </div>
+    <PostComponent />
   </div>
 </template>
 
@@ -43,39 +25,20 @@
 <script>
 import { mapActions, mapGetters } from "vuex";
 import axios from "axios";
+import PostComponent from "./PostComponent.vue"
 
 export default {
-  data() {
-    return {
-      goals: {
-       title: '',
-       content: '',
-      },
-    };
+  components: {
+    PostComponent,
   },
   computed: {
     ...mapGetters(['user']),
   },
   methods: {
     ...mapActions(['getProfile']),
-    postGoals() {
-      const goals = {
-        title: this.goals.title,
-        content: this.goals.content,
-      };
-    console.log(goals)
-    axios.post("/api/posts")
-    .then((response) =>  {
-      console.log(response);
-    })
-    .catch((error) => {
-      console.log(error)
-    });
-    },
   },
   created(){
-    this.getProfile(),
-    this.postGoals()
+    this.getProfile()
   },
   mounted() {
     const file = document.getElementById("file");
@@ -177,7 +140,7 @@ img:hover ~ #upload_btn, #upload_btn:hover {
   max-height: 60%;
   width: 80%;
   position: relative;
-  padding: 1rem;
+  padding: 0.3rem 2rem;
   border-style: solid;
   border-width: 1px;
   border-image: linear-gradient(to bottom, rgb(164, 253, 249), rgb(250, 127, 127)) 1;
@@ -193,28 +156,4 @@ img:hover ~ #upload_btn, #upload_btn:hover {
   color: turquoise;
   letter-spacing: 1px;
 }
-
-.bottom_title {
-  font-size: 1.2rem;
-  color: rgb(243, 71, 71);
-  letter-spacing: 1px;
-}
-
-.bottom_container {
-  height: 30%;
-  max-height: 60%;
-  width: 80%;
-  position: relative;
-  padding: 1rem;
-  border-style: solid;
-  border-width: 1px;
-  border-image: linear-gradient(to top, rgb(164, 253, 249), rgb(248, 120, 120)) 1;
-  border-image-repeat: stretch;
-  backdrop-filter: blur(4px) drop-shadow(4px 4px 20px rgb(86, 221, 245)) hue-rotate(180deg) opacity(90%);
-  display: flex;
-  justify-content: center;
-  overflow-y: scroll;
-}
-
-
 </style>

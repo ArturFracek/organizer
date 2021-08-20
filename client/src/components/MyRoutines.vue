@@ -103,15 +103,6 @@ export default {
   text-align: center;
 }
 
-.input {
-  display: flex;
-  justify-content: center;
-  width: 210px;
-  padding: 0;
-  margin: 0;
-  text-align: center;
-  border: 2px black solid;
-}
 
 .routines {
   display: flex;

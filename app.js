@@ -85,6 +85,7 @@ app.post("/routines", (req, res) => {
 });
 
 //Bring in the Posts route
+
 const posts = require("./routes/api/posts");
 app.use("/api/posts", posts);
 

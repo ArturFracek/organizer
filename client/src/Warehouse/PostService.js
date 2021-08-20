@@ -1,29 +1,39 @@
 import axios from "axios";
-import { resolve } from "q";
 
-const url = "http://localhost:5000/api/posts";
+const url = "http://localhost:5000/api/posts/";
 
 class PostService {
-    //get posts
+  //get posts
   static getPosts() {
-    return new Promise( async (resolve, reject) => {
+    // eslint-disable-next-line no-async-promise-executor
+    return new Promise(async (resolve, reject) => {
       try {
-        const res = await.axios.getPosts(url);
+        const res = await axios.get(url);
         const data = res.data;
         resolve(
-          data.map(post => ({
+          data.map((post) => ({
             ...post,
             createdAt: new Date(post.createdAt)
           }))
         );
-      } catch(err) {
+      } catch (err) {
         reject(err);
       }
-    })
+    });
   }
 
-    //create post
+  //create post
+  static insertPost(text) {
+    return axios.post(url, {
+      text
+    });
+  }
 
+  //delete post
+  static deletePost(id) {
+    return axios.delete(`${url}${id}`);
+  }
 
-    //delete post
 }
+
+export default PostService;
