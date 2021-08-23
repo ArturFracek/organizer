@@ -1,5 +1,5 @@
 <template>
-  <div class="posts_container">
+  <div class="posts_main_container">
     <div class="post_adding">
       <input
         class="input"
@@ -7,19 +7,22 @@
         id="create_post"
         v-model="text"
         placeholder=" "
+        @keyup.enter="createPost"
       />
       <label class="goals_label" for="create_post">Add Goal</label>
       <button class="btn" v-on:click="createPost">Add Goal</button>
     </div>
-    <div
-      class="post"
-      v-for="(post, index) in posts"
-      v-bind:item="post"
-      v-bind:index="index"
-      v-bind:key="post._id"
-      v-on:dblclick="deletePost(post._id)"
-    >
-      <p class="text">{{ post.text }}</p>
+    <div class="posts_area">
+      <div
+        class="post"
+        v-for="(post, index) in posts"
+        v-bind:item="post"
+        v-bind:index="index"
+        v-bind:key="post._id"
+        v-on:dblclick="deletePost(post._id)"
+      >
+        <li class="text">{{ post.text }}</li>
+      </div>
     </div>
   </div>
 </template>
@@ -64,7 +67,7 @@ export default {
   align-self: flex-start;
 }
 
-.posts_container {
+.posts_main_container {
   height: 30%;
   max-height: 60%;
   width: 80%;
@@ -85,16 +88,19 @@ export default {
 
 .post_adding {
   display: flex;
+  flex-flow: row;
+  align-items: center;
   justify-content: center;
   width: 100%;
   height: 5rem;
+  position: relative;
 }
 
 .input {
-  margin-left: 0;
+  margin-top: 1rem;
   text-align: center;
-  width: 50%;
-  height: 50%;
+  width: 30rem;
+  height: 2.5rem;
   border-radius: 2px;
   color: rgb(0, 0, 0);
   font-weight: bold;
@@ -105,22 +111,32 @@ export default {
   border: 2px solid rgb(35, 166, 170);
   border-radius: 0.5rem;
   background: transparent;
-  box-shadow: 0 25px 25px rgba(3, 96, 112, 0.1);
+  box-shadow: 0 25px 25px 25px rgba(105, 241, 241, 0.1);
+  position: absolute;
+  top: 0rem;
+  display: flex;
+  justify-content: center;
 }
 
 .goals_label {
-  position: absolute;
+  position: relative;
   color: whitesmoke;
   display: flex;
   cursor: text;
   transition: top 200ms ease-in;
   left: 200ms ease-in;
   font-size: 200ms ease-in;
-  top: 0.8rem;
-  right: 46%;
+  top: -0.3rem;
+  right: 0;
   background-color: none;
   font-weight: bold;
   white-space: nowrap;
+  transition: top 200ms ease-in;
+    left: 200ms ease-in;
+    font-size: 200ms ease-in;
+  opacity: 0.9;
+  color: rgb(255, 255, 255);
+  text-shadow: 0 0 0.8rem rgb(253, 122, 122);
 }
 
 .btn {
@@ -129,8 +145,8 @@ export default {
   text-shadow: 0 0 8px turquoise;
   font-weight: bold;
   position: relative;
-  left: 12rem;
-  top: -4.6rem;
+  right: -16.5rem;
+  top: -0.25rem;
   text-align: center;
   border-radius: 2px;
   padding: 0.7rem;
@@ -142,6 +158,7 @@ export default {
   box-shadow: 0 25px 25px rgba(38, 221, 253, 0.1);
   backdrop-filter: blur(10px) drop-shadow(4px 4px 2px rgb(17, 185, 207));
   display: none;
+  height: 2.5rem;
 }
 
 input[type="text"],
@@ -174,10 +191,62 @@ input:focus ~ .goals_label {
 
 input:focus ~ .goals_label,
 input:not(:placeholder-shown).input:not(:focus) ~ .goals_label {
-  top: -1rem;
+ animation: shadow_fading 0.8s ease;
+ opacity: 0;
 }
 
 input:not(:placeholder-shown) ~ .btn {
-  display: block;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+@keyframes shadow_fading {
+  0%{
+    color: rgb(116, 255, 248);
+    opacity: 1;
+    text-shadow: 
+       0.6rem 0rem  0.8rem turquoise,
+      -0.6rem 0rem 0.8rem turquoise,
+       0rem 0.6rem 0.8rem turquoise,
+       0rem -0.6rem 0.8rem turquoise;
+  }
+  20%{
+    opacity: 0.8;
+  }
+  70%{
+    opacity: 0.3;
+    text-shadow:
+    0.3rem 0rem  0.8rem turquoise,
+      -0.3rem 0rem 0.8rem turquoise,
+       0rem 0.3rem 0.8rem turquoise,
+       0rem -0.3rem 0.8rem turquoise;
+  }
+  90% {
+    opacity: 0.1;
+    text-shadow: 
+    0.2rem 0rem  1.4rem turquoise,
+      -0.2rem 0rem 1.4rem turquoise,
+       0rem 0.2rem 1.4em turquoise,
+       0rem -0.2rem 1.4rem turquoise;
+  }
+  100%{
+    opacity: 0;
+    text-shadow: 0.2rem 0px 0.2rem turquoise;
+  }
+}
+
+.posts_area {
+  align-self: flex-start;
+}
+
+.text {
+font-size: 1.1rem;
+color: rgb(255, 117, 112);
+letter-spacing: 3px;
+font-weight: bold;
+}
+
+.post {
+
 }
 </style>
