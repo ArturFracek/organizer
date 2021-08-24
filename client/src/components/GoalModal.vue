@@ -17,24 +17,20 @@
         <Slider></Slider>
         <div class="bottomContainer">
           <div class="lower_mid_container">
-            <input 
-              type='submit' 
-              class="btn_save" 
-              value="Save" 
-              placeholder=""/>
-              <input
+            <input type="submit" class="btn_save" value="Save" placeholder="" />
+            <input
               type="submit"
               class="btn_save"
               value="Go back"
               @click="showModal = false"
             />
           </div>
-        <button 
+          <button
             class="btn_delete"
             type="button"
             value="Delete"
             aria-placeholder=""
-            >
+          >
             Delete
           </button>
         </div>
@@ -48,7 +44,7 @@ import Slider from "@/components/Slider.vue";
 import textArea from "@/components/textArea.vue";
 
 export default {
-  name: "ActivityModal",
+  name: "GoalModal",
   data() {
     return {
       showModal: false,
@@ -104,7 +100,7 @@ export default {
 }
 
 .bottomContainer {
- width: 85%;
+  width: 85%;
   height: 10%;
   margin-left: 5%;
   display: flex;

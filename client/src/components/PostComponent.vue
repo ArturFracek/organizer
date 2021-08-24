@@ -21,7 +21,9 @@
         v-bind:key="post._id"
         v-on:dblclick="deletePost(post._id)"
       >
-        <li class="text">{{ post.text }}</li>
+        <li class="text">
+          <GoalModal :activityObject="post" />
+        </li>
       </div>
     </div>
   </div>
@@ -29,9 +31,13 @@
 
 <script>
 import PostService from "../Warehouse/PostService";
+import GoalModal from "./GoalModal";
 
 export default {
   name: "PostComponent",
+  components: {
+    GoalModal,
+  },
   data() {
     return {
       posts: [],
@@ -48,7 +54,7 @@ export default {
   },
   methods: {
     async createPost() {
-      await PostService.insertPost(this.text);
+      await PostService.insertPost({ title: this.text, description: "", priority: 5 });
       this.posts = await PostService.getPosts();
     },
     async deletePost(id) {

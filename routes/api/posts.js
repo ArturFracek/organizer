@@ -13,10 +13,13 @@ router.get("/", async (req, res) => {
 // Add Post
 
 router.post("/", async (req, res) => {
+  const { title, description, priority } = req.body;
   console.log(req.body.text);
   const posts = await loadPostsCollection();
   await posts.insertOne({
-    text: req.body.text,
+    title,
+    description,
+    priority,
     createdAt: new Date(),
   });
   res.status(201).send();

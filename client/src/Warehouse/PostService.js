@@ -23,10 +23,8 @@ class PostService {
   }
 
   //create post
-  static insertPost(text) {
-    return axios.post(url, {
-      text
-    });
+  static insertPost(post) {
+    return axios.post(url, post);
   }
 
   //delete post
