@@ -1,7 +1,7 @@
 <template>
   <div class="modalWrapper">
     <button type="button" class="btn" @click="showModal = true">
-      {{ activityObject.title }}
+      {{ goalObject.title }}
     </button>
     <transition name="fade" appear>
       <div
@@ -12,12 +12,18 @@
     </transition>
     <transition name="slide" appear>
       <div class="modal" v-if="showModal">
-        <h1>{{ activityObject.title }}</h1>
+        <h1>{{ goalObject.title }}</h1>
         <textArea />
         <Slider></Slider>
         <div class="bottomContainer">
           <div class="lower_mid_container">
-            <input type="submit" class="btn_save" value="Save" placeholder="" />
+            <input
+              v-model="description"
+              @click="$emit('add-goal-description', description)"
+              type="submit"
+              class="btn_save"
+              placeholder="Save"
+            />
             <input
               type="submit"
               class="btn_save"
@@ -42,12 +48,14 @@
 <script>
 import Slider from "@/components/Slider.vue";
 import textArea from "@/components/textArea.vue";
+import PostService from "../Warehouse/PostService";
 
 export default {
   name: "GoalModal",
   data() {
     return {
       showModal: false,
+      description: "",
     };
   },
   components: {
@@ -55,9 +63,14 @@ export default {
     textArea,
   },
   props: {
-    activityObject: {
+    goalObject: {
       type: Object,
       required: false,
+    },
+  },
+  methods: {
+    pushDescription() {
+      return this.post.push(this.description);
     },
   },
 };
@@ -219,10 +232,7 @@ h1 {
   transition: transfrom 0.5s;
 }
 
-.slide-enter,
-.slide-leave-to {
-  transform: translateY(-50%) translateX(300%);
-}
+
 
 .btn_delete {
   height: 3rem;

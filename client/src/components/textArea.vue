@@ -1,12 +1,29 @@
 <template>
   <div class="textArea">
-    <textarea class="area" placeholder="Description"></textarea>
+    <textarea
+      type="text"
+      @input="changeDescription"
+      v-model="description"
+      class="area"
+      placeholder="Description"
+    ></textarea>
   </div>
 </template>
 
 <script>
 export default {
   name: "textArea",
+  data() {
+    return {
+      description: "",
+    };
+  },
+  methods: {
+    changeDescription(event) {
+      this.description = event.target.value;
+      this.$emit("descriptionChanged", this.description);
+    },
+  },
 };
 </script>
 

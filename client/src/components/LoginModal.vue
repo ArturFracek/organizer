@@ -192,7 +192,7 @@ input:focus ~ .form_label_login, input:focus ~ .form_label_password {
 input:focus ~ .form_label_login,
 input:not(:placeholder-shown).input:not(:focus)
 ~ .form_label_login {
-  top: 0.2rem;
+  top: 0.1rem;
 }
 
 input:focus ~ .form_label_password,

@@ -1,11 +1,12 @@
 <template>
   <div class="posts_main_container">
+    <div class="back_ground"></div>
     <div class="post_adding">
       <input
         class="input"
         type="text"
         id="create_post"
-        v-model="text"
+        v-model="title"
         placeholder=" "
         @keyup.enter="createPost"
       />
@@ -21,8 +22,8 @@
         v-bind:key="post._id"
         v-on:dblclick="deletePost(post._id)"
       >
-        <li class="text">
-          <GoalModal :activityObject="post" />
+        <li>
+          <GoalModal :goalObject="post" />
         </li>
       </div>
     </div>
@@ -40,9 +41,12 @@ export default {
   },
   data() {
     return {
+      goalObject: {},
       posts: [],
       error: "",
-      text: "",
+      title: "",
+      description: "",
+      priority: Number,
     };
   },
   async created() {
@@ -54,7 +58,7 @@ export default {
   },
   methods: {
     async createPost() {
-      await PostService.insertPost({ title: this.text, description: "", priority: 5 });
+      await PostService.insertPost({ title: this.title, priority: 6 });
       this.posts = await PostService.getPosts();
     },
     async deletePost(id) {
@@ -72,24 +76,30 @@ export default {
   letter-spacing: 1px;
   align-self: flex-start;
 }
+.back_ground {
+  position: absolute;
+  box-sizing: border-box;
+  height: 100%;
+  width: 100%;
+  background: transparent;
+  backdrop-filter: drop-shadow(4px 4px 6px rgb(207, 17, 17)) hue-rotate(180deg) opacity(80%);
+  right: 0%;
+}
 
 .posts_main_container {
+  position: relative;
   height: 30%;
   max-height: 60%;
   width: 80%;
-  position: relative;
   padding: 0.3rem 5%;
   border-style: solid;
   border-width: 2px;
   border-image: linear-gradient(to top, rgb(164, 253, 249), rgb(248, 120, 120))
     1;
   border-image-repeat: stretch;
-  backdrop-filter: blur(4px) drop-shadow(4px 4px 20px rgb(86, 221, 245))
-    hue-rotate(180deg) opacity(90%);
   display: flex;
   flex-flow: column;
-  align-items: center;
-  overflow-y: hidden;
+  
 }
 
 .post_adding {
@@ -100,6 +110,10 @@ export default {
   width: 100%;
   height: 5rem;
   position: relative;
+}
+
+.posts_area {
+  align-self: flex-start;
 }
 
 .input {
@@ -138,8 +152,8 @@ export default {
   font-weight: bold;
   white-space: nowrap;
   transition: top 200ms ease-in;
-    left: 200ms ease-in;
-    font-size: 200ms ease-in;
+  left: 200ms ease-in;
+  font-size: 200ms ease-in;
   opacity: 0.9;
   color: rgb(255, 255, 255);
   text-shadow: 0 0 0.8rem rgb(253, 122, 122);
@@ -197,8 +211,8 @@ input:focus ~ .goals_label {
 
 input:focus ~ .goals_label,
 input:not(:placeholder-shown).input:not(:focus) ~ .goals_label {
- animation: shadow_fading 0.8s ease;
- opacity: 0;
+  animation: shadow_fading 0.8s ease;
+  opacity: 0;
 }
 
 input:not(:placeholder-shown) ~ .btn {
@@ -207,52 +221,28 @@ input:not(:placeholder-shown) ~ .btn {
   justify-content: center;
 }
 @keyframes shadow_fading {
-  0%{
+  0% {
     color: rgb(116, 255, 248);
     opacity: 1;
-    text-shadow: 
-       0.6rem 0rem  0.8rem turquoise,
-      -0.6rem 0rem 0.8rem turquoise,
-       0rem 0.6rem 0.8rem turquoise,
-       0rem -0.6rem 0.8rem turquoise;
+    text-shadow: 0.6rem 0rem 0.8rem turquoise, -0.6rem 0rem 0.8rem turquoise,
+      0rem 0.6rem 0.8rem turquoise, 0rem -0.6rem 0.8rem turquoise;
   }
-  20%{
+  20% {
     opacity: 0.8;
   }
-  70%{
+  70% {
     opacity: 0.3;
-    text-shadow:
-    0.3rem 0rem  0.8rem turquoise,
-      -0.3rem 0rem 0.8rem turquoise,
-       0rem 0.3rem 0.8rem turquoise,
-       0rem -0.3rem 0.8rem turquoise;
+    text-shadow: 0.3rem 0rem 0.8rem turquoise, -0.3rem 0rem 0.8rem turquoise,
+      0rem 0.3rem 0.8rem turquoise, 0rem -0.3rem 0.8rem turquoise;
   }
   90% {
     opacity: 0.1;
-    text-shadow: 
-    0.2rem 0rem  1.4rem turquoise,
-      -0.2rem 0rem 1.4rem turquoise,
-       0rem 0.2rem 1.4em turquoise,
-       0rem -0.2rem 1.4rem turquoise;
+    text-shadow: 0.2rem 0rem 1.4rem turquoise, -0.2rem 0rem 1.4rem turquoise,
+      0rem 0.2rem 1.4em turquoise, 0rem -0.2rem 1.4rem turquoise;
   }
-  100%{
+  100% {
     opacity: 0;
     text-shadow: 0.2rem 0px 0.2rem turquoise;
   }
-}
-
-.posts_area {
-  align-self: flex-start;
-}
-
-.text {
-font-size: 1.1rem;
-color: rgb(255, 117, 112);
-letter-spacing: 3px;
-font-weight: bold;
-}
-
-.post {
-
 }
 </style>
