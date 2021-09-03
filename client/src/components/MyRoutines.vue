@@ -1,19 +1,26 @@
 <template>
   <div class="routines_container">
-    <div class="title">{{ title }}</div>
+    <div class="title">Routines</div>
     <div class="addRoutines">
       <input
         class="input"
         type="text"
         placeholder=" "
-        v-model="routineObjectName"
-        @keyup.enter="addRoutines"
+        v-model="title"
+        @keyup.enter="createRoutine"
       />
       <label for="activity" class="form_label_add_routines">Add Routine</label>
-      <button class="btn" @click="addRoutines">Add</button>
+      <button class="btn" @click="createRoutine">Add</button>
     </div>
     <div class="routines">
-      <div v-for="routine in routines" :key="routine.id" class="routineHolder">
+      <div
+        class="routineHolder"
+        v-for="(routine, index) in routines"
+        v-bind:item="routine"
+        v-bind:index="index"
+        v-bind:key="routine._id"
+        v-on:dblclick="deleteRoutine(routine._id)"
+      >
         <RoutineModal :routineObject="routine" />
       </div>
     </div>
@@ -22,32 +29,38 @@
 
 <script>
 import RoutineModal from "@/components/RoutineModal.vue";
+import RoutinesService from "../Warehouse/RoutinesService"
 
 export default {
   name: "MyRoutines",
   data() {
     return {
-      title: "Routines",
-      routineObjectName: "",
+      title: "",
       routineObject: {},
-      newPriority: "1",
-      routines: [
-        { title: "Holidays", id: 1 },
-        { title: "January- Work focus", id: 2 },
-      ],
+      routines: [],
+      priority: Number,
+      error: "Try again",
+      description: "",
     };
   },
   components: {
     RoutineModal,
   },
+   async created() {
+    try {
+      this.routines = await RoutinesService.getRoutines();
+    } catch (err) {
+      this.error = err.massage;
+    }
+  },
   methods: {
-    addRoutines() {
-      this.routines.push({
-        title: this.routineObjectName,
-        priority: this.newPriority,
-        id: Math.random(),
-      });
-      this.routineObjectName = "";
+    async createRoutine() {
+      await RoutinesService.insertActivity({ title: this.title, priority: 6 });
+      this.routines = await RoutinesService.getRoutines();
+    },
+    async deleteRoutine(id) {
+      await RoutinesService.deleteRoutine(id);
+      this.routines = await RoutinesService.getRoutines();
     },
   },
 };
@@ -102,7 +115,6 @@ export default {
   margin: 0;
   text-align: center;
 }
-
 
 .routines {
   display: flex;
@@ -160,7 +172,8 @@ export default {
   backdrop-filter: blur(10px) drop-shadow(4px 4px 10px rgb(17, 185, 207));
 }
 
-input[type=text], input[type=password] {
+input[type="text"],
+input[type="password"] {
   color: whitesmoke;
 }
 
@@ -173,8 +186,8 @@ input:hover ~ .form_label_add_routines {
   color: rgb(216, 25, 25);
 }
 
-
-input:focus, textarea {
+input:focus,
+textarea {
   color: turquoise;
   border-color: turquoise;
   background-color: none;
@@ -188,13 +201,11 @@ input:focus ~ .form_label_add_routines {
 }
 
 input:focus ~ .form_label_add_routines,
-input:not(:placeholder-shown).input:not(:focus)
- ~ .form_label_add_routines {
+input:not(:placeholder-shown).input:not(:focus) ~ .form_label_add_routines {
   top: -4.4rem;
 }
 
-input:not(:placeholder-shown)
- ~ .btn {
+input:not(:placeholder-shown) ~ .btn {
   display: block;
 }
 
@@ -204,8 +215,8 @@ input:not(:placeholder-shown)
   display: flex;
   cursor: text;
   transition: top 200ms ease-in;
-    left: 200ms ease-in;
-    font-size: 200ms ease-in;
+  left: 200ms ease-in;
+  font-size: 200ms ease-in;
   top: -2.2rem;
   left: 0.2rem;
   background-color: none;

@@ -46,23 +46,6 @@ mongoose
     console.log(`Unable to connect with database ${err}`);
   });
 
-const routines = [
-  {
-    id: "1",
-    name: "Bieganie",
-    difficulty: 4,
-  },
-  {
-    id: "2",
-    name: "Biegi przelajowe",
-    difficulty: 4,
-  },
-  {
-    id: "2",
-    name: "plywanie",
-    difficulty: 4,
-  },
-];
 
 function searchRoutineByName(name) {
   return routines.filter((routine) => routine.name.includes(name));
@@ -90,14 +73,17 @@ app.use("/api/posts", posts);
 //Bring in the Users route
 const users = require("./routes/api/users");
 app.use("/api/users", users);
+//Bring in the Activities route 
+const activities = require("./routes/api/activities");
+app.use("/api/activities", activities);
+const routines = require("./routes/api/routines");
+app.use("/api/routines", routines);
 
 //app.get("*", (req,res) => {
 //  res.sendFile(path.join(__dirname, "public/index.html"));
 //})
 
-//Bring in the Activities route 
-const activities = require("./routes/api/activities");
-app.use("/api/activities", activities);
+
 
 const PORT = process.env.PORT || 5000;
 
