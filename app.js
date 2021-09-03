@@ -85,7 +85,6 @@ app.post("/routines", (req, res) => {
 });
 
 //Bring in the Posts route
-
 const posts = require("./routes/api/posts");
 app.use("/api/posts", posts);
 //Bring in the Users route
@@ -95,6 +94,10 @@ app.use("/api/users", users);
 //app.get("*", (req,res) => {
 //  res.sendFile(path.join(__dirname, "public/index.html"));
 //})
+
+//Bring in the Activities route 
+const activities = require("./routes/api/activities");
+app.use("/api/activities", activities);
 
 const PORT = process.env.PORT || 5000;
 

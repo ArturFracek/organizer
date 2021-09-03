@@ -1,23 +1,26 @@
 <template>
   <div class="main_activities_container">
-    <div class="title">{{ title }}</div>
+    <div class="title">Activities</div>
     <div class="addActivities">
       <input
         id="add_activity"
         class="input"
         type="text"
         placeholder=" "
-        v-model="activityObjectName"
-        @keyup.enter="addActivities"
+        v-model="title"
+        @keyup.enter="createActivity"
       />
-       <label for="activity" class="form_label_add_activity">Add Activity</label>
-      <button class="btn" @click="addActivities">Add</button>
+       <label for="add_activity" class="form_label_add_activity">Add Activity</label>
+      <button class="btn" @click="createActivity">Add</button>
     </div>
     <div class="activities">
       <div
-        v-for="activity in activities"
-        :key="activity.id"
-        class="activityHolder"
+        class="activity"
+        v-for="(activity, index) in activities"
+        v-bind:item="activity"
+        v-bind:index="index"
+        v-bind:key="activity._id"
+        v-on:dblclick="deleteActivity(activity._id)"
       >
         <ActivityModal :activityObject="activity" />
       </div>
@@ -27,32 +30,38 @@
 
 <script>
 import ActivityModal from "@/components/ActivityModal.vue";
+import ActivitiesService from "../Warehouse/ActivitiesService.js";
 
 export default {
   name: "MyActivities",
   data() {
     return {
-      title: "Activities",
+      title: "",
       activityObject: {},
-      activityObjectName: "",
-      newPriority: "1",
-      activities: [
-        { title: "Planning", priority: 3 / 5, id: 1 },
-        { title: "Sleeping", priority: 2 / 5, id: 2 },
-      ],
+      activities: [],
+      priority: Number,
+      error: "Try again",
+      description: "",
     };
   },
   components: {
     ActivityModal,
   },
+    async created() {
+    try {
+      this.activities = await ActivitiesService.getActivities();
+    } catch (err) {
+      this.error = err.massage;
+    }
+  },
   methods: {
-    addActivities() {
-      this.activities.push({
-        title: this.activityObjectName,
-        priority: this.newPriority,
-        id: Math.random(),
-      });
-      this.activityObjectName = "";
+    async createActivity() {
+      await ActivitiesService.insertActivity({ title: this.title, priority: 6 });
+      this.activities = await ActivitiesService.getActivities();
+    },
+    async deleteActivity(id) {
+      await ActivitiesService.deleteActivity(id);
+      this.activities = await ActivitiesService.getActivities();
     },
   },
 };
@@ -145,6 +154,10 @@ export default {
   background: transparent;
   box-shadow: 0 25px 25px rgba(3, 96, 112, 0.1);
   backdrop-filter: blur(10px) drop-shadow(4px 4px 10px rgb(17, 185, 207));
+}
+
+.activity {
+  margin: 7px 7px;
 }
 
 input[type=text], input[type=password] {

@@ -1,9 +1,9 @@
 <template>
   <div class="main_container">
     <div class="upper_container">
-      <input type="file" name="file" id="file" accept="image/*">
+      <input type="file" name="file" id="file" accept="image/*" />
       <div class="profile_pic_container" id="profile_pic_id">
-        <img src="../assets/profile_cat.jpg" class="photo">
+        <img src="../assets/profile_cat.jpg" class="photo" />
         <label for="file" id="upload_btn">Upload Photo</label>
       </div>
       <div class="card" v-if="user">
@@ -13,57 +13,54 @@
       </div>
     </div>
     <div class="mid_container">
-      <div class="mid_title">
-        Time Statistics
-      </div>
+      <div class="mid_title">Time Statistics</div>
     </div>
     <PostComponent />
   </div>
 </template>
 
-
 <script>
 import { mapActions, mapGetters } from "vuex";
 import axios from "axios";
-import PostComponent from "./PostComponent.vue"
+import PostComponent from "./PostComponent.vue";
 
 export default {
   components: {
     PostComponent,
   },
   computed: {
-    ...mapGetters(['user']),
+    ...mapGetters(["user"]),
   },
   methods: {
-    ...mapActions(['getProfile']),
+    ...mapActions(["getProfile"]),
   },
-  created(){
-    this.getProfile()
+  created() {
+    this.getProfile();
   },
   mounted() {
     const file = document.getElementById("file");
     const previewContainer = document.getElementById("profile_pic_id");
     const previewImage = previewContainer.querySelector(".photo");
 
-    file.addEventListener("change", function() {
+    file.addEventListener("change", function () {
       const file = this.files[0];
 
-      if(file) {
+      if (file) {
         const reader = new FileReader();
 
-        previewImage.style.display = "block"
+        previewImage.style.display = "block";
 
-        reader.addEventListener("load", function() {
-          previewImage.setAttribute("src", this.result)
+        reader.addEventListener("load", function () {
+          previewImage.setAttribute("src", this.result);
         });
         reader.readAsDataURL(file);
       } else {
         previewImage.style.display = null;
         previewImage.setAttribute("src", "");
       }
-    })
+    });
   },
-}
+};
 </script>
 
 <style scoped>
@@ -79,7 +76,147 @@ export default {
   align-items: center;
   height: 100%;
   width: 100%;
-  background: repeating-linear-gradient(90deg, rgba(0, 0, 0, 0.11) 0px, rgba(0, 0, 0, 0.11) 12px, rgba(1, 1, 1, 0.16) 12px, rgba(1, 1, 1, 0.16) 24px, rgba(0, 0, 0, 0.14) 24px, rgba(0, 0, 0, 0.14) 36px, rgba(0, 0, 0, 0.23) 36px, rgba(0, 0, 0, 0.23) 48px, rgba(0, 0, 0, 0.12) 48px, rgba(0, 0, 0, 0.12) 60px, rgba(1, 1, 1, 0.07) 60px, rgba(1, 1, 1, 0.07) 72px, rgba(0, 0, 0, 0.21) 72px, rgba(0, 0, 0, 0.21) 84px, rgba(0, 0, 0, 0.24) 84px, rgba(0, 0, 0, 0.24) 96px, rgba(1, 1, 1, 0.23) 96px, rgba(1, 1, 1, 0.23) 108px, rgba(1, 1, 1, 0.07) 108px, rgba(1, 1, 1, 0.07) 120px, rgba(0, 0, 0, 0.01) 120px, rgba(0, 0, 0, 0.01) 132px, rgba(1, 1, 1, 0.22) 132px, rgba(1, 1, 1, 0.22) 144px, rgba(1, 1, 1, 0.24) 144px, rgba(1, 1, 1, 0.24) 156px, rgba(0, 0, 0, 0) 156px, rgba(0, 0, 0, 0) 168px, rgba(0, 0, 0, 0.12) 168px, rgba(0, 0, 0, 0.12) 180px), repeating-linear-gradient(180deg, rgba(1, 1, 1, 0.01) 0px, rgba(1, 1, 1, 0.01) 12px, rgba(1,1,1, 0.16) 12px, rgba(1,1,1, 0.16) 24px, rgba(0, 0, 0, 0.09) 24px, rgba(0, 0, 0, 0.09) 36px, rgba(0, 0, 0, 0.02) 36px, rgba(0, 0, 0, 0.02) 48px, rgba(0, 0, 0, 0.1) 48px, rgba(0, 0, 0, 0.1) 60px, rgba(1, 1, 1, 0.07) 60px, rgba(1, 1, 1, 0.07) 72px, rgba(1,1,1, 0.16) 72px, rgba(1,1,1, 0.16) 84px, rgba(0, 0, 0, 0.18) 84px, rgba(0, 0, 0, 0.18) 96px, rgba(1,1,1, 0.16) 96px, rgba(1,1,1, 0.16) 108px, rgba(108,86,86, 0.09) 108px, rgba(108,86,86, 0.09) 120px, rgba(1, 1, 1, 0.07) 120px, rgba(1, 1, 1, 0.07) 132px, rgba(1, 1, 1, 0.05) 132px, rgba(1, 1, 1, 0.05) 144px, rgba(0, 0, 0, 0.1) 144px, rgba(0, 0, 0, 0.1) 156px, rgba(1, 1, 1, 0.18) 156px, rgba(1, 1, 1, 0.18) 168px), repeating-linear-gradient(135deg, rgba(0, 0, 0, 0.24) 0px, rgba(0, 0, 0, 0.24) 16px, rgba(1, 1, 1, 0.06) 16px, rgba(1, 1, 1, 0.06) 32px, rgba(0, 0, 0, 0.16) 32px, rgba(0, 0, 0, 0.16) 48px, rgba(91,248,255, 0.01) 48px, rgba(91,248,255, 0.01) 64px, rgba(1, 1, 1, 0.12) 64px, rgba(1, 1, 1, 0.12) 80px, rgba(1, 1, 1, 0.22) 80px, rgba(1, 1, 1, 0.22) 96px, rgba(0, 0, 0, 0.24) 96px, rgba(0, 0, 0, 0.24) 112px, rgba(0, 0, 0, 0.25) 112px, rgba(0, 0, 0, 0.25) 128px, rgba(1, 1, 1, 0.12) 128px, rgba(1, 1, 1, 0.12) 144px, rgba(0, 0, 0, 0.18) 144px, rgba(0, 0, 0, 0.18) 160px, rgba(1, 1, 1, 0.03) 160px, rgba(1, 1, 1, 0.03) 176px, rgba(1, 1, 1, 0.1) 176px, rgba(1, 1, 1, 0.1) 192px), repeating-linear-gradient(225deg, rgba(1, 1, 1, 0.18) 0px, rgba(1, 1, 1, 0.18) 3px, rgba(0, 0, 0, 0.09) 3px, rgba(0, 0, 0, 0.09) 6px, rgba(0, 0, 0, 0.08) 6px, rgba(0, 0, 0, 0.08) 9px, rgba(1, 1, 1, 0.05) 9px, rgba(1, 1, 1, 0.05) 12px, rgba(0, 0, 0, 0.01) 12px, rgba(0, 0, 0, 0.01) 15px, rgba(1, 1, 1, 0.12) 15px, rgba(1, 1, 1, 0.12) 18px, rgba(0, 0, 0, 0.05) 18px, rgba(0, 0, 0, 0.05) 21px, rgba(1, 1, 1, 0.16) 21px, rgba(1, 1, 1, 0.16) 24px, rgba(1, 1, 1, 0.07) 24px, rgba(1, 1, 1, 0.07) 27px, rgba(1, 1, 1, 0.23) 27px, rgba(1, 1, 1, 0.23) 30px, rgba(0, 0, 0, 0.2) 30px, rgba(0, 0, 0, 0.2) 33px, rgba(0, 0, 0, 0.18) 33px, rgba(0, 0, 0, 0.18) 36px, rgba(1, 1, 1, 0.12) 36px, rgba(1, 1, 1, 0.12) 39px, rgba(1, 1, 1, 0.13) 39px, rgba(1, 1, 1, 0.13) 42px, rgba(1, 1, 1, 0.2) 42px, rgba(1, 1, 1, 0.2) 45px, rgba(1, 1, 1, 0.18) 45px, rgba(1, 1, 1, 0.18) 48px, rgba(0, 0, 0, 0.2) 48px, rgba(0, 0, 0, 0.2) 51px, rgba(91,248,255, 0.01) 51px, rgba(91,248,255, 0.01) 54px, rgba(0, 0, 0, 0.03) 54px, rgba(0, 0, 0, 0.03) 57px, rgba(1, 1, 1, 0.06) 57px, rgba(1, 1, 1, 0.06) 60px, rgba(91,248,255, 0.01) 60px, rgba(91,248,255, 0.01) 63px, rgba(0, 0, 0, 0.1) 63px, rgba(0, 0, 0, 0.1) 66px, rgba(1, 1, 1, 0.19) 66px, rgba(1, 1, 1, 0.19) 69px), linear-gradient(180deg, rgb(0,89,89), rgb(233,132,132));;
+  background: repeating-linear-gradient(
+      90deg,
+      rgba(0, 0, 0, 0.11) 0px,
+      rgba(0, 0, 0, 0.11) 12px,
+      rgba(1, 1, 1, 0.16) 12px,
+      rgba(1, 1, 1, 0.16) 24px,
+      rgba(0, 0, 0, 0.14) 24px,
+      rgba(0, 0, 0, 0.14) 36px,
+      rgba(0, 0, 0, 0.23) 36px,
+      rgba(0, 0, 0, 0.23) 48px,
+      rgba(0, 0, 0, 0.12) 48px,
+      rgba(0, 0, 0, 0.12) 60px,
+      rgba(1, 1, 1, 0.07) 60px,
+      rgba(1, 1, 1, 0.07) 72px,
+      rgba(0, 0, 0, 0.21) 72px,
+      rgba(0, 0, 0, 0.21) 84px,
+      rgba(0, 0, 0, 0.24) 84px,
+      rgba(0, 0, 0, 0.24) 96px,
+      rgba(1, 1, 1, 0.23) 96px,
+      rgba(1, 1, 1, 0.23) 108px,
+      rgba(1, 1, 1, 0.07) 108px,
+      rgba(1, 1, 1, 0.07) 120px,
+      rgba(0, 0, 0, 0.01) 120px,
+      rgba(0, 0, 0, 0.01) 132px,
+      rgba(1, 1, 1, 0.22) 132px,
+      rgba(1, 1, 1, 0.22) 144px,
+      rgba(1, 1, 1, 0.24) 144px,
+      rgba(1, 1, 1, 0.24) 156px,
+      rgba(0, 0, 0, 0) 156px,
+      rgba(0, 0, 0, 0) 168px,
+      rgba(0, 0, 0, 0.12) 168px,
+      rgba(0, 0, 0, 0.12) 180px
+    ),
+    repeating-linear-gradient(
+      180deg,
+      rgba(1, 1, 1, 0.01) 0px,
+      rgba(1, 1, 1, 0.01) 12px,
+      rgba(1, 1, 1, 0.16) 12px,
+      rgba(1, 1, 1, 0.16) 24px,
+      rgba(0, 0, 0, 0.09) 24px,
+      rgba(0, 0, 0, 0.09) 36px,
+      rgba(0, 0, 0, 0.02) 36px,
+      rgba(0, 0, 0, 0.02) 48px,
+      rgba(0, 0, 0, 0.1) 48px,
+      rgba(0, 0, 0, 0.1) 60px,
+      rgba(1, 1, 1, 0.07) 60px,
+      rgba(1, 1, 1, 0.07) 72px,
+      rgba(1, 1, 1, 0.16) 72px,
+      rgba(1, 1, 1, 0.16) 84px,
+      rgba(0, 0, 0, 0.18) 84px,
+      rgba(0, 0, 0, 0.18) 96px,
+      rgba(1, 1, 1, 0.16) 96px,
+      rgba(1, 1, 1, 0.16) 108px,
+      rgba(108, 86, 86, 0.09) 108px,
+      rgba(108, 86, 86, 0.09) 120px,
+      rgba(1, 1, 1, 0.07) 120px,
+      rgba(1, 1, 1, 0.07) 132px,
+      rgba(1, 1, 1, 0.05) 132px,
+      rgba(1, 1, 1, 0.05) 144px,
+      rgba(0, 0, 0, 0.1) 144px,
+      rgba(0, 0, 0, 0.1) 156px,
+      rgba(1, 1, 1, 0.18) 156px,
+      rgba(1, 1, 1, 0.18) 168px
+    ),
+    repeating-linear-gradient(
+      135deg,
+      rgba(0, 0, 0, 0.24) 0px,
+      rgba(0, 0, 0, 0.24) 16px,
+      rgba(1, 1, 1, 0.06) 16px,
+      rgba(1, 1, 1, 0.06) 32px,
+      rgba(0, 0, 0, 0.16) 32px,
+      rgba(0, 0, 0, 0.16) 48px,
+      rgba(91, 248, 255, 0.01) 48px,
+      rgba(91, 248, 255, 0.01) 64px,
+      rgba(1, 1, 1, 0.12) 64px,
+      rgba(1, 1, 1, 0.12) 80px,
+      rgba(1, 1, 1, 0.22) 80px,
+      rgba(1, 1, 1, 0.22) 96px,
+      rgba(0, 0, 0, 0.24) 96px,
+      rgba(0, 0, 0, 0.24) 112px,
+      rgba(0, 0, 0, 0.25) 112px,
+      rgba(0, 0, 0, 0.25) 128px,
+      rgba(1, 1, 1, 0.12) 128px,
+      rgba(1, 1, 1, 0.12) 144px,
+      rgba(0, 0, 0, 0.18) 144px,
+      rgba(0, 0, 0, 0.18) 160px,
+      rgba(1, 1, 1, 0.03) 160px,
+      rgba(1, 1, 1, 0.03) 176px,
+      rgba(1, 1, 1, 0.1) 176px,
+      rgba(1, 1, 1, 0.1) 192px
+    ),
+    repeating-linear-gradient(
+      225deg,
+      rgba(1, 1, 1, 0.18) 0px,
+      rgba(1, 1, 1, 0.18) 3px,
+      rgba(0, 0, 0, 0.09) 3px,
+      rgba(0, 0, 0, 0.09) 6px,
+      rgba(0, 0, 0, 0.08) 6px,
+      rgba(0, 0, 0, 0.08) 9px,
+      rgba(1, 1, 1, 0.05) 9px,
+      rgba(1, 1, 1, 0.05) 12px,
+      rgba(0, 0, 0, 0.01) 12px,
+      rgba(0, 0, 0, 0.01) 15px,
+      rgba(1, 1, 1, 0.12) 15px,
+      rgba(1, 1, 1, 0.12) 18px,
+      rgba(0, 0, 0, 0.05) 18px,
+      rgba(0, 0, 0, 0.05) 21px,
+      rgba(1, 1, 1, 0.16) 21px,
+      rgba(1, 1, 1, 0.16) 24px,
+      rgba(1, 1, 1, 0.07) 24px,
+      rgba(1, 1, 1, 0.07) 27px,
+      rgba(1, 1, 1, 0.23) 27px,
+      rgba(1, 1, 1, 0.23) 30px,
+      rgba(0, 0, 0, 0.2) 30px,
+      rgba(0, 0, 0, 0.2) 33px,
+      rgba(0, 0, 0, 0.18) 33px,
+      rgba(0, 0, 0, 0.18) 36px,
+      rgba(1, 1, 1, 0.12) 36px,
+      rgba(1, 1, 1, 0.12) 39px,
+      rgba(1, 1, 1, 0.13) 39px,
+      rgba(1, 1, 1, 0.13) 42px,
+      rgba(1, 1, 1, 0.2) 42px,
+      rgba(1, 1, 1, 0.2) 45px,
+      rgba(1, 1, 1, 0.18) 45px,
+      rgba(1, 1, 1, 0.18) 48px,
+      rgba(0, 0, 0, 0.2) 48px,
+      rgba(0, 0, 0, 0.2) 51px,
+      rgba(91, 248, 255, 0.01) 51px,
+      rgba(91, 248, 255, 0.01) 54px,
+      rgba(0, 0, 0, 0.03) 54px,
+      rgba(0, 0, 0, 0.03) 57px,
+      rgba(1, 1, 1, 0.06) 57px,
+      rgba(1, 1, 1, 0.06) 60px,
+      rgba(91, 248, 255, 0.01) 60px,
+      rgba(91, 248, 255, 0.01) 63px,
+      rgba(0, 0, 0, 0.1) 63px,
+      rgba(0, 0, 0, 0.1) 66px,
+      rgba(1, 1, 1, 0.19) 66px,
+      rgba(1, 1, 1, 0.19) 69px
+    ),
+    linear-gradient(180deg, rgb(0, 89, 89), rgb(233, 132, 132));
   color: white;
   overflow-y: hidden;
 }
@@ -129,10 +266,10 @@ export default {
   display: none;
   justify-content: center;
   align-items: center;
-
 }
 
-img:hover ~ #upload_btn, #upload_btn:hover {
+img:hover ~ #upload_btn,
+#upload_btn:hover {
   display: flex;
 }
 
@@ -144,9 +281,15 @@ img:hover ~ #upload_btn, #upload_btn:hover {
   padding: 0.3rem 2rem;
   border-style: solid;
   border-width: 1px;
-  border-image: linear-gradient(to bottom, rgb(164, 253, 249), rgb(250, 127, 127)) 1;
+  border-image: linear-gradient(
+      to bottom,
+      rgb(164, 253, 249),
+      rgb(250, 127, 127)
+    )
+    1;
   border-image-repeat: stretch;
-  backdrop-filter: drop-shadow(4px 4px 6px rgb(207, 17, 17)) hue-rotate(180deg) opacity(80%);
+  backdrop-filter: drop-shadow(4px 4px 6px rgb(207, 17, 17)) hue-rotate(180deg)
+    opacity(80%);
   display: flex;
   justify-content: center;
   margin-bottom: 2rem;

@@ -1,9 +1,8 @@
 <template>
   <div class="textArea">
     <textarea
-      type="text"
+      type="submit"
       @input="changeDescription"
-      v-model="description"
       class="area"
       placeholder="Description"
     ></textarea>
@@ -20,8 +19,7 @@ export default {
   },
   methods: {
     changeDescription(event) {
-      this.description = event.target.value;
-      this.$emit("descriptionChanged", this.description);
+      this.$emit("changedDescription", event.target.value);
     },
   },
 };

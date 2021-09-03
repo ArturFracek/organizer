@@ -13,16 +13,15 @@
     <transition name="slide" appear>
       <div class="modal" v-if="showModal">
         <h1>{{ goalObject.title }}</h1>
-        <textArea />
+        <textArea @changedDescription="descriptionToSave" />
         <Slider></Slider>
         <div class="bottomContainer">
           <div class="lower_mid_container">
             <input
-              v-model="description"
-              @click="$emit('add-goal-description', description)"
               type="submit"
               class="btn_save"
               placeholder="Save"
+              @click="saveDescription"
             />
             <input
               type="submit"
@@ -49,13 +48,17 @@
 import Slider from "@/components/Slider.vue";
 import textArea from "@/components/textArea.vue";
 import PostService from "../Warehouse/PostService";
+import axsios from "axios";
 
 export default {
   name: "GoalModal",
   data() {
     return {
       showModal: false,
-      description: "",
+      description: {
+        type: String,
+        required: false,
+      }
     };
   },
   components: {
@@ -69,8 +72,11 @@ export default {
     },
   },
   methods: {
-    pushDescription() {
-      return this.post.push(this.description);
+    descriptionToSave(newDescription) {
+      this.description = newDescription;
+    },
+    saveDescription() {
+      this.$emit("savingDescription", this.description);
     },
   },
 };
@@ -90,7 +96,7 @@ export default {
 }
 
 .btn {
-  text-align: center;
+  text-align: start;
   width: 100%;
   height: 100%;
   border-radius: 2px;
@@ -100,12 +106,9 @@ export default {
   padding: 0.7rem;
   background: none;
   outline: none;
-  border: 2px solid rgb(255, 255, 255);
-  border-radius: 0.5rem;
   background: transparent;
-  box-shadow: 0 25px 25px rgba(3, 96, 112, 0.1);
-  backdrop-filter: blur(10px) drop-shadow(4px 4px 10px rgb(248, 248, 248));
-  transition: 0.2s ease-out;
+  backdrop-filter: drop-shadow(4px 4px 10px rgba(248, 248, 248, 0));
+  transition: 0.2s ease-in;
 }
 
 .modalButton:hover {
@@ -165,7 +168,7 @@ export default {
   right: 0;
   bottom: 0;
   z-index: 98;
-  background-color: rgba(0, 0, 0, 0.4);
+  backdrop-filter: hue-rotate(180deg) opacity(80%) brightness(90%);
 }
 
 .fade-enter-active,
@@ -189,7 +192,6 @@ export default {
   transform: translate(-50%, -50%);
   background-color: rgb(100, 100, 100);
   z-index: 99;
-
   text-align: center;
   width: 80%;
   height: 60%;
@@ -199,9 +201,8 @@ export default {
   outline: none;
   border: 2px solid rgb(35, 166, 170);
   border-radius: 0.5rem;
-  background: transparent;
-  box-shadow: 0 25px 25px rgba(3, 96, 112, 0.1);
-  backdrop-filter: blur(10px) drop-shadow(4px 4px 10px rgb(17, 185, 207));
+  box-shadow: 0 0 0 0.5rem rgba(8, 214, 250, 0.1);
+  backdrop-filter: blur(15px) drop-shadow(10px 10px 10px rgb(17, 185, 207));
 }
 
 h1 {
@@ -232,7 +233,10 @@ h1 {
   transition: transfrom 0.5s;
 }
 
-
+.slide-enter,
+.slide-leave-to {
+  transform: translateY(-50%) translateX(300%);
+}
 
 .btn_delete {
   height: 3rem;

@@ -6,15 +6,16 @@
         class="input"
         type="text"
         id="create_post"
+        ref="post"
         v-model="title"
         placeholder=" "
         @keyup.enter="createPost"
       />
       <label class="goals_label" for="create_post">Add Goal</label>
-      <button class="btn" v-on:click="createPost">Add Goal</button>
+      <button class="btn" @click="createPost">Add Goal</button>
     </div>
     <div class="posts_area">
-      <div
+      <ul
         class="post"
         v-for="(post, index) in posts"
         v-bind:item="post"
@@ -23,9 +24,12 @@
         v-on:dblclick="deletePost(post._id)"
       >
         <li>
-          <GoalModal :goalObject="post" />
+          <GoalModal
+            :goalObject="post"
+            @savingDescription="descriptionToDatabase"
+          />
         </li>
-      </div>
+      </ul>
     </div>
   </div>
 </template>
@@ -60,10 +64,15 @@ export default {
     async createPost() {
       await PostService.insertPost({ title: this.title, priority: 6 });
       this.posts = await PostService.getPosts();
+      //this.$refs.post.value = "";
     },
     async deletePost(id) {
       await PostService.deletePost(id);
       this.posts = await PostService.getPosts();
+    },
+    descriptionToDatabase(descriptionText) {
+      this.description = descriptionText;
+      console.log(descriptionText)
     },
   },
 };
@@ -82,7 +91,8 @@ export default {
   height: 100%;
   width: 100%;
   background: transparent;
-  backdrop-filter: drop-shadow(4px 4px 6px rgb(207, 17, 17)) hue-rotate(180deg) opacity(80%);
+  backdrop-filter: drop-shadow(4px 4px 6px rgb(207, 17, 17)) hue-rotate(180deg)
+    opacity(80%);
   right: 0%;
 }
 
@@ -99,7 +109,6 @@ export default {
   border-image-repeat: stretch;
   display: flex;
   flex-flow: column;
-  
 }
 
 .post_adding {
