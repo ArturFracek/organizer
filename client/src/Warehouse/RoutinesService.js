@@ -24,7 +24,7 @@ class RoutinesService {
   }
 
   //create post
-  static insertActivity(routine) {
+  static insertRoutine(routine) {
     return axios.post(url, routine);
   }
 

@@ -10,7 +10,9 @@
         v-model="title"
         @keyup.enter="createActivity"
       />
-       <label for="add_activity" class="form_label_add_activity">Add Activity</label>
+      <label for="add_activity" class="form_label_add_activity"
+        >Add Activity</label
+      >
       <button class="btn" @click="createActivity">Add</button>
     </div>
     <div class="activities">
@@ -22,7 +24,11 @@
         v-bind:key="activity._id"
         v-on:dblclick="deleteActivity(activity._id)"
       >
-        <ActivityModal :activityObject="activity" />
+        <ActivityModal
+          :activityObject="activity"
+          @deleteActivity="deleteActivity"
+          @saveDescription="save"
+        />
       </div>
     </div>
   </div>
@@ -47,7 +53,7 @@ export default {
   components: {
     ActivityModal,
   },
-    async created() {
+  async created() {
     try {
       this.activities = await ActivitiesService.getActivities();
     } catch (err) {
@@ -56,12 +62,18 @@ export default {
   },
   methods: {
     async createActivity() {
-      await ActivitiesService.insertActivity({ title: this.title, priority: 6 });
+      await ActivitiesService.insertActivity({
+        title: this.title,
+        priority: 6,
+      });
       this.activities = await ActivitiesService.getActivities();
     },
     async deleteActivity(id) {
       await ActivitiesService.deleteActivity(id);
       this.activities = await ActivitiesService.getActivities();
+    },
+    save(activityChanged) {
+      this.routine = activityChanged;
     },
   },
 };
@@ -78,7 +90,7 @@ export default {
   border: 2px solid rgb(35, 166, 170);
   border-radius: 0.5rem;
   padding: 0 1rem 1rem 1rem;
-  box-shadow: 0 0 0.5rem rgb(132, 242, 250);;
+  box-shadow: 0 0 0.5rem rgb(132, 242, 250);
 }
 
 .title {
@@ -160,7 +172,8 @@ export default {
   margin: 7px 7px;
 }
 
-input[type=text], input[type=password] {
+input[type="text"],
+input[type="password"] {
   color: whitesmoke;
 }
 
@@ -173,8 +186,8 @@ input:hover ~ .form_label_add_activity {
   color: rgb(216, 25, 25);
 }
 
-
-input:focus, textarea {
+input:focus,
+textarea {
   color: turquoise;
   border-color: turquoise;
   background-color: none;
@@ -188,13 +201,11 @@ input:focus ~ .form_label_add_activity {
 }
 
 input:focus ~ .form_label_add_activity,
-input:not(:placeholder-shown).input:not(:focus)
- ~ .form_label_add_activity {
+input:not(:placeholder-shown).input:not(:focus) ~ .form_label_add_activity {
   top: -4.4rem;
 }
 
-input:not(:placeholder-shown)
- ~ .btn {
+input:not(:placeholder-shown) ~ .btn {
   display: block;
 }
 
@@ -204,8 +215,8 @@ input:not(:placeholder-shown)
   display: flex;
   cursor: text;
   transition: top 200ms ease-in;
-    left: 200ms ease-in;
-    font-size: 200ms ease-in;
+  left: 200ms ease-in;
+  font-size: 200ms ease-in;
   top: -2.2rem;
   left: 0.2rem;
   background-color: none;

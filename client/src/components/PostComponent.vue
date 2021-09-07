@@ -72,7 +72,7 @@ export default {
     },
     descriptionToDatabase(descriptionText) {
       this.description = descriptionText;
-      console.log(descriptionText)
+      console.log(descriptionText);
     },
   },
 };

@@ -21,7 +21,11 @@
         v-bind:key="routine._id"
         v-on:dblclick="deleteRoutine(routine._id)"
       >
-        <RoutineModal :routineObject="routine" />
+        <RoutineModal
+          :routineObject="routine"
+          @deleteRoutine="deleteRoutine"
+          @saveDescription="save"
+        />
       </div>
     </div>
   </div>
@@ -29,16 +33,14 @@
 
 <script>
 import RoutineModal from "@/components/RoutineModal.vue";
-import RoutinesService from "../Warehouse/RoutinesService"
+import RoutinesService from "@/Warehouse/RoutinesService";
 
 export default {
   name: "MyRoutines",
   data() {
     return {
       title: "",
-      routineObject: {},
       routines: [],
-      priority: Number,
       error: "Try again",
       description: "",
     };
@@ -46,7 +48,7 @@ export default {
   components: {
     RoutineModal,
   },
-   async created() {
+  async created() {
     try {
       this.routines = await RoutinesService.getRoutines();
     } catch (err) {
@@ -55,12 +57,15 @@ export default {
   },
   methods: {
     async createRoutine() {
-      await RoutinesService.insertActivity({ title: this.title, priority: 6 });
+      await RoutinesService.insertRoutine({ title: this.title, priority: 6 });
       this.routines = await RoutinesService.getRoutines();
     },
     async deleteRoutine(id) {
       await RoutinesService.deleteRoutine(id);
       this.routines = await RoutinesService.getRoutines();
+    },
+    save(routineChanged) {
+      this.routine = routineChanged;
     },
   },
 };

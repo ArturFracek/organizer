@@ -12,7 +12,7 @@
               name="username"
               v-model="username"
               class="input"
-            >
+            />
             <label for="username" class="form_label_login">Username</label>
           </div>
           <div class="form_group">
@@ -23,15 +23,24 @@
               name="password"
               v-model="password"
               class="input"
-            >
+            />
             <label for="password" class="form_label_password">Password</label>
           </div>
           <div class="form_group">
-            <input type='submit' class="btn btn_primary" value="Login" placeholder=""/>
+            <input
+              type="submit"
+              class="btn btn_primary"
+              value="Login"
+              placeholder=""
+            />
           </div>
           <div class="registration_wrap">
-            <router-link to="/register" class="registration_link">Need an Account ?</router-link>
-            <router-link to="/register" class="registration_link_two">Register now</router-link>
+            <router-link to="/register" class="registration_link"
+              >Need an Account ?</router-link
+            >
+            <router-link to="/register" class="registration_link_two"
+              >Register now</router-link
+            >
           </div>
         </form>
       </div>
@@ -44,34 +53,34 @@ import { mapActions } from "vuex";
 import router from "../router";
 
 export default {
-  data(){
+  data() {
     return {
       username: "",
       password: "",
-    }
+    };
   },
   methods: {
-    ...mapActions(['login']),
-    loginUser(){
-     let user = {
-      username: this.username,
-      password: this.password,
-     };
-     this.login(user)
-     .then(res => {
-       if(res.data.success){
-        this.$router.push('/profile')
-       }
-     }).catch(err=>{
-       console.log(err)
-     });
-   } 
-  }
-}
+    ...mapActions(["login"]),
+    loginUser() {
+      let user = {
+        username: this.username,
+        password: this.password,
+      };
+      this.login(user)
+        .then((res) => {
+          if (res.data.success) {
+            this.$router.push("/profile");
+          }
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    },
+  },
+};
 </script>
 
 <style scoped>
-
 .login_container {
   display: flex;
   flex-flow: column;
@@ -83,8 +92,147 @@ export default {
 }
 
 .login_container {
-  background: 
-    repeating-linear-gradient(270deg, rgba(0, 0, 0, 0.11) 0px, rgba(0, 0, 0, 0.11) 12px, rgba(1, 1, 1, 0.16) 12px, rgba(1, 1, 1, 0.16) 24px, rgba(0, 0, 0, 0.14) 24px, rgba(0, 0, 0, 0.14) 36px, rgba(0, 0, 0, 0.23) 36px, rgba(0, 0, 0, 0.23) 48px, rgba(0, 0, 0, 0.12) 48px, rgba(0, 0, 0, 0.12) 60px, rgba(1, 1, 1, 0.07) 60px, rgba(1, 1, 1, 0.07) 72px, rgba(0, 0, 0, 0.21) 72px, rgba(0, 0, 0, 0.21) 84px, rgba(0, 0, 0, 0.24) 84px, rgba(0, 0, 0, 0.24) 96px, rgba(1, 1, 1, 0.23) 96px, rgba(1, 1, 1, 0.23) 108px, rgba(1, 1, 1, 0.07) 108px, rgba(1, 1, 1, 0.07) 120px, rgba(0, 0, 0, 0.01) 120px, rgba(0, 0, 0, 0.01) 132px, rgba(1, 1, 1, 0.22) 132px, rgba(1, 1, 1, 0.22) 144px, rgba(1, 1, 1, 0.24) 144px, rgba(1, 1, 1, 0.24) 156px, rgba(0, 0, 0, 0) 156px, rgba(0, 0, 0, 0) 168px, rgba(0, 0, 0, 0.12) 168px, rgba(0, 0, 0, 0.12) 180px), repeating-linear-gradient(360deg, rgba(1, 1, 1, 0.01) 0px, rgba(1, 1, 1, 0.01) 12px, rgba(1, 1, 1, 0.15) 12px, rgba(1, 1, 1, 0.15) 24px, rgba(0, 0, 0, 0.09) 24px, rgba(0, 0, 0, 0.09) 36px, rgba(0, 0, 0, 0.02) 36px, rgba(0, 0, 0, 0.02) 48px, rgba(0, 0, 0, 0.1) 48px, rgba(0, 0, 0, 0.1) 60px, rgba(1, 1, 1, 0.07) 60px, rgba(1, 1, 1, 0.07) 72px, rgba(1, 1, 1, 0.15) 72px, rgba(1, 1, 1, 0.15) 84px, rgba(0, 0, 0, 0.18) 84px, rgba(0, 0, 0, 0.18) 96px, rgba(1, 1, 1, 0.15) 96px, rgba(1, 1, 1, 0.15) 108px, rgba(1, 1, 1, 0.09) 108px, rgba(1, 1, 1, 0.09) 120px, rgba(1, 1, 1, 0.07) 120px, rgba(1, 1, 1, 0.07) 132px, rgba(1, 1, 1, 0.05) 132px, rgba(1, 1, 1, 0.05) 144px, rgba(0, 0, 0, 0.1) 144px, rgba(0, 0, 0, 0.1) 156px, rgba(1, 1, 1, 0.18) 156px, rgba(1, 1, 1, 0.18) 168px), repeating-linear-gradient(315deg, rgba(0, 0, 0, 0.24) 0px, rgba(0, 0, 0, 0.24) 16px, rgba(1, 1, 1, 0.06) 16px, rgba(1, 1, 1, 0.06) 32px, rgba(0, 0, 0, 0.16) 32px, rgba(0, 0, 0, 0.16) 48px, rgba(1, 1, 1, 0) 48px, rgba(1, 1, 1, 0) 64px, rgba(1, 1, 1, 0.12) 64px, rgba(1, 1, 1, 0.12) 80px, rgba(1, 1, 1, 0.22) 80px, rgba(1, 1, 1, 0.22) 96px, rgba(0, 0, 0, 0.24) 96px, rgba(0, 0, 0, 0.24) 112px, rgba(0, 0, 0, 0.25) 112px, rgba(0, 0, 0, 0.25) 128px, rgba(1, 1, 1, 0.12) 128px, rgba(1, 1, 1, 0.12) 144px, rgba(0, 0, 0, 0.18) 144px, rgba(0, 0, 0, 0.18) 160px, rgba(1, 1, 1, 0.03) 160px, rgba(1, 1, 1, 0.03) 176px, rgba(1, 1, 1, 0.1) 176px, rgba(1, 1, 1, 0.1) 192px), repeating-linear-gradient(405deg, rgba(1, 1, 1, 0.18) 0px, rgba(1, 1, 1, 0.18) 3px, rgba(0, 0, 0, 0.09) 3px, rgba(0, 0, 0, 0.09) 6px, rgba(0, 0, 0, 0.08) 6px, rgba(0, 0, 0, 0.08) 9px, rgba(1, 1, 1, 0.05) 9px, rgba(1, 1, 1, 0.05) 12px, rgba(0, 0, 0, 0.01) 12px, rgba(0, 0, 0, 0.01) 15px, rgba(1, 1, 1, 0.12) 15px, rgba(1, 1, 1, 0.12) 18px, rgba(0, 0, 0, 0.05) 18px, rgba(0, 0, 0, 0.05) 21px, rgba(1, 1, 1, 0.16) 21px, rgba(1, 1, 1, 0.16) 24px, rgba(1, 1, 1, 0.07) 24px, rgba(1, 1, 1, 0.07) 27px, rgba(1, 1, 1, 0.23) 27px, rgba(1, 1, 1, 0.23) 30px, rgba(0, 0, 0, 0.2) 30px, rgba(0, 0, 0, 0.2) 33px, rgba(0, 0, 0, 0.18) 33px, rgba(0, 0, 0, 0.18) 36px, rgba(1, 1, 1, 0.12) 36px, rgba(1, 1, 1, 0.12) 39px, rgba(1, 1, 1, 0.13) 39px, rgba(1, 1, 1, 0.13) 42px, rgba(1, 1, 1, 0.2) 42px, rgba(1, 1, 1, 0.2) 45px, rgba(1, 1, 1, 0.18) 45px, rgba(1, 1, 1, 0.18) 48px, rgba(0, 0, 0, 0.2) 48px, rgba(0, 0, 0, 0.2) 51px, rgba(1, 1, 1, 0) 51px, rgba(1, 1, 1, 0) 54px, rgba(0, 0, 0, 0.03) 54px, rgba(0, 0, 0, 0.03) 57px, rgba(1, 1, 1, 0.06) 57px, rgba(1, 1, 1, 0.06) 60px, rgba(1, 1, 1, 0) 60px, rgba(1, 1, 1, 0) 63px, rgba(0, 0, 0, 0.1) 63px, rgba(0, 0, 0, 0.1) 66px, rgba(1, 1, 1, 0.19) 66px, rgba(1, 1, 1, 0.19) 69px), linear-gradient(360deg, rgb(33,250,250), rgb(4,0,5));
+  background: repeating-linear-gradient(
+      270deg,
+      rgba(0, 0, 0, 0.11) 0px,
+      rgba(0, 0, 0, 0.11) 12px,
+      rgba(1, 1, 1, 0.16) 12px,
+      rgba(1, 1, 1, 0.16) 24px,
+      rgba(0, 0, 0, 0.14) 24px,
+      rgba(0, 0, 0, 0.14) 36px,
+      rgba(0, 0, 0, 0.23) 36px,
+      rgba(0, 0, 0, 0.23) 48px,
+      rgba(0, 0, 0, 0.12) 48px,
+      rgba(0, 0, 0, 0.12) 60px,
+      rgba(1, 1, 1, 0.07) 60px,
+      rgba(1, 1, 1, 0.07) 72px,
+      rgba(0, 0, 0, 0.21) 72px,
+      rgba(0, 0, 0, 0.21) 84px,
+      rgba(0, 0, 0, 0.24) 84px,
+      rgba(0, 0, 0, 0.24) 96px,
+      rgba(1, 1, 1, 0.23) 96px,
+      rgba(1, 1, 1, 0.23) 108px,
+      rgba(1, 1, 1, 0.07) 108px,
+      rgba(1, 1, 1, 0.07) 120px,
+      rgba(0, 0, 0, 0.01) 120px,
+      rgba(0, 0, 0, 0.01) 132px,
+      rgba(1, 1, 1, 0.22) 132px,
+      rgba(1, 1, 1, 0.22) 144px,
+      rgba(1, 1, 1, 0.24) 144px,
+      rgba(1, 1, 1, 0.24) 156px,
+      rgba(0, 0, 0, 0) 156px,
+      rgba(0, 0, 0, 0) 168px,
+      rgba(0, 0, 0, 0.12) 168px,
+      rgba(0, 0, 0, 0.12) 180px
+    ),
+    repeating-linear-gradient(
+      360deg,
+      rgba(1, 1, 1, 0.01) 0px,
+      rgba(1, 1, 1, 0.01) 12px,
+      rgba(1, 1, 1, 0.15) 12px,
+      rgba(1, 1, 1, 0.15) 24px,
+      rgba(0, 0, 0, 0.09) 24px,
+      rgba(0, 0, 0, 0.09) 36px,
+      rgba(0, 0, 0, 0.02) 36px,
+      rgba(0, 0, 0, 0.02) 48px,
+      rgba(0, 0, 0, 0.1) 48px,
+      rgba(0, 0, 0, 0.1) 60px,
+      rgba(1, 1, 1, 0.07) 60px,
+      rgba(1, 1, 1, 0.07) 72px,
+      rgba(1, 1, 1, 0.15) 72px,
+      rgba(1, 1, 1, 0.15) 84px,
+      rgba(0, 0, 0, 0.18) 84px,
+      rgba(0, 0, 0, 0.18) 96px,
+      rgba(1, 1, 1, 0.15) 96px,
+      rgba(1, 1, 1, 0.15) 108px,
+      rgba(1, 1, 1, 0.09) 108px,
+      rgba(1, 1, 1, 0.09) 120px,
+      rgba(1, 1, 1, 0.07) 120px,
+      rgba(1, 1, 1, 0.07) 132px,
+      rgba(1, 1, 1, 0.05) 132px,
+      rgba(1, 1, 1, 0.05) 144px,
+      rgba(0, 0, 0, 0.1) 144px,
+      rgba(0, 0, 0, 0.1) 156px,
+      rgba(1, 1, 1, 0.18) 156px,
+      rgba(1, 1, 1, 0.18) 168px
+    ),
+    repeating-linear-gradient(
+      315deg,
+      rgba(0, 0, 0, 0.24) 0px,
+      rgba(0, 0, 0, 0.24) 16px,
+      rgba(1, 1, 1, 0.06) 16px,
+      rgba(1, 1, 1, 0.06) 32px,
+      rgba(0, 0, 0, 0.16) 32px,
+      rgba(0, 0, 0, 0.16) 48px,
+      rgba(1, 1, 1, 0) 48px,
+      rgba(1, 1, 1, 0) 64px,
+      rgba(1, 1, 1, 0.12) 64px,
+      rgba(1, 1, 1, 0.12) 80px,
+      rgba(1, 1, 1, 0.22) 80px,
+      rgba(1, 1, 1, 0.22) 96px,
+      rgba(0, 0, 0, 0.24) 96px,
+      rgba(0, 0, 0, 0.24) 112px,
+      rgba(0, 0, 0, 0.25) 112px,
+      rgba(0, 0, 0, 0.25) 128px,
+      rgba(1, 1, 1, 0.12) 128px,
+      rgba(1, 1, 1, 0.12) 144px,
+      rgba(0, 0, 0, 0.18) 144px,
+      rgba(0, 0, 0, 0.18) 160px,
+      rgba(1, 1, 1, 0.03) 160px,
+      rgba(1, 1, 1, 0.03) 176px,
+      rgba(1, 1, 1, 0.1) 176px,
+      rgba(1, 1, 1, 0.1) 192px
+    ),
+    repeating-linear-gradient(
+      405deg,
+      rgba(1, 1, 1, 0.18) 0px,
+      rgba(1, 1, 1, 0.18) 3px,
+      rgba(0, 0, 0, 0.09) 3px,
+      rgba(0, 0, 0, 0.09) 6px,
+      rgba(0, 0, 0, 0.08) 6px,
+      rgba(0, 0, 0, 0.08) 9px,
+      rgba(1, 1, 1, 0.05) 9px,
+      rgba(1, 1, 1, 0.05) 12px,
+      rgba(0, 0, 0, 0.01) 12px,
+      rgba(0, 0, 0, 0.01) 15px,
+      rgba(1, 1, 1, 0.12) 15px,
+      rgba(1, 1, 1, 0.12) 18px,
+      rgba(0, 0, 0, 0.05) 18px,
+      rgba(0, 0, 0, 0.05) 21px,
+      rgba(1, 1, 1, 0.16) 21px,
+      rgba(1, 1, 1, 0.16) 24px,
+      rgba(1, 1, 1, 0.07) 24px,
+      rgba(1, 1, 1, 0.07) 27px,
+      rgba(1, 1, 1, 0.23) 27px,
+      rgba(1, 1, 1, 0.23) 30px,
+      rgba(0, 0, 0, 0.2) 30px,
+      rgba(0, 0, 0, 0.2) 33px,
+      rgba(0, 0, 0, 0.18) 33px,
+      rgba(0, 0, 0, 0.18) 36px,
+      rgba(1, 1, 1, 0.12) 36px,
+      rgba(1, 1, 1, 0.12) 39px,
+      rgba(1, 1, 1, 0.13) 39px,
+      rgba(1, 1, 1, 0.13) 42px,
+      rgba(1, 1, 1, 0.2) 42px,
+      rgba(1, 1, 1, 0.2) 45px,
+      rgba(1, 1, 1, 0.18) 45px,
+      rgba(1, 1, 1, 0.18) 48px,
+      rgba(0, 0, 0, 0.2) 48px,
+      rgba(0, 0, 0, 0.2) 51px,
+      rgba(1, 1, 1, 0) 51px,
+      rgba(1, 1, 1, 0) 54px,
+      rgba(0, 0, 0, 0.03) 54px,
+      rgba(0, 0, 0, 0.03) 57px,
+      rgba(1, 1, 1, 0.06) 57px,
+      rgba(1, 1, 1, 0.06) 60px,
+      rgba(1, 1, 1, 0) 60px,
+      rgba(1, 1, 1, 0) 63px,
+      rgba(0, 0, 0, 0.1) 63px,
+      rgba(0, 0, 0, 0.1) 66px,
+      rgba(1, 1, 1, 0.19) 66px,
+      rgba(1, 1, 1, 0.19) 69px
+    ),
+    linear-gradient(360deg, rgb(33, 250, 250), rgb(4, 0, 5));
 }
 
 .form_container {
@@ -119,8 +267,8 @@ form {
   display: flex;
   cursor: text;
   transition: top 200ms ease-in;
-    left: 200ms ease-in;
-    font-size: 200ms ease-in;
+  left: 200ms ease-in;
+  font-size: 200ms ease-in;
   top: 2.2rem;
   left: 2rem;
   background-color: none;
@@ -133,8 +281,8 @@ form {
   display: flex;
   cursor: text;
   transition: top 200ms ease-in;
-    left: 200ms ease-in;
-    font-size: 200ms ease-in;
+  left: 200ms ease-in;
+  font-size: 200ms ease-in;
   top: 7.9rem;
   left: 2rem;
   background-color: none;
@@ -157,7 +305,8 @@ input {
   backdrop-filter: blur(10px) drop-shadow(4px 4px 10px rgb(17, 185, 207));
 }
 
-input[type=text], input[type=password] {
+input[type="text"],
+input[type="password"] {
   color: whitesmoke;
 }
 
@@ -175,8 +324,8 @@ input:hover ~ .form_label_password {
   color: rgb(216, 25, 25);
 }
 
-
-input:focus, textarea {
+input:focus,
+textarea {
   color: turquoise;
   border-color: turquoise;
   background-color: none;
@@ -184,23 +333,21 @@ input:focus, textarea {
   backdrop-filter: blur(15px) drop-shadow(4px 4px 10px rgb(7, 207, 233));
 }
 
-input:focus ~ .form_label_login, input:focus ~ .form_label_password {
+input:focus ~ .form_label_login,
+input:focus ~ .form_label_password {
   color: turquoise;
   text-shadow: 0px 0px 0.1rem turquoise;
 }
 
 input:focus ~ .form_label_login,
-input:not(:placeholder-shown).input:not(:focus)
-~ .form_label_login {
+input:not(:placeholder-shown).input:not(:focus) ~ .form_label_login {
   top: 0.1rem;
 }
 
 input:focus ~ .form_label_password,
-input:not(:placeholder-shown).input:not(:focus)
- ~ .form_label_password {
+input:not(:placeholder-shown).input:not(:focus) ~ .form_label_password {
   top: 5.95rem;
 }
-
 
 .title_login {
   color: rgb(230, 230, 230);
@@ -217,35 +364,26 @@ input:not(:placeholder-shown).input:not(:focus)
 }
 
 @keyframes text1 {
-  0%{
+  0% {
     color: rgb(0, 0, 0);
     opacity: 0;
-    text-shadow: 
-       0.6rem 0rem  0.8rem turquoise,
-      -0.6rem 0rem 0.8rem turquoise,
-       0rem 0.6rem 0.8rem turquoise,
-       0rem -0.6rem 0.8rem turquoise;
+    text-shadow: 0.6rem 0rem 0.8rem turquoise, -0.6rem 0rem 0.8rem turquoise,
+      0rem 0.6rem 0.8rem turquoise, 0rem -0.6rem 0.8rem turquoise;
   }
-  20%{
+  20% {
     opacity: 0.8;
   }
-  70%{
+  70% {
     opacity: 1;
-    text-shadow:
-    0.3rem 0rem  0.8rem turquoise,
-      -0.3rem 0rem 0.8rem turquoise,
-       0rem 0.3rem 0.8rem turquoise,
-       0rem -0.3rem 0.8rem turquoise;
+    text-shadow: 0.3rem 0rem 0.8rem turquoise, -0.3rem 0rem 0.8rem turquoise,
+      0rem 0.3rem 0.8rem turquoise, 0rem -0.3rem 0.8rem turquoise;
   }
   90% {
     opacity: 1;
-    text-shadow: 
-    0.2rem 0rem  1.4rem turquoise,
-      -0.2rem 0rem 1.4rem turquoise,
-       0rem 0.2rem 1.4em turquoise,
-       0rem -0.2rem 1.4rem turquoise;
+    text-shadow: 0.2rem 0rem 1.4rem turquoise, -0.2rem 0rem 1.4rem turquoise,
+      0rem 0.2rem 1.4em turquoise, 0rem -0.2rem 1.4rem turquoise;
   }
-  100%{
+  100% {
     opacity: 1;
     text-shadow: 0.2rem 0px 0.2rem turquoise;
   }
@@ -269,7 +407,6 @@ input:not(:placeholder-shown).input:not(:focus)
   display: flex;
   justify-content: center;
   align-items: center;
-
 }
 
 .registration_link {
@@ -286,10 +423,10 @@ input:not(:placeholder-shown).input:not(:focus)
 }
 
 @keyframes shown {
-  0%{
+  0% {
     opacity: 0;
   }
-  100%{
+  100% {
     opacity: 1;
   }
 }
@@ -305,15 +442,15 @@ input:not(:placeholder-shown).input:not(:focus)
 }
 
 @keyframes shown {
-  0%{
+  0% {
     opacity: 0;
   }
-  100%{
+  100% {
     opacity: 1;
   }
 }
 
-.registration_wrap:hover  .registration_link {
+.registration_wrap:hover .registration_link {
   display: none;
   opacity: 0;
 }

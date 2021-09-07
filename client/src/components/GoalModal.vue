@@ -55,10 +55,7 @@ export default {
   data() {
     return {
       showModal: false,
-      description: {
-        type: String,
-        required: false,
-      }
+      description: "",
     };
   },
   components: {
@@ -76,7 +73,10 @@ export default {
       this.description = newDescription;
     },
     saveDescription() {
-      this.$emit("savingDescription", this.description);
+      this.$emit("savingDescription", {
+        ...this.goalObject,
+        description: this.description,
+      });
     },
   },
 };

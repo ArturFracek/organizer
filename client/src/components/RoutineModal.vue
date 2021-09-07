@@ -13,29 +13,30 @@
     <transition name="slide" appear>
       <div class="modal" v-if="showModal">
         <h1>{{ routineObject.title }}</h1>
-        <textArea />
+        <textArea @changedDescription="descriptionToSave" />
         <Slider></Slider>
         <div class="bottomContainer">
           <div class="lower_mid_section">
-            <input 
-              type='submit' 
-              class="btn_save" 
-              value="Save" 
-              placeholder=""/>
-            <button
+            <input
+              type="submit"
+              class="btn_save"
+              @click="saveDescription"
+              value="Save"
+            />
+
+            <input
               type="button"
               class="btn_save"
               @click="showModal = false"
-            >
-              Go back
-            </button>
+              value="Go back"
+            />
           </div>
-          <button 
+          <button
             class="btn_delete"
             type="button"
             value="Delete"
-            aria-placeholder=""
-            >
+            @click="deleteRoutine(routineObject._id)"
+          >
             Delete
           </button>
         </div>
@@ -53,6 +54,7 @@ export default {
   data() {
     return {
       showModal: false,
+      description: "",
     };
   },
   components: {
@@ -63,6 +65,20 @@ export default {
     routineObject: {
       type: Object,
       required: false,
+    },
+  },
+  methods: {
+    deleteRoutine(id) {
+      this.$emit("deleteRoutine", id);
+    },
+    descriptionToSave(newDescription) {
+      this.description = newDescription;
+    },
+    saveDescription() {
+      this.$emit("save", {
+        ...this.routineObject,
+        description: this.description,
+      });
     },
   },
 };
@@ -205,7 +221,9 @@ h1 {
   transform: translateY(-50%) translateX(300%);
 }
 
-input:hover, .btn_save:hover, .btn_delete:hover  {
+input:hover,
+.btn_save:hover,
+.btn_delete:hover {
   border-color: rgb(216, 25, 25);
   color: rgb(216, 25, 25);
 }
@@ -255,5 +273,4 @@ input:hover ~ .btn {
   box-shadow: 0 25px 25px rgba(3, 96, 112, 0.1);
   backdrop-filter: blur(10px) drop-shadow(4px 4px 10px rgb(248, 248, 248));
 }
-
 </style>

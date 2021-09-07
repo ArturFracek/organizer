@@ -12,11 +12,6 @@
 <script>
 export default {
   name: "textArea",
-  data() {
-    return {
-      description: "",
-    };
-  },
   methods: {
     changeDescription(event) {
       this.$emit("changedDescription", event.target.value);

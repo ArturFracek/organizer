@@ -5,7 +5,7 @@
       v-model="value"
       type="range"
       class="Slider"
-      min="0"
+      min="1"
       max="10"
     />
     <div :style="warning()" class="rangeValue">{{ value }}</div>
@@ -25,7 +25,7 @@ export default {
       if (this.value > 6) {
         return {
           color: "#40e0d0",
-          animation: "anim 0.9s ease-in 1 alternate",
+          animation: "shake 2s",
         };
       }
     },
@@ -52,12 +52,12 @@ export default {
   background-color: #ffffff;
   border-radius: 20px;
   outline: none;
-  opacity: 0.8;
+  opacity: 0.9;
   transition: opacity 0.2s ease-in;
   -webkit-transition: opacity 0.3s ease-in;
   transform: rorate(-90deg);
   transform-origin: 0 0;
-  background-image: linear-gradient(90deg, #dbf833 0%, #7cf1fa 60%, #8ef6fd 100%);
+  background-image: linear-gradient(90deg, #ff1212 0%, #f56262 10%, #44d8e2 90%);
   box-shadow: 0 0 20px white;
 }
 
@@ -73,11 +73,10 @@ export default {
   border-radius: 50%;
   background: none;
   cursor: pointer;
-  -webkit-transition: all 0.3 ease-in;
+  -webkit-transition: all 0.9 ease-in;
   transition: all 0.3s ease-in;
-  border: 2px solid #ffffff;
   box-shadow: 0 0 0.2rem white;
-  backdrop-filter: blur(10px) drop-shadow(4px 4px 10px rgb(255, 255, 255));
+  backdrop-filter: blur(9px) hue-rotate(180deg);
 }
 
 .container .Slider::-moz-range-thumb {
@@ -90,7 +89,7 @@ export default {
   cursor: pointer;
   -moz-transition: all 0.3 ease-in;
   transition: all 0.3s ease-in;
-  border: 2px solid #64faff;
+  backdrop-filter: blur(9px) hue-rotate(180deg);
 }
 
 .container .Slider::webkit-slider-thumb:hover {
@@ -109,10 +108,10 @@ export default {
   text-align: center;
   line-height: 38px;
   font-size: 22px;
-  border: 1px solid rgb(22, 235, 250);
+  text-shadow: 0 0 5px turquoise;
 }
 
-@keyframes animation {
+@keyframes shake {
   0% {
     right: -20px;
   }

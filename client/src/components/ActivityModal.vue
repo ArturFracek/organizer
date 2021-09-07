@@ -13,11 +13,16 @@
     <transition name="slide" appear>
       <div class="modal" v-if="showModal">
         <h1>{{ activityObject.title }}</h1>
-        <textArea />
+        <textArea @changedDescription="descriptionToSave" />
         <Slider></Slider>
         <div class="bottomContainer">
           <div class="lower_mid_container">
-            <input type="submit" class="btn_save" value="Save" placeholder="" />
+            <input
+              type="submit"
+              class="btn_save"
+              @click="saveDescription"
+              value="Save"
+            />
             <input
               type="submit"
               class="btn_save"
@@ -29,7 +34,7 @@
             class="btn_delete"
             type="button"
             value="Delete"
-            aria-placeholder=""
+            @click="deleteActivity(activityObject._id)"
           >
             Delete
           </button>
@@ -48,6 +53,7 @@ export default {
   data() {
     return {
       showModal: false,
+      description: "",
     };
   },
   components: {
@@ -58,6 +64,20 @@ export default {
     activityObject: {
       type: Object,
       required: false,
+    },
+  },
+  methods: {
+    deleteActivity(id) {
+      this.$emit("deleteActivity", id);
+    },
+    descriptionToSave(newDescription) {
+      this.description = newDescription;
+    },
+    saveDescription() {
+      this.$emit("saveDescription", {
+        ...this.activityObject,
+        description: this.description,
+      });
     },
   },
 };
@@ -152,7 +172,7 @@ export default {
   right: 0;
   bottom: 0;
   z-index: 98;
-  background-color: rgba(0, 0, 0, 0.4);
+  backdrop-filter: hue-rotate(180deg) opacity(80%) brightness(80%);
 }
 
 .fade-enter-active,
