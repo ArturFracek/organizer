@@ -369,23 +369,28 @@ input:not(:placeholder-shown).input:not(:focus) ~ .form_label_password {
     opacity: 0;
     text-shadow: 0.6rem 0rem 0.8rem turquoise, -0.6rem 0rem 0.8rem turquoise,
       0rem 0.6rem 0.8rem turquoise, 0rem -0.6rem 0.8rem turquoise;
+    filter: hue-rotate(180deg);
   }
   20% {
     opacity: 0.8;
+    filter: hue-rotate(0deg);
   }
   70% {
     opacity: 1;
     text-shadow: 0.3rem 0rem 0.8rem turquoise, -0.3rem 0rem 0.8rem turquoise,
       0rem 0.3rem 0.8rem turquoise, 0rem -0.3rem 0.8rem turquoise;
+    filter: hue-rotate(0deg);
   }
   90% {
     opacity: 1;
     text-shadow: 0.2rem 0rem 1.4rem turquoise, -0.2rem 0rem 1.4rem turquoise,
       0rem 0.2rem 1.4em turquoise, 0rem -0.2rem 1.4rem turquoise;
+    filter: hue-rotate(180deg);
   }
   100% {
     opacity: 1;
     text-shadow: 0.2rem 0px 0.2rem turquoise;
+    filter: hue-rotate(0deg);
   }
 }
 
