@@ -1,6 +1,5 @@
 <template>
   <div class="routines_container">
-    {{ routines }}
     <div class="title">Routines</div>
     <div class="addRoutines">
       <input

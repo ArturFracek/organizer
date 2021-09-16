@@ -27,7 +27,7 @@ class RoutinesService {
     return axios.post(url, routine);
   }
 
-  //delete post
+  //delete Routine
   static deleteRoutine(id) {
     return axios.delete(`${url}${id}`);
   }
