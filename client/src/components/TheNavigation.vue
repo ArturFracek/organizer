@@ -285,7 +285,7 @@ export default {
     opacity: 0;
     text-shadow: 0.6rem 0rem 0.8rem turquoise, -0.6rem 0rem 0.8rem turquoise,
       0rem 0.6rem 0.8rem turquoise, 0rem -0.6rem 0.8rem turquoise;
-      filter: hue-rotate(180deg);
+      filter: hue-rotate(0deg);
   }
   20% {
     opacity: 0.8;
@@ -295,7 +295,7 @@ export default {
     opacity: 1;
     text-shadow: 0.3rem 0rem 0.8rem turquoise, -0.3rem 0rem 0.8rem turquoise,
       0rem 0.3rem 0.8rem turquoise, 0rem -0.3rem 0.8rem turquoise;
-      filter: hue-rotate(0deg);
+      filter: hue-rotate(180deg);
   }
   90% {
     opacity: 1;

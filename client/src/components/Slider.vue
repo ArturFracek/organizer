@@ -2,11 +2,12 @@
   <div class="container">
     <input
       @change="warning()"
-      v-model="value"
+      :value="value"
       type="range"
       class="Slider"
       min="1"
       max="10"
+      @input="input"
     />
     <div :style="warning()" class="rangeValue">{{ value }}</div>
   </div>
@@ -15,10 +16,12 @@
 <script>
 export default {
   name: "Slider",
-  data() {
-    return {
-      value: "5",
-    };
+  props: {
+    value: {
+      type: Number,
+      required: false,
+      default: 5,
+    }
   },
   methods: {
     warning: function () {
@@ -29,6 +32,9 @@ export default {
         };
       }
     },
+    input(el) {
+      this.$emit("input", parseInt(el.target.value))
+    }
   },
 };
 </script>

@@ -5,6 +5,7 @@
       @input="changeDescription"
       class="area"
       placeholder="Description"
+      :value="value"
     ></textarea>
   </div>
 </template>
@@ -12,9 +13,15 @@
 <script>
 export default {
   name: "textArea",
+  props: {
+    value: {
+      type: String,
+      required: false,
+    }
+  },
   methods: {
     changeDescription(event) {
-      this.$emit("changedDescription", event.target.value);
+      this.$emit("input", event.target.value);
     },
   },
 };

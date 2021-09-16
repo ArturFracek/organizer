@@ -1,5 +1,6 @@
 <template>
   <div class="routines_container">
+    {{ routines }}
     <div class="title">Routines</div>
     <div class="addRoutines">
       <input
@@ -24,7 +25,7 @@
         <RoutineModal
           :routineObject="routine"
           @deleteRoutine="deleteRoutine"
-          @saveDescription="save"
+          @savingRoutine="saveRoutine"
         />
       </div>
     </div>
@@ -42,7 +43,6 @@ export default {
       title: "",
       routines: [],
       error: "Try again",
-      description: "",
     };
   },
   components: {
@@ -57,16 +57,17 @@ export default {
   },
   methods: {
     async createRoutine() {
-      await RoutinesService.insertRoutine({ title: this.title, priority: 6 });
+      await RoutinesService.insertRoutine({ title: this.title });
       this.routines = await RoutinesService.getRoutines();
     },
     async deleteRoutine(id) {
       await RoutinesService.deleteRoutine(id);
       this.routines = await RoutinesService.getRoutines();
     },
-    save(routineChanged) {
-      this.routine = routineChanged;
-    },
+    async saveRoutine(routine) {
+      await RoutinesService.updateRoutine(routine);
+      this.routines = await RoutinesService.getRoutines();
+    }
   },
 };
 </script>
@@ -143,8 +144,8 @@ export default {
   text-shadow: 0 0 8px turquoise;
   font-weight: bold;
   position: relative;
-  left: 12rem;
-  top: -4.6rem;
+  left: 12.5rem;
+  top: -4.7rem;
   text-align: center;
   border-radius: 2px;
   padding: 0.7rem;

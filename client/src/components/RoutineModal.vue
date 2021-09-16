@@ -13,14 +13,14 @@
     <transition name="slide" appear>
       <div class="modal" v-if="showModal">
         <h1>{{ routineObject.title }}</h1>
-        <textArea @changedDescription="descriptionToSave" />
-        <Slider></Slider>
+        <textArea v-model="localRoutine.description" />
+        <Slider v-model="localRoutine.priority"/>
         <div class="bottomContainer">
           <div class="lower_mid_section">
             <input
               type="submit"
               class="btn_save"
-              @click="saveDescription"
+              @click="saveRoutine()"
               value="Save"
             />
 
@@ -54,7 +54,9 @@ export default {
   data() {
     return {
       showModal: false,
+      localRoutine: { ...this.routineObject },
       description: "",
+      priority: 5,
     };
   },
   components: {
@@ -71,13 +73,9 @@ export default {
     deleteRoutine(id) {
       this.$emit("deleteRoutine", id);
     },
-    descriptionToSave(newDescription) {
-      this.description = newDescription;
-    },
-    saveDescription() {
-      this.$emit("save", {
-        ...this.routineObject,
-        description: this.description,
+    saveRoutine(routine) {
+      this.$emit("savingRoutine", {
+        ...this.localRoutine,
       });
     },
   },

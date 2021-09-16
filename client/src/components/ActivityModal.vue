@@ -13,7 +13,7 @@
     <transition name="slide" appear>
       <div class="modal" v-if="showModal">
         <h1>{{ activityObject.title }}</h1>
-        <textArea @changedDescription="descriptionToSave" />
+        <textArea v-model="description" />
         <Slider></Slider>
         <div class="bottomContainer">
           <div class="lower_mid_container">
@@ -53,6 +53,7 @@ export default {
   data() {
     return {
       showModal: false,
+      localActivity: { ...this.activityObject },
       description: "",
     };
   },
@@ -75,7 +76,7 @@ export default {
     },
     saveDescription() {
       this.$emit("saveDescription", {
-        ...this.activityObject,
+        ...this.localActivity,
         description: this.description,
       });
     },

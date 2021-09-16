@@ -119,8 +119,8 @@ export default {
   text-shadow: 0 0 8px turquoise;
   font-weight: bold;
   position: relative;
-  left: 12rem;
-  top: -4.6rem;
+  left: 12.5rem;
+  top: -4.7rem;
   text-align: center;
   border-radius: 2px;
   padding: 0.7rem;

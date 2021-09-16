@@ -14,7 +14,6 @@ class RoutinesService {
           data.map((routine) => ({
             ...routine,
             createdAt: new Date(routine.createdAt),
-            description: "",
           }))
         );
       } catch (err) {
@@ -31,6 +30,11 @@ class RoutinesService {
   //delete post
   static deleteRoutine(id) {
     return axios.delete(`${url}${id}`);
+  }
+
+  //updateRoutine
+  static updateRoutine(routine) {
+    return axios.put(`${url}${routine._id}`, routine);
   }
 }
 
