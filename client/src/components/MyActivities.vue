@@ -27,7 +27,7 @@
         <ActivityModal
           :activityObject="activity"
           @deleteActivity="deleteActivity"
-          @saveDescription="save"
+          @updateActivity="updateActivity"
         />
       </div>
     </div>
@@ -43,11 +43,8 @@ export default {
   data() {
     return {
       title: "",
-      activityObject: {},
       activities: [],
-      priority: Number,
       error: "Try again",
-      description: "",
     };
   },
   components: {
@@ -62,18 +59,16 @@ export default {
   },
   methods: {
     async createActivity() {
-      await ActivitiesService.insertActivity({
-        title: this.title,
-        priority: 6,
-      });
+      await ActivitiesService.insertActivity({ title: this.title });
       this.activities = await ActivitiesService.getActivities();
     },
     async deleteActivity(id) {
       await ActivitiesService.deleteActivity(id);
       this.activities = await ActivitiesService.getActivities();
     },
-    save(activityChanged) {
-      this.routine = activityChanged;
+    async updateActivity(activity) {
+      await ActivitiesService.updateActivity(activity);
+      this.activities = await ActivitiesService.getActivities();
     },
   },
 };

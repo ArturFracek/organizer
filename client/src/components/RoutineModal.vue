@@ -20,7 +20,7 @@
             <input
               type="submit"
               class="btn_save"
-              @click="saveRoutine()"
+              @click="saveRoutine"
               value="Save"
             />
 
@@ -73,7 +73,7 @@ export default {
     deleteRoutine(id) {
       this.$emit("deleteRoutine", id);
     },
-    saveRoutine(routine) {
+    saveRoutine() {
       this.$emit("savingRoutine", {
         ...this.localRoutine,
       });

@@ -11,7 +11,6 @@ router.get("/", async (req, res) => {
 });
 
 // Add Post
-
 router.post("/", async (req, res) => {
   const { title, description, priority } = req.body;
   console.log(req.body.text);
@@ -25,8 +24,18 @@ router.post("/", async (req, res) => {
   res.status(201).send();
 });
 
-// Delete Post
+//Update Activity
+router.put("/:id", async (req, res) => {
+  const activities = await loadActivitiesCollection();
+  await activities.updateOne(
+    { _id: new mongodb.ObjectID(req.params.id) },
+    { $set: { description: req.body.description, priority: req.body.priority } }
+  );
+  console.log(req.body);
+  res.status(200).send();
+});
 
+// Delete Post
 router.delete("/:id", async (req, res) => {
   const activities = await loadActivitiesCollection();
   await activities.deleteOne({ _id: new mongodb.ObjectID(req.params.id) });

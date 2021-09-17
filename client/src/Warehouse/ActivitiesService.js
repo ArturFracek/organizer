@@ -14,7 +14,6 @@ class ActivitiesService {
           data.map((activity) => ({
             ...activity,
             createdAt: new Date(activity.createdAt),
-            description: "",
           }))
         );
       } catch (err) {
@@ -26,6 +25,11 @@ class ActivitiesService {
   //create post
   static insertActivity(activity) {
     return axios.post(url, activity);
+  }
+
+  //update activity
+  static updateActivity(activity) {
+    return axios.put(`${url}${activity._id}`, activity);
   }
 
   //delete post

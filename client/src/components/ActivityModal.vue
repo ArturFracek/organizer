@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 <template>
   <div class="modalWrapper">
     <button type="button" class="btn" @click="showModal = true">
@@ -13,14 +14,14 @@
     <transition name="slide" appear>
       <div class="modal" v-if="showModal">
         <h1>{{ activityObject.title }}</h1>
-        <textArea v-model="description" />
-        <Slider></Slider>
+        <textArea v-model="localActivity.description" />
+        <Slider v-model="localActivity.priority" />
         <div class="bottomContainer">
           <div class="lower_mid_container">
             <input
               type="submit"
               class="btn_save"
-              @click="saveDescription"
+              @click="updateActivity"
               value="Save"
             />
             <input
@@ -55,6 +56,7 @@ export default {
       showModal: false,
       localActivity: { ...this.activityObject },
       description: "",
+      priority: 5,
     };
   },
   components: {
@@ -71,14 +73,9 @@ export default {
     deleteActivity(id) {
       this.$emit("deleteActivity", id);
     },
-    descriptionToSave(newDescription) {
-      this.description = newDescription;
-    },
-    saveDescription() {
-      this.$emit("saveDescription", {
-        ...this.localActivity,
-        description: this.description,
-      });
+    updateActivity() {
+      this.$emit("updateActivity", { 
+        ...this.localActivity });
     },
   },
 };
