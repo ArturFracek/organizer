@@ -41,7 +41,7 @@ export default {
     return {
       title: "",
       routines: [],
-      error: "Try again",
+      error: "Something went wrong, try again",
     };
   },
   components: {

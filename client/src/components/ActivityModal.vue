@@ -75,7 +75,8 @@ export default {
     },
     updateActivity() {
       this.$emit("updateActivity", { 
-        ...this.localActivity });
+        ...this.localActivity,
+        });
     },
   },
 };

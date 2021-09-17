@@ -3,7 +3,7 @@ import axios from "axios";
 const url = "http://localhost:5000/api/routines/";
 
 class RoutinesService {
-  //get posts
+  //get goals
   static getRoutines() {
     // eslint-disable-next-line no-async-promise-executor
     return new Promise(async (resolve, reject) => {
@@ -22,7 +22,7 @@ class RoutinesService {
     });
   }
 
-  //create post
+  //create goal
   static insertRoutine(routine) {
     return axios.post(url, routine);
   }

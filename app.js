@@ -47,8 +47,8 @@ mongoose
   });
 
 //Bring in the Posts route
-const posts = require("./routes/api/posts");
-app.use("/api/posts", posts);
+const goals = require("./routes/api/goals");
+app.use("/api/goals", goals);
 //Bring in the Users route
 const users = require("./routes/api/users");
 app.use("/api/users", users);

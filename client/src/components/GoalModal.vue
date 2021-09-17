@@ -13,15 +13,15 @@
     <transition name="slide" appear>
       <div class="modal" v-if="showModal">
         <h1>{{ goalObject.title }}</h1>
-        <textArea v-model="description" />
-        <Slider></Slider>
+        <textArea v-model="localGoal.description" />
+        <Slider v-model="localGoal.priority" />
         <div class="bottomContainer">
           <div class="lower_mid_container">
             <input
               type="submit"
               class="btn_save"
-              placeholder="Save"
-              @click="saveDescription"
+              value="Save"
+              @click="updateGoal"
             />
             <input
               type="submit"
@@ -33,8 +33,8 @@
           <button
             class="btn_delete"
             type="button"
-            value="Delete"
             aria-placeholder=""
+            @click="deleteGoal(goalObject._id)"
           >
             Delete
           </button>
@@ -47,15 +47,14 @@
 <script>
 import Slider from "@/components/Slider.vue";
 import textArea from "@/components/textArea.vue";
-import PostService from "../Warehouse/PostService";
-import axsios from "axios";
 
 export default {
   name: "GoalModal",
   data() {
     return {
       showModal: false,
-      description: "",
+      localGoal: { ...this.goalObject },
+      priority: 5,
     };
   },
   components: {
@@ -69,15 +68,12 @@ export default {
     },
   },
   methods: {
-    descriptionToSave(newDescription) {
-      this.description = newDescription;
+    updateGoal() {
+      this.$emit("updateGoal", { ...this.localGoal });
     },
-    saveDescription() {
-      this.$emit("savingDescription", {
-        ...this.goalObject,
-        description: this.description,
-      });
-    },
+    deleteGoal(id) {
+      this.$emit("deleteGoal", id);
+    }
   },
 };
 </script>

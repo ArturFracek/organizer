@@ -1,32 +1,32 @@
 <template>
-  <div class="posts_main_container">
+  <div class="goals_main_container">
     <div class="back_ground"></div>
-    <div class="post_adding">
+    <div class="goal_adding">
       <input
         class="input"
         type="text"
-        id="create_post"
-        ref="post"
-        v-model="title"
+        id="create_goal"
         placeholder=" "
-        @keyup.enter="createPost"
+        v-model="title"
+        @keyup.enter="createGoal"
       />
-      <label class="goals_label" for="create_post">Add Goal</label>
-      <button class="btn" @click="createPost">Add Goal</button>
+      <label class="goals_label" for="create_goal">Add Goal</label>
+      <button class="btn" @click="createGoal">Add Goal</button>
     </div>
-    <div class="posts_area">
+    <div class="goals_area">
       <ul
-        class="post"
-        v-for="(post, index) in posts"
-        v-bind:item="post"
-        v-bind:index="index"
-        v-bind:key="post._id"
-        v-on:dblclick="deletePost(post._id)"
+        class="goal"
+        v-for="(goal, index) in goals"
+        :item="goal"
+        :index="index"
+        :key="goal._id"
+        @dblclick="deleteGoal(goal._id)"
       >
         <li>
           <GoalModal
-            :goalObject="post"
-            @savingDescription="descriptionToDatabase"
+            :goalObject="goal"
+            @updateGoal="updateGoal"
+            @deleteGoal="deleteGoal"
           />
         </li>
       </ul>
@@ -35,7 +35,7 @@
 </template>
 
 <script>
-import PostService from "../Warehouse/PostService";
+import GoalsService from "../Warehouse/GoalsService";
 import GoalModal from "./GoalModal";
 
 export default {
@@ -45,34 +45,30 @@ export default {
   },
   data() {
     return {
-      goalObject: {},
-      posts: [],
-      error: "",
       title: "",
-      description: "",
-      priority: Number,
+      goals: [],
+      error: "Something went wrong, try again",
     };
   },
   async created() {
     try {
-      this.posts = await PostService.getPosts();
+      this.goals = await GoalsService.getGoals();
     } catch (err) {
       this.error = err.massage;
     }
   },
   methods: {
-    async createPost() {
-      await PostService.insertPost({ title: this.title, priority: 6 });
-      this.posts = await PostService.getPosts();
-      //this.$refs.post.value = "";
+    async createGoal() {
+      await GoalsService.insertGoal({ title: this.title });
+      this.goals = await GoalsService.getGoals();
     },
-    async deletePost(id) {
-      await PostService.deletePost(id);
-      this.posts = await PostService.getPosts();
+    async updateGoal(goal) {
+      await GoalsService.updateGoal(goal);
+      this.goals = await GoalsService.getGoals();
     },
-    descriptionToDatabase(descriptionText) {
-      this.description = descriptionText;
-      console.log(descriptionText);
+    async deleteGoal(id) {
+      await GoalsService.deleteGoal(id);
+      this.goals = await GoalsService.getGoals();
     },
   },
 };
@@ -96,7 +92,7 @@ export default {
   right: 0%;
 }
 
-.posts_main_container {
+.goals_main_container {
   position: relative;
   height: 30%;
   max-height: 60%;
@@ -111,7 +107,7 @@ export default {
   flex-flow: column;
 }
 
-.post_adding {
+.goal_adding {
   display: flex;
   flex-flow: row;
   align-items: center;
@@ -121,7 +117,7 @@ export default {
   position: relative;
 }
 
-.posts_area {
+.goals_area {
   align-self: flex-start;
 }
 

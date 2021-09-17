@@ -1,47 +1,45 @@
-const { request } = require("express");
 const express = require("express");
 const mongodb = require("mongodb");
 const loader = require("sass-loader");
-const Routine = require("../../model/Routine.model");
 
 const router = express.Router();
 
-// Get Routines
+// Get Goals
 router.get("/", async (req, res) => {
-  const routines = await loadRoutinesCollection();
-  res.send(await routines.find({}).toArray());
+  const goals = await loadGoalsCollection();
+  res.send(await goals.find({}).toArray());
 });
 
-// Add Routines
+// Add Goal
 router.post("/", async (req, res) => {
   const { title, description, priority } = req.body;
   console.log(req.body.text);
-  const routines = await loadRoutinesCollection();
-  await routines.insertOne({
+  const goals = await loadGoalsCollection();
+  await goals.insertOne({
     title,
     createdAt: new Date(),
   });
   res.status(201).send();
 });
 
-//Overwrite Routine
+//Update Goal
 router.put("/:id", async (req, res) => {
-  const routines = await loadRoutinesCollection();
-  await routines.updateOne(
+  const goals = await loadGoalsCollection();
+  await goals.updateOne(
     { _id: new mongodb.ObjectID(req.params.id) },
     { $set: { description: req.body.description, priority: req.body.priority } }
   );
   res.status(200).send();
 });
 
-// Delete Routine
+// Delete Goal
 router.delete("/:id", async (req, res) => {
-  const routines = await loadRoutinesCollection();
-  await routines.deleteOne({ _id: new mongodb.ObjectID(req.params.id) });
+  const goals = await loadGoalsCollection();
+  await goals.deleteOne({ _id: new mongodb.ObjectID(req.params.id) });
   res.status(200).send();
 });
 
-async function loadRoutinesCollection() {
+async function loadGoalsCollection() {
   const client = await mongodb.MongoClient.connect(
     "mongodb+srv://Setius:123@cluster0.setab.mongodb.net/organiser_auth",
     {
@@ -49,7 +47,7 @@ async function loadRoutinesCollection() {
       useUnifiedTopology: true,
     }
   );
-  return client.db("organiser_auth").collection("routines");
+  return client.db("organiser_auth").collection("goals");
 }
 
 module.exports = router;
