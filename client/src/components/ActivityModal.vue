@@ -13,8 +13,9 @@
     </transition>
     <transition name="slide" appear>
       <div class="modal" v-if="showModal">
+        <div class="modal_type">Activity</div>
         <h1>{{ activityObject.title }}</h1>
-         <div class="createdAt">{{ date }}</div>
+        <div class="createdAt">{{ date }}</div>
         <textArea v-model="localActivity.description" />
         <Slider v-model="localActivity.priority" />
         <div class="bottomContainer">
@@ -76,9 +77,10 @@ export default {
       this.$emit("deleteActivity", id);
     },
     updateActivity() {
-      this.$emit("updateActivity", { 
+      this.$emit("updateActivity", {
         ...this.localActivity,
-        });
+      });
+      this.showModal = false;
     },
   },
 };
@@ -101,11 +103,11 @@ export default {
   text-align: center;
   width: 100%;
   height: 100%;
-  border-radius: 2px;
+  border-radius: 3px;
   color: rgba(253, 253, 250, 0.945);
   font-weight: bold;
   text-shadow: 0 0 1rem white;
-  padding: 0.7rem;
+  padding: 0.5rem;
   background: none;
   outline: none;
   border: 2px solid rgb(255, 255, 255);
@@ -212,6 +214,14 @@ export default {
   backdrop-filter: blur(10px) drop-shadow(4px 4px 10px rgb(17, 185, 207));
 }
 
+.modal_type {
+  color: white;
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  text-shadow: 0 0 3px white;
+}
+
 h1 {
   display: flex;
   justify-content: center;
@@ -229,7 +239,6 @@ h1 {
   top: 1rem;
   right: 1rem;
   text-shadow: 0 0 3px white;
-
 }
 
 .modalElement {

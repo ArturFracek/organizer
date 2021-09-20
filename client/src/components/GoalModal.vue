@@ -12,6 +12,7 @@
     </transition>
     <transition name="slide" appear>
       <div class="modal" v-if="showModal">
+        <div class="modal_type">Goal</div>
         <h1>{{ goalObject.title }}</h1>
          <div class="createdAt">{{ date }}</div>
         <textArea v-model="localGoal.description" />
@@ -72,6 +73,7 @@ export default {
   methods: {
     updateGoal() {
       this.$emit("updateGoal", { ...this.localGoal });
+      this.showModal = false;
     },
     deleteGoal(id) {
       this.$emit("deleteGoal", id);
@@ -201,6 +203,14 @@ export default {
   border-radius: 0.5rem;
   box-shadow: 0 0 0 0.5rem rgba(8, 214, 250, 0.1);
   backdrop-filter: blur(15px) drop-shadow(10px 10px 10px rgb(17, 185, 207));
+}
+
+.modal_type {
+  color: white;
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  text-shadow: 0 0 3px white;
 }
 
 h1 {

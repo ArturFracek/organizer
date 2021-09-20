@@ -299,7 +299,8 @@ img:hover ~ #upload_btn,
 
 .mid_title {
   font-size: 1.2rem;
-  color: turquoise;
+  color: rgb(255, 255, 255);
   letter-spacing: 1px;
+  text-shadow: 0 0 10px rgb(255, 255, 255);
 }
 </style>

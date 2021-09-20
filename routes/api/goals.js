@@ -41,13 +41,13 @@ router.delete("/:id", async (req, res) => {
 
 async function loadGoalsCollection() {
   const client = await mongodb.MongoClient.connect(
-    "mongodb+srv://Setius:123@cluster0.setab.mongodb.net/organiser_auth",
+    "mongodb://localhost:27017/organizer",
     {
       useNewUrlParser: true,
       useUnifiedTopology: true,
     }
   );
-  return client.db("organiser_auth").collection("goals");
+  return client.db("organizer").collection("goals");
 }
 
 module.exports = router;

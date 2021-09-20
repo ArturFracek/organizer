@@ -61,6 +61,7 @@ export default {
     async createActivity() {
       await ActivitiesService.insertActivity({ title: this.title });
       this.activities = await ActivitiesService.getActivities();
+      this.title = "";
     },
     async deleteActivity(id) {
       await ActivitiesService.deleteActivity(id);
@@ -197,7 +198,7 @@ input:focus ~ .form_label_add_activity {
 
 input:focus ~ .form_label_add_activity,
 input:not(:placeholder-shown).input:not(:focus) ~ .form_label_add_activity {
-  top: -4.4rem;
+  top: -4.5rem;
 }
 
 input:not(:placeholder-shown) ~ .btn {

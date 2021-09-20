@@ -1,7 +1,6 @@
 <template>
   <div class="container">
     <input
-      @change="warning()"
       :value="value"
       type="range"
       class="Slider"
@@ -9,7 +8,7 @@
       max="10"
       @input="input"
     />
-    <div :style="warning()" class="rangeValue">{{ value }}</div>
+    <div  class="rangeValue" :class="{ 'rangeValue-warning': value > 6 }">{{ value }}</div>
   </div>
 </template>
 
@@ -24,14 +23,6 @@ export default {
     }
   },
   methods: {
-    warning: function () {
-      if (this.value > 6) {
-        return {
-          color: "#40e0d0",
-          animation: "shake 2s",
-        };
-      }
-    },
     input(el) {
       this.$emit("input", parseInt(el.target.value))
     }
@@ -114,24 +105,36 @@ export default {
   text-align: center;
   line-height: 38px;
   font-size: 22px;
-  text-shadow: 0 0 5px turquoise;
+  text-shadow: 0 0 5px rgb(255, 255, 255);
 }
+
+.rangeValue-warning {
+  animation: shake 0.2s;
+  color: #44d8e2;
+  position: relative;
+  text-shadow: 0 0 10px turquoise;
+}
+
 
 @keyframes shake {
   0% {
-    right: -20px;
+    transform: translateX(-5px);
   }
   25% {
-    right: -10px;
+    transform: translateY(-5px);
   }
   50% {
-    right: -30px;
+    transform: translateX(5px);
   }
   70% {
-    right: -10px;
+
+   transform: translateY(5px);
+  }
+  90% {
+    transform: translateX(-5px);
   }
   100% {
-    right: -20px;
+    transform: translateY(-5px);
   }
 }
 </style>

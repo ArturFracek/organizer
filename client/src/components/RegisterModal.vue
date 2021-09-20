@@ -22,7 +22,7 @@
               placeholder=" "
               name="Name"
               v-model="name"
-              lass="input"
+              class="input"
             />
             <label for="name" class="form_label_name">Name</label>
           </div>

@@ -58,6 +58,7 @@ export default {
     async createRoutine() {
       await RoutinesService.insertRoutine({ title: this.title });
       this.routines = await RoutinesService.getRoutines();
+      this.title = "";
     },
     async deleteRoutine(id) {
       await RoutinesService.deleteRoutine(id);
@@ -207,7 +208,7 @@ input:focus ~ .form_label_add_routines {
 
 input:focus ~ .form_label_add_routines,
 input:not(:placeholder-shown).input:not(:focus) ~ .form_label_add_routines {
-  top: -4.4rem;
+  top: -4.5rem;
 }
 
 input:not(:placeholder-shown) ~ .btn {

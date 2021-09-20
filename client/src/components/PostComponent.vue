@@ -61,6 +61,7 @@ export default {
     async createGoal() {
       await GoalsService.insertGoal({ title: this.title });
       this.goals = await GoalsService.getGoals();
+      this.title = "";
     },
     async updateGoal(goal) {
       await GoalsService.updateGoal(goal);

@@ -12,6 +12,7 @@
     </transition>
     <transition name="slide" appear>
       <div class="modal" v-if="showModal">
+        <div class="modal_type">Routine</div>
         <h1>{{ routineObject.title }}</h1>
         <div class="createdAt">{{ date }}</div>
         <textArea v-model="localRoutine.description" />
@@ -54,6 +55,7 @@ export default {
   name: "RoutineModal",
   data() {
     return {
+      routineName: '',
       showModal: false,
       localRoutine: { ...this.routineObject },
       description: "",
@@ -75,10 +77,11 @@ export default {
     deleteRoutine(id) {
       this.$emit("deleteRoutine", id);
     },
-    saveRoutine() {
+    saveRoutine(el) {
       this.$emit("savingRoutine", {
         ...this.localRoutine,
       });
+      this.showModal = false;
     },
   },
 };
@@ -126,10 +129,10 @@ export default {
   color: rgba(253, 253, 250, 0.945);
   font-weight: bold;
   text-shadow: 0 0 1rem white;
-  padding: 0.7rem;
+  padding: 0.5rem;
   background: none;
   outline: none;
-  border: 2px solid rgb(255, 255, 255);
+  border: 2px solid rgb(217, 252, 255);
   border-radius: 0.5rem;
   background: transparent;
   box-shadow: 0 25px 25px rgba(3, 96, 112, 0.1);
@@ -185,6 +188,14 @@ export default {
   background: transparent;
   box-shadow: 0 25px 25px rgba(3, 96, 112, 0.1);
   backdrop-filter: blur(10px) drop-shadow(4px 4px 10px rgb(17, 185, 207));
+}
+
+.modal_type {
+  color: white;
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  text-shadow: 0 0 3px white;
 }
 
 h1 {
