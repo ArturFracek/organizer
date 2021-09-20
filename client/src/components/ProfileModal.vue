@@ -257,15 +257,17 @@ export default {
   top: -60%;
   cursor: pointer;
   font-size: 1.4rem;
-  color: rgb(253, 27, 27);
+  color: rgb(241, 83, 83);
   display: none;
-  font-weight: 500;
+  font-weight: 800;
   border-top: px solid red;
-  border-bottom: 1px solid red;
+  border-bottom: 1px solid rgb(255, 83, 83);
   background: rgba(56, 255, 255, 0.4);
   display: none;
   justify-content: center;
   align-items: center;
+  opacity: 0.7;
+  text-shadow: 0 0 1px red;
 }
 
 img:hover ~ #upload_btn,

@@ -13,6 +13,7 @@
     <transition name="slide" appear>
       <div class="modal" v-if="showModal">
         <h1>{{ goalObject.title }}</h1>
+         <div class="createdAt">{{ date }}</div>
         <textArea v-model="localGoal.description" />
         <Slider v-model="localGoal.priority" />
         <div class="bottomContainer">
@@ -55,6 +56,7 @@ export default {
       showModal: false,
       localGoal: { ...this.goalObject },
       priority: 5,
+      date: `${this.goalObject.createdAt.getDate()}/${this.goalObject.createdAt.getMonth()}/${this.goalObject.createdAt.getFullYear()}`,
     };
   },
   components: {
@@ -210,6 +212,15 @@ h1 {
   font-weight: 900;
   margin-bottom: 15px;
   text-shadow: 0 0 1rem white;
+}
+
+.createdAt {
+  color: white;
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  text-shadow: 0 0 3px white;
+
 }
 
 .modalElement {

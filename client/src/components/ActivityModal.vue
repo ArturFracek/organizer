@@ -14,6 +14,7 @@
     <transition name="slide" appear>
       <div class="modal" v-if="showModal">
         <h1>{{ activityObject.title }}</h1>
+         <div class="createdAt">{{ date }}</div>
         <textArea v-model="localActivity.description" />
         <Slider v-model="localActivity.priority" />
         <div class="bottomContainer">
@@ -57,6 +58,7 @@ export default {
       localActivity: { ...this.activityObject },
       description: "",
       priority: 5,
+      date: `${this.activityObject.createdAt.getDate()}/${this.activityObject.createdAt.getMonth()}/${this.activityObject.createdAt.getFullYear()}`,
     };
   },
   components: {
@@ -219,6 +221,15 @@ h1 {
   font-weight: 900;
   margin-bottom: 15px;
   text-shadow: 0 0 1rem white;
+}
+
+.createdAt {
+  color: white;
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  text-shadow: 0 0 3px white;
+
 }
 
 .modalElement {
