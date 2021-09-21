@@ -14,12 +14,13 @@ router.get("/", async (req, res) => {
 
 // Add Routines
 router.post("/", async (req, res) => {
-  const { title, description, priority } = req.body;
+  const { title } = req.body;
   console.log(req.body.text);
   const routines = await loadRoutinesCollection();
   await routines.insertOne({
     title,
     createdAt: new Date(),
+    is_active: false,
   });
   res.status(201).send();
 });
@@ -29,7 +30,7 @@ router.put("/:id", async (req, res) => {
   const routines = await loadRoutinesCollection();
   await routines.updateOne(
     { _id: new mongodb.ObjectID(req.params.id) },
-    { $set: { description: req.body.description, priority: req.body.priority } }
+    { $set: { description: req.body.description, priority: req.body.priority, is_active: req.body.is_active} }
   );
   res.status(200).send();
 });

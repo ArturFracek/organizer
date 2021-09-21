@@ -16,7 +16,15 @@
         <h1>{{ routineObject.title }}</h1>
         <div class="createdAt">{{ date }}</div>
         <textArea v-model="localRoutine.description" />
-        <Slider v-model="localRoutine.priority"/>
+        <Slider v-model="localRoutine.priority" />
+        <button
+          @click="activation"
+          class="activating_button"
+          :class="{ active: localRoutine.is_active }"
+        >
+          <span v-if="!localRoutine.is_active">Activate this Routine</span>
+          <span v-if="localRoutine.is_active">Active!</span>
+        </button>
         <div class="bottomContainer">
           <div class="lower_mid_section">
             <input
@@ -43,6 +51,7 @@
           </button>
         </div>
       </div>
+      is_active
     </transition>
   </div>
 </template>
@@ -55,11 +64,10 @@ export default {
   name: "RoutineModal",
   data() {
     return {
-      routineName: '',
       showModal: false,
       localRoutine: { ...this.routineObject },
-      description: "",
       priority: 5,
+      is_active: false,
       date: `${this.routineObject.createdAt.getDate()}/${this.routineObject.createdAt.getMonth()}/${this.routineObject.createdAt.getFullYear()}`,
     };
   },
@@ -77,11 +85,17 @@ export default {
     deleteRoutine(id) {
       this.$emit("deleteRoutine", id);
     },
-    saveRoutine(el) {
+    saveRoutine() {
       this.$emit("savingRoutine", {
         ...this.localRoutine,
       });
       this.showModal = false;
+      console.log( this.localRoutine )
+    },
+    activation() {
+      return this.localRoutine.is_active === false
+        ? (this.localRoutine.is_active = true)
+        : (this.localRoutine.is_active = false);
     },
   },
 };
@@ -138,6 +152,69 @@ export default {
   box-shadow: 0 25px 25px rgba(3, 96, 112, 0.1);
   backdrop-filter: blur(10px) drop-shadow(4px 4px 10px rgb(248, 248, 248));
   transition: 0.1s ease-out;
+}
+
+.activating_button {
+  text-align: center;
+  width: 16rem;
+  height: 2.8rem;
+  border-radius: 2px;
+  color: rgba(255, 255, 255, 0.945);
+  font-weight: bold;
+  text-shadow: 0 0 1rem rgb(255, 255, 255);
+  padding: 0.5rem;
+  background: none;
+  outline: none;
+  border: 2px solid rgb(255, 255, 255);
+  border-radius: 0.5rem;
+  background: transparent;
+  box-shadow: 0 25px 25px rgba(3, 96, 112, 0.1);
+  backdrop-filter: blur(10px) drop-shadow(4px 4px 10px rgb(248, 248, 248));
+  transition: 0.1s ease-out;
+}
+
+.active {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.5rem;
+  color: rgb(247, 255, 131);
+  text-shadow: 0 0 2rem rgb(140, 234, 247);
+  border: 2px solid rgb(255, 247, 142);
+  animation: text1 1.2s;
+}
+
+@keyframes text1 {
+  0% {
+    font-size: 1rem;
+    color: rgb(0, 0, 0);
+    opacity: 0;
+    text-shadow: 0.6rem 0rem 0.8rem turquoise, -0.6rem 0rem 0.8rem turquoise,
+      0rem 0.6rem 0.8rem turquoise, 0rem -0.6rem 0.8rem turquoise;
+    filter: hue-rotate(0deg);
+  }
+  20% {
+    opacity: 0.8;
+    filter: hue-rotate(0deg);
+  }
+  70% {
+    opacity: 1;
+    text-shadow: 0.3rem 0rem 0.8rem turquoise, -0.3rem 0rem 0.8rem turquoise,
+      0rem 0.3rem 0.8rem turquoise, 0rem -0.3rem 0.8rem turquoise;
+    filter: hue-rotate(180deg);
+  }
+  90% {
+    font-size: 2.3rem;
+    opacity: 1;
+    text-shadow: 0.2rem 0rem 1.4rem turquoise, -0.2rem 0rem 1.4rem turquoise,
+      0rem 0.2rem 1.4em turquoise, 0rem -0.2rem 1.4rem turquoise;
+    filter: hue-rotate(180deg);
+  }
+  100% {
+    opacity: 1;
+    text-shadow: 0.2rem 0px 0.2rem turquoise;
+    filter: hue-rotate(0deg);
+  }
 }
 
 .modalButtonClose:hover {
@@ -215,7 +292,6 @@ h1 {
   top: 1rem;
   right: 1rem;
   text-shadow: 0 0 3px white;
-
 }
 
 .modalElement {
@@ -249,6 +325,10 @@ input:hover,
 }
 input:hover ~ .btn {
   color: rgb(216, 25, 25);
+}
+.activating_button:hover {
+  text-shadow: 0 0 10px rgb(156, 243, 255);
+  box-shadow: 0 0 20px rgb(106, 248, 253);
 }
 
 .btn_save {

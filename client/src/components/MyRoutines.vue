@@ -16,10 +16,10 @@
       <div
         class="routineHolder"
         v-for="(routine, index) in routines"
-        v-bind:item="routine"
-        v-bind:index="index"
-        v-bind:key="routine._id"
-        v-on:dblclick="deleteRoutine(routine._id)"
+        :item="routine"
+        :index="index"
+        :key="routine._id"
+        @:dblclick="deleteRoutine(routine._id)"
       >
         <RoutineModal
           :routineObject="routine"
