@@ -1,6 +1,6 @@
 <template>
   <div class="nav">
-    <router-link to="/" class="nav_link to_left" v-if="isLoggedIn"
+    <router-link to="/" class="nav__link to_left" v-if="isLoggedIn"
       >About Organizer</router-link
     >
     <div class="nav_logo">
@@ -16,21 +16,21 @@
       </router-link>
     </div>
     <div class="lower_links" :class="islower_linksActive ? 'active' : ''">
-      <router-link :to="{ name: 'Login' }" class="nav_link" v-if="!isLoggedIn"
+      <router-link :to="{ name: 'Login' }" class="nav__link" v-if="!isLoggedIn"
         >Sign in</router-link
       >
       <router-link
         :to="{ name: 'Register' }"
-        class="nav_link"
+        class="nav__link"
         v-if="!isLoggedIn"
         >Register</router-link
       >
-      <router-link :to="{ name: 'Profile' }" class="nav_link" v-if="isLoggedIn"
+      <router-link :to="{ name: 'Profile' }" class="nav__link" v-if="isLoggedIn"
         >Profile</router-link
       >
       <a
         :to="{ name: 'Log-out' }"
-        class="nav_link"
+        class="nav__link"
         v-if="isLoggedIn"
         @click.prevent="logoutUser"
         >Logout</a
@@ -50,7 +50,7 @@
 
 <script>
 import { mapGetters, mapActions } from "vuex";
-//import { toggleButton, nav_link } from "../constants"
+//import { toggleButton, nav__link } from "../constants"
 
 const toggleButton = document.getElementsByClassName("toggle-button")[0];
 const lower_links = document.getElementsByClassName("lower_links")[0];
@@ -247,21 +247,26 @@ export default {
   margin-right: 1rem;
 }
 
-.nav_link {
+.nav__link {
   font-size: 1.2rem;
   padding: 0 1rem;
   text-decoration: none;
   color: whitesmoke;
   font-weight: bold;
   white-space: nowrap;
+  cursor: pointer;
 }
 
 .to_left {
   justify-self: flex-start;
 }
 
-.nav_link:hover {
-  border-color: #c0bdbd;
+.nav__link:hover {
+  color: #ff1616;
+  text-shadow: 0 0 10px rgb(243, 109, 91);
+  border-top: 1px solid red;
+  border-bottom: 0.1px solid red;
+  border-radius: 8px;
 }
 
 .main_link {
@@ -274,6 +279,16 @@ export default {
   text-shadow: 0rem 0rem 0.2rem rgb(75, 252, 243),
     0rem 0rem 0.2rem rgb(75, 252, 243);
   text-decoration: none;
+}
+
+.main_link:hover {
+  color: #e63535;
+  text-shadow: 0 0 20px rgb(255, 4, 4);
+  filter: drop-shadow(0 0 50px red);
+  border-left: 0.1px solid red;
+  border-right: 0.1px solid red;
+  border-radius: 12px;
+  padding: 0 10px;
 }
 
 .organize {
@@ -342,19 +357,18 @@ export default {
     display: flex;
   }
 
-  .nav_link {
+  .nav__link {
     font-size: 1.7rem;
     display: flex;
     width: 100%;
     text-align: center;
+    padding: 0.3rem;
+    justify-content: center;
+    cursor: pointer;
   }
 
-  .nav_link {
-    display: flex;
-    width: 100%;
-    justify-content: center;
-    padding: 0.3rem;
-    font-size: 1.5rem;
+  .nav__link:hover {
+    color: red;
   }
 
   .nav_logo {
@@ -362,7 +376,7 @@ export default {
     margin-right: auto;
   }
 
-  .nav_link:nth-child(1) {
+  .nav__link:nth-child(1) {
     border-bottom: 0.3px solid rgba(0, 0, 0, 0);
   }
 

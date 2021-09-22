@@ -1,6 +1,10 @@
 <template>
   <div class="activity__modalContainer">
-    <button type="button" class="btn--show" @click="showModal = true">
+    <button
+      type="button"
+      class="activity__button activity__showModalButton"
+      @click="showModal = true"
+    >
       {{ activityObject.title }}
     </button>
     <transition name="fade" appear>
@@ -21,19 +25,19 @@
           <div class="activity__buttonsContainer">
             <input
               type="submit"
-              class="btn--save"
+              class="activity__button activity__button--save"
               @click="updateActivity"
               value="Save"
             />
             <input
               type="submit"
-              class="btn--save"
+              class="activity__button activity__button--save"
               value="Go back"
               @click="showModal = false"
             />
           </div>
           <button
-            class="btn--delete"
+            class="activity__button--delete"
             type="button"
             value="Delete"
             @click="deleteActivity(activityObject._id)"
@@ -98,26 +102,27 @@ export default {
   width: 100%;
 }
 
-.btn--show {
+.activity__showModalButton {
   text-align: center;
   width: 100%;
   height: 100%;
   border-radius: 3px;
   color: rgba(253, 253, 250, 0.945);
   font-weight: bold;
-  text-shadow: 0 0 1rem white;
+  text-shadow: 0 0 4px rgb(235, 250, 251);
   padding: 0.5rem;
   background: none;
   outline: none;
-  border: 2px solid rgb(255, 255, 255);
-  border-radius: 0.5rem;
+  border-top: 1px solid rgb(255, 255, 255);
+  border-bottom: 1px solid rgb(255, 255, 255);
+  border-radius: 6px;
   background: transparent;
   box-shadow: 0 25px 25px rgba(3, 96, 112, 0.1);
-  backdrop-filter: blur(10px) drop-shadow(4px 4px 10px rgb(248, 248, 248));
+  backdrop-filter: drop-shadow(4px 4px 10px rgb(214, 18, 18));
   transition: 0.2s ease-out;
 }
 
-.modalButton:hover {
+.activity__showModalButton:hover {
   box-shadow: 6px 6px 6px 6px rgba(0, 0, 0, 0.6);
 }
 
@@ -138,7 +143,7 @@ export default {
   align-items: flex-end;
 }
 
-.btn--save {
+.activity__button--save {
   height: 100%;
   width: 20%;
   text-justify: auto;
@@ -159,11 +164,11 @@ export default {
   margin: 0 1.2rem;
 }
 
-.btn:focus {
+.activity__showModalButton:focus {
   color: turquoise;
 }
 
-.saveButton:hover {
+.activity__button--save:hover {
   box-shadow: 6px 6px 6px 6px rgba(0, 0, 0, 0.6);
 }
 
@@ -198,7 +203,6 @@ export default {
   transform: translate(-50%, -50%);
   background-color: rgb(100, 100, 100);
   z-index: 99;
-
   text-align: center;
   width: 80%;
   height: 60%;
@@ -254,7 +258,7 @@ h1 {
 
 .slide-enter-active,
 .slide-leave-active {
-  transition: transfrom 0.5s;
+  transition: transfrom 2s;
 }
 
 .slide-enter,
@@ -262,7 +266,7 @@ h1 {
   transform: translateY(-50%) translateX(300%);
 }
 
-.btn--delete {
+.activity__button--delete {
   height: 3rem;
   width: 5%;
   text-justify: auto;
@@ -280,5 +284,17 @@ h1 {
   box-shadow: 0 25px 25px rgba(3, 96, 112, 0.1);
   backdrop-filter: blur(10px) drop-shadow(4px 4px 10px rgb(248, 248, 248));
   transition: 0.2s ease-out;
+}
+
+.activity__button:hover {
+  color: red;
+  border: 2px solid red;
+  text-shadow: 0 0 6px red;
+  box-shadow: 0 0 10px red;
+}
+
+.activity__button--delete:hover {
+  color: red;
+  text-shadow: 0 0 10px red;
 }
 </style>

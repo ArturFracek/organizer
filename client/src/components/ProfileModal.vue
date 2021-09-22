@@ -15,18 +15,17 @@
     <div class="profile__TimeStatisticsContainer">
       <div class="profile__TimeStatisticsContainer__title">Time Statistics</div>
     </div>
-    <PostComponent />
+    <Goals />
   </div>
 </template>
 
 <script>
 import { mapActions, mapGetters } from "vuex";
-import axios from "axios";
-import PostComponent from "./PostComponent.vue";
+import Goals from "./Goals.vue";
 
 export default {
   components: {
-    PostComponent,
+    Goals,
   },
   computed: {
     ...mapGetters(["user"]),
@@ -234,6 +233,10 @@ export default {
   display: flex;
   flex-flow: column;
   justify-content: space-evenly;
+}
+
+.profile__UserInfo__card__item {
+  text-shadow: 2px 0px 3px rgb(243, 77, 48);
 }
 
 .profile__picContainer {

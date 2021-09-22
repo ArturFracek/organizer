@@ -1,21 +1,19 @@
 <template>
-  <div class="goals_main_container">
-    <div class="back_ground"></div>
-    <div class="goal_adding">
+  <div class="goals__mainContainer">
+    <div class="goals__background"></div>
+    <div class="goals__addingGoalsContainer">
       <input
         class="input"
         type="text"
-        id="create_goal"
         placeholder=" "
         v-model="title"
         @keyup.enter="createGoal"
       />
-      <label class="goals_label" for="create_goal">Add Goal</label>
+      <label class="goals__input__label">Add Goal</label>
       <button class="btn" @click="createGoal">Add Goal</button>
     </div>
-    <div class="goals_area">
+    <div class="goals__goalsHolder">
       <ul
-        class="goal"
         v-for="(goal, index) in goals"
         :item="goal"
         :index="index"
@@ -82,7 +80,7 @@ export default {
   letter-spacing: 1px;
   align-self: flex-start;
 }
-.back_ground {
+.goals__background {
   position: absolute;
   box-sizing: border-box;
   height: 100%;
@@ -93,7 +91,7 @@ export default {
   right: 0%;
 }
 
-.goals_main_container {
+.goals__mainContainer {
   position: relative;
   height: 30%;
   max-height: 60%;
@@ -108,7 +106,7 @@ export default {
   flex-flow: column;
 }
 
-.goal_adding {
+.goals__addingGoalsContainer {
   display: flex;
   flex-flow: row;
   align-items: center;
@@ -118,7 +116,7 @@ export default {
   position: relative;
 }
 
-.goals_area {
+.goals__goalsHolder {
   align-self: flex-start;
 }
 
@@ -144,7 +142,7 @@ export default {
   justify-content: center;
 }
 
-.goals_label {
+.goals__input__label {
   position: relative;
   color: whitesmoke;
   display: flex;
@@ -197,7 +195,7 @@ input:hover {
   color: rgb(216, 25, 25);
 }
 
-input:hover ~ .goals_label {
+input:hover ~ .goals__input__label {
   color: rgb(216, 25, 25);
 }
 
@@ -210,13 +208,13 @@ textarea {
   backdrop-filter: blur(15px) drop-shadow(4px 4px 10px rgb(7, 207, 233));
 }
 
-input:focus ~ .goals_label {
+input:focus ~ .goals__input__label {
   color: turquoise;
   text-shadow: 0px 0px 0.1rem turquoise;
 }
 
-input:focus ~ .goals_label,
-input:not(:placeholder-shown).input:not(:focus) ~ .goals_label {
+input:focus ~ .goals__input__label,
+input:not(:placeholder-shown).input:not(:focus) ~ .goals__input__label {
   animation: shadow_fading 0.8s ease;
   opacity: 0;
 }

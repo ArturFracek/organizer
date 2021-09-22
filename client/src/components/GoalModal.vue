@@ -1,39 +1,43 @@
 <template>
-  <div class="modalWrapper">
-    <button type="button" class="btn" @click="showModal = true">
+  <div class="routine__routineContainer">
+    <button
+      type="button"
+      class="goal__showModalButton"
+      @click="showModal = true"
+    >
       {{ goalObject.title }}
     </button>
     <transition name="fade" appear>
       <div
-        class="modalOverlay"
+        class="goal__modalOverlay"
         v-if="showModal"
         @click="showModal = false"
       ></div>
     </transition>
     <transition name="slide" appear>
-      <div class="modal" v-if="showModal">
-        <div class="modal_type">Goal</div>
+      <div class="goal__modal" v-if="showModal">
+        <div class="goal__modal__item">Goal</div>
         <h1>{{ goalObject.title }}</h1>
-         <div class="createdAt">{{ date }}</div>
+        <div class="goal__createdAt">{{ date }}</div>
         <textArea v-model="localGoal.description" />
         <Slider v-model="localGoal.priority" />
-        <div class="bottomContainer">
-          <div class="lower_mid_container">
+        <div class="goal__bottomContainer">
+          <div class="goal__buttonsContainer">
             <input
               type="submit"
-              class="btn_save"
+              class="goal__button--save"
               value="Save"
               @click="updateGoal"
             />
             <input
               type="submit"
-              class="btn_save"
+              class="goal__button goal__button--save"
               value="Go back"
               @click="showModal = false"
             />
           </div>
           <button
-            class="btn_delete"
+            class="goal__button goal__button--delete"
             type="button"
             aria-placeholder=""
             @click="deleteGoal(goalObject._id)"
@@ -77,7 +81,7 @@ export default {
     },
     deleteGoal(id) {
       this.$emit("deleteGoal", id);
-    }
+    },
   },
 };
 </script>
@@ -88,34 +92,18 @@ export default {
   padding: 0;
 }
 
-.modalWrapper {
+.routine__routineContainer {
   display: flex;
   justify-content: center;
   align-items: center;
   width: 100%;
 }
 
-.btn {
-  text-align: start;
-  width: 100%;
-  height: 100%;
-  border-radius: 2px;
-  color: rgba(253, 253, 250, 0.945);
-  font-weight: bold;
-  text-shadow: 0 0 1rem white;
-  padding: 0.7rem;
-  background: none;
-  outline: none;
-  background: transparent;
-  backdrop-filter: drop-shadow(4px 4px 10px rgba(248, 248, 248, 0));
-  transition: 0.2s ease-in;
-}
-
 .modalButton:hover {
   box-shadow: 6px 6px 6px 6px rgba(0, 0, 0, 0.6);
 }
 
-.bottomContainer {
+.goal__bottomContainer {
   width: 85%;
   height: 10%;
   margin-left: 5%;
@@ -124,7 +112,7 @@ export default {
   align-items: flex-end;
 }
 
-.lower_mid_container {
+.goal__buttonsContainer {
   width: 100%;
   height: 3rem;
   display: flex;
@@ -132,36 +120,11 @@ export default {
   align-items: flex-end;
 }
 
-.btn_save {
-  height: 100%;
-  width: 20%;
-  text-justify: auto;
-  text-align: center;
-  font-weight: bold;
-  border-radius: 2px;
-  color: rgba(253, 253, 250, 0.945);
-  font-weight: bold;
-  text-shadow: 0 0 1rem white;
-  background: none;
-  outline: none;
-  border: 2px solid rgb(255, 255, 255);
-  border-radius: 0.5rem;
-  background: transparent;
-  box-shadow: 0 25px 25px rgba(3, 96, 112, 0.1);
-  backdrop-filter: blur(10px) drop-shadow(4px 4px 10px rgb(248, 248, 248));
-  transition: 0.2s ease-out;
-  margin: 0 1.2rem;
-}
-
-.btn:focus {
+.goal--btn:focus {
   color: turquoise;
 }
 
-.saveButton:hover {
-  box-shadow: 6px 6px 6px 6px rgba(0, 0, 0, 0.6);
-}
-
-.modalOverlay {
+.goal__modalOverlay {
   position: fixed;
   top: 0;
   left: 0;
@@ -181,7 +144,7 @@ export default {
   opacity: 0;
 }
 
-.modal {
+.goal__modal {
   display: flex;
   flex-flow: column;
   justify-content: center;
@@ -205,7 +168,7 @@ export default {
   backdrop-filter: blur(15px) drop-shadow(10px 10px 10px rgb(17, 185, 207));
 }
 
-.modal_type {
+.goal__modal__item {
   color: white;
   position: absolute;
   top: 1rem;
@@ -224,13 +187,12 @@ h1 {
   text-shadow: 0 0 1rem white;
 }
 
-.createdAt {
+.goal__createdAt {
   color: white;
   position: fixed;
   top: 1rem;
   right: 1rem;
   text-shadow: 0 0 3px white;
-
 }
 
 .modalElement {
@@ -255,7 +217,7 @@ h1 {
   transform: translateY(-50%) translateX(300%);
 }
 
-.btn_delete {
+.goal__button--delete {
   height: 3rem;
   width: 5%;
   text-justify: auto;
@@ -273,5 +235,46 @@ h1 {
   box-shadow: 0 25px 25px rgba(3, 96, 112, 0.1);
   backdrop-filter: blur(10px) drop-shadow(4px 4px 10px rgb(248, 248, 248));
   transition: 0.2s ease-out;
+}
+
+.goal__button--save {
+  height: 100%;
+  width: 20%;
+  text-justify: auto;
+  text-align: center;
+  font-weight: bold;
+  border-radius: 2px;
+  color: rgba(253, 253, 250, 0.945);
+  font-weight: bold;
+  text-shadow: 0 0 1rem white;
+  background: none;
+  outline: none;
+  border: 2px solid rgb(255, 255, 255);
+  border-radius: 0.5rem;
+  background: transparent;
+  box-shadow: 0 25px 25px rgba(3, 96, 112, 0.1);
+  backdrop-filter: blur(10px) drop-shadow(4px 4px 10px rgb(248, 248, 248));
+  transition: 0.2s ease-out;
+  margin: 0 1.2rem;
+}
+
+.goal__showModalButton {
+  text-align: start;
+  width: 100%;
+  height: 100%;
+  border-radius: 2px;
+  color: rgba(253, 253, 250, 0.945);
+  font-weight: bold;
+  text-shadow: 0 0 1rem white;
+  padding: 0.6rem;
+  background: none;
+  outline: none;
+  background: transparent;
+  backdrop-filter: drop-shadow(4px 4px 10px rgba(248, 248, 248, 0));
+  transition: 0.2s ease-in;
+}
+
+.saveButton:hover {
+  box-shadow: 6px 6px 6px 6px rgba(0, 0, 0, 0.6);
 }
 </style>

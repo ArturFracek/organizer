@@ -14,7 +14,7 @@ reg stands for registration
               v-model="email"
               class="input"
             />
-            <label for="email" class="form__label--email">Email</label>
+            <label for="email" class="form__label form__label--email">Email</label>
           </div>
           <div class="reg__form__item">
             <input
@@ -25,7 +25,7 @@ reg stands for registration
               v-model="name"
               class="input"
             />
-            <label for="name" class="form__label--name">Name</label>
+            <label for="name" class="form__label form__label--name">Name</label>
           </div>
           <div class="reg__form__item reg__form_item--username">
             <input
@@ -36,7 +36,7 @@ reg stands for registration
               v-model="username"
               class="input"
             />
-            <label for="username" class="form__label--username">Username</label>
+            <label for="username" class="form__label form__label--username">Username</label>
           </div>
           <div class="reg__form__item">
             <input
@@ -47,7 +47,7 @@ reg stands for registration
               v-model="password"
               class="input"
             />
-            <label for="password" class="form__label--password">Password</label>
+            <label for="password" class="form__label form__label--password">Password</label>
           </div>
           <div class="reg__form__item">
             <input
@@ -58,7 +58,7 @@ reg stands for registration
               v-model="confirm_password"
               class="input"
             />
-            <label for="confirm_password" class="form__label--confirmPassword"
+            <label for="confirm_password" class="form__label form__label--confirmPassword"
               >Confirm Password</label
             >
           </div>
@@ -70,10 +70,10 @@ reg stands for registration
             />
           </div>
           <div class="reg__login__container">
-            <router-link to="/login" class="reg__login__link"
+            <router-link to="/login" class="reg__login__link reg__login__link--one"
               >Arleady have an account ?</router-link
             >
-            <router-link to="/login" class="reg__login__link__two"
+            <router-link to="/login" class="reg__login__link reg__login__link--two"
               >Sign in now</router-link
             >
           </div>
@@ -307,7 +307,9 @@ form {
   flex-wrap: wrap;
 }
 
-.form__label--username {
+.form__label {
+  background-color: none;
+  font-weight: bold;
   position: absolute;
   color: whitesmoke;
   display: flex;
@@ -315,66 +317,31 @@ form {
   transition: top 200ms ease-in;
   left: 200ms ease-in;
   font-size: 200ms ease-in;
+}
+
+.form__label--username {
   top: 8.2rem;
   left: 17.3rem;
-  background-color: none;
-  font-weight: bold;
 }
 
 .form__label--name {
-  position: absolute;
-  color: whitesmoke;
-  display: flex;
-  cursor: text;
-  transition: top 200ms ease-in;
-  left: 200ms ease-in;
-  font-size: 200ms ease-in;
   top: 2.3rem;
   left: 34rem;
-  background-color: none;
-  font-weight: bold;
 }
 
 .form__label--email {
-  position: absolute;
-  color: whitesmoke;
-  display: flex;
-  cursor: text;
-  transition: top 200ms ease-in;
-  left: 200ms ease-in;
-  font-size: 200ms ease-in;
   top: 2.3rem;
   left: 3rem;
-  background-color: none;
-  font-weight: bold;
 }
 
 .form__label--password {
-  position: absolute;
-  color: whitesmoke;
-  display: flex;
-  cursor: text;
-  transition: top 200ms ease-in;
-  left: 200ms ease-in;
-  font-size: 200ms ease-in;
   top: 14rem;
   left: 3rem;
-  background-color: none;
-  font-weight: bold;
 }
 
 .form__label--confirmPassword {
-  position: absolute;
-  color: whitesmoke;
-  display: flex;
-  cursor: text;
-  transition: top 200ms ease-in;
-  left: 200ms ease-in;
-  font-size: 200ms ease-in;
   top: 14rem;
   left: 28rem;
-  background-color: none;
-  font-weight: bold;
 }
 
 input {
@@ -477,7 +444,7 @@ input:not(:placeholder-shown).input:not(:focus)
   color: rgb(251, 255, 254);
   margin-top: 4rem;
   animation: text1 1.8s ease;
-  text-shadow: 0.2rem 0px 0.2rem turquoise;
+  text-shadow: 0.2rem 0px 0.2rem rgb(224, 88, 64);
 }
 
 @keyframes text1 {
@@ -554,13 +521,21 @@ input:not(:placeholder-shown).input:not(:focus)
   }
 }
 
-.reg__login__link__two {
+.reg__login__link--two {
   display: none;
+  opacity: 0;
+}
+
+.reg__login__link--one {
+  display: flex;
+  opacity: 1;
+}
+
+.reg__login__link {
   text-decoration: none;
   color: whitesmoke;
   font-weight: bold;
   text-shadow: 1px 1px 10px whitesmoke;
-  opacity: 0;
   animation: shown 1s;
 }
 
@@ -573,11 +548,11 @@ input:not(:placeholder-shown).input:not(:focus)
   }
 }
 
-.reg__login__container:hover .reg__login__link {
+.reg__login__container:hover .reg__login__link--one {
   display: none;
   opacity: 0;
 }
-.reg__login__container:hover .reg__login__link__two {
+.reg__login__container:hover .reg__login__link--two {
   display: flex;
   opacity: 1;
 }

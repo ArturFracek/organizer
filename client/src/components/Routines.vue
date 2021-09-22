@@ -14,7 +14,7 @@
     </div>
     <div class="routines__objectsHolder">
       <div
-        class="__routineHolder"
+        class="routine__routineHolder"
         v-for="(routine, index) in routines"
         :item="routine"
         :index="index"
@@ -131,7 +131,7 @@ export default {
   margin-top: 2.5rem;
 }
 
-.__routineHolder {
+.routine__routineHolder {
   display: flex;
   justify-content: center;
   align-items: center;

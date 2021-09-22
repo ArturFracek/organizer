@@ -1,8 +1,8 @@
 <template>
   <div class="organize__mainContainer">
     <div class="organize__upperContainer">
-      <MyRoutines />
-      <MyActivities />
+      <Routines />
+      <Activities />
     </div>
     <div class="organize__TimeNetContainer">
       <TimeNet/>
@@ -11,15 +11,15 @@
 </template>
 
 <script>
-import MyActivities from "@/components/MyActivities.vue";
-import MyRoutines from "@/components/MyRoutines.vue";
+import Activities from "@/components/Activities.vue";
+import Routines from "@/components/Routines.vue";
 import TimeNet from "@/components/TimeNet.vue";
 
 export default {
   name: "Organise",
   components: {
-    MyActivities,
-    MyRoutines,
+    Activities,
+    Routines,
     TimeNet,
   },
 };

@@ -1,7 +1,7 @@
 <template>
   <div class="activities__mainContainer">
     <div class="activities__title">Activities</div>
-    <div class="addActivities">
+    <div class="activities__addActivitiesContainer">
       <input
         class="input"
         type="text"
@@ -9,12 +9,12 @@
         v-model="title"
         @keyup.enter="createActivity"
       />
-      <label class="form_label_add_activity">Add Activity</label>
+      <label class="activities__form__label__addActivities">Add Activity</label>
       <button class="addActivity__button" @click="createActivity">Add</button>
     </div>
     <div class="activities__objectsHolder">
       <div
-        class="__activityHolder"
+        class="activities__activityHolder"
         v-for="(activity, index) in activities"
         v-bind:item="activity"
         v-bind:index="index"
@@ -36,7 +36,6 @@ import ActivityModal from "@/components/ActivityModal.vue";
 import ActivitiesService from "../Warehouse/ActivitiesService.js";
 
 export default {
-  name: "MyActivities",
   data() {
     return {
       title: "",
@@ -97,7 +96,7 @@ export default {
   letter-spacing: 1px;
 }
 
-.addActivities {
+.activities__addActivitiesContainer {
   display: flex;
   flex-flow: column;
   justify-content: center;
@@ -154,7 +153,7 @@ export default {
   backdrop-filter: blur(10px) drop-shadow(4px 4px 10px rgb(17, 185, 207));
 }
 
-.__activityHolder {
+.activities__activityHolder {
   margin: 7px 7px;
 }
 
@@ -168,7 +167,7 @@ input:hover {
   color: rgb(216, 25, 25);
 }
 
-input:hover ~ .form_label_add_activity {
+input:hover ~ .activities__form__label__addActivities {
   color: rgb(216, 25, 25);
 }
 
@@ -181,13 +180,13 @@ textarea {
   backdrop-filter: blur(15px) drop-shadow(4px 4px 10px rgb(7, 207, 233));
 }
 
-input:focus ~ .form_label_add_activity {
+input:focus ~ .activities__form__label__addActivities {
   color: turquoise;
   text-shadow: 0px 0px 0.1rem turquoise;
 }
 
-input:focus ~ .form_label_add_activity,
-input:not(:placeholder-shown).input:not(:focus) ~ .form_label_add_activity {
+input:focus ~ .activities__form__label__addActivities,
+input:not(:placeholder-shown).input:not(:focus) ~ .activities__form__label__addActivities {
   top: -4.5rem;
 }
 
@@ -195,7 +194,7 @@ input:not(:placeholder-shown) ~ .addActivity__button {
   display: block;
 }
 
-.form_label_add_activity {
+.activities__form__label__addActivities {
   position: relative;
   color: whitesmoke;
   display: flex;
@@ -207,5 +206,6 @@ input:not(:placeholder-shown) ~ .addActivity__button {
   left: 0.2rem;
   background-color: none;
   font-weight: bold;
+  caret-color: transparent;
 }
 </style>

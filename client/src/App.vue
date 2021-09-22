@@ -27,7 +27,7 @@ export default {
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Hahmlet:wght@300&family=Merriweather&family=Roboto+Slab&display=swap');
 
-html,body{
+html, body {
   margin: 0;
   padding: 0;
   height: 100%;

@@ -35,10 +35,14 @@ log stands for login
             />
           </div>
           <div class="log__registration__container">
-            <router-link to="/register" class="log__registration__link log__registration__link--one"
+            <router-link
+              to="/register"
+              class="log__registration__link log__registration__link--one"
               >Need an Account ?</router-link
             >
-            <router-link to="/register" class="log__registration__link log__registration__link--two"
+            <router-link
+              to="/register"
+              class="log__registration__link log__registration__link--two"
               >Register now</router-link
             >
           </div>
@@ -429,13 +433,21 @@ input:not(:placeholder-shown).input:not(:focus) ~ .form__label--password {
   }
 }
 
+.log__registration__link--one {
+  display: flex;
+  opacity: 1;
+}
+
 .log__registration__link--two {
   display: none;
+  opacity: 0;
+}
+
+.log__registration__link {
   text-decoration: none;
   color: whitesmoke;
   font-weight: bold;
   text-shadow: 1px 1px 10px whitesmoke;
-  opacity: 0;
   animation: shown 1s;
 }
 
@@ -448,7 +460,7 @@ input:not(:placeholder-shown).input:not(:focus) ~ .form__label--password {
   }
 }
 
-.log__registration__container:hover .log__registration {
+.log__registration__container:hover .log__registration__link--one {
   display: none;
   opacity: 0;
 }

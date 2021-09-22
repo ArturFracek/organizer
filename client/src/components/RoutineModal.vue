@@ -1,6 +1,10 @@
 <template>
   <div class="routine__modalContainer">
-    <button type="button" class="btn--show" @click="showModal = true">
+    <button
+      type="button"
+      class="routine__button routine__showModalButton"
+      @click="showModal = true"
+    >
       {{ routineObject.title }}
     </button>
     <transition name="fade" appear>
@@ -19,8 +23,8 @@
         <Slider v-model="localRoutine.priority" />
         <button
           @click="activation"
-          class="routine__activation__button"
-          :class="{ active: localRoutine.is_active }"
+          class="routine_button routine__button--activation"
+          :class="{ routine__isActive: localRoutine.is_active }"
         >
           <span v-if="!localRoutine.is_active">Activate this Routine</span>
           <span v-if="localRoutine.is_active">Active!</span>
@@ -29,20 +33,19 @@
           <div class="routine__buttonsContainer">
             <input
               type="submit"
-              class="btn--save"
+              class="routine__button routine__button--save"
               @click="saveRoutine"
               value="Save"
             />
-
             <input
               type="button"
-              class="btn--save"
+              class="routine__button routine__button--save"
               @click="showModal = false"
               value="Go back"
             />
           </div>
           <button
-            class="btn--delete"
+            class="routine__button__delete"
             type="button"
             value="Delete"
             @click="deleteRoutine(routineObject._id)"
@@ -90,7 +93,7 @@ export default {
         ...this.localRoutine,
       });
       this.showModal = false;
-      console.log( this.localRoutine )
+      console.log(this.localRoutine);
     },
     activation() {
       return this.localRoutine.is_active === false
@@ -135,7 +138,7 @@ export default {
   align-items: flex-end;
 }
 
-.btn--show {
+.routine__showModalButton {
   text-align: center;
   width: 100%;
   height: 100%;
@@ -154,10 +157,10 @@ export default {
   transition: 0.1s ease-out;
 }
 
-.routine__activation__button {
+.routine__button--activation {
   text-align: center;
-  width: 16rem;
-  height: 2.8rem;
+  width: 50%;
+  height: 2.5rem;
   border-radius: 2px;
   color: rgba(255, 255, 255, 0.945);
   font-weight: bold;
@@ -165,7 +168,8 @@ export default {
   padding: 0.5rem;
   background: none;
   outline: none;
-  border: 2px solid rgb(255, 255, 255);
+  border-top: 2px solid rgba(255, 255, 255, 0.5);
+  border-bottom: 2px solid rgba(255, 255, 255, 0.5);
   border-radius: 0.5rem;
   background: transparent;
   box-shadow: 0 25px 25px rgba(3, 96, 112, 0.1);
@@ -173,14 +177,14 @@ export default {
   transition: 0.1s ease-out;
 }
 
-.active {
+.routine__isActive {
   display: flex;
   justify-content: center;
   align-items: center;
   font-size: 1.5rem;
-  color: rgb(247, 255, 131);
-  text-shadow: 0 0 2rem rgb(140, 234, 247);
-  border: 2px solid rgb(255, 247, 142);
+  color: rgb(29, 246, 65);
+  text-shadow: 3px 0 5px rgb(255, 0, 0);
+  border: 2px solid rgb(0, 255, 85);
   animation: text1 1.2s;
 }
 
@@ -215,10 +219,6 @@ export default {
     text-shadow: 0.2rem 0px 0.2rem turquoise;
     filter: hue-rotate(0deg);
   }
-}
-
-.modalButtonClose:hover {
-  box-shadow: 6px 6px 6px 6px rgba(0, 0, 0, 0.6);
 }
 
 .routine__modalOverlay {
@@ -318,20 +318,20 @@ h1 {
 }
 
 input:hover,
-.btn--save:hover,
-.btn--delete:hover {
+.routine__button--save:hover,
+.routine__button__delete:hover {
   border-color: rgb(216, 25, 25);
   color: rgb(216, 25, 25);
 }
-input:hover ~ .btn--show {
+input:hover ~ .routine__showModalButton {
   color: rgb(216, 25, 25);
 }
-.routine__activation__button:hover {
+.routine__button--activation:hover {
   text-shadow: 0 0 10px rgb(156, 243, 255);
   box-shadow: 0 0 20px rgb(106, 248, 253);
 }
 
-.btn--save {
+.routine__button--save {
   height: 3rem;
   width: 20%;
   text-justify: auto;
@@ -353,9 +353,9 @@ input:hover ~ .btn--show {
   white-space: nowrap;
 }
 
-.btn--delete {
+.routine__button__delete {
   position: relative;
-  top: 50%;
+  top: 0%;
   height: 3rem;
   width: 5%;
   text-justify: auto;
@@ -372,5 +372,19 @@ input:hover ~ .btn--show {
   background: transparent;
   box-shadow: 0 25px 25px rgba(3, 96, 112, 0.1);
   backdrop-filter: blur(10px) drop-shadow(4px 4px 10px rgb(248, 248, 248));
+}
+
+.routine__showModalButton:hover {
+  box-shadow: 6px 6px 6px 6px rgba(0, 0, 0, 0.6);
+}
+.routine__button--save:hover {
+  box-shadow: 6px 6px 6px 6px rgba(0, 0, 0, 0.6);
+}
+
+.routine__button:hover {
+  color: red;
+  border: 2px solid red;
+  text-shadow: 0 0 6px red;
+  box-shadow: 0 0 10px red;
 }
 </style>

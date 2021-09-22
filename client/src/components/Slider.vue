@@ -1,37 +1,39 @@
 <template>
-  <div class="container">
+  <div class="slider__container">
     <input
       :value="value"
       type="range"
-      class="Slider"
+      class="slider"
       min="1"
       max="10"
       @input="input"
+      :class="{ 'slider__highPriority': value > 6 }"
     />
-    <div  class="rangeValue" :class="{ 'rangeValue-warning': value > 6 }">{{ value }}</div>
+    <div class="rangeValue" :class="{ 'rangeValue-warning': value > 6 }">
+      {{ value }}
+    </div>
   </div>
 </template>
 
 <script>
 export default {
-  name: "Slider",
   props: {
     value: {
       type: Number,
       required: false,
       default: 5,
-    }
+    },
   },
   methods: {
     input(el) {
-      this.$emit("input", parseInt(el.target.value))
-    }
+      this.$emit("input", parseInt(el.target.value));
+    },
   },
 };
 </script>
 
 <style scoped>
-.container {
+.slider__container {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -40,29 +42,50 @@ export default {
   transform-origin: 0 0;
 }
 
-.container .Slider {
+.slider__highPriority {
+  filter: drop-shadow(0 0 10px rgb(82, 226, 251));
+  animation: highPriorityShadow 1s;
+}
+
+@keyframes highPriorityShadow {
+  0% {
+    filter: drop-shadow(0 0 0 rgb(82, 226, 251));
+  }
+  100% {
+    filter: drop-shadow(0 0 10px rgb(82, 226, 251))
+  }
+}
+
+.slider__container .slider {
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
   width: 80%;
   height: 18px;
   background-color: #ffffff;
-  border-radius: 20px;
+  border-radius: 7px;
   outline: none;
   opacity: 0.9;
   transition: opacity 0.2s ease-in;
   -webkit-transition: opacity 0.3s ease-in;
   transform: rorate(-90deg);
   transform-origin: 0 0;
-  background-image: linear-gradient(90deg, #ff1212 0%, #f56262 10%, #44d8e2 90%);
-  box-shadow: 0 0 20px white;
+  background-image: linear-gradient(
+    90deg,
+    #ff5050 0%,
+    #ffffff 50%,
+    #44d8e2 100%
+  );
+  box-shadow: 0 0 10px rgb(255, 255, 255);
 }
 
-.container .Slider:hover {
+
+
+.slider__container .slider:hover {
   opacity: 1;
 }
 
-.container .Slider::-webkit-slider-thumb {
+.slider__container .slider::-webkit-slider-thumb {
   -webkit-appearance: none;
   appearance: none;
   height: 30px;
@@ -76,7 +99,7 @@ export default {
   backdrop-filter: blur(9px) hue-rotate(180deg);
 }
 
-.container .Slider::-moz-range-thumb {
+.slider__container .slider::-moz-range-thumb {
   -moz-appearance: none;
   appearance: none;
   height: 30px;
@@ -89,7 +112,7 @@ export default {
   backdrop-filter: blur(9px) hue-rotate(180deg);
 }
 
-.container .Slider::webkit-slider-thumb:hover {
+.slider__container .slider::webkit-slider-thumb:hover {
   box-shadow: 6px 6px 20px 20px rgb(0, 0, 0);
 }
 
@@ -109,32 +132,44 @@ export default {
 }
 
 .rangeValue-warning {
-  animation: shake 0.2s;
+  font-size: 1.8rem;
+  animation: shake 0.3s;
   color: #44d8e2;
   position: relative;
   text-shadow: 0 0 10px turquoise;
 }
 
-
 @keyframes shake {
   0% {
-    transform: translateX(-5px);
+    transform: translateX(-7px);
+  }
+  10% {
+    transform: translateY(-7px);
+    font-size: 1.4rem;
   }
   25% {
-    transform: translateY(-5px);
+    transform: translateX(7px);
+    font-size: 1.5rem;
+  }
+  40% {
+    transform: translateY(7px);
+    font-size: 1.6rem;
   }
   50% {
-    transform: translateX(5px);
+    transform: translateX(-7px);
+    font-size: 1.7rem;
   }
   70% {
-
-   transform: translateY(5px);
+    transform: translateY(-7px);
+    font-size: 1.8rem;
   }
   90% {
-    transform: translateX(-5px);
+    transform: translateX(5px);
+    font-size: 1.9rem;
   }
   100% {
-    transform: translateY(-5px);
+    transform: translateY(5px);
+    font-size: 2rem;
   }
 }
 </style>
