@@ -1,40 +1,39 @@
-/* eslint-disable prettier/prettier */
 <template>
-  <div class="modalWrapper">
-    <button type="button" class="btn" @click="showModal = true">
+  <div class="activity__modalContainer">
+    <button type="button" class="btn--show" @click="showModal = true">
       {{ activityObject.title }}
     </button>
     <transition name="fade" appear>
       <div
-        class="modalOverlay"
+        class="activity__modalOverlay"
         v-if="showModal"
         @click="showModal = false"
       ></div>
     </transition>
     <transition name="slide" appear>
-      <div class="modal" v-if="showModal">
-        <div class="modal_type">Activity</div>
+      <div class="activity__modal" v-if="showModal">
+        <div class="activity__modal__item">Activity</div>
         <h1>{{ activityObject.title }}</h1>
-        <div class="createdAt">{{ date }}</div>
+        <div class="activity__createdAt">{{ date }}</div>
         <textArea v-model="localActivity.description" />
         <Slider v-model="localActivity.priority" />
-        <div class="bottomContainer">
-          <div class="lower_mid_container">
+        <div class="activity__bottomContainer">
+          <div class="activity__buttonsContainer">
             <input
               type="submit"
-              class="btn_save"
+              class="btn--save"
               @click="updateActivity"
               value="Save"
             />
             <input
               type="submit"
-              class="btn_save"
+              class="btn--save"
               value="Go back"
               @click="showModal = false"
             />
           </div>
           <button
-            class="btn_delete"
+            class="btn--delete"
             type="button"
             value="Delete"
             @click="deleteActivity(activityObject._id)"
@@ -92,14 +91,14 @@ export default {
   padding: 0;
 }
 
-.modalWrapper {
+.activity__modalContainer {
   display: flex;
   justify-content: center;
   align-items: center;
   width: 100%;
 }
 
-.btn {
+.btn--show {
   text-align: center;
   width: 100%;
   height: 100%;
@@ -122,7 +121,7 @@ export default {
   box-shadow: 6px 6px 6px 6px rgba(0, 0, 0, 0.6);
 }
 
-.bottomContainer {
+.activity__bottomContainer {
   width: 85%;
   height: 10%;
   margin-left: 5%;
@@ -131,7 +130,7 @@ export default {
   align-items: flex-end;
 }
 
-.lower_mid_container {
+.activity__buttonsContainer {
   width: 100%;
   height: 3rem;
   display: flex;
@@ -139,7 +138,7 @@ export default {
   align-items: flex-end;
 }
 
-.btn_save {
+.btn--save {
   height: 100%;
   width: 20%;
   text-justify: auto;
@@ -168,7 +167,7 @@ export default {
   box-shadow: 6px 6px 6px 6px rgba(0, 0, 0, 0.6);
 }
 
-.modalOverlay {
+.activity__modalOverlay {
   position: fixed;
   top: 0;
   left: 0;
@@ -188,7 +187,7 @@ export default {
   opacity: 0;
 }
 
-.modal {
+.activity__modal {
   display: flex;
   flex-flow: column;
   justify-content: center;
@@ -214,7 +213,7 @@ export default {
   backdrop-filter: blur(10px) drop-shadow(4px 4px 10px rgb(17, 185, 207));
 }
 
-.modal_type {
+.activity__modal__item {
   color: white;
   position: absolute;
   top: 1rem;
@@ -233,7 +232,7 @@ h1 {
   text-shadow: 0 0 1rem white;
 }
 
-.createdAt {
+.activity__createdAt {
   color: white;
   position: fixed;
   top: 1rem;
@@ -263,7 +262,7 @@ h1 {
   transform: translateY(-50%) translateX(300%);
 }
 
-.btn_delete {
+.btn--delete {
   height: 3rem;
   width: 5%;
   text-justify: auto;

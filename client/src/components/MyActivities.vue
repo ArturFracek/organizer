@@ -1,23 +1,20 @@
 <template>
-  <div class="main_activities_container">
-    <div class="title">Activities</div>
+  <div class="activities__mainContainer">
+    <div class="activities__title">Activities</div>
     <div class="addActivities">
       <input
-        id="add_activity"
         class="input"
         type="text"
         placeholder=" "
         v-model="title"
         @keyup.enter="createActivity"
       />
-      <label for="add_activity" class="form_label_add_activity"
-        >Add Activity</label
-      >
-      <button class="btn" @click="createActivity">Add</button>
+      <label class="form_label_add_activity">Add Activity</label>
+      <button class="addActivity__button" @click="createActivity">Add</button>
     </div>
-    <div class="activities">
+    <div class="activities__objectsHolder">
       <div
-        class="activity"
+        class="__activityHolder"
         v-for="(activity, index) in activities"
         v-bind:item="activity"
         v-bind:index="index"
@@ -76,7 +73,7 @@ export default {
 </script>
 
 <style scoped>
-.main_activities_container {
+.activities__mainContainer {
   display: flex;
   flex-flow: column;
   align-items: center;
@@ -89,7 +86,7 @@ export default {
   box-shadow: 0 0 0.5rem rgb(132, 242, 250);
 }
 
-.title {
+.activities__title {
   position: relative;
   top: 0.5rem;
   align-self: flex-start;
@@ -109,7 +106,7 @@ export default {
   margin: 2rem;
 }
 
-.btn {
+.addActivity__button {
   border-radius: 0;
   color: rgb(88, 249, 255);
   text-shadow: 0 0 8px turquoise;
@@ -129,20 +126,13 @@ export default {
   display: none;
 }
 
-.activities {
+.activities__objectsHolder {
   display: flex;
   flex-flow: row;
   justify-content: space-evenly;
   align-items: flex-end;
   flex-wrap: wrap;
   margin-top: 2.5rem;
-}
-
-.activityHolder {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin: 7px 7px;
 }
 
 .input {
@@ -164,7 +154,7 @@ export default {
   backdrop-filter: blur(10px) drop-shadow(4px 4px 10px rgb(17, 185, 207));
 }
 
-.activity {
+.__activityHolder {
   margin: 7px 7px;
 }
 
@@ -201,7 +191,7 @@ input:not(:placeholder-shown).input:not(:focus) ~ .form_label_add_activity {
   top: -4.5rem;
 }
 
-input:not(:placeholder-shown) ~ .btn {
+input:not(:placeholder-shown) ~ .addActivity__button {
   display: block;
 }
 

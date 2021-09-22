@@ -1,10 +1,11 @@
+log stands for login
 <template>
-  <div class="login_container">
-    <div class="title_login">Login to your Organizer</div>
-    <div class="form_container">
-      <div class="form_body">
+  <div class="log__container">
+    <div class="log__title">Login to your Organizer</div>
+    <div class="log__lower_container">
+      <div class="log__form">
         <form @submit.prevent="loginUser">
-          <div class="form_group">
+          <div class="log__form__item">
             <input
               id="username"
               type="text"
@@ -13,9 +14,9 @@
               v-model="username"
               class="input"
             />
-            <label for="username" class="form_label_login">Username</label>
+            <label for="username" class="form__label form__label--username">Username</label>
           </div>
-          <div class="form_group">
+          <div class="log__form__item">
             <input
               id="password"
               type="password"
@@ -24,21 +25,20 @@
               v-model="password"
               class="input"
             />
-            <label for="password" class="form_label_password">Password</label>
+            <label for="password" class="form__label form__label--password">Password</label>
           </div>
-          <div class="form_group">
+          <div class="log__form__item">
             <input
               type="submit"
-              class="btn btn_primary"
+              class="log__button log__button--primary"
               value="Login"
-              placeholder=""
             />
           </div>
-          <div class="registration_wrap">
-            <router-link to="/register" class="registration_link"
+          <div class="log__registration__container">
+            <router-link to="/register" class="log__registration__link log__registration__link--one"
               >Need an Account ?</router-link
             >
-            <router-link to="/register" class="registration_link_two"
+            <router-link to="/register" class="log__registration__link log__registration__link--two"
               >Register now</router-link
             >
           </div>
@@ -81,7 +81,7 @@ export default {
 </script>
 
 <style scoped>
-.login_container {
+.log__container {
   display: flex;
   flex-flow: column;
   justify-content: center;
@@ -91,7 +91,7 @@ export default {
   padding: 0;
 }
 
-.login_container {
+.log__container {
   background: repeating-linear-gradient(
       270deg,
       rgba(0, 0, 0, 0.11) 0px,
@@ -235,7 +235,7 @@ export default {
     linear-gradient(360deg, rgb(33, 250, 250), rgb(4, 0, 5));
 }
 
-.form_container {
+.log__lower_container {
   display: grid;
   justify-content: center;
   align-items: center;
@@ -243,14 +243,14 @@ export default {
   width: 100%;
 }
 
-.form_body {
+.log__form {
   position: relative;
   width: 20rem;
   margin-bottom: auto;
   margin-top: 2rem;
 }
 
-.form_group {
+.log__form__item {
   width: 100%;
   padding: 1.4rem 0;
 }
@@ -261,7 +261,7 @@ form {
   align-items: center;
 }
 
-.form_label_login {
+.form__label {
   position: absolute;
   color: whitesmoke;
   display: flex;
@@ -269,24 +269,17 @@ form {
   transition: top 200ms ease-in;
   left: 200ms ease-in;
   font-size: 200ms ease-in;
-  top: 2.2rem;
-  left: 2rem;
   background-color: none;
   font-weight: bold;
+  left: 2rem;
 }
 
-.form_label_password {
-  position: absolute;
-  color: whitesmoke;
-  display: flex;
-  cursor: text;
-  transition: top 200ms ease-in;
-  left: 200ms ease-in;
-  font-size: 200ms ease-in;
+.form__label--username {
+  top: 2.2rem;
+}
+
+.form__label--password {
   top: 7.9rem;
-  left: 2rem;
-  background-color: none;
-  font-weight: bold;
 }
 
 input {
@@ -314,13 +307,13 @@ input:hover {
   border-color: rgb(216, 25, 25);
   color: rgb(216, 25, 25);
 }
-input:hover ~ .btn {
+input:hover ~ .log__button {
   color: rgb(216, 25, 25);
 }
-input:hover ~ .form_label_login {
+input:hover ~ .form__label--username {
   color: rgb(216, 25, 25);
 }
-input:hover ~ .form_label_password {
+input:hover ~ .form__label--password {
   color: rgb(216, 25, 25);
 }
 
@@ -333,23 +326,23 @@ textarea {
   backdrop-filter: blur(15px) drop-shadow(4px 4px 10px rgb(7, 207, 233));
 }
 
-input:focus ~ .form_label_login,
-input:focus ~ .form_label_password {
+input:focus ~ .form__label--username,
+input:focus ~ .form__label--password {
   color: turquoise;
   text-shadow: 0px 0px 0.1rem turquoise;
 }
 
-input:focus ~ .form_label_login,
-input:not(:placeholder-shown).input:not(:focus) ~ .form_label_login {
+input:focus ~ .form__label--username,
+input:not(:placeholder-shown).input:not(:focus) ~ .form__label--username {
   top: 0.1rem;
 }
 
-input:focus ~ .form_label_password,
-input:not(:placeholder-shown).input:not(:focus) ~ .form_label_password {
+input:focus ~ .form__label--password,
+input:not(:placeholder-shown).input:not(:focus) ~ .form__label--password {
   top: 5.95rem;
 }
 
-.title_login {
+.log__title {
   color: rgb(230, 230, 230);
   display: flex;
   justify-content: center;
@@ -394,7 +387,7 @@ input:not(:placeholder-shown).input:not(:focus) ~ .form_label_password {
   }
 }
 
-.btn {
+.log__button {
   color: white;
   border-radius: 0;
   padding: 0.9rem 0;
@@ -402,11 +395,11 @@ input:not(:placeholder-shown).input:not(:focus) ~ .form_label_password {
   font-weight: bold;
 }
 
-.btn:focus {
+.log__button:focus {
   color: turquoise;
 }
 
-.registration_wrap {
+.log__registration__container {
   height: 2rem;
   width: 10rem;
   display: flex;
@@ -414,7 +407,7 @@ input:not(:placeholder-shown).input:not(:focus) ~ .form_label_password {
   align-items: center;
 }
 
-.registration_link {
+.log__registration__link {
   text-decoration: none;
   color: whitesmoke;
   font-weight: bold;
@@ -423,7 +416,7 @@ input:not(:placeholder-shown).input:not(:focus) ~ .form_label_password {
   animation: shown 1s;
 }
 
-.registration_link_two:focus {
+.log__registration__link--two:focus {
   color: turquoise;
 }
 
@@ -436,7 +429,7 @@ input:not(:placeholder-shown).input:not(:focus) ~ .form_label_password {
   }
 }
 
-.registration_link_two {
+.log__registration__link--two {
   display: none;
   text-decoration: none;
   color: whitesmoke;
@@ -455,11 +448,11 @@ input:not(:placeholder-shown).input:not(:focus) ~ .form_label_password {
   }
 }
 
-.registration_wrap:hover .registration_link {
+.log__registration__container:hover .log__registration {
   display: none;
   opacity: 0;
 }
-.registration_wrap:hover .registration_link_two {
+.log__registration__container:hover .log__registration__link--two {
   display: flex;
   opacity: 1;
 }

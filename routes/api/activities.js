@@ -17,8 +17,7 @@ router.post("/", async (req, res) => {
   const activities = await loadActivitiesCollection();
   await activities.insertOne({
     title,
-    description,
-    priority,
+    priority: 5,
     createdAt: new Date(),
   });
   res.status(201).send();

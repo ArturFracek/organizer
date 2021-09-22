@@ -1,10 +1,11 @@
+reg stands for registration
 <template>
-  <div class="registration_container">
-    <div class="title_register">Register</div>
-    <div class="form_container">
-      <div class="form_body">
+  <div class="reg__container">
+    <div class="reg__title">Register</div>
+    <div class="reg__lower_container">
+      <div class="reg__form">
         <form @submit.prevent="registerUser">
-          <div class="form_group">
+          <div class="reg__form__item">
             <input
               id="email"
               type="text"
@@ -13,9 +14,9 @@
               v-model="email"
               class="input"
             />
-            <label for="email" class="form_label_email">Email</label>
+            <label for="email" class="form__label--email">Email</label>
           </div>
-          <div class="form_group">
+          <div class="reg__form__item">
             <input
               id="name"
               type="text"
@@ -24,9 +25,9 @@
               v-model="name"
               class="input"
             />
-            <label for="name" class="form_label_name">Name</label>
+            <label for="name" class="form__label--name">Name</label>
           </div>
-          <div class="form_group form_group_login">
+          <div class="reg__form__item reg__form_item--username">
             <input
               id="username"
               type="text"
@@ -35,9 +36,9 @@
               v-model="username"
               class="input"
             />
-            <label for="username" class="form_label_login">Username</label>
+            <label for="username" class="form__label--username">Username</label>
           </div>
-          <div class="form_group">
+          <div class="reg__form__item">
             <input
               id="password"
               type="password"
@@ -46,9 +47,9 @@
               v-model="password"
               class="input"
             />
-            <label for="password" class="form_label_password2">Password</label>
+            <label for="password" class="form__label--password">Password</label>
           </div>
-          <div class="form_group">
+          <div class="reg__form__item">
             <input
               id="confirm_password"
               type="password"
@@ -57,23 +58,22 @@
               v-model="confirm_password"
               class="input"
             />
-            <label for="confirm_password" class="form_label_confirm_password"
+            <label for="confirm_password" class="form__label--confirmPassword"
               >Confirm Password</label
             >
           </div>
-          <div class="form_group form_group_btn">
+          <div class="reg__form__item reg__form__button">
             <input
               type="submit"
-              class="btn btn-primary"
+              class="reg__button reg__button--primary"
               value="Register"
-              placeholder=""
             />
           </div>
-          <div class="login_wrap">
-            <router-link to="/login" class="login_link"
+          <div class="reg__login__container">
+            <router-link to="/login" class="reg__login__link"
               >Arleady have an account ?</router-link
             >
-            <router-link to="/login" class="login_link_two"
+            <router-link to="/login" class="reg__login__link__two"
               >Sign in now</router-link
             >
           </div>
@@ -116,7 +116,7 @@ export default {
 </script>
 
 <style scoped>
-.registration_container {
+.reg__container {
   display: flex;
   flex-flow: column;
   justify-content: center;
@@ -124,7 +124,7 @@ export default {
   height: 100%;
 }
 
-.registration_container {
+.reg__container {
   background: repeating-linear-gradient(
       270deg,
       rgba(0, 0, 0, 0.11) 0px,
@@ -268,14 +268,14 @@ export default {
     linear-gradient(360deg, rgb(33, 250, 250), rgb(4, 0, 5));
 }
 
-.form_container {
+.reg__lower_container {
   display: flex;
   justify-content: center;
   height: 100%;
   width: 100%;
 }
 
-.form_body {
+.reg__form {
   display: flex;
   flex-flow: row;
   justify-content: center;
@@ -285,17 +285,17 @@ export default {
   margin-bottom: auto;
 }
 
-.form_group {
+.reg__form__item {
   width: 20rem;
   padding: 1.4rem 1.4rem;
 }
 
-.form_group_login,
-.form_group_btn {
+.reg__form_item--username,
+.reg__form__button {
   margin: 0 10rem;
 }
 
-.login_wrap {
+.reg__login__container {
   flex-basis: 40rem;
 }
 
@@ -307,7 +307,7 @@ form {
   flex-wrap: wrap;
 }
 
-.form_label_login {
+.form__label--username {
   position: absolute;
   color: whitesmoke;
   display: flex;
@@ -321,7 +321,7 @@ form {
   font-weight: bold;
 }
 
-.form_label_name {
+.form__label--name {
   position: absolute;
   color: whitesmoke;
   display: flex;
@@ -335,7 +335,7 @@ form {
   font-weight: bold;
 }
 
-.form_label_email {
+.form__label--email {
   position: absolute;
   color: whitesmoke;
   display: flex;
@@ -349,7 +349,7 @@ form {
   font-weight: bold;
 }
 
-.form_label_password2 {
+.form__label--password {
   position: absolute;
   color: whitesmoke;
   display: flex;
@@ -363,7 +363,7 @@ form {
   font-weight: bold;
 }
 
-.form_label_confirm_password {
+.form__label--confirmPassword {
   position: absolute;
   color: whitesmoke;
   display: flex;
@@ -403,22 +403,22 @@ input:hover {
   color: rgb(216, 25, 25);
 }
 
-input:hover ~ .form_label_login {
+input:hover ~ .form__label--username {
   color: rgb(216, 25, 25);
 }
-input:hover ~ .form_label_name {
+input:hover ~ .form__label--name {
   color: rgb(216, 25, 25);
 }
-input:hover ~ .form_label_email {
+input:hover ~ .form__label--email {
   color: rgb(216, 25, 25);
 }
-input:hover ~ .form_label_password2 {
+input:hover ~ .form__label--password {
   color: rgb(216, 25, 25);
 }
-input:hover ~ .form_label_confirm_password {
+input:hover ~ .form__label--confirmPassword {
   color: rgb(216, 25, 25);
 }
-input:hover ~ .btn {
+input:hover ~ .reg__button {
   color: rgb(216, 25, 25);
 }
 
@@ -431,41 +431,42 @@ textarea {
   backdrop-filter: blur(15px) drop-shadow(4px 4px 10px rgb(7, 207, 233));
 }
 
-input:focus ~ .form_label_login,
-input:focus ~ .form_label_name,
-input:focus ~ .form_label_email,
-input:focus ~ .form_label_password2,
-input:focus ~ .form_label_confirm_password {
+input:focus ~ .form__label--username,
+input:focus ~ .form__label--name,
+input:focus ~ .form__label--email,
+input:focus ~ .form__label--password,
+input:focus ~ .form__label--confirmPassword {
   color: turquoise;
   text-shadow: 0px 0px 0.2rem turquoise;
 }
 
-input:focus ~ .form_label_login,
-input:not(:placeholder-shown).input:not(:focus) ~ .form_label_login {
+input:focus ~ .form__label--username,
+input:not(:placeholder-shown).input:not(:focus) ~ .form__label--username {
   top: 6rem;
 }
 
-input:focus ~ .form_label_name,
-input:not(:placeholder-shown).input:not(:focus) ~ .form_label_name {
-  top: 0.1rem;
+input:focus ~ .form__label--name,
+input:not(:placeholder-shown).input:not(:focus) ~ .form__label--name {
+  top: 0rem;
 }
 
-input:focus ~ .form_label_email,
-input:not(:placeholder-shown).input:not(:focus) ~ .form_label_email {
-  top: 0.1rem;
+input:focus ~ .form__label--email,
+input:not(:placeholder-shown).input:not(:focus) ~ .form__label--email {
+  top: 0rem;
 }
 
-input:focus ~ .form_label_password2,
-input:not(:placeholder-shown).input:not(:focus) ~ .form_label_password2 {
+input:focus ~ .form__label--password,
+input:not(:placeholder-shown).input:not(:focus) ~ .form__label--password {
   top: 11.8rem;
 }
 
-input:focus ~ .form_label_confirm_password,
-input:not(:placeholder-shown).input:not(:focus) ~ .form_label_confirm_password {
+input:focus ~ .form__label--confirmPassword,
+input:not(:placeholder-shown).input:not(:focus)
+  ~ .form__label--confirmPassword {
   top: 11.8rem;
 }
 
-.title_register {
+.reg__title {
   color: rgb(230, 230, 230);
   display: flex;
   justify-content: center;
@@ -485,7 +486,7 @@ input:not(:placeholder-shown).input:not(:focus) ~ .form_label_confirm_password {
     opacity: 0;
     text-shadow: 0.6rem 0rem 0.8rem turquoise, -0.6rem 0rem 0.8rem turquoise,
       0rem 0.6rem 0.8rem turquoise, 0rem -0.6rem 0.8rem turquoise;
-      filter: hue-rotate(180deg);
+    filter: hue-rotate(180deg);
   }
   20% {
     opacity: 0.8;
@@ -495,13 +496,13 @@ input:not(:placeholder-shown).input:not(:focus) ~ .form_label_confirm_password {
     opacity: 1;
     text-shadow: 0.3rem 0rem 0.8rem turquoise, -0.3rem 0rem 0.8rem turquoise,
       0rem 0.3rem 0.8rem turquoise, 0rem -0.3rem 0.8rem turquoise;
-      filter: hue-rotate(0deg);
+    filter: hue-rotate(0deg);
   }
   90% {
     opacity: 1;
     text-shadow: 0.2rem 0rem 1.4rem turquoise, -0.2rem 0rem 1.4rem turquoise,
       0rem 0.2rem 1.4em turquoise, 0rem -0.2rem 1.4rem turquoise;
-      filter: hue-rotate(180deg);
+    filter: hue-rotate(180deg);
   }
   100% {
     opacity: 1;
@@ -510,7 +511,7 @@ input:not(:placeholder-shown).input:not(:focus) ~ .form_label_confirm_password {
   }
 }
 
-.btn {
+.reg__button {
   color: white;
   border-radius: 0;
   padding: 0.9rem 0;
@@ -518,11 +519,11 @@ input:not(:placeholder-shown).input:not(:focus) ~ .form_label_confirm_password {
   font-weight: bold;
 }
 
-.btn:focus {
+.reg__button:focus {
   color: turquoise;
 }
 
-.login_wrap {
+.reg__login__container {
   height: 2rem;
   width: 10rem;
   display: flex;
@@ -530,7 +531,7 @@ input:not(:placeholder-shown).input:not(:focus) ~ .form_label_confirm_password {
   align-items: center;
 }
 
-.login_link {
+.reg__login__link {
   white-space: nowrap;
   text-decoration: none;
   color: whitesmoke;
@@ -540,7 +541,7 @@ input:not(:placeholder-shown).input:not(:focus) ~ .form_label_confirm_password {
   animation: shown 1s;
 }
 
-.login_link_two:focus {
+.reg__login__link__two:focus {
   color: turquoise;
 }
 
@@ -553,7 +554,7 @@ input:not(:placeholder-shown).input:not(:focus) ~ .form_label_confirm_password {
   }
 }
 
-.login_link_two {
+.reg__login__link__two {
   display: none;
   text-decoration: none;
   color: whitesmoke;
@@ -572,11 +573,11 @@ input:not(:placeholder-shown).input:not(:focus) ~ .form_label_confirm_password {
   }
 }
 
-.login_wrap:hover .login_link {
+.reg__login__container:hover .reg__login__link {
   display: none;
   opacity: 0;
 }
-.login_wrap:hover .login_link_two {
+.reg__login__container:hover .reg__login__link__two {
   display: flex;
   opacity: 1;
 }
@@ -586,62 +587,62 @@ input:not(:placeholder-shown).input:not(:focus) ~ .form_label_confirm_password {
     flex-flow: column;
   }
 
-  .form_group {
+  .reg__form__item {
     padding: 1rem;
   }
 
-  .login_wrap {
+  .reg__login__container {
     flex-basis: 0;
   }
 
-  .form_label_login {
+  .form__label--username {
     top: 12rem;
     left: 12.2rem;
   }
 
-  .form_label_name {
+  .form__label--name {
     top: 6.9rem;
     left: 12.2rem;
   }
 
-  .form_label_email {
+  .form__label--email {
     top: 1.8rem;
     left: 12.2rem;
   }
 
-  .form_label_password2 {
+  .form__label--password {
     top: 17rem;
     left: 12.2rem;
   }
 
-  .form_label_confirm_password {
+  .form__label--confirmPassword {
     top: 22.2rem;
     left: 12.2rem;
   }
 
-  input:focus ~ .form_label_login,
-  input:not(:placeholder-shown).input:not(:focus) ~ .form_label_login {
+  input:focus ~ .form__label--username,
+  input:not(:placeholder-shown).input:not(:focus) ~ .form__label--username {
     top: 9.8rem;
   }
 
-  input:focus ~ .form_label_name,
-  input:not(:placeholder-shown).input:not(:focus) ~ .form_label_name {
+  input:focus ~ .form__label--name,
+  input:not(:placeholder-shown).input:not(:focus) ~ .form__label--name {
     top: 4.7rem;
   }
 
-  input:focus ~ .form_label_email,
-  input:not(:placeholder-shown).input:not(:focus) ~ .form_label_email {
+  input:focus ~ .form__label--email,
+  input:not(:placeholder-shown).input:not(:focus) ~ .form__label--email {
     top: -0.4rem;
   }
 
-  input:focus ~ .form_label_password2,
-  input:not(:placeholder-shown).input:not(:focus) ~ .form_label_password2 {
+  input:focus ~ .form__label--password,
+  input:not(:placeholder-shown).input:not(:focus) ~ .form__label--password {
     top: 14.8rem;
   }
 
-  input:focus ~ .form_label_confirm_password,
+  input:focus ~ .form__label--confirmPassword,
   input:not(:placeholder-shown).input:not(:focus)
-    ~ .form_label_confirm_password {
+    ~ .form__label--confirmPassword {
     top: 19.9rem;
   }
 }

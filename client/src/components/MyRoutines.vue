@@ -1,7 +1,7 @@
 <template>
-  <div class="routines_container">
-    <div class="title">Routines</div>
-    <div class="addRoutines">
+  <div class="routines__mainContainer">
+    <div class="routines__title">Routines</div>
+    <div class="routines__addingRoutinesContainer">
       <input
         class="input"
         type="text"
@@ -9,12 +9,12 @@
         v-model="title"
         @keyup.enter="createRoutine"
       />
-      <label for="activity" class="form_label_add_routines">Add Routine</label>
-      <button class="btn" @click="createRoutine">Add</button>
+      <label class="routines__form__label__addRoutines">Add Routine</label>
+      <button class="addRoutine__button" @click="createRoutine">Add</button>
     </div>
-    <div class="routines">
+    <div class="routines__objectsHolder">
       <div
-        class="routineHolder"
+        class="__routineHolder"
         v-for="(routine, index) in routines"
         :item="routine"
         :index="index"
@@ -73,7 +73,7 @@ export default {
 </script>
 
 <style scoped>
-.routines_container {
+.routines__mainContainer {
   display: flex;
   flex-flow: column;
   align-items: center;
@@ -87,7 +87,7 @@ export default {
   box-shadow: 0 0 0.5rem rgb(132, 242, 250);
 }
 
-.title {
+.routines__title {
   position: relative;
   top: 0.5rem;
   align-self: flex-start;
@@ -106,7 +106,7 @@ export default {
   text-align: center;
 }
 
-.addRoutines {
+.routines__addingRoutinesContainer {
   display: flex;
   flex-flow: column;
   justify-content: center;
@@ -122,7 +122,7 @@ export default {
   text-align: center;
 }
 
-.routines {
+.routines__objectsHolder {
   display: flex;
   flex-flow: row;
   justify-content: center;
@@ -131,14 +131,14 @@ export default {
   margin-top: 2.5rem;
 }
 
-.routineHolder {
+.__routineHolder {
   display: flex;
   justify-content: center;
   align-items: center;
   margin: 7px 7px;
 }
 
-.btn {
+.addRoutine__button {
   border-radius: 0;
   color: rgb(88, 249, 255);
   text-shadow: 0 0 8px turquoise;
@@ -188,7 +188,7 @@ input:hover {
   color: rgb(216, 25, 25);
 }
 
-input:hover ~ .form_label_add_routines {
+input:hover ~ .routines__form__label__addRoutines {
   color: rgb(216, 25, 25);
 }
 
@@ -201,21 +201,21 @@ textarea {
   backdrop-filter: blur(15px) drop-shadow(4px 4px 10px rgb(7, 207, 233));
 }
 
-input:focus ~ .form_label_add_routines {
+input:focus ~ .routines__form__label__addRoutines {
   color: turquoise;
   text-shadow: 0px 0px 0.1rem turquoise;
 }
 
-input:focus ~ .form_label_add_routines,
-input:not(:placeholder-shown).input:not(:focus) ~ .form_label_add_routines {
+input:focus ~ .routines__form__label__addRoutines,
+input:not(:placeholder-shown).input:not(:focus) ~ .routines__form__label__addRoutines {
   top: -4.5rem;
 }
 
-input:not(:placeholder-shown) ~ .btn {
+input:not(:placeholder-shown) ~ .addRoutine__button {
   display: block;
 }
 
-.form_label_add_routines {
+.routines__form__label__addRoutines {
   position: relative;
   color: whitesmoke;
   display: flex;

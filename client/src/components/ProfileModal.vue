@@ -1,19 +1,19 @@
 <template>
-  <div class="main_container">
-    <div class="upper_container">
+  <div class="profile__mainContainer">
+    <div class="profile__UserInfo">
       <input type="file" name="file" id="file" accept="image/*" />
-      <div class="profile_pic_container" id="profile_pic_id">
+      <div class="profile__picContainer" id="profile__picID">
         <img src="../assets/profile_cat.jpg" class="photo" />
         <label for="file" id="upload_btn">Upload Photo</label>
       </div>
-      <div class="card" v-if="user">
-        <li class="list_group_item">Username: {{ user.username }}</li>
-        <li class="list_group_item">Name: {{ user.name }}</li>
-        <li class="list_group_item">Email: {{ user.email }}</li>
+      <div class="profile__UserInfo__card" v-if="user">
+        <li class="profile__UserInfo__card__item">Username: {{ user.username }}</li>
+        <li class="profile__UserInfo__card__item">Name: {{ user.name }}</li>
+        <li class="profile__UserInfo__card__item">Email: {{ user.email }}</li>
       </div>
     </div>
-    <div class="mid_container">
-      <div class="mid_title">Time Statistics</div>
+    <div class="profile__TimeStatisticsContainer">
+      <div class="profile__TimeStatisticsContainer__title">Time Statistics</div>
     </div>
     <PostComponent />
   </div>
@@ -39,7 +39,7 @@ export default {
   },
   mounted() {
     const file = document.getElementById("file");
-    const previewContainer = document.getElementById("profile_pic_id");
+    const previewContainer = document.getElementById("profile__picID");
     const previewImage = previewContainer.querySelector(".photo");
 
     file.addEventListener("change", function () {
@@ -70,7 +70,7 @@ export default {
   box-sizing: border-box;
 }
 
-.main_container {
+.profile__mainContainer {
   display: flex;
   flex-flow: column;
   align-items: center;
@@ -221,13 +221,13 @@ export default {
   overflow-y: hidden;
 }
 
-.upper_container {
+.profile__UserInfo {
   display: flex;
   justify-content: center;
   padding: 1rem;
 }
 
-.card {
+.profile__UserInfo__card {
   margin: 0 0 0 1rem;
   list-style: none;
   font-size: 1.2rem;
@@ -236,7 +236,7 @@ export default {
   justify-content: space-evenly;
 }
 
-.profile_pic_container {
+.profile__picContainer {
   height: 8rem;
   width: 10rem;
 }
@@ -275,7 +275,7 @@ img:hover ~ #upload_btn,
   display: flex;
 }
 
-.mid_container {
+.profile__TimeStatisticsContainer {
   height: 30%;
   max-height: 60%;
   width: 80%;
@@ -297,7 +297,7 @@ img:hover ~ #upload_btn,
   margin-bottom: 2rem;
 }
 
-.mid_title {
+.profile__TimeStatisticsContainer__title {
   font-size: 1.2rem;
   color: rgb(255, 255, 255);
   letter-spacing: 1px;

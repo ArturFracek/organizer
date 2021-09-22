@@ -1,10 +1,10 @@
 <template>
-  <div class="main_container">
-    <div class="upper_container">
+  <div class="organize__mainContainer">
+    <div class="organize__upperContainer">
       <MyRoutines />
       <MyActivities />
     </div>
-    <div class="lower_container">
+    <div class="organize__TimeNetContainer">
       <TimeNet/>
     </div>
   </div>
@@ -26,7 +26,7 @@ export default {
 </script>
 
 <style scoped>
-.main_container {
+.organize__mainContainer {
   position: absolute;
   display: flex;
   flex-flow: column;
@@ -37,14 +37,14 @@ export default {
   height: auto;
   overflow-y: scroll;
 }
-.upper_container {
+.organize__upperContainer {
   display: flex;
   flex-flow: column;
   align-items: center;
   margin-bottom: 2vh;
 }
 
-.lower_container {
+.organize__TimeNetContainer {
   height: 90vh;
 }
 

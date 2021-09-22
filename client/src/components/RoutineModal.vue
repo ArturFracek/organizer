@@ -1,48 +1,48 @@
 <template>
-  <div class="routineModalWrapper">
-    <button type="button" class="btn" @click="showModal = true">
+  <div class="routine__modalContainer">
+    <button type="button" class="btn--show" @click="showModal = true">
       {{ routineObject.title }}
     </button>
     <transition name="fade" appear>
       <div
-        class="modalOverlay"
+        class="routine__modalOverlay"
         v-if="showModal"
         @click="showModal = false"
       ></div>
     </transition>
     <transition name="slide" appear>
-      <div class="modal" v-if="showModal">
-        <div class="modal_type">Routine</div>
+      <div class="routine__modal" v-if="showModal">
+        <div class="routine__modal__item">Routine</div>
         <h1>{{ routineObject.title }}</h1>
-        <div class="createdAt">{{ date }}</div>
+        <div class="routine__createdAt">{{ date }}</div>
         <textArea v-model="localRoutine.description" />
         <Slider v-model="localRoutine.priority" />
         <button
           @click="activation"
-          class="activating_button"
+          class="routine__activation__button"
           :class="{ active: localRoutine.is_active }"
         >
           <span v-if="!localRoutine.is_active">Activate this Routine</span>
           <span v-if="localRoutine.is_active">Active!</span>
         </button>
-        <div class="bottomContainer">
-          <div class="lower_mid_section">
+        <div class="routine__bottomContainer">
+          <div class="routine__buttonsContainer">
             <input
               type="submit"
-              class="btn_save"
+              class="btn--save"
               @click="saveRoutine"
               value="Save"
             />
 
             <input
               type="button"
-              class="btn_save"
+              class="btn--save"
               @click="showModal = false"
               value="Go back"
             />
           </div>
           <button
-            class="btn_delete"
+            class="btn--delete"
             type="button"
             value="Delete"
             @click="deleteRoutine(routineObject._id)"
@@ -107,7 +107,7 @@ export default {
   padding: 0;
 }
 
-.routineModalWrapper {
+.routine__modalContainer {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -118,7 +118,7 @@ export default {
   box-shadow: 6px 6px 6px 6px rgba(0, 0, 0, 0.6);
 }
 
-.bottomContainer {
+.routine__bottomContainer {
   width: 85%;
   height: 10%;
   margin-left: 5%;
@@ -127,7 +127,7 @@ export default {
   align-items: flex-end;
 }
 
-.lower_mid_section {
+.routine__buttonsContainer {
   width: 100%;
   height: 3rem;
   display: flex;
@@ -135,7 +135,7 @@ export default {
   align-items: flex-end;
 }
 
-.btn {
+.btn--show {
   text-align: center;
   width: 100%;
   height: 100%;
@@ -154,7 +154,7 @@ export default {
   transition: 0.1s ease-out;
 }
 
-.activating_button {
+.routine__activation__button {
   text-align: center;
   width: 16rem;
   height: 2.8rem;
@@ -221,7 +221,7 @@ export default {
   box-shadow: 6px 6px 6px 6px rgba(0, 0, 0, 0.6);
 }
 
-.modalOverlay {
+.routine__modalOverlay {
   position: fixed;
   top: 0;
   left: 0;
@@ -241,7 +241,7 @@ export default {
   opacity: 0;
 }
 
-.modal {
+.routine__modal {
   display: flex;
   flex-flow: column;
   justify-content: center;
@@ -267,7 +267,7 @@ export default {
   backdrop-filter: blur(10px) drop-shadow(4px 4px 10px rgb(17, 185, 207));
 }
 
-.modal_type {
+.routine__modal__item {
   color: white;
   position: absolute;
   top: 1rem;
@@ -286,7 +286,7 @@ h1 {
   text-shadow: 0 0 1rem white;
 }
 
-.createdAt {
+.routine__createdAt {
   color: white;
   position: fixed;
   top: 1rem;
@@ -318,20 +318,20 @@ h1 {
 }
 
 input:hover,
-.btn_save:hover,
-.btn_delete:hover {
+.btn--save:hover,
+.btn--delete:hover {
   border-color: rgb(216, 25, 25);
   color: rgb(216, 25, 25);
 }
-input:hover ~ .btn {
+input:hover ~ .btn--show {
   color: rgb(216, 25, 25);
 }
-.activating_button:hover {
+.routine__activation__button:hover {
   text-shadow: 0 0 10px rgb(156, 243, 255);
   box-shadow: 0 0 20px rgb(106, 248, 253);
 }
 
-.btn_save {
+.btn--save {
   height: 3rem;
   width: 20%;
   text-justify: auto;
@@ -353,7 +353,7 @@ input:hover ~ .btn {
   white-space: nowrap;
 }
 
-.btn_delete {
+.btn--delete {
   position: relative;
   top: 50%;
   height: 3rem;

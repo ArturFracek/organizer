@@ -1,14 +1,14 @@
 <template>
-  <div class="main_container">
-    <div class="upper_container">
-      <div class="about_organizing">
+  <div class="about__mainContainer">
+    <div class="about__upperContainer">
+      <div class="about__aboutOrganizing">
         In the Organizer, you create your activities, prioritize and describe
         them, then create routines by setteling your activities in week time.
         After preparing first routine it's time to test it in practice, track
         activities time, and adjust everyting so you can get most out of your
         lifetime.
       </div>
-      <div class="about_app">
+      <div class="about__aboutApp">
         Why ?
         <br />The importance of structurizing time and balancing it with chaos
         is something most of us are aware, however we also know the first part
@@ -25,7 +25,7 @@
         self-organization. <br />Good luck.
       </div>
     </div>
-    <div class="organizing_info">
+    <div class="about__info">
       <div class="movies">
         <div class="title">Videos</div>
         <ul>
@@ -110,7 +110,7 @@ export default {
 </script>
 
 <style scoped>
-.main_container {
+.about__mainContainer {
   width: 100%;
   height: 100%;
   background: repeating-linear-gradient(
@@ -259,13 +259,13 @@ export default {
   grid-template-rows: 1fr 1fr 3fr;
 }
 
-.upper_container {
+.about__upperContainer {
   min-height: 60vh;
   overflow-y: scroll;
   border-bottom: 3px solid rgba(72, 234, 255, 0.911);
 }
 
-.about_organizing {
+.about__aboutOrganizing {
   text-overflow: ellipsis;
   text-align: center;
   display: flex;
@@ -281,7 +281,7 @@ export default {
   letter-spacing: 1px;
 }
 
-.about_app {
+.about__aboutApp {
   text-align: center;
   display: flex;
   flex-flow: row;
@@ -333,7 +333,7 @@ ul > li {
   color: whitesmoke;
 }
 
-.organizing_info {
+.about__info {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   overflow-y: scroll;
@@ -350,30 +350,30 @@ ul > li {
 }
 
 @media (max-width: 1045px) {
-  .about_organizing {
+  .about__aboutOrganizing {
     color: rgb(125, 248, 236);
     padding: 2rem 5rem 1rem 5rem;
   }
-  .about_app {
+  .about__aboutApp {
     color: rgb(125, 248, 236);
     padding: 0 5rem 1rem 5rem;
   }
 }
 
 @media (max-width: 720px) {
-  .upper_container {
+  .about__upperContainer {
     overflow-y: scroll;
   }
 
-  .about_organizing {
+  .about__aboutOrganizing {
     color: rgb(125, 248, 236);
     padding: 2rem 1rem 1rem 1rem;
   }
-  .about_app {
+  .about__aboutApp {
     color: rgb(125, 248, 236);
     padding: 0 1rem 1rem 1rem;
   }
-  .organizing_info {
+  .about__info {
     display: flex;
     flex-wrap: wrap;
     overflow-y: scroll;

@@ -21,6 +21,7 @@ router.post("/", async (req, res) => {
     title,
     createdAt: new Date(),
     is_active: false,
+    priority: 5,
   });
   res.status(201).send();
 });
