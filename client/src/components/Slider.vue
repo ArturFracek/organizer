@@ -1,5 +1,6 @@
 <template>
   <div class="slider__container">
+    <div class="slider__priority">Priority</div>
     <input
       :value="value"
       type="range"
@@ -39,7 +40,6 @@ export default {
   align-items: center;
   width: 80%;
   transform: rorate(-90deg) translate(-50%, -50%);
-  transform-origin: 0 0;
 }
 
 .slider__highPriority {
@@ -54,6 +54,21 @@ export default {
   100% {
     filter: drop-shadow(0 0 10px rgb(82, 226, 251))
   }
+}
+
+.slider__priority {
+  position: absolute;
+  transform: translateY(0%);
+  transform: translateX(15%);
+  font-size: 1.2rem;
+  font-weight: 800;
+  color: rgb(0, 0, 0);
+  z-index: 3;
+  opacity: 0.3;
+  letter-spacing: 3px;
+  pointer-events: none;
+  text-shadow: 0 0 5px rgba(0, 0, 0, 0.52);
+  font-family: 'Acme', sans-serif;
 }
 
 .slider__container .slider {
@@ -77,6 +92,7 @@ export default {
     #44d8e2 100%
   );
   box-shadow: 0 0 10px rgb(255, 255, 255);
+  transition: 0.4s ease;
 }
 
 
@@ -93,8 +109,8 @@ export default {
   border-radius: 50%;
   background: none;
   cursor: pointer;
-  -webkit-transition: all 0.9 ease-in;
-  transition: all 0.3s ease-in;
+  -webkit-transition: all 0.9s ease-in;
+  transition: all 0.7s ease-in;
   box-shadow: 0 0 0.2rem white;
   backdrop-filter: blur(9px) hue-rotate(180deg);
 }
@@ -107,8 +123,8 @@ export default {
   border-radius: 50%;
   background-color: #686868;
   cursor: pointer;
-  -moz-transition: all 0.3 ease-in;
-  transition: all 0.3s ease-in;
+  -moz-transition: all 0.8s ease-in;
+  transition: all 0.7s ease-in;
   backdrop-filter: blur(9px) hue-rotate(180deg);
 }
 

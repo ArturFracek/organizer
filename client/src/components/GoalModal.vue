@@ -150,7 +150,7 @@ export default {
   align-items: center;
   position: fixed;
   top: 50%;
-  left: 50%;
+  left: 50.6%;
   transform: translate(-50%, -50%);
   background-color: rgb(100, 100, 100);
   z-index: 99;
@@ -278,9 +278,9 @@ h1 {
 }
 
 .goal__showModalButton:hover {
-  color: red;
-  border-right: 0.1px solid rgba(246, 18, 18, 0.692);
-  border-left: 0.1px solid rgba(250, 17, 17, 0.726);
+  color: rgb(255, 107, 107);
+  border-right: 0.1px solid rgba(253, 94, 94, 0.692);
+  border-left: 0.1px solid rgba(255, 115, 115, 0.726);
   border-radius: 12px;
 }
 

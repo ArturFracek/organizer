@@ -52,7 +52,6 @@
           ></button>
         </div>
       </div>
-      is_active
     </transition>
   </div>
 </template>
@@ -180,9 +179,9 @@ export default {
   justify-content: center;
   align-items: center;
   font-size: 1.5rem;
-  color: rgb(29, 246, 65);
-  text-shadow: 3px 0 5px rgb(255, 0, 0);
-  border: 2px solid rgb(0, 255, 85);
+  color: rgb(69, 241, 204);
+  text-shadow: 3px 0 5px rgb(67, 253, 213);
+  border: 2px solid rgb(26, 255, 186);
   animation: text1 1.2s;
 }
 
@@ -205,7 +204,7 @@ export default {
       0rem 0.3rem 0.8rem turquoise, 0rem -0.3rem 0.8rem turquoise;
     filter: hue-rotate(180deg);
   }
-  90% {
+  80% {
     font-size: 2.3rem;
     opacity: 1;
     text-shadow: 0.2rem 0rem 1.4rem turquoise, -0.2rem 0rem 1.4rem turquoise,

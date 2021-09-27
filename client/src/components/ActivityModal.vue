@@ -269,7 +269,7 @@ h1 {
   transition: 0.2s ease-out;
 }
 
-.activity__button--save:hover {
+.activity__button--save:hover, .activity__showModalButton:hover {
   color: red;
   border: 2px solid red;
   text-shadow: 0 0 6px red;

@@ -20,13 +20,13 @@
         :key="goal._id"
         @dblclick="deleteGoal(goal._id)"
       >
-        <div>
+        <li>
           <GoalModal
             :goalObject="goal"
             @updateGoal="updateGoal"
             @deleteGoal="deleteGoal"
           />
-        </div>
+        </li>
       </ul>
     </div>
   </div>

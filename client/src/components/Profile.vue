@@ -243,7 +243,6 @@ export default {
 .profile__picContainer {
   height: 8rem;
   width: 10rem;
-  pointer-events: none;
 }
 .photo {
   height: inherit;

@@ -3,19 +3,19 @@
     <router-link to="/" class="nav__link nav__link--toLeft" v-if="isLoggedIn"
       >About Organizer</router-link
     >
-    <div class="nav_logo">
-      <router-link to="/" class="main_link" v-if="!isLoggedIn"
+    <div class="nav__logo">
+      <router-link to="/" class="nav__mainLink" v-if="!isLoggedIn"
         >About Organizer</router-link
       >
       <router-link
         :to="{ name: 'Organise' }"
-        class="main_link organize"
+        class="nav__mainLink organize"
         v-if="isLoggedIn"
       >
         Organize
       </router-link>
     </div>
-    <div class="lower_links" :class="islower_linksActive ? 'active' : ''">
+    <div class="nav__lowerLinks" :class="islower_linksActive ? 'active' : ''">
       <router-link :to="{ name: 'Login' }" class="nav__link" v-if="!isLoggedIn"
         >Sign in</router-link
       >
@@ -235,14 +235,14 @@ export default {
   box-shadow: 15px 10px 0.5rem turquoise;
 }
 
-.nav_logo {
+.nav__logo {
   position: absolute;
   margin-left: auto;
   align-self: center;
   white-space: nowrap;
 }
 
-.lower_links {
+.nav__lowerLinks {
   margin-left: auto;
   margin-right: 1rem;
 }
@@ -269,7 +269,7 @@ export default {
   border-radius: 8px;
 }
 
-.main_link {
+.nav__mainLink {
   letter-spacing: 0.1rem;
   font-size: 2rem;
   margin: 0.5rem;
@@ -281,7 +281,7 @@ export default {
   text-decoration: none;
 }
 
-.main_link:hover {
+.nav__mainLink:hover {
   color: #e63535;
   text-shadow: 0 0 20px rgb(255, 4, 4);
   filter: drop-shadow(0 0 50px red);
@@ -371,7 +371,7 @@ export default {
     color: red;
   }
 
-  .nav_logo {
+  .nav__logo {
     position: relative;
     margin-right: auto;
   }
@@ -385,13 +385,13 @@ export default {
     justify-content: center;
   }
 
-  .lower_links {
+  .nav__lowerLinks {
     display: none;
     width: 100%;
     flex-direction: column;
   }
 
-  .lower_links.active {
+  .nav__lowerLinks.active {
     display: flex;
   }
 }
