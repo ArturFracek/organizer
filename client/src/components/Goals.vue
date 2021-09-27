@@ -3,14 +3,14 @@
     <div class="goals__background"></div>
     <div class="goals__addingGoalsContainer">
       <input
-        class="input"
+        class="goals__andGoal__input"
         type="text"
         placeholder=" "
         v-model="title"
         @keyup.enter="createGoal"
       />
       <label class="goals__input__label">Add Goal</label>
-      <button class="btn" @click="createGoal">Add Goal</button>
+      <button class="goals__addGoal__button" @click="createGoal">Add Goal</button>
     </div>
     <div class="goals__goalsHolder">
       <ul
@@ -20,13 +20,13 @@
         :key="goal._id"
         @dblclick="deleteGoal(goal._id)"
       >
-        <li>
+        <div>
           <GoalModal
             :goalObject="goal"
             @updateGoal="updateGoal"
             @deleteGoal="deleteGoal"
           />
-        </li>
+        </div>
       </ul>
     </div>
   </div>
@@ -117,10 +117,14 @@ export default {
 }
 
 .goals__goalsHolder {
-  align-self: flex-start;
+  width: 100%;
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  justify-content: center;
 }
 
-.input {
+.goals__andGoal__input {
   margin-top: 1rem;
   text-align: center;
   width: 30rem;
@@ -161,9 +165,10 @@ export default {
   opacity: 0.9;
   color: rgb(255, 255, 255);
   text-shadow: 0 0 0.8rem rgb(253, 122, 122);
+  pointer-events: none;
 }
 
-.btn {
+.goals__addGoal__button {
   border-radius: 0;
   color: rgb(88, 249, 255);
   text-shadow: 0 0 8px turquoise;
@@ -214,12 +219,12 @@ input:focus ~ .goals__input__label {
 }
 
 input:focus ~ .goals__input__label,
-input:not(:placeholder-shown).input:not(:focus) ~ .goals__input__label {
+input:not(:placeholder-shown).goals__andGoal__input:not(:focus) ~ .goals__input__label {
   animation: shadow_fading 0.8s ease;
   opacity: 0;
 }
 
-input:not(:placeholder-shown) ~ .btn {
+input:not(:placeholder-shown) ~ .goals__addGoal__button {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -249,4 +254,11 @@ input:not(:placeholder-shown) ~ .btn {
     text-shadow: 0.2rem 0px 0.2rem turquoise;
   }
 }
+
+@media (max-width: 720px) {
+  .goals__andGoal__input {
+    width: 12rem;
+  }
+}
+
 </style>

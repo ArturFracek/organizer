@@ -25,7 +25,7 @@
           <div class="goal__buttonsContainer">
             <input
               type="submit"
-              class="goal__button--save"
+              class="goal__button goal__button--save"
               value="Save"
               @click="updateGoal"
             />
@@ -37,12 +37,11 @@
             />
           </div>
           <button
-            class="goal__button goal__button--delete"
+            class="goal__button goal__button--delete bi bi-trash"
             type="button"
             aria-placeholder=""
             @click="deleteGoal(goalObject._id)"
           >
-            Delete
           </button>
         </div>
       </div>
@@ -218,22 +217,15 @@ h1 {
 }
 
 .goal__button--delete {
-  height: 3rem;
-  width: 5%;
+  right: -1rem;
   text-justify: auto;
   text-align: center;
   font-weight: bold;
   border-radius: 2px;
   color: rgba(253, 253, 250, 0.945);
-  font-size: 1rem;
-  text-shadow: 0 0 1rem white;
+  font-size: 2rem;
   background: none;
   outline: none;
-  border: 1px rgb(255, 255, 255);
-  border-radius: 0.5rem;
-  background: transparent;
-  box-shadow: 0 25px 25px rgba(3, 96, 112, 0.1);
-  backdrop-filter: blur(10px) drop-shadow(4px 4px 10px rgb(248, 248, 248));
   transition: 0.2s ease-out;
 }
 
@@ -251,15 +243,26 @@ h1 {
   outline: none;
   border: 2px solid rgb(255, 255, 255);
   border-radius: 0.5rem;
-  background: transparent;
   box-shadow: 0 25px 25px rgba(3, 96, 112, 0.1);
   backdrop-filter: blur(10px) drop-shadow(4px 4px 10px rgb(248, 248, 248));
-  transition: 0.2s ease-out;
+  transition: 0.1s ease-out;
   margin: 0 1.2rem;
 }
 
+.goal__button {
+  background: none;
+  outline: none;
+  color: white;
+}
+
+.goal__button:hover {
+  color: red;
+  border-color: red;
+  text-shadow: 0 0 25px red;
+}
+
 .goal__showModalButton {
-  text-align: start;
+  text-align: center;
   width: 100%;
   height: 100%;
   border-radius: 2px;
@@ -274,7 +277,11 @@ h1 {
   transition: 0.2s ease-in;
 }
 
-.saveButton:hover {
-  box-shadow: 6px 6px 6px 6px rgba(0, 0, 0, 0.6);
+.goal__showModalButton:hover {
+  color: red;
+  border-right: 0.1px solid rgba(246, 18, 18, 0.692);
+  border-left: 0.1px solid rgba(250, 17, 17, 0.726);
+  border-radius: 12px;
 }
+
 </style>

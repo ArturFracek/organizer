@@ -128,7 +128,7 @@ export default {
 .activities__objectsHolder {
   display: flex;
   flex-flow: row;
-  justify-content: space-evenly;
+  justify-content: center;
   align-items: flex-end;
   flex-wrap: wrap;
   margin-top: 2.5rem;
@@ -207,5 +207,6 @@ input:not(:placeholder-shown) ~ .addActivity__button {
   background-color: none;
   font-weight: bold;
   caret-color: transparent;
+  pointer-events: none;
 }
 </style>

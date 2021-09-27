@@ -37,13 +37,11 @@
             />
           </div>
           <button
-            class="activity__button--delete"
+            class="activity__button activity__button--delete bi bi-trash"
             type="button"
             value="Delete"
             @click="deleteActivity(activityObject._id)"
-          >
-            Delete
-          </button>
+          ></button>
         </div>
       </div>
     </transition>
@@ -112,18 +110,11 @@ export default {
   text-shadow: 0 0 4px rgb(235, 250, 251);
   padding: 0.5rem;
   background: none;
-  outline: none;
   border-top: 1px solid rgb(255, 255, 255);
   border-bottom: 1px solid rgb(255, 255, 255);
   border-radius: 6px;
-  background: transparent;
   box-shadow: 0 25px 25px rgba(3, 96, 112, 0.1);
-  backdrop-filter: drop-shadow(4px 4px 10px rgb(214, 18, 18));
-  transition: 0.2s ease-out;
-}
-
-.activity__showModalButton:hover {
-  box-shadow: 6px 6px 6px 6px rgba(0, 0, 0, 0.6);
+  transition: 0.2s ease;
 }
 
 .activity__bottomContainer {
@@ -267,26 +258,18 @@ h1 {
 }
 
 .activity__button--delete {
-  height: 3rem;
-  width: 5%;
   text-justify: auto;
   text-align: center;
   font-weight: bold;
-  border-radius: 2px;
   color: rgba(253, 253, 250, 0.945);
-  font-size: 1rem;
+  font-size: 2rem;
   text-shadow: 0 0 1rem white;
   background: none;
   outline: none;
-  border: 1px rgb(255, 255, 255);
-  border-radius: 0.5rem;
-  background: transparent;
-  box-shadow: 0 25px 25px rgba(3, 96, 112, 0.1);
-  backdrop-filter: blur(10px) drop-shadow(4px 4px 10px rgb(248, 248, 248));
   transition: 0.2s ease-out;
 }
 
-.activity__button:hover {
+.activity__button--save:hover {
   color: red;
   border: 2px solid red;
   text-shadow: 0 0 6px red;

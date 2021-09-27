@@ -23,7 +23,7 @@ const routes = [
   {
     path: "/Login",
     name: "Login",
-    component: () => import("../components/LoginModal.vue"),
+    component: () => import("../components/Login.vue"),
     meta: {
       requiresGuest: true,
     },
@@ -31,7 +31,7 @@ const routes = [
   {
     path: "/Register",
     name: "Register",
-    component: () => import("../components/RegisterModal.vue"),
+    component: () => import("../components/Registration.vue"),
     meta: {
       requiresGuest: true,
     },
@@ -39,7 +39,7 @@ const routes = [
   {
     path: "/Profile",
     name: "Profile",
-    component: () => import("../components/ProfileModal.vue"),
+    component: () => import("../components/Profile.vue"),
     meta: {
       requiresAuth: true,
     },

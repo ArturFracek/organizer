@@ -1,6 +1,6 @@
 <template>
   <div class="nav">
-    <router-link to="/" class="nav__link to_left" v-if="isLoggedIn"
+    <router-link to="/" class="nav__link nav__link--toLeft" v-if="isLoggedIn"
       >About Organizer</router-link
     >
     <div class="nav_logo">
@@ -257,7 +257,7 @@ export default {
   cursor: pointer;
 }
 
-.to_left {
+.nav__link--toLeft {
   justify-self: flex-start;
 }
 

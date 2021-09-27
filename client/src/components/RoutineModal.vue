@@ -45,13 +45,11 @@
             />
           </div>
           <button
-            class="routine__button__delete"
+            class="routine__button__delete bi bi-trash"
             type="button"
             value="Delete"
             @click="deleteRoutine(routineObject._id)"
-          >
-            Delete
-          </button>
+          ></button>
         </div>
       </div>
       is_active
@@ -174,7 +172,7 @@ export default {
   background: transparent;
   box-shadow: 0 25px 25px rgba(3, 96, 112, 0.1);
   backdrop-filter: blur(10px) drop-shadow(4px 4px 10px rgb(248, 248, 248));
-  transition: 0.1s ease-out;
+  transition: 0.5s ease-out;
 }
 
 .routine__isActive {
@@ -332,7 +330,7 @@ input:hover ~ .routine__showModalButton {
 }
 
 .routine__button--save {
-  height: 3rem;
+  height: 2.5rem;
   width: 20%;
   text-justify: auto;
   text-align: center;
@@ -355,23 +353,13 @@ input:hover ~ .routine__showModalButton {
 
 .routine__button__delete {
   position: relative;
+  right: -1rem;
   top: 0%;
-  height: 3rem;
-  width: 5%;
-  text-justify: auto;
-  text-align: center;
-  font-weight: bold;
   border-radius: 2px;
   color: rgba(253, 253, 250, 0.945);
-  font-size: 1rem;
-  text-shadow: 0 0 1rem white;
+  font-size: 2rem;
   background: none;
   outline: none;
-  border: 1px rgb(255, 255, 255);
-  border-radius: 0.5rem;
-  background: transparent;
-  box-shadow: 0 25px 25px rgba(3, 96, 112, 0.1);
-  backdrop-filter: blur(10px) drop-shadow(4px 4px 10px rgb(248, 248, 248));
 }
 
 .routine__showModalButton:hover {

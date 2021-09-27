@@ -67,7 +67,7 @@ export default {
     async saveRoutine(routine) {
       await RoutinesService.updateRoutine(routine);
       this.routines = await RoutinesService.getRoutines();
-    }
+    },
   },
 };
 </script>
@@ -80,11 +80,12 @@ export default {
   max-height: 60%;
   width: 100%;
   position: relative;
-  border: 2px solid rgb(35, 166, 170);
+  border-top: 2px solid rgb(35, 166, 170);
+  border-left: 2px solid rgb(35, 166, 170);
+  border-right: 2px solid rgb(35, 166, 170);
   border-radius: 0.5rem;
   padding: 0 1rem 1rem 1rem;
   margin: 1rem 0 1rem;
-  box-shadow: 0 0 0.5rem rgb(132, 242, 250);
 }
 
 .routines__title {
@@ -98,14 +99,6 @@ export default {
   letter-spacing: 1px;
 }
 
-.instruction {
-  display: flex;
-  justify-self: center;
-  align-items: center;
-  font-size: 1.4em;
-  text-align: center;
-}
-
 .routines__addingRoutinesContainer {
   display: flex;
   flex-flow: column;
@@ -113,13 +106,6 @@ export default {
   align-items: center;
   margin: 2rem 0 2rem 0;
   position: absolute;
-}
-
-.button {
-  width: 214px;
-  padding: 0;
-  margin: 0;
-  text-align: center;
 }
 
 .routines__objectsHolder {
@@ -171,11 +157,13 @@ export default {
   padding: 0.7rem;
   background: none;
   outline: none;
-  border: 2px solid rgb(35, 166, 170);
+  border-top: 2px solid rgb(35, 166, 170);
+  border-bottom: 2px solid rgb(35, 166, 170);
   border-radius: 0.5rem;
   background: transparent;
   box-shadow: 0 25px 25px rgba(3, 96, 112, 0.1);
   backdrop-filter: blur(10px) drop-shadow(4px 4px 10px rgb(17, 185, 207));
+  transition: 0.4s ease;
 }
 
 input[type="text"],
@@ -194,6 +182,8 @@ input:hover ~ .routines__form__label__addRoutines {
 
 input:focus,
 textarea {
+  border-left: 2px solid rgb(35, 166, 170);
+  border-right: 2px solid rgb(35, 166, 170);
   color: turquoise;
   border-color: turquoise;
   background-color: none;
@@ -207,7 +197,8 @@ input:focus ~ .routines__form__label__addRoutines {
 }
 
 input:focus ~ .routines__form__label__addRoutines,
-input:not(:placeholder-shown).input:not(:focus) ~ .routines__form__label__addRoutines {
+input:not(:placeholder-shown).input:not(:focus)
+  ~ .routines__form__label__addRoutines {
   top: -4.5rem;
 }
 
@@ -219,7 +210,6 @@ input:not(:placeholder-shown) ~ .addRoutine__button {
   position: relative;
   color: whitesmoke;
   display: flex;
-  cursor: text;
   transition: top 200ms ease-in;
   left: 200ms ease-in;
   font-size: 200ms ease-in;
@@ -227,5 +217,6 @@ input:not(:placeholder-shown) ~ .addRoutine__button {
   left: 0.2rem;
   background-color: none;
   font-weight: bold;
+  pointer-events: none;
 }
 </style>

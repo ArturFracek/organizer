@@ -1,9 +1,9 @@
 <template>
-  <div class="textArea">
+  <div class="text__area__container">
     <textarea
       type="submit"
       @input="changeDescription"
-      class="area"
+      class="text__area"
       placeholder="Description"
       :value="value"
     ></textarea>
@@ -28,7 +28,7 @@ export default {
 </script>
 
 <style scoped>
-.textArea {
+.text__area__container {
   width: 80%;
   height: 60%;
 }
