@@ -41,8 +41,7 @@
             type="button"
             aria-placeholder=""
             @click="deleteGoal(goalObject._id)"
-          >
-          </button>
+          ></button>
         </div>
       </div>
     </transition>
@@ -130,7 +129,7 @@ export default {
   right: 0;
   bottom: 0;
   z-index: 98;
-  backdrop-filter: hue-rotate(180deg) opacity(80%) brightness(90%);
+  backdrop-filter: hue-rotate(180deg) opacity(80%) brightness(85%);
 }
 
 .fade-enter-active,
@@ -163,8 +162,7 @@ export default {
   outline: none;
   border: 2px solid rgb(35, 166, 170);
   border-radius: 0.5rem;
-  box-shadow: 0 0 0 0.5rem rgba(8, 214, 250, 0.1);
-  backdrop-filter: blur(15px) drop-shadow(10px 10px 10px rgb(17, 185, 207));
+  backdrop-filter: blur(8px);
 }
 
 .goal__modal__item {
@@ -230,7 +228,7 @@ h1 {
 }
 
 .goal__button--save {
-  height: 100%;
+  height: 80%;
   width: 20%;
   text-justify: auto;
   text-align: center;
@@ -243,7 +241,6 @@ h1 {
   outline: none;
   border: 2px solid rgb(255, 255, 255);
   border-radius: 0.5rem;
-  box-shadow: 0 25px 25px rgba(3, 96, 112, 0.1);
   backdrop-filter: blur(10px) drop-shadow(4px 4px 10px rgb(248, 248, 248));
   transition: 0.1s ease-out;
   margin: 0 1.2rem;
@@ -255,10 +252,15 @@ h1 {
   color: white;
 }
 
-.goal__button:hover {
+.goal__button--save:hover {
   color: red;
   border-color: red;
   text-shadow: 0 0 25px red;
+  box-shadow: 0 5px 25px rgba(255, 19, 19, 0.685);
+}
+.goal__button--delete:hover {
+  color: red;
+  text-shadow: 0 5px 10px red;
 }
 
 .goal__showModalButton {

@@ -286,7 +286,7 @@ img:hover ~ #upload_btn,
   position: relative;
   padding: 0.3rem 2rem;
   border-style: solid;
-  border-width: 1px;
+  border-width: 2px;
   border-image: linear-gradient(
       to bottom,
       rgb(164, 253, 249),

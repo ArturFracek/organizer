@@ -170,7 +170,7 @@ export default {
   right: 0;
   bottom: 0;
   z-index: 98;
-  backdrop-filter: hue-rotate(180deg) opacity(80%) brightness(80%);
+  backdrop-filter: hue-rotate(30deg) opacity(80%) brightness(40%);
 }
 
 .fade-enter-active,
