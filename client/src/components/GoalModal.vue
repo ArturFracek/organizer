@@ -16,9 +16,16 @@
     </transition>
     <transition name="slide" appear>
       <div class="goal__modal" v-if="showModal">
-        <div class="goal__modal__item">Goal</div>
+        <div class="goal__modal__type">Goal</div>
         <h1>{{ goalObject.title }}</h1>
-        <div class="goal__createdAt">{{ date }}</div>
+        <div class="goal__createdAt">Created at: <br>{{ date }}</div>
+
+        <v-menu>
+          <v-text-field slot="activateDatePicker" aria-label="Deadline">
+          </v-text-field>
+                    <v-date-picker></v-date-picker>
+        </v-menu>
+
         <textArea v-model="localGoal.description" />
         <Slider v-model="localGoal.priority" />
         <div class="goal__bottomContainer">
@@ -51,6 +58,7 @@
 <script>
 import Slider from "@/components/Slider.vue";
 import textArea from "@/components/textArea.vue";
+import vuetify from "vuetify"
 
 export default {
   name: "GoalModal",
@@ -102,7 +110,7 @@ export default {
 }
 
 .goal__bottomContainer {
-  width: 85%;
+  width: 95%;
   height: 10%;
   margin-left: 5%;
   display: flex;
@@ -116,6 +124,7 @@ export default {
   display: flex;
   justify-content: center;
   align-items: flex-end;
+  margin-left: 5%;
 }
 
 .goal--btn:focus {
@@ -165,12 +174,13 @@ export default {
   backdrop-filter: blur(8px);
 }
 
-.goal__modal__item {
+.goal__modal__type {
   color: white;
   position: absolute;
-  top: 1rem;
+  top: 4%;
   left: 1rem;
   text-shadow: 0 0 3px white;
+  font-size: 1.3rem;
 }
 
 h1 {
@@ -225,6 +235,8 @@ h1 {
   background: none;
   outline: none;
   transition: 0.2s ease-out;
+  display: flex;
+  justify-content: center;
 }
 
 .goal__button--save {

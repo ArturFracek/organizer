@@ -31,12 +31,11 @@
             :key="dayIndex"
             :class="[ 'net__cell', 'net__hourInDay', `net__day-${dayIndex}`, `net__day-${dayIndex}-${hour}` ]"
           >
-            {{ getActivityOccurance(dayIndex, hour) }}
+            {{ getActivityName(getActivityOccurance(dayIndex, hour)) }}
           </td>
         </tr>
       </tbody>
     </table>
-      <button type="button" @click="putActivity">-----</button>
   </div>
 </template>
 
@@ -102,7 +101,10 @@ export default {
       const act = activitiesOccurences.find((a) => a.startTime <= hour && a.endTime > hour && a.dayOfWeek === dayIndex)
       return act ? act.activityId : ''
     },
-
+    getActivityName(activityId) {
+      const activity = activities.find(a => a.id === activityId)
+      return activity ? activity.name : ''
+    }
 
   },
 };
