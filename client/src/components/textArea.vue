@@ -1,17 +1,34 @@
 <template>
-  <div class="textArea">
-    <textarea class="area" placeholder="Description"></textarea>
+  <div class="text__area__container">
+    <textarea
+      type="submit"
+      @input="changeDescription"
+      class="text__area"
+      placeholder="Description"
+      :value="value"
+    ></textarea>
   </div>
 </template>
 
 <script>
 export default {
   name: "textArea",
+  props: {
+    value: {
+      type: String,
+      required: false,
+    }
+  },
+  methods: {
+    changeDescription(event) {
+      this.$emit("input", event.target.value);
+    },
+  },
 };
 </script>
 
 <style scoped>
-.textArea {
+.text__area__container {
   width: 80%;
   height: 60%;
 }

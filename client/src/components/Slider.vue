@@ -1,71 +1,107 @@
 <template>
-  <div class="container">
+  <div class="slider__container">
+    <div class="slider__priority">Priority</div>
     <input
-      @change="warning()"
-      v-model="value"
+      :value="value"
       type="range"
-      class="Slider"
-      min="0"
+      class="slider"
+      min="1"
       max="10"
+      @input="input"
+      :class="{ 'slider__highPriority': value > 6 }"
     />
-    <div :style="warning()" class="rangeValue">{{ value }}</div>
+    <div class="rangeValue" :class="{ 'rangeValue-warning': value > 6 }">
+      {{ value }}
+    </div>
   </div>
 </template>
 
 <script>
 export default {
-  name: "Slider",
-  data() {
-    return {
-      value: "5",
-    };
+  props: {
+    value: {
+      type: Number,
+      required: false,
+      default: 5,
+    },
   },
   methods: {
-    warning: function () {
-      if (this.value > 6) {
-        return {
-          color: "#40e0d0",
-          animation: "anim 0.9s ease-in 1 alternate",
-        };
-      }
+    input(el) {
+      this.$emit("input", parseInt(el.target.value));
     },
   },
 };
 </script>
 
 <style scoped>
-.container {
+.slider__container {
   display: flex;
   justify-content: center;
   align-items: center;
   width: 80%;
   transform: rorate(-90deg) translate(-50%, -50%);
-  transform-origin: 0 0;
 }
 
-.container .Slider {
+.slider__highPriority {
+  filter: drop-shadow(0 0 10px rgb(82, 226, 251));
+  animation: highPriorityShadow 1s;
+}
+
+@keyframes highPriorityShadow {
+  0% {
+    filter: drop-shadow(0 0 0 rgb(82, 226, 251));
+  }
+  100% {
+    filter: drop-shadow(0 0 10px rgb(82, 226, 251))
+  }
+}
+
+.slider__priority {
+  position: absolute;
+  transform: translateY(0%);
+  transform: translateX(15%);
+  font-size: 1.2rem;
+  font-weight: 800;
+  color: rgb(0, 0, 0);
+  z-index: 3;
+  opacity: 0.3;
+  letter-spacing: 3px;
+  pointer-events: none;
+  text-shadow: 0 0 5px rgba(0, 0, 0, 0.52);
+  font-family: 'Acme', sans-serif;
+}
+
+.slider__container .slider {
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
   width: 80%;
   height: 18px;
   background-color: #ffffff;
-  border-radius: 20px;
+  border-radius: 7px;
   outline: none;
-  opacity: 0.8;
+  opacity: 0.9;
   transition: opacity 0.2s ease-in;
   -webkit-transition: opacity 0.3s ease-in;
   transform: rorate(-90deg);
   transform-origin: 0 0;
-  background-image: linear-gradient(90deg, #dbf833 0%, #7cf1fa 60%, #8ef6fd 100%);
-  box-shadow: 0 0 20px white;
+  background-image: linear-gradient(
+    90deg,
+    #ff5050 0%,
+    #ffffff 50%,
+    #44d8e2 100%
+  );
+  box-shadow: 0 0 10px rgb(255, 255, 255);
+  transition: 0.4s ease;
 }
 
-.container .Slider:hover {
+
+
+.slider__container .slider:hover {
   opacity: 1;
 }
 
-.container .Slider::-webkit-slider-thumb {
+.slider__container .slider::-webkit-slider-thumb {
   -webkit-appearance: none;
   appearance: none;
   height: 30px;
@@ -73,14 +109,13 @@ export default {
   border-radius: 50%;
   background: none;
   cursor: pointer;
-  -webkit-transition: all 0.3 ease-in;
-  transition: all 0.3s ease-in;
-  border: 2px solid #ffffff;
+  -webkit-transition: all 0.9s ease-in;
+  transition: all 0.7s ease-in;
   box-shadow: 0 0 0.2rem white;
-  backdrop-filter: blur(10px) drop-shadow(4px 4px 10px rgb(255, 255, 255));
+  backdrop-filter: blur(9px) hue-rotate(180deg);
 }
 
-.container .Slider::-moz-range-thumb {
+.slider__container .slider::-moz-range-thumb {
   -moz-appearance: none;
   appearance: none;
   height: 30px;
@@ -88,12 +123,12 @@ export default {
   border-radius: 50%;
   background-color: #686868;
   cursor: pointer;
-  -moz-transition: all 0.3 ease-in;
-  transition: all 0.3s ease-in;
-  border: 2px solid #64faff;
+  -moz-transition: all 0.8s ease-in;
+  transition: all 0.7s ease-in;
+  backdrop-filter: blur(9px) hue-rotate(180deg);
 }
 
-.container .Slider::webkit-slider-thumb:hover {
+.slider__container .slider::webkit-slider-thumb:hover {
   box-shadow: 6px 6px 20px 20px rgb(0, 0, 0);
 }
 
@@ -109,24 +144,48 @@ export default {
   text-align: center;
   line-height: 38px;
   font-size: 22px;
-  border: 1px solid rgb(22, 235, 250);
+  text-shadow: 0 0 5px rgb(255, 255, 255);
 }
 
-@keyframes animation {
+.rangeValue-warning {
+  font-size: 1.8rem;
+  animation: shake 0.3s;
+  color: #44d8e2;
+  position: relative;
+  text-shadow: 0 0 10px turquoise;
+}
+
+@keyframes shake {
   0% {
-    right: -20px;
+    transform: translateX(-7px);
+  }
+  10% {
+    transform: translateY(-7px);
+    font-size: 1.4rem;
   }
   25% {
-    right: -10px;
+    transform: translateX(7px);
+    font-size: 1.5rem;
+  }
+  40% {
+    transform: translateY(7px);
+    font-size: 1.6rem;
   }
   50% {
-    right: -30px;
+    transform: translateX(-7px);
+    font-size: 1.7rem;
   }
   70% {
-    right: -10px;
+    transform: translateY(-7px);
+    font-size: 1.8rem;
+  }
+  90% {
+    transform: translateX(5px);
+    font-size: 1.9rem;
   }
   100% {
-    right: -20px;
+    transform: translateY(5px);
+    font-size: 2rem;
   }
 }
 </style>

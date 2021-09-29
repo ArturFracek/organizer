@@ -1,0 +1,264 @@
+<template>
+  <div class="goals__mainContainer">
+    <div class="goals__background"></div>
+    <div class="goals__addingGoalsContainer">
+      <input
+        class="goals__andGoal__input"
+        type="text"
+        placeholder=" "
+        v-model="title"
+        @keyup.enter="createGoal"
+      />
+      <label class="goals__input__label">Add Goal</label>
+      <button class="goals__addGoal__button" @click="createGoal">Add Goal</button>
+    </div>
+    <div class="goals__goalsHolder">
+      <ul
+        v-for="(goal, index) in goals"
+        :item="goal"
+        :index="index"
+        :key="goal._id"
+        @dblclick="deleteGoal(goal._id)"
+      >
+        <li>
+          <GoalModal
+            :goalObject="goal"
+            @updateGoal="updateGoal"
+            @deleteGoal="deleteGoal"
+          />
+        </li>
+      </ul>
+    </div>
+  </div>
+</template>
+
+<script>
+import GoalsService from "../Warehouse/GoalsService";
+import GoalModal from "./GoalModal";
+
+export default {
+  name: "PostComponent",
+  components: {
+    GoalModal,
+  },
+  data() {
+    return {
+      title: "",
+      goals: [],
+      error: "Something went wrong, try again",
+    };
+  },
+  async created() {
+    try {
+      this.goals = await GoalsService.getGoals();
+    } catch (err) {
+      this.error = err.massage;
+    }
+  },
+  methods: {
+    async createGoal() {
+      await GoalsService.insertGoal({ title: this.title });
+      this.goals = await GoalsService.getGoals();
+      this.title = "";
+    },
+    async updateGoal(goal) {
+      await GoalsService.updateGoal(goal);
+      this.goals = await GoalsService.getGoals();
+    },
+    async deleteGoal(id) {
+      await GoalsService.deleteGoal(id);
+      this.goals = await GoalsService.getGoals();
+    },
+  },
+};
+</script>
+
+<style scoped>
+.title {
+  font-size: 1.2rem;
+  color: turquoise;
+  letter-spacing: 1px;
+  align-self: flex-start;
+}
+.goals__background {
+  position: absolute;
+  box-sizing: border-box;
+  height: 100%;
+  width: 100%;
+  background: transparent;
+  backdrop-filter: drop-shadow(4px 4px 6px rgb(207, 17, 17)) hue-rotate(180deg)
+    opacity(80%);
+  right: 0%;
+}
+
+.goals__mainContainer {
+  position: relative;
+  height: 30%;
+  max-height: 60%;
+  width: 80%;
+  padding: 0.3rem 5%;
+  border-style: solid;
+  border-width: 2px;
+  border-image: linear-gradient(to top, rgb(164, 253, 249), rgb(248, 120, 120))
+    1;
+  border-image-repeat: stretch;
+  display: flex;
+  flex-flow: column;
+}
+
+.goals__addingGoalsContainer {
+  display: flex;
+  flex-flow: row;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 5rem;
+  position: relative;
+}
+
+.goals__goalsHolder {
+  width: 100%;
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.goals__andGoal__input {
+  margin-top: 1rem;
+  text-align: center;
+  width: 30rem;
+  height: 2.5rem;
+  border-radius: 2px;
+  color: rgb(0, 0, 0);
+  font-weight: bold;
+  text-shadow: 0 0 1rem turquoise;
+  padding: 0.7rem;
+  background: none;
+  outline: none;
+  border: 2px solid rgb(35, 166, 170);
+  border-radius: 0.5rem;
+  background: transparent;
+  box-shadow: 0 25px 25px 25px rgba(105, 241, 241, 0.1);
+  position: absolute;
+  top: 0rem;
+  display: flex;
+  justify-content: center;
+}
+
+.goals__input__label {
+  position: relative;
+  color: whitesmoke;
+  display: flex;
+  cursor: text;
+  transition: top 200ms ease-in;
+  left: 200ms ease-in;
+  font-size: 200ms ease-in;
+  top: -0.3rem;
+  right: 0;
+  background-color: none;
+  font-weight: bold;
+  white-space: nowrap;
+  transition: top 200ms ease-in;
+  left: 200ms ease-in;
+  font-size: 200ms ease-in;
+  opacity: 0.9;
+  color: rgb(255, 255, 255);
+  text-shadow: 0 0 0.8rem rgb(253, 122, 122);
+  pointer-events: none;
+}
+
+.goals__addGoal__button {
+  border-radius: 0;
+  color: rgb(88, 249, 255);
+  text-shadow: 0 0 8px turquoise;
+  font-weight: bold;
+  position: relative;
+  right: -16.5rem;
+  top: -0.25rem;
+  text-align: center;
+  border-radius: 2px;
+  padding: 0.7rem;
+  background: none;
+  outline: none;
+  border: 2px solid rgb(35, 166, 170);
+  border-radius: 0.5rem;
+  background: transparent;
+  box-shadow: 0 25px 25px rgba(38, 221, 253, 0.1);
+  backdrop-filter: blur(10px) drop-shadow(4px 4px 2px rgb(17, 185, 207));
+  display: none;
+  height: 2.5rem;
+}
+
+input[type="text"],
+input[type="password"] {
+  color: whitesmoke;
+}
+
+input:hover {
+  border-color: rgb(216, 25, 25);
+  color: rgb(216, 25, 25);
+}
+
+input:hover ~ .goals__input__label {
+  color: rgb(216, 25, 25);
+}
+
+input:focus,
+textarea {
+  color: turquoise;
+  border-color: turquoise;
+  background-color: none;
+  box-shadow: 0 25px 25px rgba(3, 96, 112, 0.1);
+  backdrop-filter: blur(15px) drop-shadow(4px 4px 10px rgb(7, 207, 233));
+}
+
+input:focus ~ .goals__input__label {
+  color: turquoise;
+  text-shadow: 0px 0px 0.1rem turquoise;
+}
+
+input:focus ~ .goals__input__label,
+input:not(:placeholder-shown).goals__andGoal__input:not(:focus) ~ .goals__input__label {
+  animation: shadow_fading 0.8s ease;
+  opacity: 0;
+}
+
+input:not(:placeholder-shown) ~ .goals__addGoal__button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+@keyframes shadow_fading {
+  0% {
+    color: rgb(116, 255, 248);
+    opacity: 1;
+    text-shadow: 0.6rem 0rem 0.8rem turquoise, -0.6rem 0rem 0.8rem turquoise,
+      0rem 0.6rem 0.8rem turquoise, 0rem -0.6rem 0.8rem turquoise;
+  }
+  20% {
+    opacity: 0.8;
+  }
+  70% {
+    opacity: 0.3;
+    text-shadow: 0.3rem 0rem 0.8rem turquoise, -0.3rem 0rem 0.8rem turquoise,
+      0rem 0.3rem 0.8rem turquoise, 0rem -0.3rem 0.8rem turquoise;
+  }
+  90% {
+    opacity: 0.1;
+    text-shadow: 0.2rem 0rem 1.4rem turquoise, -0.2rem 0rem 1.4rem turquoise,
+      0rem 0.2rem 1.4em turquoise, 0rem -0.2rem 1.4rem turquoise;
+  }
+  100% {
+    opacity: 0;
+    text-shadow: 0.2rem 0px 0.2rem turquoise;
+  }
+}
+
+@media (max-width: 720px) {
+  .goals__andGoal__input {
+    width: 12rem;
+  }
+}
+
+</style>

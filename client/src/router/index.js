@@ -23,29 +23,26 @@ const routes = [
   {
     path: "/Login",
     name: "Login",
-    component: () =>
-      import("../components/LoginModal.vue"),
-      meta:{
-        requiresGuest: true
-      }
+    component: () => import("../components/Login.vue"),
+    meta: {
+      requiresGuest: true,
+    },
   },
   {
     path: "/Register",
     name: "Register",
-    component: () =>
-      import("../components/RegisterModal.vue"),
-      meta:{
-        requiresGuest: true
-      }
+    component: () => import("../components/Registration.vue"),
+    meta: {
+      requiresGuest: true,
+    },
   },
   {
     path: "/Profile",
     name: "Profile",
-    component: () =>
-      import("../components/ProfileModal.vue"),
-      meta:{
-        requiresAuth: true
-      }
+    component: () => import("../components/Profile.vue"),
+    meta: {
+      requiresAuth: true,
+    },
   },
 ];
 
@@ -56,22 +53,22 @@ const router = new VueRouter({
 });
 
 router.beforeEach((to, from, next) => {
-  if (to.matched.some(record => record.meta.requiresAuth)){
+  if (to.matched.some((record) => record.meta.requiresAuth)) {
     if (!store.getters.isLoggedIn) {
       // Redirect to the Login Page
-      next('/Login')
+      next("/Login");
     } else {
       next();
     }
-  } else if (to.matched.some(record => record.meta.requiresGuest)){
-      if (store.getters.isLoggedIn) {
-        next('/Profile');
-      } else {
-        next();
-      }
+  } else if (to.matched.some((record) => record.meta.requiresGuest)) {
+    if (store.getters.isLoggedIn) {
+      next("/Profile");
     } else {
-      next()
+      next();
     }
-})
+  } else {
+    next();
+  }
+});
 
 export default router;

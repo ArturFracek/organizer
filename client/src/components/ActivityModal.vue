@@ -1,42 +1,47 @@
 <template>
-  <div class="modalWrapper">
-    <button type="button" class="btn" @click="showModal = true">
+  <div class="activity__modalContainer">
+    <button
+      type="button"
+      class="activity__button activity__showModalButton"
+      @click="showModal = true"
+    >
       {{ activityObject.title }}
     </button>
     <transition name="fade" appear>
       <div
-        class="modalOverlay"
+        class="activity__modalOverlay"
         v-if="showModal"
         @click="showModal = false"
       ></div>
     </transition>
     <transition name="slide" appear>
-      <div class="modal" v-if="showModal">
+      <div class="activity__modal" v-if="showModal">
+        <div class="activity__modal__item">Activity</div>
         <h1>{{ activityObject.title }}</h1>
-        <textArea />
-        <Slider></Slider>
-        <div class="bottomContainer">
-          <div class="lower_mid_container">
-            <input 
-              type='submit' 
-              class="btn_save" 
-              value="Save" 
-              placeholder=""/>
-              <input
+        <div class="activity__createdAt">{{ date }}</div>
+        <textArea v-model="localActivity.description" />
+        <Slider v-model="localActivity.priority" />
+        <div class="activity__bottomContainer">
+          <div class="activity__buttonsContainer">
+            <input
               type="submit"
-              class="btn_save"
+              class="activity__button activity__button--save"
+              @click="updateActivity"
+              value="Save"
+            />
+            <input
+              type="submit"
+              class="activity__button activity__button--save"
               value="Go back"
               @click="showModal = false"
             />
           </div>
-        <button 
-            class="btn_delete"
+          <button
+            class="activity__button activity__button--delete bi bi-trash"
             type="button"
             value="Delete"
-            aria-placeholder=""
-            >
-            Delete
-          </button>
+            @click="deleteActivity(activityObject._id)"
+          ></button>
         </div>
       </div>
     </transition>
@@ -52,6 +57,10 @@ export default {
   data() {
     return {
       showModal: false,
+      localActivity: { ...this.activityObject },
+      description: "",
+      priority: 5,
+      date: `${this.activityObject.createdAt.getDate()}/${this.activityObject.createdAt.getMonth()}/${this.activityObject.createdAt.getFullYear()}`,
     };
   },
   components: {
@@ -64,6 +73,17 @@ export default {
       required: false,
     },
   },
+  methods: {
+    deleteActivity(id) {
+      this.$emit("deleteActivity", id);
+    },
+    updateActivity() {
+      this.$emit("updateActivity", {
+        ...this.localActivity,
+      });
+      this.showModal = false;
+    },
+  },
 };
 </script>
 
@@ -73,38 +93,32 @@ export default {
   padding: 0;
 }
 
-.modalWrapper {
+.activity__modalContainer {
   display: flex;
   justify-content: center;
   align-items: center;
   width: 100%;
 }
 
-.btn {
+.activity__showModalButton {
   text-align: center;
   width: 100%;
   height: 100%;
-  border-radius: 2px;
+  border-radius: 3px;
   color: rgba(253, 253, 250, 0.945);
   font-weight: bold;
-  text-shadow: 0 0 1rem white;
-  padding: 0.7rem;
+  text-shadow: 0 0 4px rgb(235, 250, 251);
+  padding: 0.5rem;
   background: none;
-  outline: none;
-  border: 2px solid rgb(255, 255, 255);
-  border-radius: 0.5rem;
-  background: transparent;
+  border-top: 1px solid rgb(255, 255, 255);
+  border-bottom: 1px solid rgb(255, 255, 255);
+  border-radius: 6px;
   box-shadow: 0 25px 25px rgba(3, 96, 112, 0.1);
-  backdrop-filter: blur(10px) drop-shadow(4px 4px 10px rgb(248, 248, 248));
-  transition: 0.2s ease-out;
+  transition: 0.2s ease;
 }
 
-.modalButton:hover {
-  box-shadow: 6px 6px 6px 6px rgba(0, 0, 0, 0.6);
-}
-
-.bottomContainer {
- width: 85%;
+.activity__bottomContainer {
+  width: 85%;
   height: 10%;
   margin-left: 5%;
   display: flex;
@@ -112,7 +126,7 @@ export default {
   align-items: flex-end;
 }
 
-.lower_mid_container {
+.activity__buttonsContainer {
   width: 100%;
   height: 3rem;
   display: flex;
@@ -120,7 +134,7 @@ export default {
   align-items: flex-end;
 }
 
-.btn_save {
+.activity__button--save {
   height: 100%;
   width: 20%;
   text-justify: auto;
@@ -141,22 +155,22 @@ export default {
   margin: 0 1.2rem;
 }
 
-.btn:focus {
+.activity__showModalButton:focus {
   color: turquoise;
 }
 
-.saveButton:hover {
+.activity__button--save:hover {
   box-shadow: 6px 6px 6px 6px rgba(0, 0, 0, 0.6);
 }
 
-.modalOverlay {
+.activity__modalOverlay {
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
   z-index: 98;
-  background-color: rgba(0, 0, 0, 0.4);
+  backdrop-filter: hue-rotate(180deg) opacity(80%) brightness(80%);
 }
 
 .fade-enter-active,
@@ -169,7 +183,7 @@ export default {
   opacity: 0;
 }
 
-.modal {
+.activity__modal {
   display: flex;
   flex-flow: column;
   justify-content: center;
@@ -180,7 +194,6 @@ export default {
   transform: translate(-50%, -50%);
   background-color: rgb(100, 100, 100);
   z-index: 99;
-
   text-align: center;
   width: 80%;
   height: 60%;
@@ -195,6 +208,14 @@ export default {
   backdrop-filter: blur(10px) drop-shadow(4px 4px 10px rgb(17, 185, 207));
 }
 
+.activity__modal__item {
+  color: white;
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  text-shadow: 0 0 3px white;
+}
+
 h1 {
   display: flex;
   justify-content: center;
@@ -204,6 +225,14 @@ h1 {
   font-weight: 900;
   margin-bottom: 15px;
   text-shadow: 0 0 1rem white;
+}
+
+.activity__createdAt {
+  color: white;
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  text-shadow: 0 0 3px white;
 }
 
 .modalElement {
@@ -220,7 +249,7 @@ h1 {
 
 .slide-enter-active,
 .slide-leave-active {
-  transition: transfrom 0.5s;
+  transition: transfrom 2s;
 }
 
 .slide-enter,
@@ -228,23 +257,27 @@ h1 {
   transform: translateY(-50%) translateX(300%);
 }
 
-.btn_delete {
-  height: 3rem;
-  width: 5%;
+.activity__button--delete {
   text-justify: auto;
   text-align: center;
   font-weight: bold;
-  border-radius: 2px;
   color: rgba(253, 253, 250, 0.945);
-  font-size: 1rem;
+  font-size: 2rem;
   text-shadow: 0 0 1rem white;
   background: none;
   outline: none;
-  border: 1px rgb(255, 255, 255);
-  border-radius: 0.5rem;
-  background: transparent;
-  box-shadow: 0 25px 25px rgba(3, 96, 112, 0.1);
-  backdrop-filter: blur(10px) drop-shadow(4px 4px 10px rgb(248, 248, 248));
   transition: 0.2s ease-out;
+}
+
+.activity__button--save:hover, .activity__showModalButton:hover {
+  color: red;
+  border: 2px solid red;
+  text-shadow: 0 0 6px red;
+  box-shadow: 0 0 10px red;
+}
+
+.activity__button--delete:hover {
+  color: red;
+  text-shadow: 0 0 10px red;
 }
 </style>

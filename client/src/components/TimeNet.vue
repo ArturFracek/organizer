@@ -23,7 +23,7 @@
     <div class="time item_21">12 am</div>
     <div class="time item_22">1 am</div>
     <div class="time item_23">2 am</div>
-    <div class="hour item_24">Monday</div>
+    <div class="day item_24">Monday</div>
     <div class="hour item_25"></div>
     <div class="hour item_26"></div>
     <div class="hour item_27"></div>
@@ -46,7 +46,7 @@
     <div class="hour item_44"></div>
     <div class="hour item_45"></div>
     <div class="hour item_46"></div>
-    <div class="hour item_47">Tuesday</div>
+    <div class="day item_47">Tuesday</div>
     <div class="hour item_48"></div>
     <div class="hour item_49"></div>
     <div class="hour item_50"></div>
@@ -69,7 +69,7 @@
     <div class="hour item_67"></div>
     <div class="hour item_68"></div>
     <div class="hour item_69"></div>
-    <div class="hour item_70">Wednesday</div>
+    <div class="day item_70">Wednesday</div>
     <div class="hour item_71"></div>
     <div class="hour item_72"></div>
     <div class="hour item_73"></div>
@@ -92,7 +92,7 @@
     <div class="hour item_90"></div>
     <div class="hour item_91"></div>
     <div class="hour item_92"></div>
-    <div class="hour item_93">Thursday</div>
+    <div class="day item_93">Thursday</div>
     <div class="hour item_94"></div>
     <div class="hour item_95"></div>
     <div class="hour item_96"></div>
@@ -115,7 +115,7 @@
     <div class="hour item_113"></div>
     <div class="hour item_114"></div>
     <div class="hour item_115"></div>
-    <div class="hour item_116">Friday</div>
+    <div class="day item_116">Friday</div>
     <div class="hour item_117"></div>
     <div class="hour item_118"></div>
     <div class="hour item_119"></div>
@@ -138,7 +138,7 @@
     <div class="hour item_136"></div>
     <div class="hour item_137"></div>
     <div class="hour item_138"></div>
-    <div class="hour item_139">Saturday</div>
+    <div class="day item_139">Saturday</div>
     <div class="hour item_140"></div>
     <div class="hour item_141"></div>
     <div class="hour item_142"></div>
@@ -161,7 +161,7 @@
     <div class="hour item_159"></div>
     <div class="hour item_160"></div>
     <div class="hour item_161"></div>
-    <div class="hour item_162">Sunday</div>
+    <div class="day item_162">Sunday</div>
     <div class="hour item_163"></div>
     <div class="hour item_164"></div>
     <div class="hour item_165"></div>
@@ -214,11 +214,17 @@ export default {
   align-items: center;
   font-weight: bold;
   backdrop-filter: blur(10px) drop-shadow(4px 4px 20px rgb(10, 194, 207));
+  border: 0.1px solid turquoise;
+  border-radius: 0.4rem;
+  
 }
 
 .hour {
   border: 0.1px solid turquoise;
   border-radius: 0.4rem;
+  display: grid;
+  grid-template-rows: repeat(60, 1fr);
+  grid-template-columns: 100%;
 }
 
 .time {

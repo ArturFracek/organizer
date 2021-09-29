@@ -46,56 +46,24 @@ mongoose
     console.log(`Unable to connect with database ${err}`);
   });
 
-const routines = [
-  {
-    id: "1",
-    name: "Bieganie",
-    difficulty: 4,
-  },
-  {
-    id: "2",
-    name: "Biegi przelajowe",
-    difficulty: 4,
-  },
-  {
-    id: "2",
-    name: "plywanie",
-    difficulty: 4,
-  },
-];
-
-function searchRoutineByName(name) {
-  return routines.filter((routine) => routine.name.includes(name));
-}
-
-app.get("/routines", (req, res) => {
-  return res.json(routines);
-});
-
-app.get("/routines/:name", (req, res) => {
-  const name = req.params.name;
-  const routine = searchRoutineByName(name);
-  return res.json(routine);
-});
-
-app.post("/routines", (req, res) => {
-  const newRoutine = req.body;
-  routines.push(newRoutine);
-  return res.json(newRoutine);
-});
-
 //Bring in the Posts route
-
-const posts = require("./routes/api/posts");
-app.use("/api/posts", posts);
-
+const goals = require("./routes/api/goals");
+app.use("/api/goals", goals);
 //Bring in the Users route
 const users = require("./routes/api/users");
 app.use("/api/users", users);
+//Bring in the Activities route 
+const activities = require("./routes/api/activities");
+app.use("/api/activities", activities);
+//Bring in the Routines route 
+const routines = require("./routes/api/routines");
+app.use("/api/routines", routines);
 
 //app.get("*", (req,res) => {
 //  res.sendFile(path.join(__dirname, "public/index.html"));
 //})
+
+
 
 const PORT = process.env.PORT || 5000;
 

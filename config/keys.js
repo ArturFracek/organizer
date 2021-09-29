@@ -1,4 +1,4 @@
 module.exports = {
-  mongoURI: "mongodb://localhost:27017/organiser_auth",
+  mongoURI: "mongodb://localhost:27017/organizer",
   secret: "yoursecret",
 };

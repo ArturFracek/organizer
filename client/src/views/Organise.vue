@@ -1,32 +1,32 @@
 <template>
-  <div class="main_container">
-    <div class="upper_container">
-      <MyRoutines />
-      <MyActivities />
+  <div class="organize__mainContainer">
+    <div class="organize__upperContainer">
+      <Routines />
+      <Activities />
     </div>
-    <div class="lower_container">
+    <div class="organize__TimeNetContainer">
       <TimeNet/>
     </div>
   </div>
 </template>
 
 <script>
-import MyActivities from "@/components/MyActivities.vue";
-import MyRoutines from "@/components/MyRoutines.vue";
+import Activities from "@/components/Activities.vue";
+import Routines from "@/components/Routines.vue";
 import TimeNet from "@/components/TimeNet.vue";
 
 export default {
   name: "Organise",
   components: {
-    MyActivities,
-    MyRoutines,
+    Activities,
+    Routines,
     TimeNet,
   },
 };
 </script>
 
 <style scoped>
-.main_container {
+.organize__mainContainer {
   position: absolute;
   display: flex;
   flex-flow: column;
@@ -37,14 +37,14 @@ export default {
   height: auto;
   overflow-y: scroll;
 }
-.upper_container {
+.organize__upperContainer {
   display: flex;
   flex-flow: column;
   align-items: center;
   margin-bottom: 2vh;
 }
 
-.lower_container {
+.organize__TimeNetContainer {
   height: 90vh;
 }
 
