@@ -90,7 +90,6 @@ export default {
         ...this.localRoutine,
       });
       this.showModal = false;
-      console.log(this.localRoutine);
     },
     activation() {
       return this.localRoutine.is_active === false

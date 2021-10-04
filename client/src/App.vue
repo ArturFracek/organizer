@@ -19,17 +19,18 @@ export default {
     Errors,
   },
   computed: {
-    ...mapGetters(["error"])
+    ...mapGetters(["error"]),
   },
 };
 </script>
 
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Hahmlet:wght@300&family=Merriweather&family=Roboto+Slab&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Hahmlet:wght@300&family=Merriweather&family=Roboto+Slab&display=swap");
 @import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css");
-@import url('https://fonts.googleapis.com/css2?family=Acme&family=Rubik+Beastly&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Acme&family=Rubik+Beastly&display=swap");
 
-html, body {
+html,
+body {
   margin: 0;
   padding: 0;
   height: 100%;
@@ -38,7 +39,7 @@ html, body {
 #app {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  font-family: 'Hahmlet', serif;
+  font-family: "Hahmlet", serif;
   margin: 0;
   padding: 0;
   width: 100vw;
@@ -52,4 +53,21 @@ html, body {
   color: turquoise;
   text-shadow: 0px 0px 10px turquoise;
 }
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover,
+textarea:-webkit-autofill:focus,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus {
+  border: 2px solid rgb(15, 151, 163);
+  -webkit-text-fill-color: rgb(255, 255, 255);
+  -webkit-box-shadow: 0 0 0px 1000px rgb(0, 0, 0) inset;
+  transition: background-color 5000s ease-in-out 0s;
+}
+
+
 </style>
