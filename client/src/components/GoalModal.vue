@@ -16,9 +16,16 @@
     </transition>
     <transition name="slide" appear>
       <div class="goal__modal" v-if="showModal">
-        <div class="goal__modal__item">Goal</div>
+        <div class="goal__modal__type">Goal</div>
         <h1>{{ goalObject.title }}</h1>
-        <div class="goal__createdAt">{{ date }}</div>
+        <div class="goal__createdAt">Created at: <br>{{ date }}</div>
+        <i class="bi bi-calendar2-plus"></i>
+
+        <v-menu>
+          <v-text-field  v-bind="deadline" slot="activator" label="Deadline"  prepend-icon="date-range"></v-text-field>
+          <v-date-picker v-model="deadline"></v-date-picker>
+        </v-menu>
+
         <textArea v-model="localGoal.description" />
         <Slider v-model="localGoal.priority" />
         <div class="goal__bottomContainer">
@@ -41,8 +48,7 @@
             type="button"
             aria-placeholder=""
             @click="deleteGoal(goalObject._id)"
-          >
-          </button>
+          ></button>
         </div>
       </div>
     </transition>
@@ -52,6 +58,7 @@
 <script>
 import Slider from "@/components/Slider.vue";
 import textArea from "@/components/textArea.vue";
+import moment from "moment"
 
 export default {
   name: "GoalModal",
@@ -61,6 +68,7 @@ export default {
       localGoal: { ...this.goalObject },
       priority: 5,
       date: `${this.goalObject.createdAt.getDate()}/${this.goalObject.createdAt.getMonth()}/${this.goalObject.createdAt.getFullYear()}`,
+      deadline: new Date(),
     };
   },
   components: {
@@ -72,6 +80,11 @@ export default {
       type: Object,
       required: false,
     },
+  },
+  computed: {
+    formatDate() {
+      return this.deadline ? moment(this.deadline).format("Do MMMM YYYY"): ""
+    }
   },
   methods: {
     updateGoal() {
@@ -103,9 +116,9 @@ export default {
 }
 
 .goal__bottomContainer {
-  width: 85%;
+  width: 95%;
   height: 10%;
-  margin-left: 5%;
+  margin-left: 0%;
   display: flex;
   justify-content: center;
   align-items: flex-end;
@@ -117,6 +130,7 @@ export default {
   display: flex;
   justify-content: center;
   align-items: flex-end;
+  margin-left: 5%;
 }
 
 .goal--btn:focus {
@@ -130,7 +144,7 @@ export default {
   right: 0;
   bottom: 0;
   z-index: 98;
-  backdrop-filter: hue-rotate(180deg) opacity(80%) brightness(90%);
+  backdrop-filter: hue-rotate(180deg) opacity(80%) brightness(85%);
 }
 
 .fade-enter-active,
@@ -163,16 +177,16 @@ export default {
   outline: none;
   border: 2px solid rgb(35, 166, 170);
   border-radius: 0.5rem;
-  box-shadow: 0 0 0 0.5rem rgba(8, 214, 250, 0.1);
-  backdrop-filter: blur(15px) drop-shadow(10px 10px 10px rgb(17, 185, 207));
+  backdrop-filter: blur(8px);
 }
 
-.goal__modal__item {
+.goal__modal__type {
   color: white;
   position: absolute;
-  top: 1rem;
+  top: 4%;
   left: 1rem;
   text-shadow: 0 0 3px white;
+  font-size: 1.3rem;
 }
 
 h1 {
@@ -227,10 +241,12 @@ h1 {
   background: none;
   outline: none;
   transition: 0.2s ease-out;
+  display: flex;
+  justify-content: center;
 }
 
 .goal__button--save {
-  height: 100%;
+  height: 80%;
   width: 20%;
   text-justify: auto;
   text-align: center;
@@ -243,7 +259,6 @@ h1 {
   outline: none;
   border: 2px solid rgb(255, 255, 255);
   border-radius: 0.5rem;
-  box-shadow: 0 25px 25px rgba(3, 96, 112, 0.1);
   backdrop-filter: blur(10px) drop-shadow(4px 4px 10px rgb(248, 248, 248));
   transition: 0.1s ease-out;
   margin: 0 1.2rem;
@@ -255,10 +270,15 @@ h1 {
   color: white;
 }
 
-.goal__button:hover {
+.goal__button--save:hover {
   color: red;
   border-color: red;
   text-shadow: 0 0 25px red;
+  box-shadow: 0 5px 25px rgba(255, 19, 19, 0.685);
+}
+.goal__button--delete:hover {
+  color: red;
+  text-shadow: 0 5px 10px red;
 }
 
 .goal__showModalButton {

@@ -27,7 +27,7 @@
     </div>
     <div class="about__info">
       <div class="movies">
-        <div class="title">Videos</div>
+        <div class="title"><i class="bi bi-camera-video"></i>Videos</div>
         <ul>
           <li>
             <a href="https://www.youtube.com/watch?v=1NFq_FbmcDk"
@@ -47,7 +47,7 @@
         </ul>
       </div>
       <div class="articles">
-        <div class="title">Articles</div>
+        <div class="title"><i class="bi bi-newspaper"></i>Articles</div>
         <ul>
           <li>
             <a
@@ -75,7 +75,7 @@
         </ul>
       </div>
       <div class="books">
-        <div class="title">Books</div>
+        <div class="title"><i class="bi bi-book"></i>Books</div>
         <ul>
           <li>
             <a
@@ -341,12 +341,21 @@ ul > li {
 }
 
 .title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   font-size: 1.2rem;
   font-weight: bold;
   text-align: center;
   text-decoration: none;
   color: rgba(49, 255, 238, 0.8);
   text-shadow: 0 0 3px turquoise;
+  margin-bottom: 0.5rem;
+}
+
+.bi {
+  margin-right: 1rem;
+  font-size: 1.5rem;
 }
 
 @media (max-width: 1045px) {

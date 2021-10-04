@@ -16,9 +16,9 @@
     </transition>
     <transition name="slide" appear>
       <div class="routine__modal" v-if="showModal">
-        <div class="routine__modal__item">Routine</div>
+        <div class="routine__modal__type">Routine</div>
         <h1>{{ routineObject.title }}</h1>
-        <div class="routine__createdAt">{{ date }}</div>
+        <div class="routine__createdAt">Created at: <br>{{ date }}</div>
         <textArea v-model="localRoutine.description" />
         <Slider v-model="localRoutine.priority" />
         <button
@@ -119,7 +119,7 @@ export default {
 }
 
 .routine__bottomContainer {
-  width: 85%;
+  width: 95%;
   height: 10%;
   margin-left: 5%;
   display: flex;
@@ -128,6 +128,7 @@ export default {
 }
 
 .routine__buttonsContainer {
+  margin-left: 5%;
   width: 100%;
   height: 3rem;
   display: flex;
@@ -264,12 +265,13 @@ export default {
   backdrop-filter: blur(10px) drop-shadow(4px 4px 10px rgb(17, 185, 207));
 }
 
-.routine__modal__item {
+.routine__modal__type {
   color: white;
   position: absolute;
-  top: 1rem;
+  top: 4%;
   left: 1rem;
   text-shadow: 0 0 3px white;
+  font-size: 1.3rem;
 }
 
 h1 {
@@ -359,6 +361,9 @@ input:hover ~ .routine__showModalButton {
   font-size: 2rem;
   background: none;
   outline: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .routine__showModalButton:hover {

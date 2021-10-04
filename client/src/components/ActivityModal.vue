@@ -16,9 +16,9 @@
     </transition>
     <transition name="slide" appear>
       <div class="activity__modal" v-if="showModal">
-        <div class="activity__modal__item">Activity</div>
+        <div class="activity__modal__type">Activity</div>
         <h1>{{ activityObject.title }}</h1>
-        <div class="activity__createdAt">{{ date }}</div>
+        <div class="activity__createdAt">Created at: <br>{{ date }}</div>
         <textArea v-model="localActivity.description" />
         <Slider v-model="localActivity.priority" />
         <div class="activity__bottomContainer">
@@ -118,7 +118,7 @@ export default {
 }
 
 .activity__bottomContainer {
-  width: 85%;
+  width: 95%;
   height: 10%;
   margin-left: 5%;
   display: flex;
@@ -132,6 +132,7 @@ export default {
   display: flex;
   justify-content: center;
   align-items: flex-end;
+  margin-left: 5%;
 }
 
 .activity__button--save {
@@ -170,7 +171,7 @@ export default {
   right: 0;
   bottom: 0;
   z-index: 98;
-  backdrop-filter: hue-rotate(180deg) opacity(80%) brightness(80%);
+  backdrop-filter: hue-rotate(30deg) opacity(80%) brightness(40%);
 }
 
 .fade-enter-active,
@@ -208,12 +209,13 @@ export default {
   backdrop-filter: blur(10px) drop-shadow(4px 4px 10px rgb(17, 185, 207));
 }
 
-.activity__modal__item {
+.activity__modal__type {
   color: white;
   position: absolute;
-  top: 1rem;
+  top: 4%;
   left: 1rem;
   text-shadow: 0 0 3px white;
+  font-size: 1.3rem;
 }
 
 h1 {
@@ -267,6 +269,9 @@ h1 {
   background: none;
   outline: none;
   transition: 0.2s ease-out;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .activity__button--save:hover, .activity__showModalButton:hover {

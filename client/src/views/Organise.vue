@@ -5,7 +5,7 @@
       <Activities />
     </div>
     <div class="organize__TimeNetContainer">
-      <TimeNet/>
+      <TimeNet2/>
     </div>
   </div>
 </template>
@@ -13,14 +13,14 @@
 <script>
 import Activities from "@/components/Activities.vue";
 import Routines from "@/components/Routines.vue";
-import TimeNet from "@/components/TimeNet.vue";
+import TimeNet2 from "@/components/TimeNet2.vue"
 
 export default {
   name: "Organise",
   components: {
     Activities,
     Routines,
-    TimeNet,
+    TimeNet2,
   },
 };
 </script>

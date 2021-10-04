@@ -249,7 +249,7 @@ export default {
 
 .nav__link {
   font-size: 1.2rem;
-  padding: 0 1rem;
+  padding: 0.4rem 1rem;
   text-decoration: none;
   color: whitesmoke;
   font-weight: bold;
