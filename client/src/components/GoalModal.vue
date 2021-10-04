@@ -19,11 +19,11 @@
         <div class="goal__modal__type">Goal</div>
         <h1>{{ goalObject.title }}</h1>
         <div class="goal__createdAt">Created at: <br>{{ date }}</div>
+        <i class="bi bi-calendar2-plus"></i>
 
         <v-menu>
-          <v-text-field slot="activateDatePicker" aria-label="Deadline">
-          </v-text-field>
-                    <v-date-picker></v-date-picker>
+          <v-text-field  v-bind="deadline" slot="activator" label="Deadline"  prepend-icon="date-range"></v-text-field>
+          <v-date-picker v-model="deadline"></v-date-picker>
         </v-menu>
 
         <textArea v-model="localGoal.description" />
@@ -58,7 +58,7 @@
 <script>
 import Slider from "@/components/Slider.vue";
 import textArea from "@/components/textArea.vue";
-import vuetify from "vuetify"
+import moment from "moment"
 
 export default {
   name: "GoalModal",
@@ -68,6 +68,7 @@ export default {
       localGoal: { ...this.goalObject },
       priority: 5,
       date: `${this.goalObject.createdAt.getDate()}/${this.goalObject.createdAt.getMonth()}/${this.goalObject.createdAt.getFullYear()}`,
+      deadline: new Date(),
     };
   },
   components: {
@@ -79,6 +80,11 @@ export default {
       type: Object,
       required: false,
     },
+  },
+  computed: {
+    formatDate() {
+      return this.deadline ? moment(this.deadline).format("Do MMMM YYYY"): ""
+    }
   },
   methods: {
     updateGoal() {
@@ -112,7 +118,7 @@ export default {
 .goal__bottomContainer {
   width: 95%;
   height: 10%;
-  margin-left: 5%;
+  margin-left: 0%;
   display: flex;
   justify-content: center;
   align-items: flex-end;
