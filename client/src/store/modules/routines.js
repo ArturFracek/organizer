@@ -25,7 +25,7 @@ export default {
       await RoutinesService.updateRoutine(updatedRoutine);
       await dispatch("fetchAllRoutines");
     },
-    async deleteRoutine({ dispatch }, {id}) {
+    async deleteRoutine({ dispatch }, { id }) {
       await RoutinesService.deleteRoutine(id);
       await dispatch("fetchAllRoutines");
     },

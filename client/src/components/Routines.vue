@@ -7,10 +7,10 @@
         type="text"
         placeholder=" "
         v-model="title"
-        @keyup.enter="createRoutine"
+        @keyup.enter="addRoutine"
       />
       <label class="routines__form__label__addRoutines">Add Routine</label>
-      <button class="addRoutine__button" @click="createRoutine">Add</button>
+      <button class="addRoutine__button" @click="addRoutine">Add</button>
     </div>
     <div class="routines__objectsHolder">
       <div
@@ -57,18 +57,18 @@ export default {
     ...mapActions({
       fetchAllRoutines: "routines/fetchAllRoutines",
       updateRoutine: "routines/updateRoutine",
-      deleteRoutine: "routines/deleteRoutine",
+      removeRoutine: "routines/deleteRoutine",
       createRoutine: "routines/createRoutine",
     }),
     async fetchRoutines() {
       await this.fetchAllRoutines();
     },
-    async createRoutine(routine) {
+    async addRoutine(routine) {
       await this.createRoutine(routine);
       this.title = "";
     },
     async deleteRoutine(id) {
-      await this.deleteRoutine(id);
+      await this.removeRoutine({id});
     },
     async saveRoutine(routine) {
       await this.updateRoutine(routine);
