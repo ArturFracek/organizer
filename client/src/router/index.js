@@ -9,7 +9,10 @@ const routes = [
   {
     path: "/",
     name: "AboutOrganizing",
-    component: AboutOrganizing,
+    component: () => import("../views/AboutOrganizing.vue"),
+    meta: {
+      requiresGuest: true,
+    }
   },
   {
     path: "/Organise",

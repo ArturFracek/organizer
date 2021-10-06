@@ -63,8 +63,8 @@ export default {
     async fetchRoutines() {
       await this.fetchAllRoutines();
     },
-    async addRoutine(routine) {
-      await this.createRoutine(routine);
+    async addRoutine() {
+      await this.createRoutine({ title: this.title });
       this.title = "";
     },
     async deleteRoutine(id) {

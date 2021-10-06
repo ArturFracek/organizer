@@ -18,6 +18,7 @@ router.post("/", async (req, res) => {
   await goals.insertOne({
     title,
     createdAt: new Date(),
+    priority: 5,
   });
   res.status(201).send();
 });

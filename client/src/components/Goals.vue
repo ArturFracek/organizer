@@ -7,10 +7,10 @@
         type="text"
         placeholder=" "
         v-model="title"
-        @keyup.enter="createGoal"
+        @keyup.enter="addGoal"
       />
       <label class="goals__input__label">Add Goal</label>
-      <button class="goals__addGoal__button" @click="createGoal">Add Goal</button>
+      <button class="goals__addGoal__button" @click="addGoal">Add Goal</button>
     </div>
     <div class="goals__goalsHolder">
       <ul
@@ -23,7 +23,7 @@
         <li>
           <GoalModal
             :goalObject="goal"
-            @updateGoal="updateGoal"
+            @updateGoal="saveGoal"
             @deleteGoal="deleteGoal"
           />
         </li>
@@ -33,7 +33,7 @@
 </template>
 
 <script>
-import GoalsService from "../Warehouse/GoalsService";
+import { mapGetters, mapActions } from "vuex";
 import GoalModal from "./GoalModal";
 
 export default {
@@ -44,30 +44,36 @@ export default {
   data() {
     return {
       title: "",
-      goals: [],
       error: "Something went wrong, try again",
     };
   },
-  async created() {
-    try {
-      this.goals = await GoalsService.getGoals();
-    } catch (err) {
-      this.error = err.massage;
-    }
+  async mounted() {
+    await this.fetchGoals();
+  },
+  computed: {
+    ...mapGetters({
+      goals: "goals/goals",
+    }),
   },
   methods: {
-    async createGoal() {
-      await GoalsService.insertGoal({ title: this.title });
-      this.goals = await GoalsService.getGoals();
+    ...mapActions({
+      fetchAllGoals: "goals/fetchAllGoals",
+      createGoal: "goals/createGoal",
+      updateGoal: "goals/updateGoal",
+      removeGoal: "goals/deleteGoal",
+    }),
+    async fetchGoals() {
+      await this.fetchAllGoals();
+    },
+    async addGoal() {
+      await this.createGoal({ title: this.title });
       this.title = "";
     },
-    async updateGoal(goal) {
-      await GoalsService.updateGoal(goal);
-      this.goals = await GoalsService.getGoals();
+    async saveGoal(goal) {
+      await this.updateGoal(goal);
     },
     async deleteGoal(id) {
-      await GoalsService.deleteGoal(id);
-      this.goals = await GoalsService.getGoals();
+      await this.removeGoal([id]);
     },
   },
 };
@@ -219,7 +225,8 @@ input:focus ~ .goals__input__label {
 }
 
 input:focus ~ .goals__input__label,
-input:not(:placeholder-shown).goals__andGoal__input:not(:focus) ~ .goals__input__label {
+input:not(:placeholder-shown).goals__andGoal__input:not(:focus)
+  ~ .goals__input__label {
   animation: shadow_fading 0.8s ease;
   opacity: 0;
 }
@@ -260,5 +267,4 @@ input:not(:placeholder-shown) ~ .goals__addGoal__button {
     width: 12rem;
   }
 }
-
 </style>

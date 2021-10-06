@@ -29,9 +29,9 @@ export default {
       await RoutinesService.deleteRoutine(id);
       await dispatch("fetchAllRoutines");
     },
-    async createRoutine({ commit }, newRoutine) {
+    async createRoutine({ dispatch }, newRoutine) {
       const { data } = await RoutinesService.insertRoutine(newRoutine);
-      commit("ADD_ROUTINE", data);
+      await dispatch("fetchAllRoutines");
     },
   },
 

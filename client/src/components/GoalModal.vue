@@ -21,10 +21,9 @@
         <div class="goal__createdAt">Created at: <br>{{ date }}</div>
         <i class="bi bi-calendar2-plus"></i>
 
-        <v-menu>
-          <v-text-field  v-bind="deadline" slot="activator" label="Deadline"  prepend-icon="date-range"></v-text-field>
-          <v-date-picker v-model="deadline"></v-date-picker>
-        </v-menu>
+     <v-menu>
+       <v-textfield></v-textfield>
+     </v-menu>
 
         <textArea v-model="localGoal.description" />
         <Slider v-model="localGoal.priority" />

@@ -7,10 +7,10 @@
         type="text"
         placeholder=" "
         v-model="title"
-        @keyup.enter="createActivity"
+        @keyup.enter="addActivity"
       />
       <label class="activities__form__label__addActivities">Add Activity</label>
-      <button class="addActivity__button" @click="createActivity">Add</button>
+      <button class="addActivity__button" @click="addActivity">Add</button>
     </div>
     <div class="activities__objectsHolder">
       <div
@@ -24,7 +24,7 @@
         <ActivityModal
           :activityObject="activity"
           @deleteActivity="deleteActivity"
-          @updateActivity="updateActivity"
+          @updateActivity="saveActivity"
         />
       </div>
     </div>
@@ -33,39 +33,45 @@
 
 <script>
 import ActivityModal from "@/components/ActivityModal.vue";
-import ActivitiesService from "../Warehouse/ActivitiesService.js";
+import { mapActions, mapGetters } from "vuex";
 
 export default {
   data() {
     return {
       title: "",
-      activities: [],
       error: "Try again",
     };
   },
   components: {
     ActivityModal,
   },
-  async created() {
-    try {
-      this.activities = await ActivitiesService.getActivities();
-    } catch (err) {
-      this.error = err.massage;
-    }
+  async mounted() {
+    this.fetchAllActivities();
+  },
+  computed: {
+    ...mapGetters({
+      activities: "activities/activities",
+    }),
   },
   methods: {
-    async createActivity() {
-      await ActivitiesService.insertActivity({ title: this.title });
-      this.activities = await ActivitiesService.getActivities();
+    ...mapActions({
+      fetchAllActivities: "activities/fetchAllActivities",
+      updateActivity: "activities/updateActivity",
+      removeActivity: "activities/deleteActivity",
+      createActivity: "activities/createActivity",
+    }),
+    async fetchActivities() {
+      await this.fetchAllActivities();
+    },
+    async addActivity() {
+      await this.createActivity({ title: this.title });
       this.title = "";
     },
     async deleteActivity(id) {
-      await ActivitiesService.deleteActivity(id);
-      this.activities = await ActivitiesService.getActivities();
+      await this.removeActivity({ id });
     },
-    async updateActivity(activity) {
-      await ActivitiesService.updateActivity(activity);
-      this.activities = await ActivitiesService.getActivities();
+    async saveActivity(activity) {
+      await this.updateActivity(activity)
     },
   },
 };
@@ -186,7 +192,8 @@ input:focus ~ .activities__form__label__addActivities {
 }
 
 input:focus ~ .activities__form__label__addActivities,
-input:not(:placeholder-shown).input:not(:focus) ~ .activities__form__label__addActivities {
+input:not(:placeholder-shown).input:not(:focus)
+  ~ .activities__form__label__addActivities {
   top: -4.5rem;
 }
 
