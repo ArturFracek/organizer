@@ -1,5 +1,5 @@
 <template>
-  <div class="routine__routineContainer">
+  <div class="goal__goalContainer">
     <button
       type="button"
       class="goal__showModalButton"
@@ -18,12 +18,9 @@
       <div class="goal__modal" v-if="showModal">
         <div class="goal__modal__type">Goal</div>
         <h1>{{ goalObject.title }}</h1>
-        <div class="goal__createdAt">Created at: <br>{{ date }}</div>
-        <i class="bi bi-calendar2-plus"></i>
+        <div class="goal__createdAt">Created at: <br />{{ date }}</div>
 
-     <v-menu>
-       <v-textfield></v-textfield>
-     </v-menu>
+    <datePicker class="goal__datePicker" :label="deadline"/>
 
         <textArea v-model="localGoal.description" />
         <Slider v-model="localGoal.priority" />
@@ -57,7 +54,8 @@
 <script>
 import Slider from "@/components/Slider.vue";
 import textArea from "@/components/textArea.vue";
-import moment from "moment"
+import datePicker from "@/components/datePicker.vue";
+import moment from "moment";
 
 export default {
   name: "GoalModal",
@@ -67,12 +65,13 @@ export default {
       localGoal: { ...this.goalObject },
       priority: 5,
       date: `${this.goalObject.createdAt.getDate()}/${this.goalObject.createdAt.getMonth()}/${this.goalObject.createdAt.getFullYear()}`,
-      deadline: new Date(),
+      deadline: "deadline",
     };
   },
   components: {
     Slider,
     textArea,
+    datePicker,
   },
   props: {
     goalObject: {
@@ -82,8 +81,8 @@ export default {
   },
   computed: {
     formatDate() {
-      return this.deadline ? moment(this.deadline).format("Do MMMM YYYY"): ""
-    }
+      return this.deadline ? moment(this.deadline).format("Do MMMM YYYY") : "";
+    },
   },
   methods: {
     updateGoal() {
@@ -103,7 +102,7 @@ export default {
   padding: 0;
 }
 
-.routine__routineContainer {
+.goal__goalContainer {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -302,5 +301,12 @@ h1 {
   border-left: 0.1px solid rgba(255, 115, 115, 0.726);
   border-radius: 12px;
 }
-
+.goal__datePicker {
+  width: 7rem;
+  color: white;
+  position: fixed;
+  top: 1rem;
+  right: 10rem;
+  text-shadow: 0 0 3px white;
+}
 </style>
