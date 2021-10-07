@@ -34,6 +34,7 @@
 <script>
 import ActivityModal from "@/components/ActivityModal.vue";
 import { mapActions, mapGetters } from "vuex";
+import activities from '../store/modules/activities';
 
 export default {
   data() {

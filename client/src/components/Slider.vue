@@ -1,11 +1,11 @@
 <template>
   <div class="slider__container">
-    <div class="slider__priority">Priority</div>
+    <div :value="value" class="slider__priority" :class="{'slider__priority--LowPriority' :value < 6, 'slider__priority--HighPriority' : value > 5 }">Priority</div>
     <input
       :value="value"
       type="range"
       class="slider"
-      min="1"
+      min="0"
       max="10"
       @input="input"
       :class="{ 'slider__highPriority': value > 6 }"
@@ -59,24 +59,35 @@ export default {
 .slider__priority {
   position: absolute;
   transform: translateY(0%);
-  transform: translateX(15%);
+  transform: translateX(5%);
   font-size: 1.2rem;
   font-weight: 800;
-  color: rgb(0, 0, 0);
+  color: #ce0909;
   z-index: 3;
-  opacity: 0.3;
-  letter-spacing: 3px;
+  opacity: 0.6;
+  letter-spacing: 2px;
   pointer-events: none;
-  text-shadow: 0 0 5px rgba(0, 0, 0, 0.52);
-  font-family: 'Acme', sans-serif;
+  text-shadow: 0 2.5px 3px rgb(29, 93, 211);
+  font-family: "Hahmlet", serif;
+  transition: 0.5s ease;
+}
+.slider__priority--LowPriority {
+  color: #ce0909;
+  transition: 0.2s ease-in;
+  text-shadow: 3px 0px 3px rgb(29, 50, 240);
+}
+.slider__priority--HighPriority {
+  color: #ce0909;
+  transition: 0.2s ease-in;
+  text-shadow: -3px 0px 3px rgb(29, 50, 240);
 }
 
 .slider__container .slider {
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
-  width: 80%;
-  height: 18px;
+  width: 85%;
+  height: 23px;
   background-color: #ffffff;
   border-radius: 7px;
   outline: none;
@@ -107,7 +118,7 @@ export default {
   height: 30px;
   width: 30px;
   border-radius: 50%;
-  background: none;
+  background-color: #63f3f37a;
   cursor: pointer;
   -webkit-transition: all 0.9s ease-in;
   transition: all 0.7s ease-in;
@@ -121,7 +132,7 @@ export default {
   height: 30px;
   width: 30px;
   border-radius: 50%;
-  background-color: #686868;
+  background-color: #55ec1a;
   cursor: pointer;
   -moz-transition: all 0.8s ease-in;
   transition: all 0.7s ease-in;
@@ -129,7 +140,7 @@ export default {
 }
 
 .slider__container .slider::webkit-slider-thumb:hover {
-  box-shadow: 6px 6px 20px 20px rgb(0, 0, 0);
+  box-shadow: 6px 6px 20px 20px rgb(255, 15, 15);
 }
 
 .rangeValue {
