@@ -18,38 +18,46 @@
       <div class="routine__modal" v-if="showModal">
         <div class="routine__modal__type">Routine</div>
         <h1>{{ routineObject.title }}</h1>
-        <div class="routine__createdAt">Created at: <br>{{ date }}</div>
-        <textArea v-model="localRoutine.description" />
-        <Slider v-model="localRoutine.priority" />
-        <button
-          @click="activation"
-          class="routine_button routine__button--activation"
-          :class="{ routine__isActive: localRoutine.is_active }"
-        >
-          <span v-if="!localRoutine.is_active">Activate this Routine</span>
-          <span v-if="localRoutine.is_active">Active!</span>
-        </button>
-        <div class="routine__bottomContainer">
-          <div class="routine__buttonsContainer">
-            <input
-              type="submit"
-              class="routine__button routine__button--save"
-              @click="saveRoutine"
-              value="Save"
-            />
-            <input
-              type="button"
-              class="routine__button routine__button--save"
-              @click="showModal = false"
-              value="Go back"
-            />
-          </div>
+        <div class="routine__createdAt">Created at: <br />{{ date }}</div>
+        <div class="routine__modalUpperSection">
+          <textArea v-model="localRoutine.description" />
+           <Slider v-model="localRoutine.priority" />
+        </div>
+        <div class="routine__activitiesOccurences">
+         <ActivityOccurences />
+        </div>
+       
+        <div class="routine__bottomSection">
           <button
-            class="routine__button__delete bi bi-trash"
-            type="button"
-            value="Delete"
-            @click="deleteRoutine(routineObject._id)"
-          ></button>
+            @click="activation"
+            class="routine_button routine__button--activation"
+            :class="{ routine__isActive: localRoutine.is_active }"
+          >
+            <span v-if="!localRoutine.is_active">Activate this Routine</span>
+            <span v-if="localRoutine.is_active">Active!</span>
+          </button>
+          <div class="routine__bottomContainer">
+            <div class="routine__buttonsContainer">
+              <input
+                type="submit"
+                class="routine__button routine__button--save"
+                @click="saveRoutine"
+                value="Save"
+              />
+              <input
+                type="button"
+                class="routine__button routine__button--save"
+                @click="showModal = false"
+                value="Go back"
+              />
+            </div>
+            <button
+              class="routine__button__delete bi bi-trash"
+              type="button"
+              value="Delete"
+              @click="deleteRoutine(routineObject._id)"
+            ></button>
+          </div>
         </div>
       </div>
     </transition>
@@ -59,6 +67,7 @@
 <script>
 import Slider from "@/components/Slider.vue";
 import textArea from "@/components/textArea.vue";
+import ActivityOccurences from "@/components/ActivityOccurences.vue";
 
 export default {
   name: "RoutineModal",
@@ -74,6 +83,7 @@ export default {
   components: {
     Slider,
     textArea,
+    ActivityOccurences,
   },
   props: {
     routineObject: {
@@ -120,10 +130,22 @@ export default {
 .routine__bottomContainer {
   width: 95%;
   height: 10%;
-  margin-left: 5%;
+  margin-left: 3%;
   display: flex;
   justify-content: center;
   align-items: flex-end;
+  margin-top: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.routine__bottomSection {
+  display: flex;
+  flex-flow: column;
+  width: 100%;
+  align-items: center;
+  justify-content: flex-end;
+  align-self: flex-end;
+  height: 100%;
 }
 
 .routine__buttonsContainer {
@@ -241,7 +263,7 @@ export default {
 .routine__modal {
   display: flex;
   flex-flow: column;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
   position: fixed;
   top: 50%;
@@ -294,6 +316,14 @@ h1 {
 
 .modalElement {
   margin: 10px;
+}
+
+.routine__modalUpperSection {
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  width: 100%;
+  height: 100%;
 }
 
 .p {

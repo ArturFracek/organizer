@@ -1,6 +1,6 @@
 <template>
   <div class="occurences__mainContainer">
-    
+    <input type="select">
   </div>
 </template>
 
