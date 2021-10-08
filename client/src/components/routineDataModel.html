@@ -4,12 +4,20 @@ routine {
     description: String,
     priority: Number,
     active: Boolean,
-    activities: [{
-        activityId: String -> activity.id,
-        dayOfWeek: Number,
-        startTime: Number,
-        endTime: Number,
-    }]
+    activities: [
+        {
+            activityId: String -> activity.id,
+            dayOfWeek: Number,
+            startTime: Number,
+            endTime: Number,
+        },
+        {
+            activityId: String -> activity.id,
+            dayOfWeek: Number,
+            startTime: Number,
+            endTime: Number,
+        }...
+    ]
 }
 
 activity {

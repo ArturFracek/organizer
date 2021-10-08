@@ -1,6 +1,5 @@
 const express = require("express");
 const mongodb = require("mongodb");
-const loader = require("sass-loader");
 
 const router = express.Router();
 
@@ -13,7 +12,6 @@ router.get("/", async (req, res) => {
 // Add Post
 router.post("/", async (req, res) => {
   const { title, description, priority } = req.body;
-  console.log(req.body.text);
   const activities = await loadActivitiesCollection();
   await activities.insertOne({
     title,
@@ -30,7 +28,6 @@ router.put("/:id", async (req, res) => {
     { _id: new mongodb.ObjectID(req.params.id) },
     { $set: { description: req.body.description, priority: req.body.priority } }
   );
-  console.log(req.body);
   res.status(200).send();
 });
 

@@ -107,7 +107,7 @@ export default {
       return activity ? activity.title : "";
     },
     log() {
-      console.log(this.activities[0].title)
+      console.log(this.activities)
     },
     logActivityId(act) {
       console.log(this.activities[0]._id)

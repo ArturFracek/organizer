@@ -68,7 +68,7 @@ export default {
       this.title = "";
     },
     async deleteRoutine(id) {
-      await this.removeRoutine({id});
+      await this.removeRoutine({ id });
     },
     async saveRoutine(routine) {
       await this.updateRoutine(routine);
