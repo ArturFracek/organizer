@@ -7,10 +7,10 @@
         type="text"
         placeholder=" "
         v-model="title"
-        @keyup.enter="createRoutine"
+        @keyup.enter="addRoutine"
       />
       <label class="routines__form__label__addRoutines">Add Routine</label>
-      <button class="addRoutine__button" @click="createRoutine">Add</button>
+      <button class="addRoutine__button" @click="addRoutine">Add</button>
     </div>
     <div class="routines__objectsHolder">
       <div
@@ -33,40 +33,45 @@
 
 <script>
 import RoutineModal from "@/components/RoutineModal.vue";
-import RoutinesService from "@/Warehouse/RoutinesService";
+import { mapActions, mapGetters } from "vuex";
 
 export default {
-  name: "MyRoutines",
   data() {
     return {
       title: "",
-      routines: [],
       error: "Something went wrong, try again",
     };
   },
   components: {
     RoutineModal,
   },
-  async created() {
-    try {
-      this.routines = await RoutinesService.getRoutines();
-    } catch (err) {
-      this.error = err.massage;
-    }
+  async mounted() {
+    this.fetchRoutines();
+  },
+  computed: {
+    ...mapGetters({
+      routines: "routines/routines",
+    }),
   },
   methods: {
-    async createRoutine() {
-      await RoutinesService.insertRoutine({ title: this.title });
-      this.routines = await RoutinesService.getRoutines();
+    ...mapActions({
+      fetchAllRoutines: "routines/fetchAllRoutines",
+      updateRoutine: "routines/updateRoutine",
+      removeRoutine: "routines/deleteRoutine",
+      createRoutine: "routines/createRoutine",
+    }),
+    async fetchRoutines() {
+      await this.fetchAllRoutines();
+    },
+    async addRoutine() {
+      await this.createRoutine({ title: this.title });
       this.title = "";
     },
     async deleteRoutine(id) {
-      await RoutinesService.deleteRoutine(id);
-      this.routines = await RoutinesService.getRoutines();
+      await this.removeRoutine({ id });
     },
     async saveRoutine(routine) {
-      await RoutinesService.updateRoutine(routine);
-      this.routines = await RoutinesService.getRoutines();
+      await this.updateRoutine(routine);
     },
   },
 };

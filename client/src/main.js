@@ -12,7 +12,7 @@ Vue.config.productionTip = false;
 Vue.prototype.$http = axios;
 
 //Load the token from the local storage
-const token = localStorage.getItem("token")
+const token = localStorage.getItem("token");
 
 //If there is any token we will simply append default axios authorization headers
 

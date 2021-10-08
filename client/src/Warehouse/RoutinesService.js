@@ -4,7 +4,7 @@ import { boolean } from "joi";
 const url = "http://localhost:5000/api/routines/";
 
 class RoutinesService {
-  //get goals
+  //get routine
   static getRoutines() {
     // eslint-disable-next-line no-async-promise-executor
     return new Promise(async (resolve, reject) => {
@@ -23,7 +23,7 @@ class RoutinesService {
     });
   }
 
-  //create goal
+  //create routine
   static insertRoutine(routine) {
     return axios.post(url, routine);
   }

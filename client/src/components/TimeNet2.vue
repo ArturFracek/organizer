@@ -4,7 +4,7 @@
       <thead>
         <tr>
           <th class="net__emptyCell"><div class="net__emptyDiv"></div></th>
-          <th 
+          <th
             v-for="(day, dayIndex) in weekdays"
             :key="dayIndex"
             :class="[
@@ -21,7 +21,7 @@
         <tr
           v-for="(hour, hourIndex) in hours"
           :key="hourIndex"
-          :class="[ 'net__hourRow', `net__hourRow-${hourIndex}`]"
+          :class="['net__hourRow', `net__hourRow-${hourIndex}`]"
         >
           <td class="net__hour">
             {{ formatTime(hour) }}
@@ -29,27 +29,35 @@
           <td
             v-for="(day, dayIndex) in weekdays"
             :key="dayIndex"
-            :class="[ 'net__cell', 'net__hourInDay', `net__day-${dayIndex}`, `net__day-${dayIndex}-${hour}` ]"
+            :class="[
+              'net__cell',
+              'net__hourInDay',
+              `net__day-${dayIndex}`,
+              `net__day-${dayIndex}-${hour}`,
+            ]"
           >
             {{ getActivityName(getActivityOccurance(dayIndex, hour)) }}
           </td>
         </tr>
       </tbody>
     </table>
+    <button @click="log">Log activities</button>
+    <button @click="logActivityId">Log ID</button>
   </div>
 </template>
 
 <script>
+import { mapGetters, mapActions } from "vuex";
 import moment from "moment";
+import { hours } from "../constants/index";
 
-const hours = [ 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 0, 1, 2 ]
 
 const activitiesOccurences = [
   {
-    activityId: 1,
-    dayOfWeek: 2,
-    startTime: 13,
-    endTime: 16,
+    activityId: "6149b161c188aa185a902b80",
+    dayOfWeek: 0,
+    startTime: 15,
+    endTime: 19,
   },
   {
     activityId: 1,
@@ -63,49 +71,47 @@ const activitiesOccurences = [
     startTime: 10,
     endTime: 11,
   },
-]
-
-const activities = [
-  {
-    id: 1,
-    name: "Bieganie",
-    priority: 6,
-    description: "Jakis opis",
-  },
-  {
-    id: 2,
-    name: "Jazda na rowerze",
-    priority: 7,
-    description: "Inny opis"
-  },
-  {
-    id: 3,
-    name: "gra na gitarze",
-    priority: 5,
-    description: "Super opis",
-  }
-
-
-]
+];
 
 export default {
+  async mounted() {
+    this.fetchAllActivities();
+  },
   computed: {
     weekdays: () => moment.weekdays(),
     hours: () => hours,
+    ...mapGetters({
+      activities: "activities/activities",
+    }),
   },
   methods: {
+    ...mapActions({
+      fetchAllActivities: "activities/fetchAllActivities",
+    }),
+    async fetchActivities() {
+      await this.fetchAllActivities();
+    },
     formatTime(timeNumber) {
-      return moment(timeNumber, 'H').format('h a')
+      return moment(timeNumber, "H").format("h a");
     },
     getActivityOccurance(dayIndex, hour) {
-      const act = activitiesOccurences.find((a) => a.startTime <= hour && a.endTime > hour && a.dayOfWeek === dayIndex)
-      return act ? act.activityId : ''
+      const act = activitiesOccurences.find(
+        (a) =>
+          a.startTime <= hour && a.endTime > hour && a.dayOfWeek === dayIndex
+      );
+      return act ? act.activityId : "";
+      
     },
     getActivityName(activityId) {
-      const activity = activities.find(a => a.id === activityId)
-      return activity ? activity.name : ''
+      const activity = this.activities.find((a) => a._id === activityId);
+      return activity ? activity.title : "";
+    },
+    log() {
+      console.log(this.activities)
+    },
+    logActivityId(act) {
+      console.log(this.activities[0]._id)
     }
-
   },
 };
 </script>
@@ -158,5 +164,4 @@ button {
   width: 6rem;
   background: red;
 }
-
 </style>

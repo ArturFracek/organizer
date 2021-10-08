@@ -1,6 +1,5 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
-import AboutOrganizing from "../views/AboutOrganizing.vue";
 import store from "../store";
 
 Vue.use(VueRouter);
@@ -9,7 +8,7 @@ const routes = [
   {
     path: "/",
     name: "AboutOrganizing",
-    component: AboutOrganizing,
+    component: () => import("../views/AboutOrganizing.vue"),
   },
   {
     path: "/Organise",
