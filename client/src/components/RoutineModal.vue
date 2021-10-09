@@ -21,12 +21,11 @@
         <div class="routine__createdAt">Created at: <br />{{ date }}</div>
         <div class="routine__modalUpperSection">
           <textArea v-model="localRoutine.description" />
-           <Slider v-model="localRoutine.priority" />
+          <Slider v-model="localRoutine.priority" />
         </div>
         <div class="routine__activitiesOccurences">
-         <ActivityOccurences />
+          <ActivityOccurences />
         </div>
-       
         <div class="routine__bottomSection">
           <button
             @click="activation"
@@ -127,6 +126,15 @@ export default {
   box-shadow: 6px 6px 6px 6px rgba(0, 0, 0, 0.6);
 }
 
+.routine__activitiesOccurences {
+  background-color: transparent;
+  width: 95%;
+  height: 100%;
+  border-radius: 60px;
+  border-bottom: 2px dotted turquoise;
+  border-top: 2px dotted turquoise;
+}
+
 .routine__bottomContainer {
   width: 95%;
   height: 10%;
@@ -143,9 +151,8 @@ export default {
   flex-flow: column;
   width: 100%;
   align-items: center;
-  justify-content: flex-end;
-  align-self: flex-end;
-  height: 100%;
+  justify-content: space-around;
+  height: auto;
 }
 
 .routine__buttonsContainer {
@@ -323,7 +330,7 @@ h1 {
   flex-flow: column;
   align-items: center;
   width: 100%;
-  height: 100%;
+  height: 50%;
 }
 
 .p {
