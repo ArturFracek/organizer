@@ -62,7 +62,7 @@ export default {
   transform: translateX(5%);
   font-size: 1.2rem;
   font-weight: 800;
-  color: #ce0909;
+  color: #000000;
   z-index: 3;
   opacity: 0.6;
   letter-spacing: 2px;
@@ -72,14 +72,12 @@ export default {
   transition: 0.5s ease;
 }
 .slider__priority--LowPriority {
-  color: #ce0909;
   transition: 0.2s ease-in;
-  text-shadow: 3px 0px 3px rgb(29, 50, 240);
+  text-shadow: 3px 0px 2px rgb(29, 50, 240);
 }
 .slider__priority--HighPriority {
-  color: #ce0909;
   transition: 0.2s ease-in;
-  text-shadow: -3px 0px 3px rgb(29, 50, 240);
+  text-shadow: -3px 0px 2px rgb(29, 50, 240);
 }
 
 .slider__container .slider {
@@ -98,9 +96,9 @@ export default {
   transform-origin: 0 0;
   background-image: linear-gradient(
     90deg,
-    #ff5050 0%,
-    #ffffff 50%,
-    #44d8e2 100%
+    hsl(0, 0%, 100%) 0%,
+    #63fbf4 50%,
+    hsl(160, 100%, 53%) 100%
   );
   box-shadow: 0 0 10px rgb(255, 255, 255);
   transition: 0.4s ease;
@@ -161,7 +159,7 @@ export default {
 .rangeValue-warning {
   font-size: 1.8rem;
   animation: shake 0.3s;
-  color: #44d8e2;
+  color: hsl(160, 100%, 53%);
   position: relative;
   text-shadow: 0 0 10px turquoise;
 }
