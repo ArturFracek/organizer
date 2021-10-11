@@ -56,7 +56,7 @@ const activitiesOccurences = [
   {
     activityId: "6149b161c188aa185a902b80",
     dayOfWeek: 0,
-    startTime: 15,
+    startTime: 16,
     endTime: 19,
   },
   {
@@ -74,9 +74,6 @@ const activitiesOccurences = [
 ];
 
 export default {
-  async mounted() {
-    this.fetchAllActivities();
-  },
   computed: {
     weekdays: () => moment.weekdays(),
     hours: () => hours,
@@ -85,12 +82,7 @@ export default {
     }),
   },
   methods: {
-    ...mapActions({
-      fetchAllActivities: "activities/fetchAllActivities",
-    }),
-    async fetchActivities() {
-      await this.fetchAllActivities();
-    },
+
     formatTime(timeNumber) {
       return moment(timeNumber, "H").format("h a");
     },
@@ -100,7 +92,6 @@ export default {
           a.startTime <= hour && a.endTime > hour && a.dayOfWeek === dayIndex
       );
       return act ? act.activityId : "";
-      
     },
     getActivityName(activityId) {
       const activity = this.activities.find((a) => a._id === activityId);
