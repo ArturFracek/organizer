@@ -3,7 +3,7 @@
     <label for="options">{{ label }}</label>
     <select name="options" id="options" v-bind="$attrs">
       <option v-for="(option, index) in options" :key="index">
-        {{ option }}
+        {{ option[targetData] }}
       </option>
     </select>
   </div>
@@ -16,6 +16,10 @@ export default {
     options: {
       type: Array,
       required: true,
+    },
+    targetData: {
+      type: Number,
+      required: false,
     },
     label: {
       type: String,

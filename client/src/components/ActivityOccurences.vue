@@ -1,6 +1,9 @@
 <template>
   <div class="occurences__mainContainer">
-    <ActivitySelect label="Choose a Activity" :options="activities"/>
+    <ActivitySelect label="Choose a Activity" :options="activities" :targetData="title" />
+    <ActivitySelect label="Week Day" :options="weekdays" :targetData="null" />
+    <ActivitySelect label="Start Time" :options="hours" :targetData="title" />
+    <ActivitySelect label="End Time" :options="activities" :targetData="title" />
     <button type="button" @click="addNewAcctivityOccurence">Add</button>
     <button type="button" @click="updateActivityOccurence(0, 'dayOfWeek', 3)">
       test
@@ -15,6 +18,8 @@
 <script>
 import ActivitySelect from "./ActivitySelect.vue";
 import { mapGetters } from "vuex";
+import moment from "moment";
+import { hours } from "../constants/index";
 
 function getNewAcctivityOccurence() {
   return {
@@ -26,6 +31,13 @@ function getNewAcctivityOccurence() {
 }
 
 export default {
+  data() {
+    return {
+      title: "title",
+      weekDay: "dayOfWeek"
+
+    };
+  },
   props: {
     value: {
       type: Array,
@@ -36,6 +48,8 @@ export default {
     ActivitySelect,
   },
   computed: {
+    weekdays: () => moment.weekdays(),
+    hours: () => hours,
     ...mapGetters({
       activities: "activities/activities",
     }),
