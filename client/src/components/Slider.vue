@@ -1,6 +1,15 @@
 <template>
   <div class="slider__container">
-    <div :value="value" class="slider__priority" :class="{'slider__priority--LowPriority' :value < 6, 'slider__priority--HighPriority' : value > 5 }">Priority</div>
+    <div
+      :value="value"
+      class="slider__priority"
+      :class="{
+        'slider__priority--LowPriority': value < 6,
+        'slider__priority--HighPriority': value > 5,
+      }"
+    >
+      Priority
+    </div>
     <input
       :value="value"
       type="range"
@@ -8,7 +17,7 @@
       min="0"
       max="10"
       @input="input"
-      :class="{ 'slider__highPriority': value > 6 }"
+      :class="{ slider__highPriority: value > 6 }"
     />
     <div class="rangeValue" :class="{ 'rangeValue-warning': value > 6 }">
       {{ value }}
@@ -52,7 +61,7 @@ export default {
     filter: drop-shadow(0 0 0 rgb(82, 226, 251));
   }
   100% {
-    filter: drop-shadow(0 0 10px rgb(82, 226, 251))
+    filter: drop-shadow(0 0 10px rgb(82, 226, 251));
   }
 }
 
@@ -103,8 +112,6 @@ export default {
   box-shadow: 0 0 10px rgb(255, 255, 255);
   transition: 0.4s ease;
 }
-
-
 
 .slider__container .slider:hover {
   opacity: 1;

@@ -1,24 +1,39 @@
 <template>
   <div class="occurences__mainContainer">
-    <ActivitySelect label="Choose a Activity" :options="activities" :targetData="title" />
-    <ActivitySelect label="Week Day" :options="weekdays" :targetData="null" />
-    <ActivitySelect label="Start Time" :options="hours" :targetData="title" />
-    <ActivitySelect label="End Time" :options="activities" :targetData="title" />
+    <!-- <Select label="Week Day" :options="weekdays" v-model="localOccurences.dayOfWeek" />
+    <Select
+      label="Start Time"
+      :options="hours"
+      :targetData="weekDay"
+      v-model="localOccurences.startTime"
+    />
+    <Select
+      label="End Time"
+      :options="activities"
+      :targetData="title"
+      v-model="localOccurences.endTime"
+    /> -->
     <button type="button" @click="addNewAcctivityOccurence">Add</button>
-    <button type="button" @click="updateActivityOccurence(0, 'dayOfWeek', 3)">
+    <button type="button" @click="updateActivityOccurence(0, 'activityId', 3)">
       test
     </button>
-    <div v-for="(occurecne, index) in value" :key="index">
+    <div class="occurences__occurence" v-for="(occurence, index) in value" :key="index">
       <button type="button" @click="removeActivityOccurence(index)">X</button>
-      {{ occurecne }}
+      <Select
+        label="Choose a Activity"
+        :options="activities"
+        optionLabelKey="title"
+        optionValueKey="_id"
+        :value="occurence.activityId"
+      />
     </div>
   </div>
 </template>
 
 <script>
-import ActivitySelect from "./ActivitySelect.vue";
+import Select from "./Select.vue";
 import { mapGetters } from "vuex";
-import moment from "moment";
+import moment, { weekdays } from "moment";
 import { hours } from "../constants/index";
 
 function getNewAcctivityOccurence() {
@@ -29,13 +44,18 @@ function getNewAcctivityOccurence() {
     endTime: null,
   };
 }
+moment.updateLocale("en", {
+  week: {
+    dow: 1,
+  },
+});
 
 export default {
   data() {
     return {
       title: "title",
-      weekDay: "dayOfWeek"
-
+      weekDay: "dayOfWeek",
+      none: "",
     };
   },
   props: {
@@ -45,10 +65,10 @@ export default {
     },
   },
   components: {
-    ActivitySelect,
+    Select,
   },
   computed: {
-    weekdays: () => moment.weekdays(),
+    weekdays: () => [...moment.weekdays(true).keys()],
     hours: () => hours,
     ...mapGetters({
       activities: "activities/activities",
@@ -86,6 +106,10 @@ export default {
 .occurences__selectContainer {
   align-self: flex-start;
   padding: 0.2rem 0.7rem;
+}
+
+.occurences__occurence {
+  display: flex;
 }
 
 select {

@@ -18,7 +18,7 @@
       <div class="activity__modal" v-if="showModal">
         <div class="activity__modal__type">Activity</div>
         <h1>{{ activityObject.title }}</h1>
-        <div class="activity__createdAt">Created at: <br>{{ date }}</div>
+        <div class="activity__createdAt">Created at: <br />{{ date }}</div>
         <textArea v-model="localActivity.description" />
         <Slider v-model="localActivity.priority" />
         <div class="activity__bottomContainer">
@@ -274,7 +274,8 @@ h1 {
   align-items: center;
 }
 
-.activity__button--save:hover, .activity__showModalButton:hover {
+.activity__button--save:hover,
+.activity__showModalButton:hover {
   color: red;
   border: 2px solid red;
   text-shadow: 0 0 6px red;

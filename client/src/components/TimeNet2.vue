@@ -51,6 +51,11 @@ import { mapGetters, mapActions } from "vuex";
 import moment from "moment";
 import { hours } from "../constants/index";
 
+moment.updateLocale('en', {
+  week: {
+    dow: 1,
+  },
+})
 
 const activitiesOccurences = [
   {
@@ -75,7 +80,7 @@ const activitiesOccurences = [
 
 export default {
   computed: {
-    weekdays: () => moment.weekdays(),
+    weekdays: () => moment.weekdays(true),
     hours: () => hours,
     ...mapGetters({
       activities: "activities/activities",

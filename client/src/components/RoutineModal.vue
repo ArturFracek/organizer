@@ -98,6 +98,7 @@ export default {
       this.$emit("savingRoutine", {
         ...this.localRoutine,
       });
+      console.log(this.localRoutine)
       this.showModal = false;
     },
     activation() {
