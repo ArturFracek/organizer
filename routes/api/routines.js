@@ -31,7 +31,14 @@ router.put("/:id", async (req, res) => {
   const routines = await loadRoutinesCollection();
   await routines.updateOne(
     { _id: new mongodb.ObjectID(req.params.id) },
-    { $set: { description: req.body.description, priority: req.body.priority, is_active: req.body.is_active} }
+    {
+      $set: {
+        description: req.body.description,
+        priority: req.body.priority,
+        is_active: req.body.is_active,
+        activities: req.body.activities,
+      },
+    }
   );
   res.status(200).send();
 });
