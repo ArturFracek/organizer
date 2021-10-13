@@ -1,30 +1,31 @@
 <template>
   <div class="occurences__mainContainer">
-    <!-- <Select label="Week Day" :options="weekdays" v-model="localOccurences.dayOfWeek" />
-    <Select
-      label="Start Time"
-      :options="hours"
-      :targetData="weekDay"
-      v-model="localOccurences.startTime"
-    />
-    <Select
-      label="End Time"
-      :options="activities"
-      :targetData="title"
-      v-model="localOccurences.endTime"
-    /> -->
-    <button type="button" @click="addNewAcctivityOccurence">Add</button>
-    <button type="button" @click="updateActivityOccurence(0, 'activityId', 3)">
-      test
+    <button
+      class="occurences__button occurences_button--addOccurence"
+      type="button"
+      @click="addNewAcctivityOccurence"
+    >
+      Add
     </button>
-    <div class="occurences__occurence" v-for="(occurence, index) in value" :key="index">
-      <button type="button" @click="removeActivityOccurence(index)">X</button>
+    <div
+      class="occurences__occurence"
+      v-for="(occurence, index) in value"
+      :key="index"
+    >
+      <button
+        class="occurences__button occurences__button--deleteOccurence"
+        type="button"
+        @click="removeActivityOccurence(index)"
+      >
+        X
+      </button>
       <Select
         label="Choose a Activity"
         :options="activities"
         optionLabelKey="title"
         optionValueKey="_id"
         :value="occurence.activityId"
+        @input="updateActivityOccurence(index, 'activityId', $event)"
       />
     </div>
   </div>
@@ -51,13 +52,6 @@ moment.updateLocale("en", {
 });
 
 export default {
-  data() {
-    return {
-      title: "title",
-      weekDay: "dayOfWeek",
-      none: "",
-    };
-  },
   props: {
     value: {
       type: Array,
@@ -117,18 +111,6 @@ select {
   font-size: 1.2rem;
 }
 
-button {
-  font-size: 1.2rem;
-  font-weight: 600;
-  color: rgb(61, 232, 255);
-  width: 12rem;
-  background-color: transparent;
-  border-left: 2px dotted turquoise;
-  border-bottom: 2px dotted turquoise;
-  border-right: 2px dotted turquoise;
-  border-radius: -5px;
-  transition: 0.5s;
-}
 
 button:hover {
   color: red;

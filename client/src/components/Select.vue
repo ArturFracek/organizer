@@ -1,8 +1,9 @@
+
 <template>
   <div class="activitySelect">
     <label for="options">{{ label }}</label>
     <select
-      :value="value"
+      :value="valueIndex"
       @input="changeOccurence"
       name="options"
       id="options"
@@ -37,6 +38,11 @@ export default {
     value: {
       type: String,
       required: false,
+    },
+  },
+  computed: {
+    valueIndex() {
+      return this.options.findIndex(option => option[this.optionValueKey] === this.value)
     },
   },
   methods: {
