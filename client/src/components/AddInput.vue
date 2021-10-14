@@ -2,7 +2,9 @@
   <div class="addInput__container">
     <input class="addInput" placeholder=" " />
     <label class="addInput__label">{{ label }}</label>
-    <button class="addInput__button" v-bind="$attrs" v-on="$listeners">Add</button>
+    <button class="addInput__button" v-bind="$attrs" v-on="$listeners">
+      Add
+    </button>
   </div>
 </template>
 
@@ -18,7 +20,6 @@ export default {
 </script>
 
 <style scoped>
-
 .addInput__container {
   display: flex;
   flex-flow: column;

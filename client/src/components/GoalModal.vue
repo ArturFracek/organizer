@@ -20,7 +20,7 @@
         <h1>{{ goalObject.title }}</h1>
         <div class="goal__createdAt">Created at: <br />{{ date }}</div>
 
-    <datePicker class="goal__datePicker" :label="deadline"/>
+    <DeadlineDatePicker />
 
         <textArea v-model="localGoal.description" />
         <Slider v-model="localGoal.priority" />
@@ -56,6 +56,7 @@ import Slider from "@/components/Slider.vue";
 import textArea from "@/components/textArea.vue";
 import datePicker from "@/components/datePicker.vue";
 import moment from "moment";
+import DeadlineDatePicker from "./DeadlineDatePicker.vue";
 
 export default {
   name: "GoalModal",
@@ -71,7 +72,7 @@ export default {
   components: {
     Slider,
     textArea,
-    datePicker,
+    DeadlineDatePicker,
   },
   props: {
     goalObject: {

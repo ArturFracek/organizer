@@ -73,7 +73,7 @@ export default {
       await this.updateGoal(goal);
     },
     async deleteGoal(id) {
-      await this.removeGoal([id]);
+      await this.removeGoal({ id });
     },
   },
 };
