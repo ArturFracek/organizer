@@ -1,5 +1,6 @@
 <template>
   <div class="occurences__mainContainer">
+    <test />
     <button
       class="occurences__button occurences_button--addOccurence"
       type="button"
@@ -27,15 +28,54 @@
         :value="occurence.activityId"
         @input="updateActivityOccurence(index, 'activityId', $event)"
       />
+      <Select 
+        label="Day of Week"
+        :options="weekdays"
+        optionValueKey="option"
+        :value="occurence.dayOfWeek"
+      />
+      <!-- <vue-timepicker
+        v-model="TimeValue"
+        :minute-interval="5"
+        :hour-range="[
+          0,
+          1,
+          2,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+        ]"
+        placeholder="Start Time"
+        hide-disabled-hours
+        input-class="skip-error-styl occurences__timePicker occurences__timePicker--start"
+      ></vue-timepicker> -->
     </div>
   </div>
 </template>
 
 <script>
+import test from "./test.vue"
 import Select from "./Select.vue";
 import { mapGetters } from "vuex";
 import moment, { weekdays } from "moment";
 import { hours } from "../constants/index";
+// import VueTimepicker from "vue2-timepicker/src";
 
 function getNewAcctivityOccurence() {
   return {
@@ -60,9 +100,11 @@ export default {
   },
   components: {
     Select,
+    test,
+    // VueTimepicker,
   },
   computed: {
-    weekdays: () => [...moment.weekdays(true).keys()],
+    weekdays: () => [...moment.weekdays(true)],
     hours: () => hours,
     ...mapGetters({
       activities: "activities/activities",
@@ -71,6 +113,7 @@ export default {
   methods: {
     addNewAcctivityOccurence() {
       this.$emit("input", [...this.value, getNewAcctivityOccurence()]);
+      console.log(weekdays)
     },
     removeActivityOccurence(index) {
       this.$emit(
@@ -110,7 +153,6 @@ select {
   color: white;
   font-size: 1.2rem;
 }
-
 
 button:hover {
   color: red;
