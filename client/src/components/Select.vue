@@ -65,10 +65,7 @@ select {
   border-image-repeat: stretch;
   align-items: center;
   box-shadow: 0px 5px 10px rgb(121, 244, 255, 0.3);
-}
-
-activitySelect__is_active {
-  border-width: 4px;
+  transition: 0.3s;
 }
 
 option {
@@ -76,16 +73,16 @@ option {
   font-weight: 600;
   text-shadow: 0 0 10px rgb(0, 255, 157);
   background: rgb(2, 16, 17);
-  display: flex;
-  justify-content: center;
-  margin-left: 0.5rem;
-  text-align: center;
-  border-bottom: 1px dotted red;
+  text-align: center;;
 }
 
 select:hover {
   color: rgb(228, 89, 70);
   text-shadow: 0 0 3px red;
+  border-style: solid;
+  border-width: 2px;
+  border-image: linear-gradient(to top, rgb(248, 169, 169)), rgb(73, 251, 183) 1;
+  border-image-repeat: stretch;
 }
 
 select:focus {

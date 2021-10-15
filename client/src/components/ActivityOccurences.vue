@@ -5,7 +5,7 @@
       type="button"
       @click="addNewAcctivityOccurence"
     >
-      Add
+      Add Activity
     </button>
     <div class="occurences__generalLabels">
       <div class="occurences__label occurences__label--activityLabel">
@@ -14,7 +14,7 @@
       <div class="occurences__label occurences__label--dayOfWeekLabel">
         Day of Week
       </div>
-      <div class="occurences__label occurences__label--Time">Time</div>
+      <div class="occurences__label occurences__label--Time">Starting Time</div>
     </div>
     <div
       class="occurences__occurence"
@@ -118,6 +118,7 @@ export default {
   flex-flow: column;
   align-items: center;
   color: white;
+  overflow-y: auto;
 }
 
 .occurences__selectContainer {
@@ -140,40 +141,49 @@ select {
   color: black;
 }
 
-.vue__time-picker > .display-time {
-  color: rgb(255, 20, 20) !important;
-  border: none !important;
-}
-
-.display-time {
-  color: white !important;
-}
-
 .occurences__generalLabels {
+  margin-top: 0.5rem;
   display: flex;
   justify-content: center;
   width: 100%;
 }
 
 .occurences__label {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  font-size: 1.1rem;
+  white-space: nowrap;
   width: 10rem;
-  margin-right: 1rem;
+  margin: 0 1rem;
+  color: rgb(246, 0, 0);
+  text-shadow: 0 0 4px rgb(27, 8, 134);
+  left: -2.9rem;
 }
 .occurences__button {
   display: flex;
-  justify-content: flex-start;
   align-items: center;
   background: transparent;
-  font-size: 1.4rem;
+  font-size: 1.3rem;
   color: aquamarine;
 }
 
 .occurences__button:hover {
-  color: red;
+  color: rgb(246, 0, 0);
+  text-shadow: 0 0 3px rgb(27, 8, 134);
 }
 
-.ccurences__button--addOccurence {
-  border: 2px dotted rgb(96, 236, 255);
+.occurences__button--addOccurence {
+  justify-content: center;
+  align-items: center;
+  border-bottom: 2px solid turquoise;
+  border-left:  2px solid turquoise;
+  border-right:  2px solid turquoise;
+  white-space: nowrap;
+  width: 10rem;
+  transition: 0.4s;
+  padding-bottom: 0.2rem;
 }
 
 .occurences__button--deleteOccurence {
