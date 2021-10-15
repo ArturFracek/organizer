@@ -1,6 +1,5 @@
 <template>
   <div class="occurences__mainContainer">
-    <test />
     <button
       class="occurences__button occurences_button--addOccurence"
       type="button"
@@ -8,18 +7,16 @@
     >
       Add
     </button>
+    <div class="occurences__generalLabels">
+      <div class="occurences__label occurences__label--activityLabel">Choose Activity</div>
+      <div class="occurences__label occurences__label--dayOfWeekLabel">Day of Week</div>
+      <div class="occurences__label occurences__label--Time">Time</div>
+    </div>
     <div
       class="occurences__occurence"
       v-for="(occurence, index) in value"
       :key="index"
     >
-      <button
-        class="occurences__button occurences__button--deleteOccurence"
-        type="button"
-        @click="removeActivityOccurence(index)"
-      >
-        X
-      </button>
       <Select
         label="Choose a Activity"
         :options="activities"
@@ -28,13 +25,15 @@
         :value="occurence.activityId"
         @input="updateActivityOccurence(index, 'activityId', $event)"
       />
-      <Select 
+      <Select
         label="Day of Week"
         :options="weekdays"
-        optionValueKey="option"
+        optionLabelKey="title"
+        optionValueKey="dayNumber"
         :value="occurence.dayOfWeek"
+        @input="updateActivityOccurence(index, 'dayOfWeek', $event)"
       />
-      <!-- <vue-timepicker
+      <vue-timepicker
         v-model="TimeValue"
         :minute-interval="5"
         :hour-range="[
@@ -63,19 +62,25 @@
         ]"
         placeholder="Start Time"
         hide-disabled-hours
-        input-class="skip-error-styl occurences__timePicker occurences__timePicker--start"
-      ></vue-timepicker> -->
+        class="occurences__timePicker occurences__timePicker--start"
+      ></vue-timepicker>
+      <button
+        class="occurences__button occurences__button--deleteOccurence"
+        type="button"
+        @click="removeActivityOccurence(index)"
+      >
+        X
+      </button>
     </div>
   </div>
 </template>
 
 <script>
-import test from "./test.vue"
 import Select from "./Select.vue";
 import { mapGetters } from "vuex";
 import moment, { weekdays } from "moment";
 import { hours } from "../constants/index";
-// import VueTimepicker from "vue2-timepicker/src";
+import VueTimepicker from "vue2-timepicker/src";
 
 function getNewAcctivityOccurence() {
   return {
@@ -100,11 +105,15 @@ export default {
   },
   components: {
     Select,
-    test,
-    // VueTimepicker,
+
+    VueTimepicker,
   },
   computed: {
-    weekdays: () => [...moment.weekdays(true)],
+    weekdays: () => [
+      ...moment.weekdays(true).map((day, index) => {
+        return { title: day, dayNumber: index + 1 };
+      }),
+    ],
     hours: () => hours,
     ...mapGetters({
       activities: "activities/activities",
@@ -113,7 +122,7 @@ export default {
   methods: {
     addNewAcctivityOccurence() {
       this.$emit("input", [...this.value, getNewAcctivityOccurence()]);
-      console.log(weekdays)
+      console.log(weekdays);
     },
     removeActivityOccurence(index) {
       this.$emit(
@@ -147,6 +156,8 @@ export default {
 
 .occurences__occurence {
   display: flex;
+  width: 100%;
+  justify-content: center;
 }
 
 select {
@@ -154,10 +165,33 @@ select {
   font-size: 1.2rem;
 }
 
+.occurences__button {
+  color: black;
+}
+
 button:hover {
   color: red;
   border-color: red;
   text-shadow: 0 0 8px red;
   box-shadow: 0 0 10px red;
+}
+.vue__time-picker > .display-time {
+  color: rgb(255, 20, 20) !important;
+  border: none !important;
+}
+
+.display-time {
+  color: white !important;;
+}
+
+.occurences__generalLabels {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.occurences__label {
+  width: 10rem;
+  margin-right: 1rem;
 }
 </style>
