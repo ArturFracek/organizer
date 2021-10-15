@@ -7,7 +7,6 @@
       id="options"
       v-bind="$attrs"
       class="select"
-      :class="{ activitySelect__is_active: routines.is_active }"
     >
       <option v-for="(option, index) in options" :key="index" :value="index">
         {{ optionLabelKey ? option[optionLabelKey] : option }}
@@ -17,7 +16,6 @@
 </template>
 
 <script>
-import { mapGetters } from'vuex';
 export default {
   props: {
     options: {
@@ -43,9 +41,6 @@ export default {
         (option) => option[this.optionValueKey] === this.value
       );
     },
-     ...mapGetters({
-      routines: "routines/routines",
-    }),
   },
   methods: {
     changeOccurence(element) {
@@ -57,22 +52,22 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 select {
+  height: 2.2rem;
   width: 10rem;
   margin: 0.5rem 1rem;
   color: rgb(84, 245, 178);
   text-shadow: 2px 0px 3px rgb(0, 255, 157);
-  border-style: dotted;
+  border-style: solid;
   border-width: 2px;
-  border-image: linear-gradient(to top, rgb(73, 251, 183), rgb(248, 169, 169))
-    1;
+  border-image: linear-gradient(to top, rgb(73, 251, 183), rgb(248, 169, 169)) 1;
   border-image-repeat: stretch;
   align-items: center;
-  box-shadow: 0px 0px 10px rgb(121, 244, 255, 0.4);
+  box-shadow: 0px 5px 10px rgb(121, 244, 255, 0.3);
 }
 
-activitySelect__is_active{
+activitySelect__is_active {
   border-width: 4px;
 }
 
@@ -94,7 +89,7 @@ select:hover {
 }
 
 select:focus {
-  color: turquoise;
+  color: rgb(64, 224, 149);
   text-shadow: 1px 0px 4px rgb(0, 255, 157);
   border-style: solid;
   border-width: 2px;
@@ -108,4 +103,5 @@ select:focus {
   background-color: transparent;
   z-index: 1;
 }
+
 </style>

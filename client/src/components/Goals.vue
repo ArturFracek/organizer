@@ -263,6 +263,10 @@ input:not(:placeholder-shown) ~ .goals__addGoal__button {
   }
 }
 
+ul {
+  background-color: transparent;
+}
+
 @media (max-width: 720px) {
   .goals__andGoal__input {
     width: 12rem;

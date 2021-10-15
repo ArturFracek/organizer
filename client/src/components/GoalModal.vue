@@ -54,7 +54,6 @@
 <script>
 import Slider from "@/components/Slider.vue";
 import textArea from "@/components/textArea.vue";
-import datePicker from "@/components/datePicker.vue";
 import moment from "moment";
 import DeadlineDatePicker from "./DeadlineDatePicker.vue";
 
@@ -309,5 +308,9 @@ h1 {
   top: 1rem;
   right: 10rem;
   text-shadow: 0 0 3px white;
+}
+
+ul {
+  background-color: transparent;
 }
 </style>
