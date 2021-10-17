@@ -56,7 +56,7 @@ export default {
 select {
   height: 2.2rem;
   width: 10rem;
-  margin: 0.5rem 1rem;
+  margin: 0.2rem 1rem;
   color: rgb(84, 245, 178);
   text-shadow: 2px 0px 3px rgb(0, 255, 157);
   border-style: solid;

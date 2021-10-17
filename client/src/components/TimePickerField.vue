@@ -2,7 +2,7 @@
   <div class="timePicker__mainContainer">
     <i class="bi bi-clock-history"></i>
     <VuePicker
-    @input="emitStartingTime"
+      @input="emitStartingTime"
       format="HH:mm"
       :minute-interval="5"
       :hour-range="[
@@ -31,7 +31,7 @@
       ]"
       :blur-delay="450"
       close-on-complete
-      v-model="displayTime"
+      :value="value"
       hide-disabled-hours
       advanced-keyboard
     >
@@ -46,57 +46,37 @@ import "vue2-timepicker/dist/VueTimepicker.css";
 export default {
   data() {
     return {
-        timeRange: [
-         5,
-        6,
-       7,
-        8,
-        9,
-        10,
-        11,
-        12,
-        13,
-        14,
-        15,
-        16,
-        17,
-        18,
-        19,
-        20,
-        21,
-        22,
-        23,
-        0,
-        1,
-        2,
-        ],
-         displayTime: "08:00",
+      displayTime: {
+        default: "08:00",
+      },
     };
   },
-  
+  props: {
+    value: {
+      type: [String, Object],
+      required: false,
+    },
+  },
   components: {
     VuePicker,
   },
-  computed: {
-
-  },
   methods: {
-    emitStartingTime(element) {
-      this.$emit("input", this.displayTime)
-      console.log(this.displayTime)
-    }
-  }
+    emitStartingTime(startTime) {
+      this.$emit("input", startTime);
+      console.log(startTime);
+    },
+  },
 };
 </script>
 
-<style >
+<style>
 .timePicker__mainContainer {
   display: flex;
   justify-content: center;
   align-items: center;
   width: 10rem;
   height: 2.2rem;
-  margin: 0.5rem 1rem;
+  margin: 0.2rem 1rem;
   color: rgb(255, 255, 255);
   text-shadow: 1px 1px 1px rgb(0, 255, 157);
   border-style: dotted;
@@ -132,5 +112,4 @@ li {
   text-shadow: 0 0 0px turquoise;
   pointer-events: none;
 }
-
 </style>

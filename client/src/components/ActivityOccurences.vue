@@ -38,7 +38,7 @@
         @input="updateActivityOccurence(index, 'dayOfWeek', $event)"
       />
       <TimePicker
-      :value="occurence.startTime"
+        :value="occurence.startTime"
         @input="updateActivityOccurence(index, 'startTime', $event)"
       />
       <button
@@ -161,9 +161,11 @@ select {
   white-space: nowrap;
   width: 10rem;
   margin: 0 1rem;
-  color: rgb(246, 0, 0);
+  color: rgb(255, 146, 112);
   text-shadow: 0 0 4px rgb(27, 8, 134);
   left: -2.9rem;
+  letter-spacing: 1px;
+  font-weight: 500;
 }
 .occurences__button {
   display: flex;
@@ -181,9 +183,9 @@ select {
 .occurences__button--addOccurence {
   justify-content: center;
   align-items: center;
-  border-bottom: 2px solid turquoise;
-  border-left: 2px solid turquoise;
-  border-right: 2px solid turquoise;
+  border-bottom: 2px dotted turquoise;
+  border-left: 2px dotted turquoise;
+  border-right: 2px dotted turquoise;
   white-space: nowrap;
   width: 10rem;
   transition: 0.4s;
@@ -194,6 +196,6 @@ select {
   position: relative;
   height: 100%;
   display: flex;
-  top: 0.5rem;
+  top: -0.1rem;
 }
 </style>
