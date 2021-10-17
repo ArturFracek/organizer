@@ -37,11 +37,14 @@
         :value="occurence.dayOfWeek"
         @input="updateActivityOccurence(index, 'dayOfWeek', $event)"
       />
-      <TimePicker />
+      <TimePicker
+      :value="occurence.startTime"
+        @input="updateActivityOccurence(index, 'startTime', $event)"
+      />
       <button
+        @click="removeActivityOccurence(index)"
         class="occurences__button occurences__button--deleteOccurence"
         type="button"
-        @click="removeActivityOccurence(index)"
       >
         X
       </button>
@@ -53,7 +56,7 @@
 import Select from "./Select.vue";
 import { mapGetters } from "vuex";
 import moment, { weekdays } from "moment";
-import TimePicker from './TImePicker.vue'
+import TimePicker from "./TimePickerField.vue";
 
 function getNewAcctivityOccurence() {
   return {
@@ -119,6 +122,7 @@ export default {
   align-items: center;
   color: white;
   overflow-y: auto;
+  height: 100%;
 }
 
 .occurences__selectContainer {
@@ -178,8 +182,8 @@ select {
   justify-content: center;
   align-items: center;
   border-bottom: 2px solid turquoise;
-  border-left:  2px solid turquoise;
-  border-right:  2px solid turquoise;
+  border-left: 2px solid turquoise;
+  border-right: 2px solid turquoise;
   white-space: nowrap;
   width: 10rem;
   transition: 0.4s;
