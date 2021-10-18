@@ -7,16 +7,21 @@
     >
       Add Activity
     </button>
-    <div class="occurences__generalLabels">
+    <div
+      class="occurences__generalLabels"
+      :class="{ occurences__showLabels: value[0] }"
+    >
       <div class="occurences__label occurences__label--activityLabel">
         Choose Activity
       </div>
       <div class="occurences__label occurences__label--dayOfWeekLabel">
         Day of Week
       </div>
-      <div class="occurences__label occurences__label--Time">Starting Time</div>
+      <div class="occurences__label occurences__label--Time">Start Time</div>
+       <div class="occurences__label occurences__label--Time">End Time</div>
     </div>
     <div
+      :class="{ occurences__showOccurences: value[0] }"
       class="occurences__occurence"
       v-for="(occurence, index) in value"
       :key="index"
@@ -41,6 +46,10 @@
         :value="occurence.startTime"
         @input="updateActivityOccurence(index, 'startTime', $event)"
       />
+       <TimePicker
+        :value="occurence.endTime"
+        @input="updateActivityOccurence(index, 'endTime', $event)"
+      />
       <button
         @click="removeActivityOccurence(index)"
         class="occurences__button occurences__button--deleteOccurence"
@@ -61,9 +70,9 @@ import TimePicker from "./TimePickerField.vue";
 function getNewAcctivityOccurence() {
   return {
     activityId: null,
-    dayOfWeek: null,
-    startTime: null,
-    endTime: null,
+    dayOfWeek: 1,
+    startTime: "08:00",
+    endTime: "09:00",
   };
 }
 moment.updateLocale("en", {
@@ -73,6 +82,11 @@ moment.updateLocale("en", {
 });
 
 export default {
+  data() {
+    return {
+      showLabel: false,
+    };
+  },
   props: {
     value: {
       type: Array,
@@ -96,7 +110,7 @@ export default {
   methods: {
     addNewAcctivityOccurence() {
       this.$emit("input", [...this.value, getNewAcctivityOccurence()]);
-      console.log(weekdays);
+      this.showLabel = true;
     },
     removeActivityOccurence(index) {
       this.$emit(
@@ -123,6 +137,7 @@ export default {
   color: white;
   overflow-y: auto;
   height: 100%;
+  overflow-x: hidden;
 }
 
 .occurences__selectContainer {
@@ -132,13 +147,18 @@ export default {
 
 .occurences__occurence {
   display: flex;
-  width: 100%;
+  width: auto;
   justify-content: center;
+  opacity: 0;
+  transition: 1s ease-in;
 }
-
+.occurences__showOccurences {
+  opacity: 1;
+}
 select {
   color: white;
   font-size: 1.2rem;
+  transition: 1s;
 }
 
 .occurences__button {
@@ -146,10 +166,17 @@ select {
 }
 
 .occurences__generalLabels {
+  position: relative;
   margin-top: 0.5rem;
   display: flex;
   justify-content: center;
   width: 100%;
+  opacity: 0;
+  transition: 0.6s;
+  left: 2.5rem;
+}
+.occurences__showLabels {
+  opacity: 1;
 }
 
 .occurences__label {
@@ -166,7 +193,9 @@ select {
   left: -2.9rem;
   letter-spacing: 1px;
   font-weight: 500;
+  transition: 1s ease-in;
 }
+
 .occurences__button {
   display: flex;
   align-items: center;
@@ -197,5 +226,6 @@ select {
   height: 100%;
   display: flex;
   top: -0.1rem;
+  width: 1rem;
 }
 </style>

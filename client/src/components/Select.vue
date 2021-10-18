@@ -58,20 +58,20 @@ select {
   width: 10rem;
   margin: 0.2rem 1rem;
   color: rgb(84, 245, 178);
-  text-shadow: 2px 0px 3px rgb(0, 255, 157);
+  text-shadow: 0px 0px 3px rgb(0, 255, 157);
   border-style: solid;
   border-width: 2px;
   border-image: linear-gradient(to top, rgb(73, 251, 183), rgb(248, 169, 169)) 1;
   border-image-repeat: stretch;
   align-items: center;
   box-shadow: 0px 5px 10px rgb(121, 244, 255, 0.3);
-  transition: 0.3s;
+  transition: 0.6s;
 }
 
 option {
   font-size: 1rem;
   font-weight: 600;
-  text-shadow: 0 0 10px rgb(0, 255, 157);
+  text-shadow: 0 0 3px rgb(0, 255, 157);
   background: rgb(2, 16, 17);
   text-align: center;;
 }
