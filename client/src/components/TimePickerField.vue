@@ -92,6 +92,11 @@ input {
   color: rgb(84, 245, 178);
   text-shadow: 0px 0px 2px rgb(0, 255, 157);
   text-align: center;
+  transition: 0.3s;
+}
+
+input:hover {
+  color: red;
 }
 
 .time-picker {
@@ -106,6 +111,9 @@ li {
   color: rgb(84, 245, 178) !important;
   transition: 0.6s;
 }
+li:hover {
+  color: red !important;
+}
 
 .bi-clock-history {
   color: rgb(19, 214, 198);
@@ -113,5 +121,14 @@ li {
   left: 15%;
   text-shadow: 0 0 0px turquoise;
   pointer-events: none;
+}
+
+.char {
+  color: turquoise;
+  font-weight: 800;
+}
+
+.char:hover {
+  color: red;
 }
 </style>

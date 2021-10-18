@@ -47,7 +47,7 @@
 </template>
 
 <script>
-import { mapGetters, mapActions } from "vuex";
+import { mapGetters } from "vuex";
 import moment from "moment";
 import { hours } from "../constants/index";
 
@@ -57,26 +57,7 @@ moment.updateLocale('en', {
   },
 })
 
-const activitiesOccurences = [
-  {
-    activityId: "6149b161c188aa185a902b80",
-    dayOfWeek: 0,
-    startTime: 16,
-    endTime: 19,
-  },
-  {
-    activityId: 1,
-    dayOfWeek: 4,
-    startTime: 8,
-    endTime: 9,
-  },
-  {
-    activityId: 2,
-    dayOfWeek: 6,
-    startTime: 10,
-    endTime: 11,
-  },
-];
+const activitiesOccurences = []
 
 export default {
   computed: {
@@ -84,6 +65,7 @@ export default {
     hours: () => hours,
     ...mapGetters({
       activities: "activities/activities",
+      routine: "routines/activeRoutine",
     }),
   },
   methods: {
@@ -103,7 +85,7 @@ export default {
       return activity ? activity.title : "";
     },
     log() {
-      console.log(this.activities)
+      console.log(this.routine.activities)
     },
     logActivityId(act) {
       console.log(this.activities[0]._id)
