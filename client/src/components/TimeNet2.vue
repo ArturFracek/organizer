@@ -51,13 +51,11 @@ import { mapGetters } from "vuex";
 import moment from "moment";
 import { hours } from "../constants/index";
 
-moment.updateLocale('en', {
+moment.updateLocale("en", {
   week: {
     dow: 1,
   },
-})
-
-const activitiesOccurences = []
+});
 
 export default {
   computed: {
@@ -68,15 +66,23 @@ export default {
       routine: "routines/activeRoutine",
     }),
   },
+  watch: {
+    routineFetch(routine, oldVal) {
+      if (typeof this.routine == undefined) return
+      this.routine;
+    },
+  },
   methods: {
-
     formatTime(timeNumber) {
       return moment(timeNumber, "H").format("h a");
     },
     getActivityOccurance(dayIndex, hour) {
-      const act = activitiesOccurences.find(
+      if (!this.routine) return "";
+      const act = this.routine.activitiesOccurences.find(
         (a) =>
-          a.startTime <= hour && a.endTime > hour && a.dayOfWeek === dayIndex
+          a.startTime <= hour.toString() &&
+          a.endTime > hour.toString() &&
+          a.dayOfWeek === dayIndex
       );
       return act ? act.activityId : "";
     },
@@ -85,11 +91,11 @@ export default {
       return activity ? activity.title : "";
     },
     log() {
-      console.log(this.routine.activities)
+      console.log(this.routine.activitiesOccurences.startTime);
     },
-    logActivityId(act) {
-      console.log(this.activities[0]._id)
-    }
+    logActivityId() {
+      console.log(hours);
+    },
   },
 };
 </script>
@@ -135,6 +141,7 @@ export default {
 .net__cell {
   padding: 0.3rem;
   margin: 0;
+  white-space: nowrap;
 }
 
 button {

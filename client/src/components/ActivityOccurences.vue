@@ -67,10 +67,10 @@ import { mapGetters } from "vuex";
 import moment, { weekdays } from "moment";
 import TimePicker from "./TimePickerField.vue";
 
-function getNewAcctivityOccurence() {
+function getNewActivityOccurence() {
   return {
     activityId: null,
-    dayOfWeek: 1,
+    dayOfWeek: 0,
     startTime: "08:00",
     endTime: "09:00",
   };
@@ -100,7 +100,7 @@ export default {
   computed: {
     weekdays: () => [
       ...moment.weekdays(true).map((day, index) => {
-        return { title: day, dayNumber: index + 1 };
+        return { title: day, dayNumber: index };
       }),
     ],
     ...mapGetters({
@@ -109,7 +109,7 @@ export default {
   },
   methods: {
     addNewAcctivityOccurence() {
-      this.$emit("input", [...this.value, getNewAcctivityOccurence()]);
+      this.$emit("input", [...this.value, getNewActivityOccurence()]);
       this.showLabel = true;
     },
     removeActivityOccurence(index) {
@@ -136,7 +136,7 @@ export default {
   align-items: center;
   color: white;
   overflow-y: auto;
-  height: 100%;
+  height: 17.5rem;
   overflow-x: hidden;
 }
 

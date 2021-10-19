@@ -22,6 +22,7 @@ router.post("/", async (req, res) => {
     createdAt: new Date(),
     is_active: false,
     priority: 5,
+    activitiesOccurences: [],
   });
   res.status(201).send();
 });
@@ -36,7 +37,7 @@ router.put("/:id", async (req, res) => {
         description: req.body.description,
         priority: req.body.priority,
         is_active: req.body.is_active,
-        activities: req.body.activities,
+        activitiesOccurences: req.body.activitiesOccurences,
       },
     }
   );

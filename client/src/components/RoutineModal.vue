@@ -24,7 +24,7 @@
           <Slider v-model="localRoutine.priority" />
         </div>
         <div class="routine__activitiesOccurences">
-          <ActivityOccurences v-model="localRoutine.activities" />
+          <ActivityOccurences v-model="localRoutine.activitiesOccurences" />
         </div>
         <div class="routine__bottomSection">
           <button
@@ -73,7 +73,7 @@ export default {
   data() {
     return {
       showModal: false,
-      localRoutine: { activities: [], ...this.routineObject },
+      localRoutine: { activitiesOccurences: [], ...this.routineObject },
       priority: 5,
       is_active: false,
       date: `${this.routineObject.createdAt.getDate()}/${this.routineObject.createdAt.getMonth()}/${this.routineObject.createdAt.getFullYear()}`,
@@ -128,6 +128,8 @@ export default {
 }
 
 .routine__activitiesOccurences {
+  display: flex;
+  flex-flow: column;
   background-color: transparent;
   width: 95%;
   height: 100%;

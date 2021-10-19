@@ -40,7 +40,7 @@ export default {
       return state.routines;
     },
     activeRoutine(state) {
-      return state.routines.find(r => r.is_active)
-    }
+      return state.routines.find((r) => r.is_active);
+    },
   },
 };

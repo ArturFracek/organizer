@@ -30,12 +30,11 @@
         2,
       ]"
       :blur-delay="450"
-      close-on-complete
       :value="value"
       hide-disabled-hours
       advanced-keyboard
       auto-scroll
-      drop-direction="auto"
+      drop-direction="down"
       lazy
     >
     </VuePicker>
@@ -110,6 +109,7 @@ li {
   font-weight: 500;
   color: rgb(84, 245, 178) !important;
   transition: 0.6s;
+  
 }
 li:hover {
   color: red !important;
