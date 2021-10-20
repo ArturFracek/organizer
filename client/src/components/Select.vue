@@ -7,6 +7,7 @@
       id="options"
       v-bind="$attrs"
       class="select"
+      @click="changeOccurence"
     >
       <option v-for="(option, index) in options" :key="index" :value="index">
         {{ optionLabelKey ? option[optionLabelKey] : option }}

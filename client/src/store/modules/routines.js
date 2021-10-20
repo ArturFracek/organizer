@@ -10,6 +10,7 @@ export default {
   mutations: {
     SET_ROUTINES(state, routines) {
       state.routines = routines;
+      state.status = "loading"
     },
     ADD_ROUTINE(state, routine) {
       state.routines.push(routine);

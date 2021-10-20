@@ -18,7 +18,7 @@
         Day of Week
       </div>
       <div class="occurences__label occurences__label--Time">Start Time</div>
-       <div class="occurences__label occurences__label--Time">End Time</div>
+      <div class="occurences__label occurences__label--Time">End Time</div>
     </div>
     <div
       :class="{ occurences__showOccurences: value[0] }"
@@ -27,7 +27,6 @@
       :key="index"
     >
       <Select
-        label="Choose a Activity"
         :options="activities"
         optionLabelKey="title"
         optionValueKey="_id"
@@ -35,7 +34,6 @@
         @input="updateActivityOccurence(index, 'activityId', $event)"
       />
       <Select
-        label="Day of Week"
         :options="weekdays"
         optionLabelKey="title"
         optionValueKey="dayNumber"
@@ -45,8 +43,9 @@
       <TimePicker
         :value="occurence.startTime"
         @input="updateActivityOccurence(index, 'startTime', $event)"
+        default="08:00"
       />
-       <TimePicker
+      <TimePicker
         :value="occurence.endTime"
         @input="updateActivityOccurence(index, 'endTime', $event)"
       />
@@ -66,13 +65,14 @@ import Select from "./Select.vue";
 import { mapGetters } from "vuex";
 import moment, { weekdays } from "moment";
 import TimePicker from "./TimePickerField.vue";
+import activities from "../store/modules/activities";
 
 function getNewActivityOccurence() {
   return {
+    endTime: "10:00",
     activityId: null,
     dayOfWeek: 0,
     startTime: "08:00",
-    endTime: "09:00",
   };
 }
 moment.updateLocale("en", {
@@ -82,11 +82,6 @@ moment.updateLocale("en", {
 });
 
 export default {
-  data() {
-    return {
-      showLabel: false,
-    };
-  },
   props: {
     value: {
       type: Array,

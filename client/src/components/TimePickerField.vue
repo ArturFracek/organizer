@@ -31,11 +31,11 @@
       ]"
       :blur-delay="450"
       :value="value"
+      append-to-body
       hide-disabled-hours
       advanced-keyboard
       auto-scroll
       drop-direction="down"
-      lazy
     >
     </VuePicker>
   </div>
@@ -49,7 +49,7 @@ export default {
   props: {
     value: {
       type: [String, Object],
-      required: false,
+      required: true,
     },
   },
   components: {

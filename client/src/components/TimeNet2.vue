@@ -66,12 +66,6 @@ export default {
       routine: "routines/activeRoutine",
     }),
   },
-  watch: {
-    routineFetch(routine, oldVal) {
-      if (typeof this.routine == undefined) return
-      this.routine;
-    },
-  },
   methods: {
     formatTime(timeNumber) {
       return moment(timeNumber, "H").format("h a");
@@ -80,8 +74,8 @@ export default {
       if (!this.routine) return "";
       const act = this.routine.activitiesOccurences.find(
         (a) =>
-          a.startTime <= hour.toString() &&
-          a.endTime > hour.toString() &&
+          moment(a.startTime, "HH:mm").hours() <= hour &&
+          moment(a.endTime, "HH:mm").hours() > hour &&
           a.dayOfWeek === dayIndex
       );
       return act ? act.activityId : "";
@@ -91,10 +85,10 @@ export default {
       return activity ? activity.title : "";
     },
     log() {
-      console.log(this.routine.activitiesOccurences.startTime);
+      console.log(typeof this.routine);
     },
     logActivityId() {
-      console.log(hours);
+      console.log(this.routine.activitiesOccurences);
     },
   },
 };
