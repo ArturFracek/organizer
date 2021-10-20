@@ -50,6 +50,8 @@
 import { mapGetters } from "vuex";
 import moment from "moment";
 import { hours } from "../constants/index";
+import { time } from "../constants/index";
+
 
 moment.updateLocale("en", {
   week: {
@@ -85,7 +87,7 @@ export default {
       return activity ? activity.title : "";
     },
     log() {
-      console.log(typeof this.routine);
+      console.log(time)
     },
     logActivityId() {
       console.log(this.routine.activitiesOccurences);

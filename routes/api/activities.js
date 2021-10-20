@@ -26,7 +26,13 @@ router.put("/:id", async (req, res) => {
   const activities = await loadActivitiesCollection();
   await activities.updateOne(
     { _id: new mongodb.ObjectID(req.params.id) },
-    { $set: { description: req.body.description, priority: req.body.priority } }
+    {
+      $set: {
+        title: req.body.title,
+        description: req.body.description,
+        priority: req.body.priority,
+      },
+    }
   );
   res.status(200).send();
 });

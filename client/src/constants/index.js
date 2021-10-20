@@ -1,3 +1,4 @@
+import moment from "moment";
 export const W = [
   "Monday",
   "Tuesday",
@@ -32,6 +33,8 @@ export const hours = [
   1,
   2,
 ];
+let times = new Date()
+times.setHours(22, 59)
 
 export const DEFAULT_TIME_FORMAT = "HH:mm";
 

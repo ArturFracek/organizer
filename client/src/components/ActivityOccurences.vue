@@ -69,10 +69,10 @@ import activities from "../store/modules/activities";
 
 function getNewActivityOccurence() {
   return {
-    endTime: "10:00",
     activityId: null,
     dayOfWeek: 0,
     startTime: "08:00",
+    endTime: "09:00",
   };
 }
 moment.updateLocale("en", {

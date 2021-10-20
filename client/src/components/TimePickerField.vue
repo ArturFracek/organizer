@@ -4,7 +4,7 @@
     <VuePicker
       @input="emitTime"
       format="HH:mm"
-      :minute-interval="5"
+      :minute-interval="10"
       :hour-range="[
         5,
         6,
@@ -48,7 +48,7 @@ import "vue2-timepicker/dist/VueTimepicker.css";
 export default {
   props: {
     value: {
-      type: [String, Object],
+      type: String,
       required: true,
     },
   },
@@ -96,7 +96,9 @@ input {
 
 input:hover {
   color: red;
+  text-shadow: 0 0 0px red;
 }
+
 
 .time-picker {
   margin-right: 10%;

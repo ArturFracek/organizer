@@ -34,6 +34,7 @@ router.put("/:id", async (req, res) => {
     { _id: new mongodb.ObjectID(req.params.id) },
     {
       $set: {
+        title: req.body.title,
         description: req.body.description,
         priority: req.body.priority,
         is_active: req.body.is_active,

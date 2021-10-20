@@ -17,7 +17,7 @@
     <transition name="slide" appear>
       <div class="routine__modal" v-if="showModal">
         <div class="routine__modal__type">Routine</div>
-        <h1>{{ routineObject.title }}</h1>
+        <input class="routine__title" v-model="localRoutine.title">
         <div class="routine__createdAt">Created at: <br />{{ date }}</div>
         <div class="routine__modalUpperSection">
           <textArea v-model="localRoutine.description" />
@@ -257,12 +257,12 @@ export default {
   right: 0;
   bottom: 0;
   z-index: 98;
-  background-color: rgba(0, 0, 0, 0.4);
+  background-color: rgba(5, 4, 42, 0.5);
 }
 
 .fade-enter-active,
 .fade-leave-active {
-  transition: opacity 0.5s;
+  transition: opacity 0.6s;
 }
 
 .fade-enter,
@@ -299,10 +299,10 @@ export default {
 .routine__modal__type {
   color: white;
   position: absolute;
-  top: 4%;
+  top: 0;
   left: 1rem;
   text-shadow: 0 0 3px white;
-  font-size: 1.3rem;
+  font-size: 1.2rem;
 }
 
 h1 {
@@ -319,9 +319,10 @@ h1 {
 .routine__createdAt {
   color: white;
   position: fixed;
-  top: 1rem;
+  top: 0rem;
   right: 1rem;
   text-shadow: 0 0 3px white;
+  font-size: 1rem;
 }
 
 .modalElement {
@@ -417,5 +418,21 @@ input:hover ~ .routine__showModalButton {
   border: 2px solid red;
   text-shadow: 0 0 6px red;
   box-shadow: 0 0 10px red;
+}
+
+.routine__title {
+  color: rgb(255, 255, 255);
+  font-size: 1.5rem;
+  font-weight: 700;
+  text-shadow: none;
+  margin-bottom: 0.5rem;
+  width: 70%;
+  text-align: center;
+  padding: 0 0.7rem;
+  border-radius: 8px;
+}
+
+.routine__title:focus {
+  outline: none;
 }
 </style>

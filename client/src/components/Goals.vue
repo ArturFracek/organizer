@@ -267,6 +267,10 @@ ul {
   background-color: transparent;
 }
 
+li::marker {
+  color: rgb(255, 243, 243);
+}
+
 @media (max-width: 720px) {
   .goals__andGoal__input {
     width: 12rem;
