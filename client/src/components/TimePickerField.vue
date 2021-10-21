@@ -58,7 +58,6 @@ export default {
   methods: {
     emitTime(Time) {
       this.$emit("input", Time);
-      console.log(Time);
     },
   },
 };

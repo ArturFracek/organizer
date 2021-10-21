@@ -1,6 +1,10 @@
 <template>
   <div class="datePicker__container">
-    <Datepicker :value="value" @input="emitDate" placeholder="Set Deadline"></Datepicker>
+    <Datepicker
+      :value="value"
+      @input="emitDate"
+      placeholder="Set Deadline"
+    ></Datepicker>
   </div>
 </template>
 
@@ -47,7 +51,7 @@ span {
 }
 
 .vdp-datepicker__calendar {
-  background: rgb(2, 1, 17, 0.9) !important;
+  background: rgb(2, 1, 17, 0.8) !important;
   border: 3px solid turquoise;
 }
 
@@ -63,11 +67,15 @@ span {
   color: aqua;
   text-shadow: 0 0 5px rgb(84, 251, 243);
 }
-.day__month_btn:hover, .next:hover, .prev:hover, .cell:hover {
+.day__month_btn:hover,
+.next:hover,
+.prev:hover,
+.cell:hover {
   background-color: rgba(58, 204, 248, 0.2) !important;
 }
 
-.prev,.next {
+.prev,
+.next {
   color: rgb(224, 26, 26) !important;
 }
 
@@ -82,7 +90,6 @@ span {
 
 ::placeholder {
   color: rgb(27, 251, 240);
-
 }
 ::placeholder:hover {
   color: red;

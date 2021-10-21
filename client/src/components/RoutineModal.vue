@@ -17,7 +17,7 @@
     <transition name="slide" appear>
       <div class="routine__modal" v-if="showModal">
         <div class="routine__modal__type">Routine</div>
-        <input class="routine__title" v-model="localRoutine.title">
+        <input class="routine__title" v-model="localRoutine.title" />
         <div class="routine__createdAt">Created at: <br />{{ date }}</div>
         <div class="routine__modalUpperSection">
           <textArea v-model="localRoutine.description" />
@@ -90,6 +90,11 @@ export default {
       required: false,
     },
   },
+  watch: {
+    routineObject() {
+      this.localRoutine = { activitiesOccurences: [], ...this.routineObject };
+    },
+  },
   methods: {
     deleteRoutine(id) {
       this.$emit("deleteRoutine", id);
@@ -98,7 +103,7 @@ export default {
       this.$emit("savingRoutine", {
         ...this.localRoutine,
       });
-      console.log(this.localRoutine)
+      console.log(this.localRoutine);
       this.showModal = false;
     },
     activation() {
