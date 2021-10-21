@@ -19,8 +19,13 @@
         <div class="goal__modal__type">Goal</div>
         <h1>{{ goalObject.title }}</h1>
         <div class="goal__createdAt">Created at: <br />{{ date }}</div>
-
-    <DeadlineDatePicker />
+        <div class="goal__deadline__container">
+          <div class="goal__deadline goal__deadline--label">Deadline:</div>
+          <DeadlineDatePicker
+            class="goal__deadline"
+            v-model="localGoal.deadline"
+          />
+        </div>
 
         <textArea v-model="localGoal.description" />
         <Slider v-model="localGoal.priority" />
@@ -54,7 +59,6 @@
 <script>
 import Slider from "@/components/Slider.vue";
 import textArea from "@/components/textArea.vue";
-import datePicker from "@/components/datePicker.vue";
 import moment from "moment";
 import DeadlineDatePicker from "./DeadlineDatePicker.vue";
 
@@ -202,7 +206,7 @@ h1 {
 .goal__createdAt {
   color: white;
   position: fixed;
-  top: 1rem;
+  top: 0.3rem;
   right: 1rem;
   text-shadow: 0 0 3px white;
 }
@@ -282,7 +286,7 @@ h1 {
 
 .goal__showModalButton {
   text-align: center;
-  width: 100%;
+  width: auto;
   height: 100%;
   border-radius: 2px;
   color: rgba(253, 253, 250, 0.945);
@@ -310,4 +314,25 @@ h1 {
   right: 10rem;
   text-shadow: 0 0 3px white;
 }
+
+ul {
+  background-color: transparent;
+}
+.goal__deadline__container {
+  position: fixed;
+  top: 0.2rem;
+  right: 4.5rem;
+  }
+.goal__deadline {
+}
+
+.goal__deadline--label {
+  top: 2.2rem;
+  font-size: 1.2rem;
+  color: rgb(84, 245, 178);
+  text-shadow: 0px 0px 2px rgb(0, 255, 157);
+  text-align: center;
+  transition: 0.3s;;
+}
+
 </style>

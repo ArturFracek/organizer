@@ -1,88 +1,78 @@
 <template>
   <div class="occurences__mainContainer">
-    <test />
     <button
-      class="occurences__button occurences_button--addOccurence"
+      class="occurences__button occurences__button--addOccurence"
       type="button"
       @click="addNewAcctivityOccurence"
     >
-      Add
+      Add Activity
     </button>
     <div
+      class="occurences__generalLabels"
+      :class="{ occurences__showLabels: value[0] }"
+    >
+      <div class="occurences__label occurences__label--activityLabel">
+        Choose Activity
+      </div>
+      <div class="occurences__label occurences__label--dayOfWeekLabel">
+        Day of Week
+      </div>
+      <div class="occurences__label occurences__label--Time">Start Time</div>
+      <div class="occurences__label occurences__label--Time">End Time</div>
+    </div>
+    <div
+      :class="{ occurences__showOccurences: value[0] }"
       class="occurences__occurence"
       v-for="(occurence, index) in value"
       :key="index"
     >
-      <button
-        class="occurences__button occurences__button--deleteOccurence"
-        type="button"
-        @click="removeActivityOccurence(index)"
-      >
-        X
-      </button>
       <Select
-        label="Choose a Activity"
         :options="activities"
         optionLabelKey="title"
         optionValueKey="_id"
         :value="occurence.activityId"
         @input="updateActivityOccurence(index, 'activityId', $event)"
       />
-      <Select 
-        label="Day of Week"
+      <Select
         :options="weekdays"
-        optionValueKey="option"
+        optionLabelKey="title"
+        optionValueKey="dayNumber"
         :value="occurence.dayOfWeek"
+        @input="updateActivityOccurence(index, 'dayOfWeek', $event)"
       />
-      <!-- <vue-timepicker
-        v-model="TimeValue"
-        :minute-interval="5"
-        :hour-range="[
-          0,
-          1,
-          2,
-          5,
-          6,
-          7,
-          8,
-          9,
-          10,
-          11,
-          12,
-          13,
-          14,
-          15,
-          16,
-          17,
-          18,
-          19,
-          20,
-          21,
-          22,
-          23,
-        ]"
-        placeholder="Start Time"
-        hide-disabled-hours
-        input-class="skip-error-styl occurences__timePicker occurences__timePicker--start"
-      ></vue-timepicker> -->
+      <TimePicker
+        :value="occurence.startTime"
+        @input="updateActivityOccurence(index, 'startTime', $event)"
+        default="08:00"
+      />
+      <TimePicker
+        :value="occurence.endTime"
+        @input="updateActivityOccurence(index, 'endTime', $event)"
+      />
+      <button
+        @click="removeActivityOccurence(index)"
+        class="occurences__button occurences__button--deleteOccurence"
+        type="button"
+      >
+        X
+      </button>
     </div>
   </div>
 </template>
 
 <script>
-import test from "./test.vue"
 import Select from "./Select.vue";
 import { mapGetters } from "vuex";
 import moment, { weekdays } from "moment";
-import { hours } from "../constants/index";
-// import VueTimepicker from "vue2-timepicker/src";
+import TimePicker from "./TimePickerField.vue";
+import activities from "../store/modules/activities";
 
-function getNewAcctivityOccurence() {
+function getNewActivityOccurence() {
   return {
     activityId: null,
-    dayOfWeek: null,
-    startTime: null,
-    endTime: null,
+    dayOfWeek: 0,
+    startTime: "08:00",
+    endTime: "09:00",
   };
 }
 moment.updateLocale("en", {
@@ -100,20 +90,22 @@ export default {
   },
   components: {
     Select,
-    test,
-    // VueTimepicker,
+    TimePicker,
   },
   computed: {
-    weekdays: () => [...moment.weekdays(true)],
-    hours: () => hours,
+    weekdays: () => [
+      ...moment.weekdays(true).map((day, index) => {
+        return { title: day, dayNumber: index };
+      }),
+    ],
     ...mapGetters({
       activities: "activities/activities",
     }),
   },
   methods: {
     addNewAcctivityOccurence() {
-      this.$emit("input", [...this.value, getNewAcctivityOccurence()]);
-      console.log(weekdays)
+      this.$emit("input", [...this.value, getNewActivityOccurence()]);
+      this.showLabel = true;
     },
     removeActivityOccurence(index) {
       this.$emit(
@@ -138,6 +130,9 @@ export default {
   flex-flow: column;
   align-items: center;
   color: white;
+  overflow-y: auto;
+  height: 17.5rem;
+  overflow-x: hidden;
 }
 
 .occurences__selectContainer {
@@ -147,17 +142,85 @@ export default {
 
 .occurences__occurence {
   display: flex;
+  width: auto;
+  justify-content: center;
+  opacity: 0;
+  transition: 1s ease-in;
 }
-
+.occurences__showOccurences {
+  opacity: 1;
+}
 select {
   color: white;
   font-size: 1.2rem;
+  transition: 1s;
 }
 
-button:hover {
-  color: red;
-  border-color: red;
-  text-shadow: 0 0 8px red;
-  box-shadow: 0 0 10px red;
+.occurences__button {
+  color: black;
+}
+
+.occurences__generalLabels {
+  position: relative;
+  margin-top: 0.5rem;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  opacity: 0;
+  transition: 0.6s;
+  left: 2.5rem;
+}
+.occurences__showLabels {
+  opacity: 1;
+}
+
+.occurences__label {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  font-size: 1.1rem;
+  white-space: nowrap;
+  width: 10rem;
+  margin: 0 1rem;
+  color: rgb(255, 146, 112);
+  text-shadow: 0 0 4px rgb(27, 8, 134);
+  left: -2.9rem;
+  letter-spacing: 1px;
+  font-weight: 500;
+  transition: 1s ease-in;
+}
+
+.occurences__button {
+  display: flex;
+  align-items: center;
+  background: transparent;
+  font-size: 1.3rem;
+  color: aquamarine;
+}
+
+.occurences__button:hover {
+  color: rgb(246, 0, 0);
+  text-shadow: 0 0 3px rgb(27, 8, 134);
+}
+
+.occurences__button--addOccurence {
+  justify-content: center;
+  align-items: center;
+  border-bottom: 2px dotted turquoise;
+  border-left: 2px dotted turquoise;
+  border-right: 2px dotted turquoise;
+  white-space: nowrap;
+  width: 10rem;
+  transition: 0.4s;
+  padding-bottom: 0.2rem;
+}
+
+.occurences__button--deleteOccurence {
+  position: relative;
+  height: 100%;
+  display: flex;
+  top: -0.1rem;
+  width: 1rem;
 }
 </style>

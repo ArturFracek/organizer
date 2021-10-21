@@ -28,7 +28,7 @@ router.put("/:id", async (req, res) => {
   const goals = await loadGoalsCollection();
   await goals.updateOne(
     { _id: new mongodb.ObjectID(req.params.id) },
-    { $set: { description: req.body.description, priority: req.body.priority } }
+    { $set: { description: req.body.description, priority: req.body.priority, deadline: req.body.deadline } }
   );
   res.status(200).send();
 });

@@ -14,7 +14,7 @@
       :value="value"
       type="range"
       class="slider"
-      min="0"
+      min="-1"
       max="10"
       @input="input"
       :class="{ slider__highPriority: value > 6 }"

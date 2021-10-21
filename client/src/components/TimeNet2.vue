@@ -47,36 +47,17 @@
 </template>
 
 <script>
-import { mapGetters, mapActions } from "vuex";
+import { mapGetters } from "vuex";
 import moment from "moment";
 import { hours } from "../constants/index";
+import { time } from "../constants/index";
 
-moment.updateLocale('en', {
+
+moment.updateLocale("en", {
   week: {
     dow: 1,
   },
-})
-
-const activitiesOccurences = [
-  {
-    activityId: "6149b161c188aa185a902b80",
-    dayOfWeek: 0,
-    startTime: 16,
-    endTime: 19,
-  },
-  {
-    activityId: 1,
-    dayOfWeek: 4,
-    startTime: 8,
-    endTime: 9,
-  },
-  {
-    activityId: 2,
-    dayOfWeek: 6,
-    startTime: 10,
-    endTime: 11,
-  },
-];
+});
 
 export default {
   computed: {
@@ -84,17 +65,20 @@ export default {
     hours: () => hours,
     ...mapGetters({
       activities: "activities/activities",
+      routine: "routines/activeRoutine",
     }),
   },
   methods: {
-
     formatTime(timeNumber) {
       return moment(timeNumber, "H").format("h a");
     },
     getActivityOccurance(dayIndex, hour) {
-      const act = activitiesOccurences.find(
+      if (!this.routine) return "";
+      const act = this.routine.activitiesOccurences.find(
         (a) =>
-          a.startTime <= hour && a.endTime > hour && a.dayOfWeek === dayIndex
+          moment(a.startTime, "HH:mm").hours() <= hour &&
+          moment(a.endTime, "HH:mm").hours() > hour &&
+          a.dayOfWeek === dayIndex
       );
       return act ? act.activityId : "";
     },
@@ -103,11 +87,11 @@ export default {
       return activity ? activity.title : "";
     },
     log() {
-      console.log(this.activities)
+      console.log(time)
     },
-    logActivityId(act) {
-      console.log(this.activities[0]._id)
-    }
+    logActivityId() {
+      console.log(this.routine.activitiesOccurences);
+    },
   },
 };
 </script>
@@ -153,6 +137,7 @@ export default {
 .net__cell {
   padding: 0.3rem;
   margin: 0;
+  white-space: nowrap;
 }
 
 button {

@@ -17,7 +17,7 @@
     <transition name="slide" appear>
       <div class="activity__modal" v-if="showModal">
         <div class="activity__modal__type">Activity</div>
-        <h1>{{ activityObject.title }}</h1>
+        <input class="activity__modal__title" v-model="localActivity.title">
         <div class="activity__createdAt">Created at: <br />{{ date }}</div>
         <textArea v-model="localActivity.description" />
         <Slider v-model="localActivity.priority" />
@@ -171,7 +171,7 @@ export default {
   right: 0;
   bottom: 0;
   z-index: 98;
-  backdrop-filter: hue-rotate(30deg) opacity(80%) brightness(40%);
+  backdrop-filter: hue-rotate(90deg) opacity(80%) brightness(40%);
 }
 
 .fade-enter-active,
@@ -207,12 +207,13 @@ export default {
   background: transparent;
   box-shadow: 0 25px 25px rgba(3, 96, 112, 0.1);
   backdrop-filter: blur(10px) drop-shadow(4px 4px 10px rgb(17, 185, 207));
+  padding: 0;
 }
 
 .activity__modal__type {
   color: white;
   position: absolute;
-  top: 4%;
+  top: 0.2rem;
   left: 1rem;
   text-shadow: 0 0 3px white;
   font-size: 1.3rem;
@@ -232,7 +233,7 @@ h1 {
 .activity__createdAt {
   color: white;
   position: fixed;
-  top: 1rem;
+  top: 0.2rem;
   right: 1rem;
   text-shadow: 0 0 3px white;
 }
@@ -286,4 +287,21 @@ h1 {
   color: red;
   text-shadow: 0 0 10px red;
 }
+
+.activity__modal__title {
+  color: rgb(255, 255, 255);
+  font-size: 1.5rem;
+  font-weight: 700;
+  text-shadow: none;
+  margin-bottom: 0.5rem;
+  width: 70%;
+  text-align: center;
+  padding: 0 0.7rem;
+  border-radius: 8px;
+}
+
+.activity__modal__title:focus {
+  outline: none;
+}
+
 </style>

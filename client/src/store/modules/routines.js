@@ -10,6 +10,7 @@ export default {
   mutations: {
     SET_ROUTINES(state, routines) {
       state.routines = routines;
+      state.status = "loading"
     },
     ADD_ROUTINE(state, routine) {
       state.routines.push(routine);
@@ -38,6 +39,9 @@ export default {
   getters: {
     routines(state) {
       return state.routines;
+    },
+    activeRoutine(state) {
+      return state.routines.find((r) => r.is_active);
     },
   },
 };

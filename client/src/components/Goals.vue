@@ -235,6 +235,7 @@ input:not(:placeholder-shown) ~ .goals__addGoal__button {
   display: flex;
   align-items: center;
   justify-content: center;
+  white-space: nowrap;
 }
 @keyframes shadow_fading {
   0% {
@@ -260,6 +261,14 @@ input:not(:placeholder-shown) ~ .goals__addGoal__button {
     opacity: 0;
     text-shadow: 0.2rem 0px 0.2rem turquoise;
   }
+}
+
+ul {
+  background-color: transparent;
+}
+
+li::marker {
+  color: rgb(255, 243, 243);
 }
 
 @media (max-width: 720px) {

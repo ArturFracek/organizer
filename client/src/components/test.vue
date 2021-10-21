@@ -13,11 +13,13 @@ moment.updateLocale("en", {
     dow: 1,
   },
 });
-
 export default {
   computed: {
-    weekdays: () => [...moment.weekdays(true)].map(a => {a, weekdays.indexOf(a)}),
-
+    weekdays: () => [
+      ...moment.weekdays(true).map((day, index) => {
+        return { title: day, dayNumber: index + 1 };
+      }),
+    ],
   },
   methods: {
     test() {

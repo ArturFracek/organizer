@@ -38,7 +38,7 @@ import { mapActions, mapGetters } from "vuex";
 export default {
   data() {
     return {
-      title: "",
+      title: this.value,
       error: "Something went wrong, try again",
     };
   },

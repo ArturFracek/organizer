@@ -369,6 +369,13 @@ ul > li {
   }
 }
 
+ul {
+  background: none;
+}
+li {
+    font-size: 1rem;
+}
+
 @media (max-width: 720px) {
   .about__upperContainer {
     overflow-y: scroll;
