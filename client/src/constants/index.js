@@ -33,8 +33,15 @@ export const hours = [
   1,
   2,
 ];
-let times = new Date()
-times.setHours(22, 59)
+
+export const minutes = [
+  parseInt('00'),
+  10,
+  20,
+  30,
+  40,
+  50,
+]
 
 export const DEFAULT_TIME_FORMAT = "HH:mm";
 

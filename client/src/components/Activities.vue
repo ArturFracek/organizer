@@ -71,7 +71,7 @@ export default {
       await this.removeActivity({ id });
     },
     async saveActivity(activity) {
-      await this.updateActivity(activity)
+      await this.updateActivity(activity);
     },
   },
 };
@@ -129,6 +129,15 @@ export default {
   background: transparent;
   box-shadow: 0 25px 25px rgba(38, 221, 253, 0.1);
   display: none;
+  height: 100%;
+  width: 19%;
+  transition: ease-in-out 0.3s;
+}
+
+button:hover {
+  color: red;
+  border: 2px solid red;
+  text-shadow: 0 0 10px red;
 }
 
 .activities__objectsHolder {

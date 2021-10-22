@@ -36,7 +36,13 @@
               `net__day-${dayIndex}-${hour}`,
             ]"
           >
+            <tr
+              v-for="(tenMinutes, minutesIndex) in minutes"
+              :key="minutesIndex"
+              :class="['net__minutesRow', `net__minutesRow-${hourIndex}`]"
+            >
             {{ getActivityName(getActivityOccurance(dayIndex, hour)) }}
+            </tr>
           </td>
         </tr>
       </tbody>
@@ -51,7 +57,7 @@ import { mapGetters } from "vuex";
 import moment from "moment";
 import { hours } from "../constants/index";
 import { time } from "../constants/index";
-
+import { minutes } from "../constants/index";
 
 moment.updateLocale("en", {
   week: {
@@ -63,6 +69,7 @@ export default {
   computed: {
     weekdays: () => moment.weekdays(true),
     hours: () => hours,
+    minutes: () => minutes,
     ...mapGetters({
       activities: "activities/activities",
       routine: "routines/activeRoutine",
@@ -70,7 +77,7 @@ export default {
   },
   methods: {
     formatTime(timeNumber) {
-      return moment(timeNumber, "H").format("h a");
+      return moment(timeNumber, "H").format("H a");
     },
     getActivityOccurance(dayIndex, hour) {
       if (!this.routine) return "";
@@ -87,7 +94,7 @@ export default {
       return activity ? activity.title : "";
     },
     log() {
-      console.log(time)
+      console.log(time);
     },
     logActivityId() {
       console.log(this.routine.activitiesOccurences);
@@ -97,6 +104,9 @@ export default {
 </script>
 
 <style>
+.net__container {
+  transition: 1s;
+}
 .net__table {
   width: 100%;
   table-layout: fixed;
@@ -109,7 +119,7 @@ export default {
 
 .net__dayHeader {
   color: rgb(255, 255, 255);
-  text-shadow: 0 0 1rem rgb(219, 97, 97);
+  text-shadow: 2px 2px 1px rgb(6, 10, 255);
   justify-content: center;
   align-items: center;
   font-weight: bold;
@@ -120,6 +130,9 @@ export default {
 
 .net__hour {
   color: white;
+  font-size: 1rem;
+  font-weight: 500;
+  text-shadow: 2px 2px 10px rgb(255, 255, 255);
   border-bottom: 1px dashed turquoise;
   white-space: nowrap;
   min-width: 20px;
@@ -129,15 +142,17 @@ export default {
   text-align: center;
   border: 0.1px solid turquoise;
   border-radius: 0.4rem;
-  color: blueviolet;
-  font-size: 16px;
+  color: rgb(112, 255, 207);
+  text-shadow: 2px 2px 2px rgb(0, 4, 255);
+  font-size: 0.9rem;
   font-weight: bold;
 }
 
 .net__cell {
-  padding: 0.3rem;
+  padding: 0rem;
   margin: 0;
   white-space: nowrap;
+  height: 2rem;
 }
 
 button {

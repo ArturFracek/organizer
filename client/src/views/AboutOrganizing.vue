@@ -289,7 +289,7 @@ export default {
   align-items: flex-start;
   color: rgb(125, 248, 236);
   padding: 1.5rem 15rem 1rem 15rem;
-  font-weight: bold;
+  font-weight: 550;
   font-size: 1.1rem;
   text-shadow: 0 0 8px turquoise;
   letter-spacing: 1px;
@@ -315,7 +315,7 @@ ul > li {
   list-style-position: inside;
   color: rgb(255, 255, 255);
   text-shadow: 0 0 2px rgb(248, 255, 254);
-  font-weight: bold;
+  font-weight: 500;
   padding-bottom: 0.5rem;
 }
 .movies > ul > li > a,
@@ -373,7 +373,7 @@ ul {
   background: none;
 }
 li {
-    font-size: 1rem;
+  font-size: 1rem;
 }
 
 @media (max-width: 720px) {
