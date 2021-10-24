@@ -36,13 +36,13 @@
               `net__day-${dayIndex}-${hour}`,
             ]"
           >
-            <tr
+            <div
               v-for="(tenMinutes, minutesIndex) in minutes"
               :key="minutesIndex"
               :class="['net__minutesRow', `net__minutesRow-${hourIndex}`]"
             >
             {{ getActivityName(getActivityOccurance(dayIndex, hour)) }}
-            </tr>
+            </div>
           </td>
         </tr>
       </tbody>
