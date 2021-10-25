@@ -41,7 +41,11 @@
               :key="minutesIndex"
               :class="['net__minutesRow', `net__minutesRow-${hourIndex}`]"
             >
-            {{ getActivityName(getActivityOccurance(dayIndex, hour)) }}
+              {{
+                getActivityName(
+                  getActivityOccurance(dayIndex, hour, tenMinutes)
+                ) || '&nbsp;'
+              }}
             </div>
           </td>
         </tr>
@@ -79,12 +83,14 @@ export default {
     formatTime(timeNumber) {
       return moment(timeNumber, "H").format("H a");
     },
-    getActivityOccurance(dayIndex, hour) {
+    getActivityOccurance(dayIndex, hour, tenMinutes) {
       if (!this.routine) return "";
       const act = this.routine.activitiesOccurences.find(
         (a) =>
-          moment(a.startTime, "HH:mm").hours() <= hour &&
-          moment(a.endTime, "HH:mm").hours() > hour &&
+          moment(a.startTime, "HH:mm") <=
+            moment({ hour: hour, minute: tenMinutes }) &&
+          moment(a.endTime, "HH:mm") >
+            moment({ hour: hour, minute: tenMinutes }) &&
           a.dayOfWeek === dayIndex
       );
       return act ? act.activityId : "";
@@ -159,5 +165,9 @@ button {
   height: 2rem;
   width: 6rem;
   background: red;
+}
+
+.net__minutesRow {
+  height: 20px;
 }
 </style>
