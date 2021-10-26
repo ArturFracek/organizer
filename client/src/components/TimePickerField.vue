@@ -4,7 +4,7 @@
     <VuePicker
       @input="emitTime"
       format="HH:mm"
-      :minute-interval="10"
+      :minute-interval="15"
       :hour-range="[
         5,
         6,

@@ -25,6 +25,15 @@
         >
           <td class="net__hour">
             {{ formatTime(hour) }}
+            <tr
+              class="net__minutes"
+              v-for="(minuteDisplay, minuteIndex) in minutesDisplay"
+              :key="minuteIndex"
+            >
+              {{
+                minuteDisplay.toString()
+              }}
+            </tr>
           </td>
           <td
             v-for="(day, dayIndex) in weekdays"
@@ -44,7 +53,7 @@
               {{
                 getActivityName(
                   getActivityOccurance(dayIndex, hour, tenMinutes)
-                ) || '&nbsp;'
+                ) || minutes[4]
               }}
             </div>
           </td>
@@ -62,6 +71,7 @@ import moment from "moment";
 import { hours } from "../constants/index";
 import { time } from "../constants/index";
 import { minutes } from "../constants/index";
+import { minutesDisplay } from "../constants/index";
 
 moment.updateLocale("en", {
   week: {
@@ -74,6 +84,7 @@ export default {
     weekdays: () => moment.weekdays(true),
     hours: () => hours,
     minutes: () => minutes,
+    minutesDisplay: () => minutesDisplay,
     ...mapGetters({
       activities: "activities/activities",
       routine: "routines/activeRoutine",
@@ -135,23 +146,33 @@ export default {
 }
 
 .net__hour {
+  display: flex;
+  flex-flow: column;
   color: white;
-  font-size: 1rem;
+  font-size: 0.9rem;
   font-weight: 500;
   text-shadow: 2px 2px 10px rgb(255, 255, 255);
   border-bottom: 1px dashed turquoise;
   white-space: nowrap;
   min-width: 20px;
 }
+.net__minutes {
+  position: relative;
+  top: -1px;
+  display: flex;
+  flex-flow: column;
+  align-items: flex-end;
+  font-size: 11px;
+  margin-right: 5px;
+  font-weight: 500;
+  opacity: 0.6;
+}
 
 .net__hourInDay {
   text-align: center;
   border: 0.1px solid turquoise;
   border-radius: 0.4rem;
-  color: rgb(112, 255, 207);
-  text-shadow: 2px 2px 2px rgb(0, 4, 255);
-  font-size: 0.9rem;
-  font-weight: bold;
+  height: 1rem;
 }
 
 .net__cell {
@@ -168,6 +189,16 @@ button {
 }
 
 .net__minutesRow {
-  height: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  height: 15px;
+  color: rgb(112, 255, 207);
+  text-shadow: 2px 2px 2px rgb(0, 4, 255);
+  font-size: 0.7rem;
+  font-weight: bold;
+  margin: 0;
+  padding: 0;
+  border-bottom: 0.5px dotted rgba(87, 246, 185, 0.2);
 }
 </style>
