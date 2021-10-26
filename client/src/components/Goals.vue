@@ -142,7 +142,7 @@ export default {
   padding: 0.7rem;
   background: none;
   outline: none;
-  border: 2px solid rgb(35, 166, 170);
+  border: 2px solid rgb(41, 154, 158);
   border-radius: 0.5rem;
   background: transparent;
   box-shadow: 0 25px 25px 25px rgba(105, 241, 241, 0.1);
@@ -176,8 +176,8 @@ export default {
 
 .goals__addGoal__button {
   border-radius: 0;
-  color: rgb(88, 249, 255);
-  text-shadow: 0 0 8px turquoise;
+  color: rgb(78, 226, 231);
+  text-shadow: 0 0 8px rgb(51, 189, 175);
   font-weight: bold;
   position: relative;
   right: -16.5rem;
@@ -194,6 +194,12 @@ export default {
   backdrop-filter: blur(10px) drop-shadow(4px 4px 2px rgb(17, 185, 207));
   display: none;
   height: 2.5rem;
+}
+.goals__addGoal__button:hover {
+  color: rgb(240, 2, 2);
+  border-color: rgb(233, 1, 1);
+  backdrop-filter: blur(0) drop-shadow(0px 0px 0px rgb(211, 8, 1, 0.2));
+  text-shadow: 0 0 0px red;
 }
 
 input[type="text"],
@@ -216,7 +222,7 @@ textarea {
   border-color: turquoise;
   background-color: none;
   box-shadow: 0 25px 25px rgba(3, 96, 112, 0.1);
-  backdrop-filter: blur(15px) drop-shadow(4px 4px 10px rgb(7, 207, 233));
+  backdrop-filter: blur(15px) drop-shadow(2px 2px 1px rgb(7, 207, 233));
 }
 
 input:focus ~ .goals__input__label {

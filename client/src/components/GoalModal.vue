@@ -184,11 +184,11 @@ export default {
 }
 
 .goal__modal__type {
-  color: white;
+  color: rgba(211, 255, 253, 0.945);
   position: absolute;
   top: 4%;
   left: 1rem;
-  text-shadow: 0 0 3px white;
+  text-shadow: 0 0 3px rgba(211, 255, 253, 0.945);
   font-size: 1.3rem;
 }
 
@@ -196,19 +196,19 @@ h1 {
   display: flex;
   justify-content: center;
   align-items: center;
-  color: rgb(255, 255, 255);
+  color: rgba(211, 255, 253, 0.945);
   font-size: 1.5rem;
   font-weight: 900;
   margin-bottom: 15px;
-  text-shadow: 0 0 1rem white;
+  text-shadow: 0 0 1rem rgba(211, 255, 253, 0.945);
 }
 
 .goal__createdAt {
-  color: white;
+  color: rgba(211, 255, 253, 0.945);
   position: fixed;
   top: 0.3rem;
   right: 1rem;
-  text-shadow: 0 0 3px white;
+  text-shadow: 0 0 3px rgba(211, 255, 253, 0.945);
 }
 
 .modalElement {
@@ -239,7 +239,7 @@ h1 {
   text-align: center;
   font-weight: bold;
   border-radius: 2px;
-  color: rgba(253, 253, 250, 0.945);
+  color: rgba(211, 255, 253, 0.945);
   font-size: 2rem;
   background: none;
   outline: none;
@@ -255,12 +255,12 @@ h1 {
   text-align: center;
   font-weight: bold;
   border-radius: 2px;
-  color: rgba(253, 253, 250, 0.945);
+  color: rgba(211, 255, 253, 0.945);
   font-weight: bold;
-  text-shadow: 0 0 1rem white;
+  text-shadow: 0 0 1rem rgba(211, 255, 253, 0.945);
   background: none;
   outline: none;
-  border: 2px solid rgb(255, 255, 255);
+  border: 2px solid rgba(211, 255, 253, 0.945);
   border-radius: 0.5rem;
   backdrop-filter: blur(10px) drop-shadow(4px 4px 10px rgb(248, 248, 248));
   transition: 0.1s ease-out;
@@ -270,7 +270,7 @@ h1 {
 .goal__button {
   background: none;
   outline: none;
-  color: white;
+  color: rgba(211, 255, 253, 0.945);
 }
 
 .goal__button--save:hover {
@@ -289,9 +289,9 @@ h1 {
   width: auto;
   height: 100%;
   border-radius: 2px;
-  color: rgba(253, 253, 250, 0.945);
+  color: rgba(211, 255, 253, 0.945);
   font-weight: bold;
-  text-shadow: 0 0 1rem white;
+  text-shadow: 0 0 1rem rgba(211, 255, 253, 0.945);
   padding: 0.6rem;
   background: none;
   outline: none;
@@ -301,10 +301,11 @@ h1 {
 }
 
 .goal__showModalButton:hover {
-  color: rgb(255, 107, 107);
-  border-right: 0.1px solid rgba(253, 94, 94, 0.692);
-  border-left: 0.1px solid rgba(255, 115, 115, 0.726);
+  color: rgb(253, 51, 51);
+  border-right: 1px solid rgba(233, 55, 55, 0.692);
+  border-left: 1px solid rgba(248, 65, 65, 0.726);
   border-radius: 12px;
+  text-shadow: 0 0 0.5px red;
 }
 .goal__datePicker {
   width: 7rem;

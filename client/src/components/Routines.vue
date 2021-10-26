@@ -148,6 +148,15 @@ export default {
   box-shadow: 0 25px 25px rgba(38, 221, 253, 0.1);
   backdrop-filter: blur(10px) drop-shadow(4px 4px 2px rgb(17, 185, 207));
   display: none;
+  height: 100%;
+  width: 19%;
+  transition: ease-in-out 0.3s;
+}
+
+button:hover {
+  color: red;
+  border: 2px solid red;
+  text-shadow: 0 0 10px red;
 }
 
 .input {

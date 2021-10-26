@@ -25,6 +25,15 @@
         >
           <td class="net__hour">
             {{ formatTime(hour) }}
+            <tr
+              class="net__minutes"
+              v-for="(minuteDisplay, minuteIndex) in minutesDisplay"
+              :key="minuteIndex"
+            >
+              {{
+                minuteDisplay.toString()
+              }}
+            </tr>
           </td>
           <td
             v-for="(day, dayIndex) in weekdays"
@@ -36,7 +45,17 @@
               `net__day-${dayIndex}-${hour}`,
             ]"
           >
-            {{ getActivityName(getActivityOccurance(dayIndex, hour)) }}
+            <div
+              v-for="(tenMinutes, minutesIndex) in minutes"
+              :key="minutesIndex"
+              :class="['net__minutesRow', `net__minutesRow-${hourIndex}`]"
+            >
+              {{
+                getActivityName(
+                  getActivityOccurance(dayIndex, hour, tenMinutes)
+                ) || minutes[4]
+              }}
+            </div>
           </td>
         </tr>
       </tbody>
@@ -51,7 +70,8 @@ import { mapGetters } from "vuex";
 import moment from "moment";
 import { hours } from "../constants/index";
 import { time } from "../constants/index";
-
+import { minutes } from "../constants/index";
+import { minutesDisplay } from "../constants/index";
 
 moment.updateLocale("en", {
   week: {
@@ -63,6 +83,8 @@ export default {
   computed: {
     weekdays: () => moment.weekdays(true),
     hours: () => hours,
+    minutes: () => minutes,
+    minutesDisplay: () => minutesDisplay,
     ...mapGetters({
       activities: "activities/activities",
       routine: "routines/activeRoutine",
@@ -70,14 +92,16 @@ export default {
   },
   methods: {
     formatTime(timeNumber) {
-      return moment(timeNumber, "H").format("h a");
+      return moment(timeNumber, "H").format("H a");
     },
-    getActivityOccurance(dayIndex, hour) {
+    getActivityOccurance(dayIndex, hour, tenMinutes) {
       if (!this.routine) return "";
       const act = this.routine.activitiesOccurences.find(
         (a) =>
-          moment(a.startTime, "HH:mm").hours() <= hour &&
-          moment(a.endTime, "HH:mm").hours() > hour &&
+          moment(a.startTime, "HH:mm") <=
+            moment({ hour: hour, minute: tenMinutes }) &&
+          moment(a.endTime, "HH:mm") >
+            moment({ hour: hour, minute: tenMinutes }) &&
           a.dayOfWeek === dayIndex
       );
       return act ? act.activityId : "";
@@ -87,7 +111,7 @@ export default {
       return activity ? activity.title : "";
     },
     log() {
-      console.log(time)
+      console.log(time);
     },
     logActivityId() {
       console.log(this.routine.activitiesOccurences);
@@ -97,6 +121,9 @@ export default {
 </script>
 
 <style>
+.net__container {
+  transition: 1s;
+}
 .net__table {
   width: 100%;
   table-layout: fixed;
@@ -109,7 +136,7 @@ export default {
 
 .net__dayHeader {
   color: rgb(255, 255, 255);
-  text-shadow: 0 0 1rem rgb(219, 97, 97);
+  text-shadow: 2px 2px 1px rgb(6, 10, 255);
   justify-content: center;
   align-items: center;
   font-weight: bold;
@@ -119,30 +146,59 @@ export default {
 }
 
 .net__hour {
+  display: flex;
+  flex-flow: column;
   color: white;
+  font-size: 0.9rem;
+  font-weight: 500;
+  text-shadow: 2px 2px 10px rgb(255, 255, 255);
   border-bottom: 1px dashed turquoise;
   white-space: nowrap;
   min-width: 20px;
+}
+.net__minutes {
+  position: relative;
+  top: -1px;
+  display: flex;
+  flex-flow: column;
+  align-items: flex-end;
+  font-size: 11px;
+  margin-right: 5px;
+  font-weight: 500;
+  opacity: 0.6;
 }
 
 .net__hourInDay {
   text-align: center;
   border: 0.1px solid turquoise;
   border-radius: 0.4rem;
-  color: blueviolet;
-  font-size: 16px;
-  font-weight: bold;
+  height: 1rem;
 }
 
 .net__cell {
-  padding: 0.3rem;
+  padding: 0rem;
   margin: 0;
   white-space: nowrap;
+  height: 2rem;
 }
 
 button {
   height: 2rem;
   width: 6rem;
   background: red;
+}
+
+.net__minutesRow {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  height: 15px;
+  color: rgb(112, 255, 207);
+  text-shadow: 2px 2px 2px rgb(0, 4, 255);
+  font-size: 0.7rem;
+  font-weight: bold;
+  margin: 0;
+  padding: 0;
+  border-bottom: 0.5px dotted rgba(87, 246, 185, 0.2);
 }
 </style>
