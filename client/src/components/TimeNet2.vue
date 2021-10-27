@@ -21,7 +21,7 @@
         <tr
           v-for="(hour, hourIndex) in hours"
           :key="hourIndex"
-          :class="['net__hourRow', `net__hourRow-${hourIndex}`]"
+          :class="{'net__hourRow': true, 'net__hourRow--exist': getActivityOccurance(dayIndex, hour, tenMinutes)}"
         >
           <td class="net__hour">
             {{ formatTime(hour) }}
@@ -68,8 +68,6 @@
         </tr>
       </tbody>
     </table>
-    <button @click="log">Log activities</button>
-    <button @click="logActivityId">Log ID</button>
   </div>
 </template>
 
@@ -164,6 +162,11 @@ export default {
   white-space: nowrap;
   min-width: 20px;
 }
+
+.net__hourRow--exist ~ .net__hourRow--exist {
+  display: none;
+} 
+
 .net__minutes {
   position: relative;
   top: -1px;
@@ -190,37 +193,48 @@ export default {
   height: 2rem;
 }
 
-button {
-  height: 2rem;
-  width: 6rem;
-  background: red;
-}
-
 .net__minutesRow {
   display: flex;
   justify-content: center;
   align-items: flex-end;
   height: 16px;
-  color: rgb(112, 255, 207);
-  text-shadow: 2px 2px 2px rgb(0, 4, 255);
-  font-size: 0.7rem;
   font-weight: bold;
   margin: 0;
   padding: 0;
-  border-bottom: 0.5px dotted rgba(87, 246, 185, 0.2);
+  border-bottom: 1px dotted rgba(87, 246, 185, 0.3);
+  letter-spacing: 0px;
+    text-size-adjust: auto;
 }
 
 .net__minutesRow--exist {
-  color: white;
-  border-top: 2px solid red;
-  border-right: 2px solid red;
-  border-left: 2px solid red;
+  font-size: 12px;
+  text-shadow: 2px 1px 1px rgb(56, 53, 241);
+  color: rgb(255, 255, 255);
+  border-left: 1px solid aquamarine;
+  border-top: 1px solid aquamarine;
+  border-right: 1px solid aquamarine;
+  border-bottom: 1px solid aquamarine;
+  width: 93%;
+  border-radius: 3px;
+  margin-left: auto;
+  margin-right: auto;
+  box-shadow: 0px 0px 10px rgb(116, 255, 220, 0.5);
 }
 
 .net__minutesRow--exist ~ .net__minutesRow--exist {
-  font-size: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0);
+  text-shadow: 0 0 2px rgba(130, 251, 211, 0.8);
   border-top: none;
-  border-right: 2px solid red;
-  border-left: 2px solid red;
+  border-bottom: 0.5px dotted rgba(87, 246, 185, 0.2);
+  border-right: none;
+  border-left: none;
+  box-shadow: none;
 }
+
+
 </style>
