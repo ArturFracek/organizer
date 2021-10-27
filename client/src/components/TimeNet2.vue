@@ -25,6 +25,7 @@
         >
           <td class="net__hour">
             {{ formatTime(hour) }}
+
             <tr
               class="net__minutes"
               v-for="(minuteDisplay, minuteIndex) in minutesDisplay"
@@ -53,7 +54,7 @@
               {{
                 getActivityName(
                   getActivityOccurance(dayIndex, hour, tenMinutes)
-                ) || minutes[4]
+                )
               }}
             </div>
           </td>
@@ -200,5 +201,8 @@ button {
   margin: 0;
   padding: 0;
   border-bottom: 0.5px dotted rgba(87, 246, 185, 0.2);
+}
+.net__minutesTogether {
+  border: 1px solid red;
 }
 </style>
