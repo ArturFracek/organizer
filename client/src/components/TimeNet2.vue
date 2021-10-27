@@ -49,7 +49,14 @@
             <div
               v-for="(tenMinutes, minutesIndex) in minutes"
               :key="minutesIndex"
-              :class="['net__minutesRow', `net__minutesRow-${hourIndex}`]"
+              :class="{
+                net__minutesRow: true,
+                'net__minutesRow--exist': getActivityOccurance(
+                  dayIndex,
+                  hour,
+                  tenMinutes
+                ),
+              }"
             >
               {{
                 getActivityName(
@@ -193,7 +200,7 @@ button {
   display: flex;
   justify-content: center;
   align-items: flex-end;
-  height: 15px;
+  height: 16px;
   color: rgb(112, 255, 207);
   text-shadow: 2px 2px 2px rgb(0, 4, 255);
   font-size: 0.7rem;
@@ -202,7 +209,18 @@ button {
   padding: 0;
   border-bottom: 0.5px dotted rgba(87, 246, 185, 0.2);
 }
-.net__minutesTogether {
-  border: 1px solid red;
+
+.net__minutesRow--exist {
+  color: white;
+  border-top: 2px solid red;
+  border-right: 2px solid red;
+  border-left: 2px solid red;
+}
+
+.net__minutesRow--exist ~ .net__minutesRow--exist {
+  font-size: 0;
+  border-top: none;
+  border-right: 2px solid red;
+  border-left: 2px solid red;
 }
 </style>
