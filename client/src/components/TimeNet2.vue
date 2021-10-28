@@ -18,11 +18,7 @@
         </tr>
       </thead>
       <tbody>
-        <tr
-          v-for="(hour, hourIndex) in hours"
-          :key="hourIndex"
-          :class="{'net__hourRow': true, 'net__hourRow--exist': getActivityOccurance(dayIndex, hour, tenMinutes)}"
-        >
+        <tr v-for="(hour, hourIndex) in hours" :key="hourIndex">
           <td class="net__hour">
             {{ formatTime(hour) }}
 
@@ -58,11 +54,13 @@
                 ),
               }"
             >
-              {{
-                getActivityName(
-                  getActivityOccurance(dayIndex, hour, tenMinutes)
-                )
-              }}
+              <button class="net__timerButton" @click="timerOnOff">
+                {{
+                  getActivityName(
+                    getActivityOccurance(dayIndex, hour, tenMinutes)
+                  )
+                }}
+              </button>
             </div>
           </td>
         </tr>
@@ -75,7 +73,6 @@
 import { mapGetters } from "vuex";
 import moment from "moment";
 import { hours } from "../constants/index";
-import { time } from "../constants/index";
 import { minutes } from "../constants/index";
 import { minutesDisplay } from "../constants/index";
 
@@ -86,6 +83,14 @@ moment.updateLocale("en", {
 });
 
 export default {
+  data() {
+    return {
+      timerState: "stopped",
+      ticker: null,
+      currentTime: 0,
+      formattedTime: "00:00:00",
+    };
+  },
   computed: {
     weekdays: () => moment.weekdays(true),
     hours: () => hours,
@@ -116,11 +121,17 @@ export default {
       const activity = this.activities.find((a) => a._id === activityId);
       return activity ? activity.title : "";
     },
-    log() {
-      console.log(time);
+    timerOnOff() {
+      this.ticker = setInterval(() => {
+        this.currentTime++;
+        this.formattedTime = this.formatThisTime(this.currentTime);
+      }, 250);
     },
-    logActivityId() {
-      console.log(this.routine.activitiesOccurences);
+    formatThisTime(seconds) {
+      let measuredTime = new Date(null);
+      measuredTime.setSecounds(seconds);
+      let Time = measuredTime.toIsoString().substr(11, 8);
+      return Time;
     },
   },
 };
@@ -165,7 +176,7 @@ export default {
 
 .net__hourRow--exist ~ .net__hourRow--exist {
   display: none;
-} 
+}
 
 .net__minutes {
   position: relative;
@@ -203,7 +214,7 @@ export default {
   padding: 0;
   border-bottom: 1px dotted rgba(87, 246, 185, 0.3);
   letter-spacing: 0px;
-    text-size-adjust: auto;
+  text-size-adjust: auto;
 }
 
 .net__minutesRow--exist {
@@ -227,14 +238,23 @@ export default {
   align-items: center;
   text-align: center;
   font-size: 11px;
-  color: rgba(255, 255, 255, 0);
-  text-shadow: 0 0 2px rgba(130, 251, 211, 0.8);
+  color: rgba(106, 246, 200, 0);
   border-top: none;
   border-bottom: 0.5px dotted rgba(87, 246, 185, 0.2);
   border-right: none;
   border-left: none;
   box-shadow: none;
+  transition: 0.3s;
 }
 
-
+.net__timerButton {
+  z-index: 3;
+  width: 85%;
+  text-shadow: 0 0 2px rgba(130, 251, 211, 0.8);
+  transition: 0.3s;
+}
+.net__timerButton:hover {
+  color: aquamarine;
+  text-shadow: 0 0 7px rgba(130, 251, 211, 1);
+}
 </style>
