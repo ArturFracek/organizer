@@ -87,7 +87,7 @@ export default {
     return {
       timerState: "stopped",
       ticker: null,
-      currentTime: 0,
+      currentTimer: 0,
       formattedTime: "00:00:00",
     };
   },
@@ -122,15 +122,19 @@ export default {
       return activity ? activity.title : "";
     },
     timerOnOff() {
-      this.ticker = setInterval(() => {
-        this.currentTime++;
-        this.formattedTime = this.formatThisTime(this.currentTime);
-      }, 250);
+      if (this.timerState !== "running") {
+        this.timerState = "running";
+        this.ticker = setInterval(() => {
+          this.currentTimer++;
+          this.formattedTime = this.formatThisTime(this.currentTimer);
+          console.log(this.formattedTime)
+        }, 1000);
+      }
     },
     formatThisTime(seconds) {
       let measuredTime = new Date(null);
-      measuredTime.setSecounds(seconds);
-      let Time = measuredTime.toIsoString().substr(11, 8);
+      measuredTime.setSeconds(seconds);
+      let Time = measuredTime.toISOString().substr(11, 8);
       return Time;
     },
   },
