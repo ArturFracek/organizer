@@ -87,7 +87,7 @@ export default {
   justify-content: center;
   align-items: center;
   width: 100%;
-  min-height: 12%;
+  min-height: 9%;
   text-decoration: none;
   background: repeating-linear-gradient(
       90deg,

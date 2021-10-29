@@ -110,8 +110,8 @@ export default {
   text-shadow: 0 0 4px rgb(235, 250, 251);
   padding: 0.5rem;
   background: none;
-  border-top: 1px solid rgb(255, 255, 255);
-  border-bottom: 1px solid rgb(255, 255, 255);
+  border-top: 2px solid rgb(255, 255, 255);
+  border-bottom: 2px solid rgb(255, 255, 255);
   border-radius: 6px;
   box-shadow: 0 25px 25px rgba(3, 96, 112, 0.1);
   transition: 0.2s ease;
@@ -171,12 +171,12 @@ export default {
   right: 0;
   bottom: 0;
   z-index: 98;
-  backdrop-filter: hue-rotate(90deg) opacity(80%) brightness(40%);
+  background-color: rgba(31, 1, 59, 0.5);
 }
 
 .fade-enter-active,
 .fade-leave-active {
-  transition: opacity 0.5s;
+  transition: opacity 0.6s;
 }
 
 .fade-enter,
@@ -252,7 +252,7 @@ h1 {
 
 .slide-enter-active,
 .slide-leave-active {
-  transition: transfrom 2s;
+  transition: transfrom 0.5s;
 }
 
 .slide-enter,
@@ -280,7 +280,7 @@ h1 {
   color: red;
   border: 2px solid red;
   text-shadow: 0 0 6px red;
-  box-shadow: 0 0 10px red;
+  box-shadow: 0 0 5px red;
 }
 
 .activity__button--delete:hover {

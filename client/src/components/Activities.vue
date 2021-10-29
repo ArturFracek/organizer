@@ -88,7 +88,7 @@ export default {
   border: 2px solid rgb(35, 166, 170);
   border-radius: 0.5rem;
   padding: 0 1rem 1rem 1rem;
-  box-shadow: 0 0 0.5rem rgb(132, 242, 250);
+  box-shadow: 0 0 30px rgb(132, 242, 250, 0.2);
 }
 
 .activities__title {
@@ -180,6 +180,7 @@ input[type="password"] {
 input:hover {
   border-color: rgb(216, 25, 25);
   color: rgb(216, 25, 25);
+  backdrop-filter: drop-shadow(0 0 10px red);
 }
 
 input:hover ~ .activities__form__label__addActivities {

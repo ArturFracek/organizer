@@ -1,6 +1,6 @@
 <template>
   <div class="net__container">
-    {{ formatThisTime(timerDiff) }}
+    {{ timerDiff }}
     <table class="net__table">
       <thead>
         <tr>
@@ -104,9 +104,9 @@ export default {
       currentTime: "timer/currentTime",
     }),
     timerDiff() {
-      if (!this.timerStartedAt) return "00:00:00"
-      const diff = Math.floor((this.currentTime - this.timerStartedAt) / 1000)
-      return diff
+      if (!this.timerStartedAt) return "00:00:00";
+      const diff = Math.floor((this.currentTime - this.timerStartedAt) / 1000);
+      return diff;
     },
   },
   methods: {
@@ -199,14 +199,13 @@ export default {
   font-size: 11px;
   margin-right: 5px;
   font-weight: 500;
-  opacity: 0.6;
+  opacity: 0.8;
 }
 
 .net__hourInDay {
   text-align: center;
   border: 0.1px solid turquoise;
   border-radius: 0.4rem;
-  height: 1rem;
 }
 
 .net__cell {
@@ -219,8 +218,8 @@ export default {
 .net__minutesRow {
   display: flex;
   justify-content: center;
-  align-items: flex-end;
-  height: 16px;
+  align-items: center;
+  height: 18px;
   font-weight: bold;
   margin: 0;
   padding: 0;
@@ -230,7 +229,7 @@ export default {
 }
 
 .net__minutesRow--exist {
-  font-size: 12px;
+  font-size: 13px;
   text-shadow: 2px 1px 1px rgb(56, 53, 241);
   color: rgb(255, 255, 255);
   border-left: 1px solid aquamarine;
@@ -249,7 +248,7 @@ export default {
   justify-content: center;
   align-items: center;
   text-align: center;
-  font-size: 11px;
+  font-size: 12px;
   color: rgba(106, 246, 200, 0);
   border-top: none;
   border-bottom: 0.5px dotted rgba(87, 246, 185, 0.2);
