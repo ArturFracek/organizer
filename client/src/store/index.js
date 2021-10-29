@@ -4,6 +4,7 @@ import routines from "./modules/routines.js";
 import activities from "./modules/activities.js";
 import goals from "./modules/goals";
 import Auth from "../Warehouse/Auth";
+import timer from "./modules/timer";
 
 Vue.use(Vuex);
 
@@ -16,5 +17,6 @@ export default new Vuex.Store({
     routines,
     activities,
     goals,
+    timer,
   },
 });

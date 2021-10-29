@@ -1,5 +1,6 @@
 <template>
   <div class="net__container">
+    {{ formatThisTime(timerDiff) }}
     <table class="net__table">
       <thead>
         <tr>
@@ -89,6 +90,7 @@ export default {
       ticker: null,
       currentTimer: 0,
       formattedTime: "00:00:00",
+      timerStartedAt: null,
     };
   },
   computed: {
@@ -99,7 +101,13 @@ export default {
     ...mapGetters({
       activities: "activities/activities",
       routine: "routines/activeRoutine",
+      currentTime: "timer/currentTime",
     }),
+    timerDiff() {
+      if (!this.timerStartedAt) return "00:00:00"
+      const diff = Math.floor((this.currentTime - this.timerStartedAt) / 1000)
+      return diff
+    },
   },
   methods: {
     formatTime(timeNumber) {
@@ -124,11 +132,7 @@ export default {
     timerOnOff() {
       if (this.timerState !== "running") {
         this.timerState = "running";
-        this.ticker = setInterval(() => {
-          this.currentTimer++;
-          this.formattedTime = this.formatThisTime(this.currentTimer);
-          console.log(this.formattedTime)
-        }, 1000);
+        this.timerStartedAt = new Date();
       }
     },
     formatThisTime(seconds) {
@@ -136,6 +140,10 @@ export default {
       measuredTime.setSeconds(seconds);
       let Time = measuredTime.toISOString().substr(11, 8);
       return Time;
+    },
+    pause() {
+      window.clearInterval(this.ticker);
+      this.timerState = "paused";
     },
   },
 };
