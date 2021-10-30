@@ -37,23 +37,23 @@ router.put("/:id", async (req, res) => {
         is_active: false,
       },
     }
-  )
-   await routines.updateOne(
-      { _id: new mongodb.ObjectID(req.params.id) },
-      {
-        $set: {
-          title: req.body.title,
-          description: req.body.description,
-          priority: req.body.priority,
-          is_active: req.body.is_active,
-          activitiesOccurences: req.body.activitiesOccurences,
-          activityId: req.body.activityId,
-          dayOfWeek: req.body.dayOfWeek,
-          startTime: req.body.startTime,
-          endTime: req.body.endTime,
-        },
-      }
-    );
+  );
+  await routines.updateOne(
+    { _id: new mongodb.ObjectID(req.params.id) },
+    {
+      $set: {
+        title: req.body.title,
+        description: req.body.description,
+        priority: req.body.priority,
+        is_active: req.body.is_active,
+        activitiesOccurences: req.body.activitiesOccurences,
+        activityId: req.body.activityId,
+        dayOfWeek: req.body.dayOfWeek,
+        startTime: req.body.startTime,
+        endTime: req.body.endTime,
+      },
+    }
+  );
   res.status(200).send();
 });
 

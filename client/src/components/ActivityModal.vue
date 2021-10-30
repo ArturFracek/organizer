@@ -17,7 +17,7 @@
     <transition name="slide" appear>
       <div class="activity__modal" v-if="showModal">
         <div class="activity__modal__type">Activity</div>
-        <input class="activity__modal__title" v-model="localActivity.title">
+        <input class="activity__modal__title" v-model="localActivity.title" />
         <div class="activity__createdAt">Created at: <br />{{ date }}</div>
         <textArea v-model="localActivity.description" />
         <Slider v-model="localActivity.priority" />
@@ -303,5 +303,4 @@ h1 {
 .activity__modal__title:focus {
   outline: none;
 }
-
 </style>
