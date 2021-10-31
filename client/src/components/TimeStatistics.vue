@@ -6,7 +6,7 @@
         v-for="(occurence, index) in activeRoutine.activitiesOccurences"
         :key="index"
       >
-        {{ getActivityName(occurence) }}
+        {{ getActivityName(occurence) + timerDiff }}
       </div>
     </div>
     <button class="test" @click="test"></button>
@@ -18,28 +18,27 @@ import { mapActions, mapGetters } from "vuex";
 
 export default {
   async mounted() {
-    this.fetchRoutines(),
-    this.fetchActivities();
+    this.fetchRoutines(), this.fetchActivities();
   },
   computed: {
     ...mapGetters({
       activities: "activities/activities",
       activeRoutine: "routines/activeRoutine",
+      timerDiff: "timer/timerDiff"
     }),
   },
   methods: {
     ...mapActions({
-      fetchAllRoutines: "routines/fetchAllRoutines",
       fetchAllActivities: "activities/fetchAllActivities",
+      fetchAllRoutines: "routines/fetchAllRoutines",
     }),
     async fetchRoutines() {
       await this.fetchAllRoutines();
     },
-      async fetchActivities() {
+    async fetchActivities() {
       await this.fetchAllActivities();
     },
     getActivityName(occurence) {
-      console.log(occurence);
       const activity = this.activities.find(
         (a) => a._id === occurence.activityId
       );

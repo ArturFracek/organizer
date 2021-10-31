@@ -192,7 +192,6 @@ export default {
   display: flex;
   flex-flow: column;
   align-items: center;
-  margin-bottom: 2vh;
 }
 
 .organize__TimeNetContainer {

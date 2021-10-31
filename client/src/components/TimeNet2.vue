@@ -1,6 +1,6 @@
 <template>
   <div class="net__container">
-    {{ timerDiff }}
+    <div class="net__activityTimeDisplay">{{ formatThisTime(timerDiff) }}</div>
     <table class="net__table">
       <thead>
         <tr>
@@ -71,7 +71,7 @@
 </template>
 
 <script>
-import { mapGetters } from "vuex";
+import { mapGetters, mapMutations } from "vuex";
 import moment from "moment";
 import { hours } from "../constants/index";
 import { minutes } from "../constants/index";
@@ -85,13 +85,7 @@ moment.updateLocale("en", {
 
 export default {
   data() {
-    return {
-      timerState: "stopped",
-      ticker: null,
-      currentTimer: 0,
-      formattedTime: "00:00:00",
-      timerStartedAt: null,
-    };
+    return {};
   },
   computed: {
     weekdays: () => moment.weekdays(true),
@@ -102,12 +96,11 @@ export default {
       activities: "activities/activities",
       routine: "routines/activeRoutine",
       currentTime: "timer/currentTime",
+      timerDiff: "timer/timerDiff",
     }),
-    timerDiff() {
-      if (!this.timerStartedAt) return "00:00:00";
-      const diff = Math.floor((this.currentTime - this.timerStartedAt) / 1000);
-      return diff;
-    },
+    ...mapMutations({
+      toggleTimer: "timer/TOGGLE_TIMER",
+    }),
   },
   methods: {
     formatTime(timeNumber) {
@@ -129,21 +122,12 @@ export default {
       const activity = this.activities.find((a) => a._id === activityId);
       return activity ? activity.title : "";
     },
-    timerOnOff() {
-      if (this.timerState !== "running") {
-        this.timerState = "running";
-        this.timerStartedAt = new Date();
-      }
-    },
     formatThisTime(seconds) {
-      let measuredTime = new Date(null);
-      measuredTime.setSeconds(seconds);
-      let Time = measuredTime.toISOString().substr(11, 8);
-      return Time;
+      return moment(seconds).format("hh:mm:ss")
     },
-    pause() {
-      window.clearInterval(this.ticker);
-      this.timerState = "paused";
+    timerOnOff(element) {
+      this.toggleTimer;
+      console.log(element)
     },
   },
 };
@@ -267,5 +251,23 @@ export default {
 .net__timerButton:hover {
   color: aquamarine;
   text-shadow: 0 0 7px rgba(130, 251, 211, 1);
+}
+.net__activityTimeDisplay {
+  position: relative;
+  font-size: 1.2rem;
+  left: 1.9%;
+  margin-left: auto;
+  margin-right: auto;
+  color: red;
+  height: 3rem;
+  width: 32.75vw;
+  color: rgb(74, 255, 165);
+  text-shadow: 2px 2px 1px rgb(81, 62, 255);
+  font-weight: bold;
+  border-left: 2px solid aquamarine;
+  border-right: 2px solid aquamarine;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 </style>
