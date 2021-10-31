@@ -12,19 +12,19 @@
         <li class="profile__UserInfo__card__item">Email: {{ user.email }}</li>
       </div>
     </div>
-    <div class="profile__TimeStatisticsContainer">
-      <div class="profile__TimeStatisticsContainer__title">Time Statistics</div>
-    </div>
+    <TimeStatistics />
     <Goals />
   </div>
 </template>
 
 <script>
+import TimeStatistics from "./TimeStatistics.vue"
 import { mapActions, mapGetters } from "vuex";
 import Goals from "./Goals.vue";
 
 export default {
   components: {
+    TimeStatistics,
     Goals,
   },
   computed: {

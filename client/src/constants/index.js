@@ -34,19 +34,9 @@ export const hours = [
   2,
 ];
 
-export const minutes = [
-  parseInt('00'),
-  15,
-  30,
-  45,
-]
+export const minutes = [parseInt("00"), 15, 30, 45];
 
-export const minutesDisplay = [
-  15,
-  30,
-  45
-]
-
+export const minutesDisplay = [15, 30, 45];
 
 export const DEFAULT_TIME_FORMAT = "HH:mm";
 

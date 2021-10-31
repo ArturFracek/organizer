@@ -87,7 +87,7 @@ export default {
   justify-content: center;
   align-items: center;
   width: 100%;
-  min-height: 12%;
+  min-height: 9%;
   text-decoration: none;
   background: repeating-linear-gradient(
       90deg,
@@ -249,12 +249,13 @@ export default {
 
 .nav__link {
   font-size: 1.2rem;
-  padding: 0.4rem 1rem;
+  padding: 0rem 1rem;
   text-decoration: none;
   color: whitesmoke;
   font-weight: bold;
   white-space: nowrap;
   cursor: pointer;
+  transition: 0.5s;
 }
 
 .nav__link--toLeft {
@@ -263,10 +264,11 @@ export default {
 
 .nav__link:hover {
   color: #ff1616;
-  text-shadow: 0 0 10px rgb(243, 109, 91);
+  text-shadow: 0 0 3px rgb(243, 109, 91);
   border-top: 1px solid red;
-  border-bottom: 0.1px solid red;
+  border-bottom: 1px solid red;
   border-radius: 8px;
+  padding: 0.4rem 1rem;
 }
 
 .nav__mainLink {
@@ -279,14 +281,14 @@ export default {
   text-shadow: 0rem 0rem 0.2rem rgb(75, 252, 243),
     0rem 0rem 0.2rem rgb(75, 252, 243);
   text-decoration: none;
+  transition: 0.5s;
 }
 
 .nav__mainLink:hover {
-  color: #e63535;
-  text-shadow: 0 0 20px rgb(255, 4, 4);
-  filter: drop-shadow(0 0 50px red);
-  border-left: 0.1px solid red;
-  border-right: 0.1px solid red;
+  color: #ff0000;
+  text-shadow: 0px 0px 10px rgb(255, 255, 255, 0);
+  border-left: 1px solid red;
+  border-right: 1px solid red;
   border-radius: 12px;
   padding: 0 10px;
 }
@@ -300,7 +302,7 @@ export default {
     opacity: 0;
     text-shadow: 0.6rem 0rem 0.8rem turquoise, -0.6rem 0rem 0.8rem turquoise,
       0rem 0.6rem 0.8rem turquoise, 0rem -0.6rem 0.8rem turquoise;
-      filter: hue-rotate(0deg);
+    filter: hue-rotate(0deg);
   }
   20% {
     opacity: 0.8;
@@ -310,13 +312,13 @@ export default {
     opacity: 1;
     text-shadow: 0.3rem 0rem 0.8rem turquoise, -0.3rem 0rem 0.8rem turquoise,
       0rem 0.3rem 0.8rem turquoise, 0rem -0.3rem 0.8rem turquoise;
-      filter: hue-rotate(180deg);
+    filter: hue-rotate(180deg);
   }
   90% {
     opacity: 1;
     text-shadow: 0.2rem 0rem 1.4rem turquoise, -0.2rem 0rem 1.4rem turquoise,
       0rem 0.2rem 1.4em turquoise, 0rem -0.2rem 1.4rem turquoise;
-      filter: hue-rotate(180deg);
+    filter: hue-rotate(180deg);
   }
   100% {
     opacity: 1;

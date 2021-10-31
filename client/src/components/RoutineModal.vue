@@ -422,7 +422,8 @@ input:hover ~ .routine__showModalButton {
   color: red;
   border: 2px solid red;
   text-shadow: 0 0 6px red;
-  box-shadow: 0 0 10px red;
+  box-shadow: 0 0 5px red;
+  backdrop-filter: drop-shadow(0 0 10px red);
 }
 
 .routine__title {

@@ -11,7 +11,7 @@
 <script>
 import TheNavigation from "@/components/TheNavigation.vue";
 import Errors from "@/components/Errors.vue";
-import { mapGetters } from "vuex";
+import { mapGetters, mapMutations } from "vuex";
 
 export default {
   components: {
@@ -20,6 +20,16 @@ export default {
   },
   computed: {
     ...mapGetters(["error"]),
+  },
+  methods: {
+    ...mapMutations({
+      SET_CURRENT_TIME: "timer/SET_CURRENT_TIME",
+    }),
+  },
+  mounted() {
+    setInterval(() => {
+      this.SET_CURRENT_TIME();
+    }, 1000);
   },
 };
 </script>
@@ -55,7 +65,7 @@ body {
 }
 
 input:-webkit-autofill,
-input:-webkit-autofill:hover, 
+input:-webkit-autofill:hover,
 input:-webkit-autofill:focus,
 textarea:-webkit-autofill,
 textarea:-webkit-autofill:hover,
@@ -68,6 +78,4 @@ select:-webkit-autofill:focus {
   -webkit-box-shadow: 0 0 0px 1000px rgb(0, 0, 0) inset;
   transition: background-color 5000s ease-in-out 0s;
 }
-
-
 </style>

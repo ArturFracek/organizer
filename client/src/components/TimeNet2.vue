@@ -1,5 +1,6 @@
 <template>
   <div class="net__container">
+    {{ timerDiff }}
     <table class="net__table">
       <thead>
         <tr>
@@ -18,13 +19,10 @@
         </tr>
       </thead>
       <tbody>
-        <tr
-          v-for="(hour, hourIndex) in hours"
-          :key="hourIndex"
-          :class="['net__hourRow', `net__hourRow-${hourIndex}`]"
-        >
+        <tr v-for="(hour, hourIndex) in hours" :key="hourIndex">
           <td class="net__hour">
             {{ formatTime(hour) }}
+
             <tr
               class="net__minutes"
               v-for="(minuteDisplay, minuteIndex) in minutesDisplay"
@@ -48,20 +46,27 @@
             <div
               v-for="(tenMinutes, minutesIndex) in minutes"
               :key="minutesIndex"
-              :class="['net__minutesRow', `net__minutesRow-${hourIndex}`]"
+              :class="{
+                net__minutesRow: true,
+                'net__minutesRow--exist': getActivityOccurance(
+                  dayIndex,
+                  hour,
+                  tenMinutes
+                ),
+              }"
             >
-              {{
-                getActivityName(
-                  getActivityOccurance(dayIndex, hour, tenMinutes)
-                ) || minutes[4]
-              }}
+              <button class="net__timerButton" @click="timerOnOff">
+                {{
+                  getActivityName(
+                    getActivityOccurance(dayIndex, hour, tenMinutes)
+                  )
+                }}
+              </button>
             </div>
           </td>
         </tr>
       </tbody>
     </table>
-    <button @click="log">Log activities</button>
-    <button @click="logActivityId">Log ID</button>
   </div>
 </template>
 
@@ -69,7 +74,6 @@
 import { mapGetters } from "vuex";
 import moment from "moment";
 import { hours } from "../constants/index";
-import { time } from "../constants/index";
 import { minutes } from "../constants/index";
 import { minutesDisplay } from "../constants/index";
 
@@ -80,6 +84,15 @@ moment.updateLocale("en", {
 });
 
 export default {
+  data() {
+    return {
+      timerState: "stopped",
+      ticker: null,
+      currentTimer: 0,
+      formattedTime: "00:00:00",
+      timerStartedAt: null,
+    };
+  },
   computed: {
     weekdays: () => moment.weekdays(true),
     hours: () => hours,
@@ -88,7 +101,13 @@ export default {
     ...mapGetters({
       activities: "activities/activities",
       routine: "routines/activeRoutine",
+      currentTime: "timer/currentTime",
     }),
+    timerDiff() {
+      if (!this.timerStartedAt) return "00:00:00";
+      const diff = Math.floor((this.currentTime - this.timerStartedAt) / 1000);
+      return diff;
+    },
   },
   methods: {
     formatTime(timeNumber) {
@@ -96,7 +115,7 @@ export default {
     },
     getActivityOccurance(dayIndex, hour, tenMinutes) {
       if (!this.routine) return "";
-      const act = this.routine.activitiesOccurences.find(
+      const occurence = this.routine.activitiesOccurences.find(
         (a) =>
           moment(a.startTime, "HH:mm") <=
             moment({ hour: hour, minute: tenMinutes }) &&
@@ -104,17 +123,27 @@ export default {
             moment({ hour: hour, minute: tenMinutes }) &&
           a.dayOfWeek === dayIndex
       );
-      return act ? act.activityId : "";
+      return occurence ? occurence.activityId : "";
     },
     getActivityName(activityId) {
       const activity = this.activities.find((a) => a._id === activityId);
       return activity ? activity.title : "";
     },
-    log() {
-      console.log(time);
+    timerOnOff() {
+      if (this.timerState !== "running") {
+        this.timerState = "running";
+        this.timerStartedAt = new Date();
+      }
     },
-    logActivityId() {
-      console.log(this.routine.activitiesOccurences);
+    formatThisTime(seconds) {
+      let measuredTime = new Date(null);
+      measuredTime.setSeconds(seconds);
+      let Time = measuredTime.toISOString().substr(11, 8);
+      return Time;
+    },
+    pause() {
+      window.clearInterval(this.ticker);
+      this.timerState = "paused";
     },
   },
 };
@@ -156,6 +185,11 @@ export default {
   white-space: nowrap;
   min-width: 20px;
 }
+
+.net__hourRow--exist ~ .net__hourRow--exist {
+  display: none;
+}
+
 .net__minutes {
   position: relative;
   top: -1px;
@@ -165,14 +199,13 @@ export default {
   font-size: 11px;
   margin-right: 5px;
   font-weight: 500;
-  opacity: 0.6;
+  opacity: 0.8;
 }
 
 .net__hourInDay {
   text-align: center;
   border: 0.1px solid turquoise;
   border-radius: 0.4rem;
-  height: 1rem;
 }
 
 .net__cell {
@@ -182,23 +215,57 @@ export default {
   height: 2rem;
 }
 
-button {
-  height: 2rem;
-  width: 6rem;
-  background: red;
-}
-
 .net__minutesRow {
   display: flex;
   justify-content: center;
-  align-items: flex-end;
-  height: 15px;
-  color: rgb(112, 255, 207);
-  text-shadow: 2px 2px 2px rgb(0, 4, 255);
-  font-size: 0.7rem;
+  align-items: center;
+  height: 18px;
   font-weight: bold;
   margin: 0;
   padding: 0;
+  border-bottom: 1px dotted rgba(87, 246, 185, 0.3);
+  letter-spacing: 0px;
+  text-size-adjust: auto;
+}
+
+.net__minutesRow--exist {
+  font-size: 13px;
+  text-shadow: 2px 1px 1px rgb(56, 53, 241);
+  color: rgb(255, 255, 255);
+  border-left: 1px solid aquamarine;
+  border-top: 1px solid aquamarine;
+  border-right: 1px solid aquamarine;
+  border-bottom: 1px solid aquamarine;
+  width: 93%;
+  border-radius: 3px;
+  margin-left: auto;
+  margin-right: auto;
+  box-shadow: 0px 0px 10px rgb(116, 255, 220, 0.5);
+}
+
+.net__minutesRow--exist ~ .net__minutesRow--exist {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  font-size: 12px;
+  color: rgba(106, 246, 200, 0);
+  border-top: none;
   border-bottom: 0.5px dotted rgba(87, 246, 185, 0.2);
+  border-right: none;
+  border-left: none;
+  box-shadow: none;
+  transition: 0.3s;
+}
+
+.net__timerButton {
+  z-index: 3;
+  width: 85%;
+  text-shadow: 0 0 2px rgba(130, 251, 211, 0.8);
+  transition: 0.3s;
+}
+.net__timerButton:hover {
+  color: aquamarine;
+  text-shadow: 0 0 7px rgba(130, 251, 211, 1);
 }
 </style>
