@@ -18,8 +18,7 @@ import { mapActions, mapGetters } from "vuex";
 
 export default {
   async mounted() {
-    this.fetchRoutines(),
-    this.fetchActivities();
+    this.fetchRoutines(), this.fetchActivities();
   },
   computed: {
     ...mapGetters({
@@ -29,13 +28,13 @@ export default {
   },
   methods: {
     ...mapActions({
-      fetchAllRoutines: "routines/fetchAllRoutines",
       fetchAllActivities: "activities/fetchAllActivities",
+      fetchAllRoutines: "routines/fetchAllRoutines",
     }),
     async fetchRoutines() {
       await this.fetchAllRoutines();
     },
-      async fetchActivities() {
+    async fetchActivities() {
       await this.fetchAllActivities();
     },
     getActivityName(occurence) {
