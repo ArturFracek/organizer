@@ -6,7 +6,7 @@
         v-for="(occurence, index) in activeRoutine.activitiesOccurences"
         :key="index"
       >
-        {{ getActivityName(occurence) }}
+        {{ getActivityName(occurence) + timerDiff }}
       </div>
     </div>
     <button class="test" @click="test"></button>
@@ -24,6 +24,7 @@ export default {
     ...mapGetters({
       activities: "activities/activities",
       activeRoutine: "routines/activeRoutine",
+      timerDiff: "timer/timerDiff"
     }),
   },
   methods: {
@@ -38,7 +39,6 @@ export default {
       await this.fetchAllActivities();
     },
     getActivityName(occurence) {
-      console.log(occurence);
       const activity = this.activities.find(
         (a) => a._id === occurence.activityId
       );
