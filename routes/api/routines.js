@@ -47,10 +47,6 @@ router.put("/:id", async (req, res) => {
         priority: req.body.priority,
         is_active: req.body.is_active,
         activitiesOccurences: req.body.activitiesOccurences,
-        activityId: req.body.activityId,
-        dayOfWeek: req.body.dayOfWeek,
-        startTime: req.body.startTime,
-        endTime: req.body.endTime,
       },
     }
   );

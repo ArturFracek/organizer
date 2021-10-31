@@ -115,7 +115,7 @@ export default {
     },
     getActivityOccurance(dayIndex, hour, tenMinutes) {
       if (!this.routine) return "";
-      const act = this.routine.activitiesOccurences.find(
+      const occurence = this.routine.activitiesOccurences.find(
         (a) =>
           moment(a.startTime, "HH:mm") <=
             moment({ hour: hour, minute: tenMinutes }) &&
@@ -123,7 +123,7 @@ export default {
             moment({ hour: hour, minute: tenMinutes }) &&
           a.dayOfWeek === dayIndex
       );
-      return act ? act.activityId : "";
+      return occurence ? occurence.activityId : "";
     },
     getActivityName(activityId) {
       const activity = this.activities.find((a) => a._id === activityId);

@@ -1,16 +1,26 @@
 <template>
   <div class="TimeStatistics__container">
     <div class="TimeStatistics__container__title">Time Statistics</div>
-    <div class="TimeStatistics__activitiesContainer">
-      {{ getActivityName(activeRoutine) }}
+    <div v-if="activeRoutine" class="TimeStatistics__activitiesContainer">
+      <div
+        v-for="(occurence, index) in activeRoutine.activitiesOccurences"
+        :key="index"
+      >
+        {{ getActivityName(occurence) }}
+      </div>
     </div>
+    <button class="test" @click="test"></button>
   </div>
 </template>
 
 <script>
+import { mapActions, mapGetters } from "vuex";
 
-import { mapGetters } from "vuex";
 export default {
+  async mounted() {
+    this.fetchRoutines(),
+    this.fetchActivities();
+  },
   computed: {
     ...mapGetters({
       activities: "activities/activities",
@@ -18,9 +28,25 @@ export default {
     }),
   },
   methods: {
-    getActivityName(activeRoutine) {
-      const activity = this.activities.find((a) => a._id === this.activeRoutine.activitiesOccurences.activityId);
+    ...mapActions({
+      fetchAllRoutines: "routines/fetchAllRoutines",
+      fetchAllActivities: "activities/fetchAllActivities",
+    }),
+    async fetchRoutines() {
+      await this.fetchAllRoutines();
+    },
+      async fetchActivities() {
+      await this.fetchAllActivities();
+    },
+    getActivityName(occurence) {
+      console.log(occurence);
+      const activity = this.activities.find(
+        (a) => a._id === occurence.activityId
+      );
       return activity ? activity.title : "";
+    },
+    test() {
+      console.log();
     },
   },
 };
@@ -28,6 +54,10 @@ export default {
 
 <style>
 .TimeStatistics__container {
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  justify-content: flex-start;
   height: 30%;
   max-height: 60%;
   width: 80%;
@@ -45,7 +75,7 @@ export default {
   backdrop-filter: drop-shadow(4px 4px 6px rgb(207, 17, 17)) hue-rotate(180deg)
     opacity(80%);
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   margin-bottom: 2rem;
 }
 
@@ -55,5 +85,14 @@ export default {
   letter-spacing: 1px;
   text-shadow: 0 0 10px rgb(255, 255, 255);
   cursor: unset;
+}
+.TimeStatistics__activitiesContainer {
+  width: 100%;
+  height: 100%;
+}
+.test {
+  background-color: red;
+  width: 20px;
+  height: 10px;
 }
 </style>
