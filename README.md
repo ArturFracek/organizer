@@ -6,8 +6,9 @@
 <p align="center"><code><img alt="Organizer logo" height="90" title="Organizer Logo" src="../organiser/client/src/assets/LOGO.png"></code></p>
 
 <b>Organizer</b> is an app that allows to make a personal, well suited weekly and daily routines based on user's activities. The app's aim is to help user plan future in higly time controling order. The following task can be obtained by using Organizer features:
-1-Set a personal goal, describe it, give it a priority number, and supossed (editable) deadline.
-2-
+
+1. Set a personal goal, describe it, give it a priority number, and supossed (editable) deadline.
+2. 
 
 <p align="center"><code><img alt="MEVN logo" height="90" title="MEVN logo" src="client\src\assets\img\mevnLogo.png"></code></p>
 

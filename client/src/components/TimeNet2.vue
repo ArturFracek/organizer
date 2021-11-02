@@ -1,6 +1,6 @@
 <template>
   <div class="net__container">
-    <div class="net__activityTimeDisplay">{{ formatThisTime(timerDiff) }}</div>
+    <div class="net__activityTimeDisplay">{{ hourTimeFormat(timerDiff) }}</div>
     <table class="net__table">
       <thead>
         <tr>
@@ -55,7 +55,12 @@
                 ),
               }"
             >
-              <button class="net__timerButton" @click="timerOnOff">
+              <button
+                class="net__timerButton"
+                @click="
+                  timerOnOff(getActivityOccurance(dayIndex, hour, tenMinutes))
+                "
+              >
                 {{
                   getActivityName(
                     getActivityOccurance(dayIndex, hour, tenMinutes)
@@ -122,12 +127,12 @@ export default {
       const activity = this.activities.find((a) => a._id === activityId);
       return activity ? activity.title : "";
     },
-    formatThisTime(seconds) {
-      return moment(seconds).format("hh:mm:ss")
+    hourTimeFormat(seconds) {
+      return moment(seconds, 's').format("HH:mm:ss")
     },
-    timerOnOff(element) {
+    timerOnOff(activityId) {
       this.toggleTimer;
-      console.log(element)
+      // console.log(activityId);
     },
   },
 };
