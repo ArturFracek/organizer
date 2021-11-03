@@ -148,7 +148,9 @@ export default {
   transition: 1s ease-in;
 }
 .occurences__showOccurences {
+  position: relative;
   opacity: 1;
+  left: 1%;
 }
 select {
   color: white;

@@ -126,6 +126,7 @@ export default {
   justify-content: center;
   align-items: center;
   width: 100%;
+  box-sizing: border-box;
 }
 
 .routineModalButton:hover {
@@ -136,8 +137,8 @@ export default {
   display: flex;
   flex-flow: column;
   background-color: transparent;
-  width: 95%;
-  height: 100%;
+  width: 97%;
+  height: auto;
   border-radius: 60px;
   border-bottom: 2px dotted turquoise;
   border-top: 2px dotted turquoise;
@@ -152,6 +153,7 @@ export default {
   align-items: flex-end;
   margin-top: 1.5rem;
   margin-bottom: 0.5rem;
+  box-sizing: border-box;
 }
 
 .routine__bottomSection {
@@ -164,12 +166,14 @@ export default {
 }
 
 .routine__buttonsContainer {
+    position: relative;
   margin-left: 5%;
   width: 100%;
   height: 3rem;
   display: flex;
   justify-content: center;
   align-items: flex-end;
+  right: 2rem;
 }
 
 .routine__showModalButton {
@@ -339,7 +343,7 @@ h1 {
   flex-flow: column;
   align-items: center;
   width: 100%;
-  height: 50%;
+  height: 20%;
 }
 
 .p {

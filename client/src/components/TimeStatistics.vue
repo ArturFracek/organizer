@@ -76,6 +76,7 @@ export default {
   display: flex;
   justify-content: flex-start;
   margin-bottom: 2rem;
+  overflow-y: scroll;
 }
 
 .TimeStatistics__container__title {

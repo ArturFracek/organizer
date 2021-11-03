@@ -103,11 +103,11 @@ export default {
       currentTime: "timer/currentTime",
       timerDiff: "timer/timerDiff",
     }),
+  },
+  methods: {
     ...mapMutations({
       toggleTimer: "timer/TOGGLE_TIMER",
     }),
-  },
-  methods: {
     formatTime(timeNumber) {
       return moment(timeNumber, "H").format("H a");
     },
@@ -131,7 +131,7 @@ export default {
       return moment(seconds, 's').format("HH:mm:ss")
     },
     timerOnOff(activityId) {
-      this.toggleTimer;
+      this.toggleTimer([activityId, this.getActivityName(activityId)]);
       // console.log(activityId);
     },
   },

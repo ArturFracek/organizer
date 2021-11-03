@@ -2,27 +2,26 @@ export default {
   namespaced: true,
 
   state: () => ({
-    currentTime: new Date(),
+    currentTime: null,
     timerState: "stopped",
-    timerStartedAt: undefined,
-    id: "",
+    timerStartedAt: null,
+    timerActivityId: "",
+    timerActvityName: "",
   }),
 
   mutations: {
-   async SET_CURRENT_TIME(state) {
+    async SET_CURRENT_TIME(state) {
       state.currentTime = new Date();
     },
-    TOGGLE_TIMER(state, payload) {
+    TOGGLE_TIMER(state, activityData) {
       if (state.timerState !== "running") {
-        state.timerState === "running";
+        state.timerState = "running";
         state.timerStartedAt = new Date();
-        state.id = payload.routine._id;
-        console.log(payload.routine.activitiesOccurences.activityId)
+        state.timerActivityId = activityData[0];
+        state.timerActvityName = activityData[1];
       } else {
-        state.timerState === "stopped";
-         setInterval(() => {
-         dispatchEvent("SET_CURRENT_TIME()");
-         }, 0);
+        state.timerState = "stopped";
+        state.timerStartedAt = null;
       }
     },
   },
@@ -35,8 +34,8 @@ export default {
     },
     timerDiff(state) {
       if (!state.timerStartedAt) return "00:00:00";
-      const diff = Math.abs(Math.round(
-        (state.currentTime - state.timerStartedAt) / 1000)
+      const diff = Math.abs(
+        Math.ceil((state.currentTime - state.timerStartedAt) / 1000)
       );
       return diff;
     },
