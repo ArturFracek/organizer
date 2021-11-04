@@ -14,6 +14,11 @@ import Errors from "@/components/Errors.vue";
 import { mapGetters, mapMutations } from "vuex";
 
 export default {
+  data() {
+    return {
+      interval: "running",
+    };
+  },
   components: {
     TheNavigation,
     Errors,
@@ -27,8 +32,8 @@ export default {
     }),
   },
   mounted() {
-    setInterval(() => {
-      this.SET_CURRENT_TIME();
+    this.interval = setInterval(() => {
+      this.SET_CURRENT_TIME(this.interval);
     }, 1000);
   },
 };
@@ -82,14 +87,12 @@ select:-webkit-autofill:focus {
   width: 10px;
 }
 ::-webkit-scrollbar-track {
-  background: rgb(71, 243, 255, 0.2); 
-  
+  background: rgb(71, 243, 255, 0.2);
 }
 ::-webkit-scrollbar-thumb {
   background: rgb(117, 255, 182, 0.4);
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: rgb(117, 255, 182, 0.6); 
+  background: rgb(117, 255, 182, 0.6);
 }
-
 </style>

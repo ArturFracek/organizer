@@ -17,6 +17,7 @@ router.post("/", async (req, res) => {
     title,
     priority: 5,
     createdAt: new Date(),
+    duration: 0,
   });
   res.status(201).send();
 });
@@ -31,6 +32,7 @@ router.put("/:id", async (req, res) => {
         title: req.body.title,
         description: req.body.description,
         priority: req.body.priority,
+        duration: req.body.duration,
       },
     }
   );

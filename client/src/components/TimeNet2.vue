@@ -90,7 +90,9 @@ moment.updateLocale("en", {
 
 export default {
   data() {
-    return {};
+    return {
+      toggled: false,
+    };
   },
   computed: {
     weekdays: () => moment.weekdays(true),
@@ -106,7 +108,8 @@ export default {
   },
   methods: {
     ...mapMutations({
-      toggleTimer: "timer/TOGGLE_TIMER",
+      START_TIMER: "timer/START_TIMER",
+      STOP_TIMER: "timer/STOP_TIMER",
     }),
     formatTime(timeNumber) {
       return moment(timeNumber, "H").format("H a");
@@ -128,11 +131,16 @@ export default {
       return activity ? activity.title : "";
     },
     hourTimeFormat(seconds) {
-      return moment(seconds, 's').format("HH:mm:ss")
+      return moment(seconds, "s").format("HH:mm:ss");
     },
     timerOnOff(activityId) {
-      this.toggleTimer([activityId, this.getActivityName(activityId)]);
-      // console.log(activityId);
+      if (this.toggled === false) {
+        this.toggled = true;
+        this.START_TIMER([activityId, this.getActivityName(activityId)]);
+      } else {
+        this.toggled = false;
+        this.STOP_TIMER([activityId, this.getActivityName(activityId)])
+      }
     },
   },
 };

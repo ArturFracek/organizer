@@ -10,23 +10,34 @@ export default {
   }),
 
   mutations: {
-    async SET_CURRENT_TIME(state) {
+    SET_CURRENT_TIME(state, interval) {
       state.currentTime = new Date();
+      console.log(interval);
     },
-    TOGGLE_TIMER(state, activityData) {
+    START_TIMER(state, activityData) {
       if (state.timerState !== "running") {
         state.timerState = "running";
         state.timerStartedAt = new Date();
         state.timerActivityId = activityData[0];
         state.timerActvityName = activityData[1];
-      } else {
-        state.timerState = "stopped";
-        state.timerStartedAt = null;
       }
+    },
+    STOP_TIMER(state, activityData) {
+      if (state.timerState === "running") {
+        state.timerState = "stopped";
+      }
+    },
+    RESET_TIMER(state, activityData) {
+      state.timerState = "stopped";
+      state.timerStartedAt = null;
     },
   },
 
-  actions: {},
+  actions: {
+    addDuration({ dispatch }, activity) {
+      dispatch("activities/updateActivity", activity, { root: true });
+    },
+  },
 
   getters: {
     currentTime(state) {

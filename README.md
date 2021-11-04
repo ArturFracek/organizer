@@ -3,14 +3,14 @@
 [![Organizer](https://img.shields.io/endpoint?url=https://dashboard.cypress.io/badge/simple/g42uwf&style=flat&logo=cypress)](https://dashboard.cypress.io/projects/g42uwf/runs)
 [![Codacy Badge](https://app.codacy.com/project/badge/Grade/b579256de9794b9dadf521dded359088)](https://www.codacy.com/gh/Karol-Witkowski/Gemverse/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=Karol-Witkowski/Gemverse&amp;utm_campaign=Badge_Grade)
 
-<p align="center"><code><img alt="Organizer logo" height="90" title="Organizer Logo" src="../organiser/client/src/assets/LOGO.png"></code></p>
+<p align="center"><code><img alt="Organizer logo" height="110" title="Organizer Logo" src="../organiser/client/src/assets/LOGO.png"><img alt="MEVN logo" height="110" title="MEVN logo" src="../organiser/client/src/assets/mevnLogo.png"></code></p>
 
 <b>Organizer</b> is an app that allows to make a personal, well suited weekly and daily routines based on user's activities. The app's aim is to help user plan future in higly time controling order. The following task can be obtained by using Organizer features:
 
 1. Set a personal goal, describe it, give it a priority number, and supossed (editable) deadline.
 2. 
 
-<p align="center"><code><img alt="MEVN logo" height="90" title="MEVN logo" src="client\src\assets\img\mevnLogo.png"></code></p>
+<!-- <p align="center"><code><img alt="MEVN logo" height="110" title="MEVN logo" src="../organiser/client/src/assets/mevnLogo.png"></code></p> -->
 
 ## Contents
 
@@ -37,7 +37,7 @@
 
 ## Demo
 
-<p align="center">Try <a href="https://gemverse.herokuapp.com/"><b>Gemverse</b></a> by yourself:</p>
+<p align="center">Try <a href="https://gemverse.herokuapp.com/"><b>Organizer</b></a> by yourself:</p>
 <p align="center"><code><a href="https://gemverse.herokuapp.com/"><img height="400" src="client\src\assets\img\usageexample.gif" alt="usage example"></a></code></p>
 <hr>
 <br>
@@ -46,18 +46,19 @@
 
 | Technology | Description | Link |
 |-|-|-|
-| Sass | Preprocessor that helps write maintainable CSS | https://sass-lang.com/ |
-| Vuetify | Vue UI Library helps to generate responsive and polished applications | https://vuetifyjs.com/ |
-| Vue.js | Versatile Progressive Javascript Framework for building user interfaces | https://vuejs.org/ |
+| Vue.js| Versatile Progressive Javascript Framework for building user interfaces| https://vuejs.org/ |
 | Node.js | Asynchronous JavaScript runtime designed to build scalable network applications | https://nodejs.org/ |
 | Express | Unopinionated, minimal and flexible Node.js framework | https://expressjs.com |
+| MongoDB | NoSQL document database that works well with Node.js | https://www.mongodb.com/ |
+| Vuex | Vuex is a state management pattern + library for Vue.js applications. It serves as a centralized store for all the components in an application | https://vuex.vuejs.org/ |
+| Vuetify | Vue UI Library helps to generate responsive and polished applications | https://vuetifyjs.com/ |
+| Bootstrap | Bootstrap is the most popular CSS Framework for developing responsive and mobile-first websites.  | https://getbootstrap.com/ |
 | Socket.IO | Web sockets implementation enables real-time event-based communication | https://socket.io/ |
 | Passport | Authentication middleware for Node.js | https://www.passportjs.org |
 | JWT | A package that generates tokens for secure authentication | https://github.com/auth0/node-jsonwebtoken/ |
 | bcrypt.js | A library to help hash passwords stored in databases | https://github.com/dcodeIO/bcrypt.js/ |
-| MongoDB | NoSQL document database that works well with Node.js | https://www.mongodb.com/ |
 | Mongoose | MongoDB object modeling tool for Node.js | https://mongoosejs.com/ |
-| Day.js | A library that parses, validates, manipulates, and displays dates and times | https://day.js.org/ |
+| Moment.js| A library that parses, validates, manipulates, and displays dates and times | https://momentjs.com/ |
 | Jest | A comprehensive JavaScript testing solution | https://jestjs.io/ |
 | Cypress | E2E Testing Framework that runs in a browser | https://www.cypress.io/ |
 <hr>

@@ -23,6 +23,7 @@ export default {
     },
     async updateActivity({ dispatch }, updatedActivity) {
       await ActivitiesService.updateActivity(updatedActivity);
+      console.log(updatedActivity)
       await dispatch("fetchAllActivities");
     },
     async deleteActivity({ dispatch }, { id }) {
