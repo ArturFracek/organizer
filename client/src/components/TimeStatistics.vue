@@ -2,12 +2,12 @@
   <div class="TimeStatistics__container">
     <div class="TimeStatistics__container__title">Time Statistics</div>
     <div v-if="activeRoutine" class="TimeStatistics__activitiesContainer">
-      <div
+      <button
         v-for="(occurence, index) in activeRoutine.activitiesOccurences"
         :key="index"
       >
-        {{ getActivityName(occurence) + timerDiff }}
-      </div>
+        {{ getActivityNameById(occurence) }} {{ getActivityDurationById(occurence) || 0 }}
+      </button>
     </div>
     <button class="test" @click="test"></button>
   </div>
@@ -24,7 +24,6 @@ export default {
     ...mapGetters({
       activities: "activities/activities",
       activeRoutine: "routines/activeRoutine",
-      timerDiff: "timer/timerDiff"
     }),
   },
   methods: {
@@ -38,11 +37,15 @@ export default {
     async fetchActivities() {
       await this.fetchAllActivities();
     },
-    getActivityName(occurence) {
+    getActivityNameById(occurence) {
       const activity = this.activities.find(
         (a) => a._id === occurence.activityId
       );
       return activity ? activity.title : "";
+    },
+    getActivityDurationById(occurence) {
+      const activity = this.activities.find((a) => a._id === occurence.activityId);
+      return activity ? activity.duration : "";
     },
     test() {
       console.log();
@@ -87,6 +90,8 @@ export default {
   cursor: unset;
 }
 .TimeStatistics__activitiesContainer {
+  display: flex;
+  flex-flow: column;
   width: 100%;
   height: 100%;
 }

@@ -110,6 +110,7 @@ export default {
   border-image-repeat: stretch;
   display: flex;
   flex-flow: column;
+  overflow-y: scroll;
 }
 
 .goals__addingGoalsContainer {
@@ -160,7 +161,7 @@ export default {
   transition: top 200ms ease-in;
   left: 200ms ease-in;
   font-size: 200ms ease-in;
-  top: -0.3rem;
+  top: 0.7rem;
   right: 0;
   background-color: none;
   font-weight: bold;
@@ -172,6 +173,7 @@ export default {
   color: rgb(255, 255, 255);
   text-shadow: 0 0 0.8rem rgb(253, 122, 122);
   pointer-events: none;
+  margin-bottom: 1.8rem;
 }
 
 .goals__addGoal__button {

@@ -1,6 +1,12 @@
 <template>
   <div class="net__container">
-    <div class="net__activityTimeDisplay">{{ hourTimeFormat(timerDiff) }}</div>
+    <div class="net__activityTimeDisplay">
+      {{
+        hourTimeFormat(timerDiff) !== "00:00:00"
+          ? hourTimeFormat(timerDiff)
+          : "Select Activity"
+      }}
+    </div>
     <table class="net__table">
       <thead>
         <tr>
@@ -133,7 +139,11 @@ export default {
       return activity ? activity.title : "";
     },
     hourTimeFormat(seconds) {
-      return moment(seconds, "s").format("HH:mm:ss");
+      const diff = moment.duration(seconds, "seconds");
+      const diffHours = Math.floor(diff.asHours());
+      const diffHoursFormatted = diffHours < 10 ? `0${diffHours}` : diffHours 
+      const mmss = moment.utc(diff.as('milliseconds')).format("mm:ss")
+      return `${diffHoursFormatted}:${mmss}`;
     },
     timerOnOff(activityId) {
       if (this.toggled === false) {

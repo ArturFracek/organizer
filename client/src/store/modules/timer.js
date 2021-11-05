@@ -53,7 +53,7 @@ export default {
       return state.currentTime;
     },
     timerDiff(state, getters, rootState, rootGetters) {
-      if (!state.timerStartedAt) return "Select Activity";
+      if (!state.timerStartedAt) return "00:00:00";
       const activity = rootGetters["activities/activityById"](
         state.timerActivityId
       );
