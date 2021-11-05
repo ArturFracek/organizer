@@ -40,5 +40,8 @@ export default {
     activities(state) {
       return state.activities;
     },
+    activityById(state) {
+      return (id) => state.activities.find(a => a._id === id)
+    }
   },
 };

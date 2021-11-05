@@ -76,7 +76,7 @@
 </template>
 
 <script>
-import { mapGetters, mapMutations } from "vuex";
+import { mapActions, mapGetters, mapMutations } from "vuex";
 import moment from "moment";
 import { hours } from "../constants/index";
 import { minutes } from "../constants/index";
@@ -109,7 +109,9 @@ export default {
   methods: {
     ...mapMutations({
       START_TIMER: "timer/START_TIMER",
-      STOP_TIMER: "timer/STOP_TIMER",
+    }),
+    ...mapActions({
+      stopTimerAndSave: "timer/stopTimerAndSave",
     }),
     formatTime(timeNumber) {
       return moment(timeNumber, "H").format("H a");
@@ -136,10 +138,13 @@ export default {
     timerOnOff(activityId) {
       if (this.toggled === false) {
         this.toggled = true;
-        this.START_TIMER([activityId, this.getActivityName(activityId)]);
+        this.START_TIMER({
+          activityId,
+          name: this.getActivityName(activityId),
+        });
       } else {
         this.toggled = false;
-        this.STOP_TIMER([activityId, this.getActivityName(activityId)])
+        this.stopTimerAndSave();
       }
     },
   },
