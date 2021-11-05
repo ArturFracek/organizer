@@ -1,10 +1,11 @@
 <template>
   <div class="net__container">
     <div class="net__activityTimeDisplay">
+      {{ this.toggled !== true ? "" : activityTitle }}
       {{
         hourTimeFormat(timerDiff) !== "00:00:00"
           ? hourTimeFormat(timerDiff)
-          : "Select Activity"
+          : "Select Activity Below"
       }}
     </div>
     <table class="net__table">
@@ -108,7 +109,7 @@ export default {
     ...mapGetters({
       activities: "activities/activities",
       routine: "routines/activeRoutine",
-      currentTime: "timer/currentTime",
+      activityTitle: "timer/activityTitle",
       timerDiff: "timer/timerDiff",
     }),
   },
@@ -141,8 +142,8 @@ export default {
     hourTimeFormat(seconds) {
       const diff = moment.duration(seconds, "seconds");
       const diffHours = Math.floor(diff.asHours());
-      const diffHoursFormatted = diffHours < 10 ? `0${diffHours}` : diffHours 
-      const mmss = moment.utc(diff.as('milliseconds')).format("mm:ss")
+      const diffHoursFormatted = diffHours < 10 ? `0${diffHours}` : diffHours;
+      const mmss = moment.utc(diff.as("milliseconds")).format("mm:ss");
       return `${diffHoursFormatted}:${mmss}`;
     },
     timerOnOff(activityId) {
@@ -155,6 +156,7 @@ export default {
       } else {
         this.toggled = false;
         this.stopTimerAndSave();
+        console.log(this.activityTitle);
       }
     },
   },

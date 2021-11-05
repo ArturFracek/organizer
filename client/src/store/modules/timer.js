@@ -6,7 +6,7 @@ export default {
     timerState: "stopped",
     timerStartedAt: null,
     timerActivityId: "",
-    timerActvityName: "",
+    timerActivityName: "",
   }),
 
   mutations: {
@@ -18,7 +18,7 @@ export default {
         state.timerState = "running";
         state.timerStartedAt = new Date();
         state.timerActivityId = activityId;
-        state.timerActvityName = name;
+        state.timerActivityName = name;
       }
     },
     STOP_TIMER(state) {
@@ -63,5 +63,8 @@ export default {
       );
       return activityDuration + diff;
     },
+    activityTitle(state) {
+      return state.timerActivityName;
+    }
   },
 };

@@ -3,10 +3,14 @@
     <div class="TimeStatistics__container__title">Time Statistics</div>
     <div v-if="activeRoutine" class="TimeStatistics__activitiesContainer">
       <button
+        class="TimeStatistics__activityTimerButton"
         v-for="(occurence, index) in activeRoutine.activitiesOccurences"
         :key="index"
       >
-        {{ getActivityNameById(occurence) }} {{ getActivityDurationById(occurence) || 0 }}
+        {{ getActivityNameById(occurence) }}
+        <div class="TimeStatistics__activityDuration">
+          {{ hourTimeFormat(getActivityDurationById(occurence)) || 0 }}
+        </div>
       </button>
     </div>
     <button class="test" @click="test"></button>
@@ -15,15 +19,17 @@
 
 <script>
 import { mapActions, mapGetters } from "vuex";
+import moment from "moment";
 
 export default {
-  async mounted() {
+  mounted() {
     this.fetchRoutines(), this.fetchActivities();
   },
   computed: {
     ...mapGetters({
       activities: "activities/activities",
       activeRoutine: "routines/activeRoutine",
+      timerDiff: "timer/timerDiff",
     }),
   },
   methods: {
@@ -44,8 +50,17 @@ export default {
       return activity ? activity.title : "";
     },
     getActivityDurationById(occurence) {
-      const activity = this.activities.find((a) => a._id === occurence.activityId);
+      const activity = this.activities.find(
+        (a) => a._id === occurence.activityId
+      );
       return activity ? activity.duration : "";
+    },
+    hourTimeFormat(seconds) {
+      const diff = moment.duration(seconds, "seconds");
+      const diffHours = Math.floor(diff.asHours());
+      const diffHoursFormatted = diffHours < 10 ? `0${diffHours}` : diffHours;
+      const mmss = moment.utc(diff.as("milliseconds")).format("mm:ss");
+      return `${diffHoursFormatted}:${mmss}`;
     },
     test() {
       console.log();
@@ -59,7 +74,6 @@ export default {
   display: flex;
   flex-flow: column;
   align-items: center;
-  justify-content: flex-start;
   height: 30%;
   max-height: 60%;
   width: 80%;
@@ -76,10 +90,7 @@ export default {
   border-image-repeat: stretch;
   backdrop-filter: drop-shadow(4px 4px 6px rgb(207, 17, 17)) hue-rotate(180deg)
     opacity(80%);
-  display: flex;
-  justify-content: flex-start;
   margin-bottom: 2rem;
-  overflow-y: scroll;
 }
 
 .TimeStatistics__container__title {
@@ -90,14 +101,21 @@ export default {
   cursor: unset;
 }
 .TimeStatistics__activitiesContainer {
+  width: 100%;
+  height: 90%;
   display: flex;
   flex-flow: column;
-  width: 100%;
-  height: 100%;
+  flex-wrap: wrap;
+  align-content: space-around;
 }
-.test {
-  background-color: red;
-  width: 20px;
-  height: 10px;
+
+.TimeStatistics__activityTimerButton {
+  display: flex;
+  margin: 3px;
+  font-weight: 500;
+  color: white;
+}
+.TimeStatistics__activityDuration {
+  margin-left: 10px;
 }
 </style>
