@@ -320,11 +320,17 @@ ul {
   background-color: transparent;
 }
 .goal__deadline__container {
+  display: flex;
+  flex-flow: column;
+  align-items: center;
   position: fixed;
-  top: 0.2rem;
-  right: 4.5rem;
+  top: 0.1rem;
+  right: 7.5rem;
+  width: 6rem;
   }
-.goal__deadline {
+.datePicker__container {
+  width: 7rem;
+  border: 0.1px solid turquoise;
 }
 
 .goal__deadline--label {
@@ -333,7 +339,7 @@ ul {
   color: rgb(84, 245, 178);
   text-shadow: 0px 0px 2px rgb(0, 255, 157);
   text-align: center;
-  transition: 0.3s;;
+  transition: 0.3s;
 }
 
 </style>

@@ -46,6 +46,10 @@ input {
   text-align: center;
   outline: none;
 }
+
+input:hover {
+  cursor: pointer;
+}
 span {
   color: aquamarine;
 }
@@ -93,5 +97,6 @@ span {
 }
 ::placeholder:hover {
   color: red;
+  cursor: pointer;
 }
 </style>

@@ -113,7 +113,7 @@ export default {
   display: flex;
   margin: 3px;
   font-weight: 500;
-  color: white;
+  color: turquoise;
 }
 .TimeStatistics__activityDuration {
   margin-left: 10px;
