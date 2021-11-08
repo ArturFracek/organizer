@@ -225,4 +225,10 @@ input:not(:placeholder-shown) ~ .addActivity__button {
   caret-color: transparent;
   pointer-events: none;
 }
+
+@media(max-width: 765px) {
+  .activities__title {
+    top: 0;
+  }
+}
 </style>

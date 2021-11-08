@@ -279,5 +279,13 @@ img:hover ~ #upload_btn,
 #upload_btn:hover {
   display: flex;
 }
+@media(max-width: 765px) {
+ .profile__mainContainer{
+   overflow-y: scroll;
+}
+.profile__UserInfo__card__item{
+  font-size: 1rem;
+}
+}
 
 </style>

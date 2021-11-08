@@ -306,4 +306,21 @@ export default {
   color: rgb(68, 255, 193);
   transition: 0.8s ease-out;
 }
+/* ////////////////////////////// */
+@media (max-width: 765px) {
+  .net__activityTimeDisplay {
+    width: 80%;
+    font-size: 1rem;
+  }
+  .net__hour {
+    width: 1rem;
+    font-size: 0.7rem;
+  }
+  .net__emptyCell {
+    width: 1.7rem;
+  }
+  .net__minutesRow {
+    overflow: hidden;
+  }
+}
 </style>

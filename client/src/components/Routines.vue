@@ -230,4 +230,10 @@ input:not(:placeholder-shown) ~ .addRoutine__button {
   font-weight: bold;
   pointer-events: none;
 }
+
+@media(max-width: 765px) {
+  .routines__title {
+    top: 0;
+  }
+}
 </style>

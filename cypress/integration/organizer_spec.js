@@ -8,11 +8,14 @@ describe("Registration", () => {
 
     cy.get("#name").type("Gołota");
 
+    cy.get("#username").type("Andrzej", {force: true});
+
     cy.get("#password").type(password);
 
-    cy.get("#confirm_password").type(password);
+    cy.get("#confirm_password").type(password, {force: true});
 
-    cy.get("#username").type("Andrzej");
+    cy.get("input[type='submit']").click()
+
 
   });
 });

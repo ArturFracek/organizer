@@ -302,11 +302,12 @@ h1 {
 
 .goal__showModalButton:hover {
   color: rgb(253, 51, 51);
-  border-right: 1px solid rgba(233, 55, 55, 0.692);
-  border-left: 1px solid rgba(248, 65, 65, 0.726);
+  border-right: 2px solid rgba(233, 55, 55, 0.692);
+  border-left: 2px solid rgba(248, 65, 65, 0.726);
   border-radius: 12px;
   text-shadow: 0 0 0.5px red;
 }
+
 .goal__datePicker {
   width: 7rem;
   color: white;

@@ -104,9 +104,10 @@ export default {
   cursor: unset;
 }
 i {
- position: relative;
- left: 0.6rem;
- color: white;
+  position: relative;
+  left: 0.6rem;
+  color: white;
+  text-shadow: 0 0 4px white;
 }
 .TimeStatistics__activitiesContainer {
   width: 100%;
@@ -133,5 +134,22 @@ i {
 
 .TimeStatistics__activityDuration {
   margin-left: 10px;
+}
+
+@media (max-width: 765px) {
+  .TimeStatistics__container {
+    width: 100%;
+    overflow-y: scroll;
+    overflow-x: hidden;
+  }
+  .TimeStatistics__activitiesContainer {
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    flex-wrap: nowrap;
+  }
+  .TimeStatistics__activityTimerButton{
+    font-size: 0.9rem;
+  }
 }
 </style>

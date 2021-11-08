@@ -79,12 +79,6 @@ export default {
 </script>
 
 <style scoped>
-.title {
-  font-size: 1.2rem;
-  color: turquoise;
-  letter-spacing: 1px;
-  align-self: flex-start;
-}
 .goals__background {
   position: absolute;
   box-sizing: border-box;
@@ -97,6 +91,8 @@ export default {
 }
 
 .goals__mainContainer {
+  display: flex;
+  align-items: center;
   position: relative;
   height: 30%;
   max-height: 60%;
@@ -273,15 +269,31 @@ input:not(:placeholder-shown) ~ .goals__addGoal__button {
 
 ul {
   background-color: transparent;
+  list-style-type: square;
 }
 
 li::marker {
-  color: rgb(255, 243, 243);
+  color: rgb(255, 255, 255);
 }
 
-@media (max-width: 720px) {
+@media (max-width: 765px) {
   .goals__andGoal__input {
     width: 12rem;
+  }
+  .goals__mainContainer {
+    width: 100%;
+    height: 25%;
+    overflow: scroll;
+  }
+  .goals__input__label {
+    top: 1.5rem;
+  }
+  .goals__addGoal__button {
+    top: 0.6rem;
+    left: 7rem;
+  }
+  li {
+    font-size: 0.9rem;
   }
 }
 </style>
