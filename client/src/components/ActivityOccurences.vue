@@ -170,7 +170,7 @@ select {
   width: 100%;
   opacity: 0;
   transition: 0.6s;
-  left: 2.5rem;
+  left: 3.3rem;
 }
 .occurences__showLabels {
   opacity: 1;

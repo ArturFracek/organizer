@@ -19,6 +19,7 @@
     "concurrently": "^6.1.0",
     "core-js": "^3.6.5",
     "cors": "^2.8.5",
+    "cypress": "^8.7.0",
     "dotenv": "^9.0.2",
     "express": "^4.17.1",
     "joi": "^17.4.2",
@@ -49,6 +50,7 @@
     "@vue/eslint-config-prettier": "^6.0.0",
     "babel-eslint": "^10.1.0",
     "eslint": "^6.7.2",
+    "eslint-plugin-cypress": "^2.12.1",
     "eslint-plugin-prettier": "^3.3.1",
     "eslint-plugin-vue": "^6.2.2",
     "prettier": "^2.2.1",
@@ -70,7 +72,8 @@
     "extends": [
       "plugin:vue/essential",
       "eslint:recommended",
-      "@vue/prettier"
+      "@vue/prettier",
+      "plugin:cypress/recommended"
     ],
     "parserOptions": {
       "parser": "babel-eslint"

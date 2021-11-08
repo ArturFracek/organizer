@@ -1,6 +1,7 @@
 <template>
   <div class="datePicker__container">
     <Datepicker
+    class="datePicker__input"
       :value="value"
       @input="emitDate"
       placeholder="Set Deadline"
@@ -95,7 +96,11 @@ span {
 ::placeholder {
   color: rgb(27, 251, 240);
 }
-::placeholder:hover {
+
+.datePicker__input {
+  width: 6.5rem;
+}
+.datePicker__input:hover  ::placeholder{
   color: red;
   cursor: pointer;
 }

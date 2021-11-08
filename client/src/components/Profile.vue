@@ -216,7 +216,7 @@ export default {
       rgba(1, 1, 1, 0.19) 69px
     ),
     linear-gradient(180deg, rgb(0, 89, 89), rgb(233, 132, 132));
-  color: white;
+  color: aquamarine;
   overflow-y: hidden;
 }
 
@@ -229,7 +229,7 @@ export default {
 .profile__UserInfo__card {
   margin: 0 0 0 1rem;
   list-style: none;
-  font-size: 1.2rem;
+  font-size: 1.2rem !important;
   display: flex;
   flex-flow: column;
   justify-content: space-evenly;
@@ -238,6 +238,7 @@ export default {
 
 .profile__UserInfo__card__item {
   text-shadow: 2px 0px 3px rgb(243, 77, 48);
+  font-size: 1.2rem;
 }
 
 .profile__picContainer {
@@ -277,36 +278,6 @@ export default {
 img:hover ~ #upload_btn,
 #upload_btn:hover {
   display: flex;
-}
-
-.profile__TimeStatisticsContainer {
-  height: 30%;
-  max-height: 60%;
-  width: 80%;
-  position: relative;
-  padding: 0.3rem 2rem;
-  border-style: solid;
-  border-width: 2px;
-  border-image: linear-gradient(
-      to bottom,
-      rgb(164, 253, 249),
-      rgb(250, 127, 127)
-    )
-    1;
-  border-image-repeat: stretch;
-  backdrop-filter: drop-shadow(4px 4px 6px rgb(207, 17, 17)) hue-rotate(180deg)
-    opacity(80%);
-  display: flex;
-  justify-content: center;
-  margin-bottom: 2rem;
-}
-
-.profile__TimeStatisticsContainer__title {
-  font-size: 1.2rem;
-  color: rgb(255, 255, 255);
-  letter-spacing: 1px;
-  text-shadow: 0 0 10px rgb(255, 255, 255);
-  cursor: unset;
 }
 
 </style>

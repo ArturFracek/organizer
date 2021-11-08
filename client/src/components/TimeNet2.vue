@@ -1,6 +1,9 @@
 <template>
   <div class="net__container">
-    <div class="net__activityTimeDisplay">
+    <div
+      class="net__activityTimeDisplay"
+      :class="{ net__activityTimeDisplayActive: toggled === true }"
+    >
       {{ this.toggled !== true ? "" : activityTitle }}
       {{
         hourTimeFormat(timerDiff) !== "00:00:00"
@@ -156,7 +159,6 @@ export default {
       } else {
         this.toggled = false;
         this.stopTimerAndSave();
-        console.log(this.activityTitle);
       }
     },
   },
@@ -279,25 +281,29 @@ export default {
   transition: 0.3s;
 }
 .net__timerButton:hover {
-  color: aquamarine;
-  text-shadow: 0 0 7px rgba(130, 251, 211, 1);
+  color: rgb(255, 0, 0);
+  text-shadow: 0 0 7px rgb(255, 0, 0);
 }
 .net__activityTimeDisplay {
   position: relative;
   font-size: 1.2rem;
-  left: 1.9%;
+  left: 1%;
   margin-left: auto;
   margin-right: auto;
-  color: red;
   height: 3rem;
-  width: 32.75vw;
-  color: rgb(74, 255, 165);
-  text-shadow: 2px 2px 1px rgb(81, 62, 255);
+  width: 30%;
+  color: rgb(255, 255, 255);
   font-weight: bold;
-  border-left: 2px solid aquamarine;
-  border-right: 2px solid aquamarine;
+  border-left: 1px solid aquamarine;
+  border-right: 1px solid aquamarine;
   display: flex;
   justify-content: center;
   align-items: center;
+  transition: 0.8s ease-out;
+}
+
+.net__activityTimeDisplayActive {
+  color: rgb(68, 255, 193);
+  transition: 0.8s ease-out;
 }
 </style>

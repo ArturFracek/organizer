@@ -1,13 +1,15 @@
 <template>
   <div class="TimeStatistics__container">
-    <div class="TimeStatistics__container__title">Time Statistics</div>
+    <div class="TimeStatistics__container__title">
+      Time Statistics<i class="bi bi-clock-history"></i>
+    </div>
     <div v-if="activeRoutine" class="TimeStatistics__activitiesContainer">
       <button
         class="TimeStatistics__activityTimerButton"
         v-for="(occurence, index) in activeRoutine.activitiesOccurences"
         :key="index"
       >
-        {{ getActivityNameById(occurence) }}
+        {{ getActivityNameById(occurence) }} {{ "~" }}
         <div class="TimeStatistics__activityDuration">
           {{ hourTimeFormat(getActivityDurationById(occurence)) || 0 }}
         </div>
@@ -95,10 +97,16 @@ export default {
 
 .TimeStatistics__container__title {
   font-size: 1.2rem;
+  font-weight: bold;
   color: rgb(255, 255, 255);
   letter-spacing: 1px;
   text-shadow: 0 0 10px rgb(255, 255, 255);
   cursor: unset;
+}
+i {
+ position: relative;
+ left: 0.6rem;
+ color: white;
 }
 .TimeStatistics__activitiesContainer {
   width: 100%;
@@ -107,14 +115,22 @@ export default {
   flex-flow: column;
   flex-wrap: wrap;
   align-content: space-around;
+  padding-bottom: 0.4rem;
 }
 
 .TimeStatistics__activityTimerButton {
   display: flex;
-  margin: 3px;
-  font-weight: 500;
-  color: turquoise;
+  margin: 2px;
+  color: rgb(7, 223, 151);
+  font-size: 1rem;
+  font-weight: bold;
+  text-shadow: 2px 0 2px rgb(1, 8, 114);
 }
+.TimeStatistics__activityTimerButton:hover {
+  font-weight: bold;
+  color: rgb(255, 0, 0);
+}
+
 .TimeStatistics__activityDuration {
   margin-left: 10px;
 }

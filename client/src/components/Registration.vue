@@ -14,7 +14,9 @@ reg stands for registration
               v-model="email"
               class="input"
             />
-            <label for="email" class="form__label form__label--email">Email</label>
+            <label for="email" class="form__label form__label--email"
+              >Email</label
+            >
           </div>
           <div class="reg__form__item">
             <input
@@ -36,7 +38,9 @@ reg stands for registration
               v-model="username"
               class="input"
             />
-            <label for="username" class="form__label form__label--username">Username</label>
+            <label for="username" class="form__label form__label--username"
+              >Username</label
+            >
           </div>
           <div class="reg__form__item">
             <input
@@ -47,7 +51,9 @@ reg stands for registration
               v-model="password"
               class="input"
             />
-            <label for="password" class="form__label form__label--password">Password</label>
+            <label for="password" class="form__label form__label--password"
+              >Password</label
+            >
           </div>
           <div class="reg__form__item">
             <input
@@ -58,7 +64,9 @@ reg stands for registration
               v-model="confirm_password"
               class="input"
             />
-            <label for="confirm_password" class="form__label form__label--confirmPassword"
+            <label
+              for="confirm_password"
+              class="form__label form__label--confirmPassword"
               >Confirm Password</label
             >
           </div>
@@ -70,10 +78,14 @@ reg stands for registration
             />
           </div>
           <div class="reg__login__container">
-            <router-link to="/login" class="reg__login__link reg__login__link--one"
+            <router-link
+              to="/login"
+              class="reg__login__link reg__login__link--one"
               >Arleady have an account ?</router-link
             >
-            <router-link to="/login" class="reg__login__link reg__login__link--two"
+            <router-link
+              to="/login"
+              class="reg__login__link reg__login__link--two"
               >Sign in now</router-link
             >
           </div>
@@ -363,6 +375,7 @@ input {
 input[type="text"],
 input[type="password"] {
   color: whitesmoke;
+  font-weight: bold;
 }
 
 input:hover {

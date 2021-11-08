@@ -98,7 +98,6 @@ input:hover {
   text-shadow: 0 0 0px red;
 }
 
-
 .time-picker {
   margin-right: 10%;
   width: 10rem;
@@ -110,7 +109,6 @@ li {
   font-weight: 500;
   color: rgb(84, 245, 178) !important;
   transition: 0.6s;
-  
 }
 li:hover {
   color: red !important;

@@ -263,8 +263,8 @@ export default {
 }
 
 .nav__link:hover {
-  color: #ff1616;
-  text-shadow: 0 0 3px rgb(243, 109, 91);
+  color: red;
+  text-shadow: 0 0 3px rgb(255, 30, 0);
   border-top: 1px solid red;
   border-bottom: 1px solid red;
   border-radius: 8px;

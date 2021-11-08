@@ -277,11 +277,11 @@ h1 {
   color: red;
   border-color: red;
   text-shadow: 0 0 25px red;
-  box-shadow: 0 5px 25px rgba(255, 19, 19, 0.685);
+  box-shadow: 0 5px 10px rgba(255, 19, 19, 0.685);
 }
 .goal__button--delete:hover {
   color: red;
-  text-shadow: 0 5px 10px red;
+  text-shadow: 0 5px 5px red;
 }
 
 .goal__showModalButton {
@@ -289,9 +289,9 @@ h1 {
   width: auto;
   height: 100%;
   border-radius: 2px;
-  color: rgba(211, 255, 253, 0.945);
+  color: rgb(239, 255, 254);
   font-weight: bold;
-  text-shadow: 0 0 1rem rgba(211, 255, 253, 0.945);
+  text-shadow: 0 0 1rem rgb(250, 255, 255);
   padding: 0.6rem;
   background: none;
   outline: none;
@@ -330,7 +330,6 @@ ul {
   }
 .datePicker__container {
   width: 7rem;
-  border: 0.1px solid turquoise;
 }
 
 .goal__deadline--label {

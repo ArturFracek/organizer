@@ -19,7 +19,6 @@
         :item="routine"
         :index="index"
         :key="routine._id"
-        @:dblclick="deleteRoutine(routine._id)"
       >
         <RoutineModal
           :routineObject="routine"

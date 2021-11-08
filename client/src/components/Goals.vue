@@ -18,7 +18,6 @@
         :item="goal"
         :index="index"
         :key="goal._id"
-        @dblclick="deleteGoal(goal._id)"
       >
         <li>
           <GoalModal
@@ -134,7 +133,7 @@ export default {
 .goals__andGoal__input {
   margin-top: 1rem;
   text-align: center;
-  width: 30rem;
+  width: 15rem;
   height: 2.5rem;
   border-radius: 2px;
   color: rgb(0, 0, 0);
@@ -143,10 +142,10 @@ export default {
   padding: 0.7rem;
   background: none;
   outline: none;
-  border: 2px solid rgb(41, 154, 158);
+  border-top: 2px solid rgb(41, 154, 158);
+  border-bottom: 2px solid rgb(41, 154, 158);
   border-radius: 0.5rem;
   background: transparent;
-  box-shadow: 0 25px 25px 25px rgba(105, 241, 241, 0.1);
   position: absolute;
   top: 0rem;
   display: flex;
@@ -171,7 +170,7 @@ export default {
   font-size: 200ms ease-in;
   opacity: 0.9;
   color: rgb(255, 255, 255);
-  text-shadow: 0 0 0.8rem rgb(253, 122, 122);
+  text-shadow: 0 0 0.8rem rgb(255, 255, 255);
   pointer-events: none;
   margin-bottom: 1.8rem;
 }
@@ -182,14 +181,15 @@ export default {
   text-shadow: 0 0 8px rgb(51, 189, 175);
   font-weight: bold;
   position: relative;
-  right: -16.5rem;
+  right: -8.2rem;
   top: -0.25rem;
   text-align: center;
   border-radius: 2px;
   padding: 0.7rem;
   background: none;
   outline: none;
-  border: 2px solid rgb(35, 166, 170);
+  border-top: 2px solid rgb(35, 166, 170);
+  border-bottom: 2px solid rgb(35, 166, 170);
   border-radius: 0.5rem;
   background: transparent;
   box-shadow: 0 25px 25px rgba(38, 221, 253, 0.1);

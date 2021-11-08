@@ -19,7 +19,6 @@
         v-bind:item="activity"
         v-bind:index="index"
         v-bind:key="activity._id"
-        v-on:dblclick="deleteActivity(activity._id)"
       >
         <ActivityModal
           :activityObject="activity"

@@ -300,6 +300,7 @@ input {
   background: transparent;
   box-shadow: 0 25px 25px rgba(3, 96, 112, 0.1);
   backdrop-filter: blur(10px) drop-shadow(4px 4px 10px rgb(17, 185, 207));
+  font-weight: bold;
 }
 
 input[type="text"],
