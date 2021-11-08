@@ -3,6 +3,7 @@
     <button
       type="button"
       class="routine__button routine__showModalButton"
+      :class="{routine__showModalButtonActive: localRoutine.is_active}"
       @click="showModal = true"
     >
       {{ routineObject.title }}
@@ -126,6 +127,7 @@ export default {
   justify-content: center;
   align-items: center;
   width: 100%;
+  box-sizing: border-box;
 }
 
 .routineModalButton:hover {
@@ -136,8 +138,8 @@ export default {
   display: flex;
   flex-flow: column;
   background-color: transparent;
-  width: 95%;
-  height: 100%;
+  width: 97%;
+  height: auto;
   border-radius: 60px;
   border-bottom: 2px dotted turquoise;
   border-top: 2px dotted turquoise;
@@ -152,6 +154,7 @@ export default {
   align-items: flex-end;
   margin-top: 1.5rem;
   margin-bottom: 0.5rem;
+  box-sizing: border-box;
 }
 
 .routine__bottomSection {
@@ -164,12 +167,14 @@ export default {
 }
 
 .routine__buttonsContainer {
+    position: relative;
   margin-left: 5%;
   width: 100%;
   height: 3rem;
   display: flex;
   justify-content: center;
   align-items: flex-end;
+  right: 2rem;
 }
 
 .routine__showModalButton {
@@ -187,8 +192,26 @@ export default {
   border-radius: 0.5rem;
   background: transparent;
   box-shadow: 0 25px 25px rgba(3, 96, 112, 0.1);
-  backdrop-filter: blur(10px) drop-shadow(4px 4px 10px rgb(248, 248, 248));
+  backdrop-filter: blur(10px) drop-shadow(4px 4px 10px rgb(0, 0, 0));
   transition: 0.1s ease-out;
+}
+.routine__showModalButtonActive {
+  text-align: center;
+  width: 100%;
+  height: 100%;
+  border-radius: 2px;
+  color: rgb(125, 255, 216);
+  font-weight: bold;
+  text-shadow: 2px 0 30px rgb(15, 0, 228);
+  padding: 0.5rem;
+  background: none;
+  outline: none;
+  border: 2px solid rgb(53, 255, 221);
+  border-radius: 0.5rem;
+  background: transparent;
+  box-shadow: 0 5px 20px rgba(127, 255, 212, 0.472);
+  backdrop-filter: blur(10px) drop-shadow(4px 4px 10px rgb(41, 2, 168));
+  transition: 0.2s ease;
 }
 
 .routine__button--activation {
@@ -339,7 +362,7 @@ h1 {
   flex-flow: column;
   align-items: center;
   width: 100%;
-  height: 50%;
+  height: 20%;
 }
 
 .p {
@@ -421,7 +444,7 @@ input:hover ~ .routine__showModalButton {
 .routine__button:hover {
   color: red;
   border: 2px solid red;
-  text-shadow: 0 0 6px red;
+  text-shadow: 0 0 15px rgba(255, 0, 0, 0.335);
   box-shadow: 0 0 5px red;
   backdrop-filter: drop-shadow(0 0 10px red);
 }

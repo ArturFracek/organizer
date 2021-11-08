@@ -1,13 +1,19 @@
 <template>
   <div class="TimeStatistics__container">
-    <div class="TimeStatistics__container__title">Time Statistics</div>
+    <div class="TimeStatistics__container__title">
+      Time Statistics<i class="bi bi-clock-history"></i>
+    </div>
     <div v-if="activeRoutine" class="TimeStatistics__activitiesContainer">
-      <div
+      <button
+        class="TimeStatistics__activityTimerButton"
         v-for="(occurence, index) in activeRoutine.activitiesOccurences"
         :key="index"
       >
-        {{ getActivityName(occurence) + timerDiff }}
-      </div>
+        {{ getActivityNameById(occurence) }} {{ "~" }}
+        <div class="TimeStatistics__activityDuration">
+          {{ hourTimeFormat(getActivityDurationById(occurence)) || 0 }}
+        </div>
+      </button>
     </div>
     <button class="test" @click="test"></button>
   </div>
@@ -15,16 +21,17 @@
 
 <script>
 import { mapActions, mapGetters } from "vuex";
+import moment from "moment";
 
 export default {
-  async mounted() {
+  mounted() {
     this.fetchRoutines(), this.fetchActivities();
   },
   computed: {
     ...mapGetters({
       activities: "activities/activities",
       activeRoutine: "routines/activeRoutine",
-      timerDiff: "timer/timerDiff"
+      timerDiff: "timer/timerDiff",
     }),
   },
   methods: {
@@ -38,11 +45,24 @@ export default {
     async fetchActivities() {
       await this.fetchAllActivities();
     },
-    getActivityName(occurence) {
+    getActivityNameById(occurence) {
       const activity = this.activities.find(
         (a) => a._id === occurence.activityId
       );
       return activity ? activity.title : "";
+    },
+    getActivityDurationById(occurence) {
+      const activity = this.activities.find(
+        (a) => a._id === occurence.activityId
+      );
+      return activity ? activity.duration : "";
+    },
+    hourTimeFormat(seconds) {
+      const diff = moment.duration(seconds, "seconds");
+      const diffHours = Math.floor(diff.asHours());
+      const diffHoursFormatted = diffHours < 10 ? `0${diffHours}` : diffHours;
+      const mmss = moment.utc(diff.as("milliseconds")).format("mm:ss");
+      return `${diffHoursFormatted}:${mmss}`;
     },
     test() {
       console.log();
@@ -51,12 +71,11 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 .TimeStatistics__container {
   display: flex;
   flex-flow: column;
   align-items: center;
-  justify-content: flex-start;
   height: 30%;
   max-height: 60%;
   width: 80%;
@@ -73,25 +92,64 @@ export default {
   border-image-repeat: stretch;
   backdrop-filter: drop-shadow(4px 4px 6px rgb(207, 17, 17)) hue-rotate(180deg)
     opacity(80%);
-  display: flex;
-  justify-content: flex-start;
   margin-bottom: 2rem;
 }
 
 .TimeStatistics__container__title {
   font-size: 1.2rem;
+  font-weight: bold;
   color: rgb(255, 255, 255);
   letter-spacing: 1px;
   text-shadow: 0 0 10px rgb(255, 255, 255);
   cursor: unset;
 }
+i {
+  position: relative;
+  left: 0.6rem;
+  color: white;
+  text-shadow: 0 0 4px white;
+}
 .TimeStatistics__activitiesContainer {
   width: 100%;
-  height: 100%;
+  height: 90%;
+  display: flex;
+  flex-flow: column;
+  flex-wrap: wrap;
+  align-content: space-around;
+  padding-bottom: 0.4rem;
 }
-.test {
-  background-color: red;
-  width: 20px;
-  height: 10px;
+
+.TimeStatistics__activityTimerButton {
+  display: flex;
+  margin: 2px;
+  color: rgb(7, 223, 151);
+  font-size: 1rem;
+  font-weight: bold;
+  text-shadow: 2px 0 2px rgb(1, 8, 114);
+}
+.TimeStatistics__activityTimerButton:hover {
+  font-weight: bold;
+  color: rgb(255, 0, 0);
+}
+
+.TimeStatistics__activityDuration {
+  margin-left: 10px;
+}
+
+@media (max-width: 765px) {
+  .TimeStatistics__container {
+    width: 100%;
+    overflow-y: scroll;
+    overflow-x: hidden;
+  }
+  .TimeStatistics__activitiesContainer {
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    flex-wrap: nowrap;
+  }
+  .TimeStatistics__activityTimerButton{
+    font-size: 0.9rem;
+  }
 }
 </style>

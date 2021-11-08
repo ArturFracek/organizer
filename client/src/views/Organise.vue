@@ -209,4 +209,12 @@ export default {
   width: 100%;
   height: 100%;
 }
+
+@media (max-width: 765px) {
+.organize__mainContainer {
+  padding: 0;
+  margin: 0;
+  width: 100%;
+}
+}
 </style>

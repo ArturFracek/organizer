@@ -30,17 +30,23 @@
         <div class="title"><i class="bi bi-camera-video"></i>Videos</div>
         <ul>
           <li>
-            <a href="https://www.youtube.com/watch?v=1NFq_FbmcDk"
+            <a
+              target="_blank"
+              href="https://www.youtube.com/watch?v=1NFq_FbmcDk"
               >Why you should organize your life by Dr Jordan Peterson
             </a>
           </li>
           <li>
-            <a href="https://www.youtube.com/watch?v=fbAYK4KQrso"
+            <a
+              target="_blank"
+              href="https://www.youtube.com/watch?v=fbAYK4KQrso"
               >Timeboxing: Elon Musk's Time Management Method
             </a>
           </li>
           <li>
-            <a href="https://www.youtube.com/watch?v=WXBA4eWskrc"
+            <a
+              target="_blank"
+              href="https://www.youtube.com/watch?v=WXBA4eWskrc"
               >The Philosophy of Time Management | Brad Aeon | TEDxConcordia
             </a>
           </li>
@@ -51,24 +57,28 @@
         <ul>
           <li>
             <a
+              target="_blank"
               href="https://hbr.org/2020/01/time-management-is-about-more-than-life-hacks"
               >Time Management Is About More Than Life Hacks by Erich C.
               Dierdorff
             </a>
           </li>
           <li>
-            <a href="https://zhuanlan.zhihu.com/p/344578596"
+            <a target="_blank" href="https://zhuanlan.zhihu.com/p/344578596"
               >Stop wasting the time by Dr Jordan Peterson
             </a>
           </li>
           <li>
             <a
+              target="_blank"
               href="https://www.jacr.org/article/S1546-1440(08)00581-4/fulltext"
               >Time Management: A Realistic Approach by Valerie P. Jackson
             </a>
           </li>
           <li>
-            <a href="https://www.managementstudyguide.com/time-management.htm"
+            <a
+              target="_blank"
+              href="https://www.managementstudyguide.com/time-management.htm"
               >Time Management - Meaning and its Importance
             </a>
           </li>
@@ -265,6 +275,10 @@ export default {
   border-bottom: 3px solid rgba(72, 234, 255, 0.911);
 }
 
+a:hover {
+  color: red;
+}
+
 .about__aboutOrganizing {
   text-overflow: ellipsis;
   text-align: center;
@@ -317,6 +331,11 @@ ul > li {
   text-shadow: 0 0 2px rgb(248, 255, 254);
   font-weight: 500;
   padding-bottom: 0.5rem;
+}
+
+li:hover {
+  color: red;
+  font-weight: bold;
 }
 .movies > ul > li > a,
 .articles > ul > li > a,

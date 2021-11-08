@@ -19,7 +19,6 @@
         v-bind:item="activity"
         v-bind:index="index"
         v-bind:key="activity._id"
-        v-on:dblclick="deleteActivity(activity._id)"
       >
         <ActivityModal
           :activityObject="activity"
@@ -225,5 +224,11 @@ input:not(:placeholder-shown) ~ .addActivity__button {
   font-weight: bold;
   caret-color: transparent;
   pointer-events: none;
+}
+
+@media(max-width: 765px) {
+  .activities__title {
+    top: 0;
+  }
 }
 </style>

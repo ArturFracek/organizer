@@ -84,6 +84,7 @@ select:hover {
   border-width: 2px;
   border-image: linear-gradient(to top, rgb(248, 169, 169)), rgb(73, 251, 183) 1;
   border-image-repeat: stretch;
+  cursor: pointer;
 }
 
 select:focus {

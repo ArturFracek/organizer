@@ -18,7 +18,6 @@
         :item="goal"
         :index="index"
         :key="goal._id"
-        @dblclick="deleteGoal(goal._id)"
       >
         <li>
           <GoalModal
@@ -80,12 +79,6 @@ export default {
 </script>
 
 <style scoped>
-.title {
-  font-size: 1.2rem;
-  color: turquoise;
-  letter-spacing: 1px;
-  align-self: flex-start;
-}
 .goals__background {
   position: absolute;
   box-sizing: border-box;
@@ -98,6 +91,8 @@ export default {
 }
 
 .goals__mainContainer {
+  display: flex;
+  align-items: center;
   position: relative;
   height: 30%;
   max-height: 60%;
@@ -110,6 +105,7 @@ export default {
   border-image-repeat: stretch;
   display: flex;
   flex-flow: column;
+  overflow-y: scroll;
 }
 
 .goals__addingGoalsContainer {
@@ -133,7 +129,7 @@ export default {
 .goals__andGoal__input {
   margin-top: 1rem;
   text-align: center;
-  width: 30rem;
+  width: 15rem;
   height: 2.5rem;
   border-radius: 2px;
   color: rgb(0, 0, 0);
@@ -142,10 +138,10 @@ export default {
   padding: 0.7rem;
   background: none;
   outline: none;
-  border: 2px solid rgb(41, 154, 158);
+  border-top: 2px solid rgb(41, 154, 158);
+  border-bottom: 2px solid rgb(41, 154, 158);
   border-radius: 0.5rem;
   background: transparent;
-  box-shadow: 0 25px 25px 25px rgba(105, 241, 241, 0.1);
   position: absolute;
   top: 0rem;
   display: flex;
@@ -160,7 +156,7 @@ export default {
   transition: top 200ms ease-in;
   left: 200ms ease-in;
   font-size: 200ms ease-in;
-  top: -0.3rem;
+  top: 0.7rem;
   right: 0;
   background-color: none;
   font-weight: bold;
@@ -170,8 +166,9 @@ export default {
   font-size: 200ms ease-in;
   opacity: 0.9;
   color: rgb(255, 255, 255);
-  text-shadow: 0 0 0.8rem rgb(253, 122, 122);
+  text-shadow: 0 0 0.8rem rgb(255, 255, 255);
   pointer-events: none;
+  margin-bottom: 1.8rem;
 }
 
 .goals__addGoal__button {
@@ -180,14 +177,15 @@ export default {
   text-shadow: 0 0 8px rgb(51, 189, 175);
   font-weight: bold;
   position: relative;
-  right: -16.5rem;
+  right: -8.2rem;
   top: -0.25rem;
   text-align: center;
   border-radius: 2px;
   padding: 0.7rem;
   background: none;
   outline: none;
-  border: 2px solid rgb(35, 166, 170);
+  border-top: 2px solid rgb(35, 166, 170);
+  border-bottom: 2px solid rgb(35, 166, 170);
   border-radius: 0.5rem;
   background: transparent;
   box-shadow: 0 25px 25px rgba(38, 221, 253, 0.1);
@@ -271,15 +269,31 @@ input:not(:placeholder-shown) ~ .goals__addGoal__button {
 
 ul {
   background-color: transparent;
+  list-style-type: square;
 }
 
 li::marker {
-  color: rgb(255, 243, 243);
+  color: rgb(255, 255, 255);
 }
 
-@media (max-width: 720px) {
+@media (max-width: 765px) {
   .goals__andGoal__input {
     width: 12rem;
+  }
+  .goals__mainContainer {
+    width: 100%;
+    height: 25%;
+    overflow: scroll;
+  }
+  .goals__input__label {
+    top: 1.5rem;
+  }
+  .goals__addGoal__button {
+    top: 0.6rem;
+    left: 7rem;
+  }
+  li {
+    font-size: 0.9rem;
   }
 }
 </style>

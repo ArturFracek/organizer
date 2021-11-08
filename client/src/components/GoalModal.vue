@@ -277,11 +277,11 @@ h1 {
   color: red;
   border-color: red;
   text-shadow: 0 0 25px red;
-  box-shadow: 0 5px 25px rgba(255, 19, 19, 0.685);
+  box-shadow: 0 5px 10px rgba(255, 19, 19, 0.685);
 }
 .goal__button--delete:hover {
   color: red;
-  text-shadow: 0 5px 10px red;
+  text-shadow: 0 5px 5px red;
 }
 
 .goal__showModalButton {
@@ -289,9 +289,9 @@ h1 {
   width: auto;
   height: 100%;
   border-radius: 2px;
-  color: rgba(211, 255, 253, 0.945);
+  color: rgb(239, 255, 254);
   font-weight: bold;
-  text-shadow: 0 0 1rem rgba(211, 255, 253, 0.945);
+  text-shadow: 0 0 1rem rgb(250, 255, 255);
   padding: 0.6rem;
   background: none;
   outline: none;
@@ -302,11 +302,12 @@ h1 {
 
 .goal__showModalButton:hover {
   color: rgb(253, 51, 51);
-  border-right: 1px solid rgba(233, 55, 55, 0.692);
-  border-left: 1px solid rgba(248, 65, 65, 0.726);
+  border-right: 2px solid rgba(233, 55, 55, 0.692);
+  border-left: 2px solid rgba(248, 65, 65, 0.726);
   border-radius: 12px;
   text-shadow: 0 0 0.5px red;
 }
+
 .goal__datePicker {
   width: 7rem;
   color: white;
@@ -320,11 +321,16 @@ ul {
   background-color: transparent;
 }
 .goal__deadline__container {
+  display: flex;
+  flex-flow: column;
+  align-items: center;
   position: fixed;
-  top: 0.2rem;
-  right: 4.5rem;
+  top: 0.1rem;
+  right: 7.5rem;
+  width: 6rem;
   }
-.goal__deadline {
+.datePicker__container {
+  width: 7rem;
 }
 
 .goal__deadline--label {
@@ -333,7 +339,7 @@ ul {
   color: rgb(84, 245, 178);
   text-shadow: 0px 0px 2px rgb(0, 255, 157);
   text-align: center;
-  transition: 0.3s;;
+  transition: 0.3s;
 }
 
 </style>

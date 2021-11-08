@@ -23,6 +23,7 @@ export default {
     },
     async updateActivity({ dispatch }, updatedActivity) {
       await ActivitiesService.updateActivity(updatedActivity);
+      console.log(updatedActivity)
       await dispatch("fetchAllActivities");
     },
     async deleteActivity({ dispatch }, { id }) {
@@ -38,6 +39,9 @@ export default {
   getters: {
     activities(state) {
       return state.activities;
+    },
+    activityById(state) {
+      return (id) => state.activities.find(a => a._id === id)
     },
   },
 };

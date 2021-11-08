@@ -19,7 +19,6 @@
         :item="routine"
         :index="index"
         :key="routine._id"
-        @:dblclick="deleteRoutine(routine._id)"
       >
         <RoutineModal
           :routineObject="routine"
@@ -230,5 +229,11 @@ input:not(:placeholder-shown) ~ .addRoutine__button {
   background-color: none;
   font-weight: bold;
   pointer-events: none;
+}
+
+@media(max-width: 765px) {
+  .routines__title {
+    top: 0;
+  }
 }
 </style>

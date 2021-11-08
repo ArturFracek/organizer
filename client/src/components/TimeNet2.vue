@@ -1,6 +1,16 @@
 <template>
   <div class="net__container">
-    <div class="net__activityTimeDisplay">{{ formatThisTime(timerDiff) }}</div>
+    <div
+      class="net__activityTimeDisplay"
+      :class="{ net__activityTimeDisplayActive: toggled === true }"
+    >
+      {{ this.toggled !== true ? "" : activityTitle }}
+      {{
+        hourTimeFormat(timerDiff) !== "00:00:00"
+          ? hourTimeFormat(timerDiff)
+          : "Select Activity Below"
+      }}
+    </div>
     <table class="net__table">
       <thead>
         <tr>
@@ -55,7 +65,12 @@
                 ),
               }"
             >
-              <button class="net__timerButton" @click="timerOnOff">
+              <button
+                class="net__timerButton"
+                @click="
+                  timerOnOff(getActivityOccurance(dayIndex, hour, tenMinutes))
+                "
+              >
                 {{
                   getActivityName(
                     getActivityOccurance(dayIndex, hour, tenMinutes)
@@ -71,7 +86,7 @@
 </template>
 
 <script>
-import { mapGetters, mapMutations } from "vuex";
+import { mapActions, mapGetters, mapMutations } from "vuex";
 import moment from "moment";
 import { hours } from "../constants/index";
 import { minutes } from "../constants/index";
@@ -85,7 +100,9 @@ moment.updateLocale("en", {
 
 export default {
   data() {
-    return {};
+    return {
+      toggled: false,
+    };
   },
   computed: {
     weekdays: () => moment.weekdays(true),
@@ -95,14 +112,17 @@ export default {
     ...mapGetters({
       activities: "activities/activities",
       routine: "routines/activeRoutine",
-      currentTime: "timer/currentTime",
+      activityTitle: "timer/activityTitle",
       timerDiff: "timer/timerDiff",
-    }),
-    ...mapMutations({
-      toggleTimer: "timer/TOGGLE_TIMER",
     }),
   },
   methods: {
+    ...mapMutations({
+      START_TIMER: "timer/START_TIMER",
+    }),
+    ...mapActions({
+      stopTimerAndSave: "timer/stopTimerAndSave",
+    }),
     formatTime(timeNumber) {
       return moment(timeNumber, "H").format("H a");
     },
@@ -122,12 +142,24 @@ export default {
       const activity = this.activities.find((a) => a._id === activityId);
       return activity ? activity.title : "";
     },
-    formatThisTime(seconds) {
-      return moment(seconds).format("hh:mm:ss")
+    hourTimeFormat(seconds) {
+      const diff = moment.duration(seconds, "seconds");
+      const diffHours = Math.floor(diff.asHours());
+      const diffHoursFormatted = diffHours < 10 ? `0${diffHours}` : diffHours;
+      const mmss = moment.utc(diff.as("milliseconds")).format("mm:ss");
+      return `${diffHoursFormatted}:${mmss}`;
     },
-    timerOnOff(element) {
-      this.toggleTimer;
-      console.log(element)
+    timerOnOff(activityId) {
+      if (this.toggled === false) {
+        this.toggled = true;
+        this.START_TIMER({
+          activityId,
+          name: this.getActivityName(activityId),
+        });
+      } else {
+        this.toggled = false;
+        this.stopTimerAndSave();
+      }
     },
   },
 };
@@ -249,25 +281,46 @@ export default {
   transition: 0.3s;
 }
 .net__timerButton:hover {
-  color: aquamarine;
-  text-shadow: 0 0 7px rgba(130, 251, 211, 1);
+  color: rgb(255, 0, 0);
+  text-shadow: 0 0 7px rgb(255, 0, 0);
 }
 .net__activityTimeDisplay {
   position: relative;
   font-size: 1.2rem;
-  left: 1.9%;
+  left: 1%;
   margin-left: auto;
   margin-right: auto;
-  color: red;
   height: 3rem;
-  width: 32.75vw;
-  color: rgb(74, 255, 165);
-  text-shadow: 2px 2px 1px rgb(81, 62, 255);
+  width: 30%;
+  color: rgb(255, 255, 255);
   font-weight: bold;
-  border-left: 2px solid aquamarine;
-  border-right: 2px solid aquamarine;
+  border-left: 1px solid aquamarine;
+  border-right: 1px solid aquamarine;
   display: flex;
   justify-content: center;
   align-items: center;
+  transition: 0.8s ease-out;
+}
+
+.net__activityTimeDisplayActive {
+  color: rgb(68, 255, 193);
+  transition: 0.8s ease-out;
+}
+/* ////////////////////////////// */
+@media (max-width: 765px) {
+  .net__activityTimeDisplay {
+    width: 80%;
+    font-size: 1rem;
+  }
+  .net__hour {
+    width: 1rem;
+    font-size: 0.7rem;
+  }
+  .net__emptyCell {
+    width: 1.7rem;
+  }
+  .net__minutesRow {
+    overflow: hidden;
+  }
 }
 </style>
