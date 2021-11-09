@@ -252,7 +252,7 @@ input:not(:placeholder-shown) ~ .addActivity__button {
 input:focus ~ .activities__form__label__addActivities,
 input:not(:placeholder-shown).input:not(:focus)
   ~ .activities__form__label__addActivities {
-  top: -3.5rem;
+  top: -3.7rem;
 }
 }
 </style>

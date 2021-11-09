@@ -362,7 +362,7 @@ export default {
   }
 
   .nav__link {
-    font-size: 1.7rem;
+    font-size: 1.2rem;
     display: flex;
     width: 100%;
     text-align: center;

@@ -104,4 +104,12 @@ span {
   color: red;
   cursor: pointer;
 }
+@media(max-width: 760px) {
+.vdp-datepicker__calendar {
+  position: absolute;
+  top: 10rem;
+  background: rgb(2, 1, 17, 0.8) !important;
+  border: 3px solid turquoise;
+}
+}
 </style>

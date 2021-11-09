@@ -106,8 +106,8 @@ export default {
   height: 100%;
   border-radius: 3px;
   color: rgba(253, 253, 250, 0.945);
-  font-weight: bold;
-  text-shadow: 0 0 4px rgb(235, 250, 251);
+  font-weight: 500;
+  text-shadow: 0 0 2px rgb(235, 250, 251);
   padding: 0.5rem;
   background: none;
   border-top: 2px solid rgb(255, 255, 255);

@@ -326,5 +326,8 @@ export default {
   .net__minutesRow {
     overflow: hidden;
   }
+  .net__dayHeader{
+    font-size: 0.8rem;
+  }
 }
 </style>

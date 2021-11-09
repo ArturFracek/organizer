@@ -112,6 +112,7 @@ export default {
 .goals__addingGoalsContainer {
   position: static;
   display: flex;
+  flex-flow: row;
   align-items: center;
   justify-content: center;
   width: 100%;
@@ -120,14 +121,14 @@ export default {
 }
 
 .goals__goalsHolder {
-  top: -6.5rem;
+  top: 70%;
   width: 100%;
+  height: 80%;
   display: flex;
   flex-flow: column;
   align-items: center;
   justify-content: flex-start;
   box-sizing: border-box;
-  height:auto;
 }
 
 .goals__andGoal__input {
@@ -178,9 +179,9 @@ export default {
   color: rgb(78, 226, 231);
   text-shadow: 0 0 8px rgb(51, 189, 175);
   font-weight: bold;
-  position: relative;
-  right: -11.2rem;
-  top: 0rem;
+  position: absolute;
+  transform: translateX(190%);
+  top: 1rem;
   text-align: center;
   border-radius: 2px;
   padding: 0.7rem;
@@ -285,7 +286,7 @@ li::marker {
   }
   .goals__mainContainer {
     width: 100%;
-    height: 25%;
+    height: 30%;
     overflow: scroll;
   }
   .goals__input__label {
@@ -299,8 +300,11 @@ li::marker {
     font-size: 0.9rem;
   }
   .goals__addGoal__button{
-    width: 4.8rem;
-    left: 9rem;
+    position: absolute;
+    top: 1rem;
+    left: 50vw;
+    width: 3rem;
+    backdrop-filter: none;
   }
 }
 </style>

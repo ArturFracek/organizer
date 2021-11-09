@@ -178,37 +178,26 @@ export default {
 }
 
 .routine__showModalButton {
+  font-weight: bold;
   text-align: center;
   width: 100%;
   height: 100%;
-  border-radius: 2px;
   color: rgba(253, 253, 250, 0.945);
-  font-weight: bold;
-  text-shadow: 0 0 1rem white;
+  text-shadow: 0 0 2px white;
   padding: 0.5rem;
   background: none;
   outline: none;
   border: 2px solid rgb(217, 252, 255);
-  border-radius: 0.5rem;
+  border-radius: 7px;
   background: transparent;
   box-shadow: 0 25px 25px rgba(3, 96, 112, 0.1);
-  backdrop-filter: blur(10px) drop-shadow(4px 4px 10px rgb(0, 0, 0));
   transition: 0.1s ease-out;
 }
 .routine__showModalButtonActive {
-  text-align: center;
-  width: 100%;
-  height: 100%;
-  border-radius: 2px;
   color: rgb(125, 255, 216);
   font-weight: bold;
   text-shadow: 2px 0 30px rgb(15, 0, 228);
-  padding: 0.5rem;
-  background: none;
-  outline: none;
   border: 2px solid rgb(53, 255, 221);
-  border-radius: 0.5rem;
-  background: transparent;
   box-shadow: 0 5px 20px rgba(127, 255, 212, 0.472);
   backdrop-filter: blur(10px) drop-shadow(4px 4px 10px rgb(41, 2, 168));
   transition: 0.2s ease;

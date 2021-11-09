@@ -342,4 +342,30 @@ ul {
   transition: 0.3s;
 }
 
+@media(max-width: 760px) {
+  .goal__modal {
+    width: 100%;
+    height: 100%;
+  }
+  .goal__button {
+    width: 5rem;
+   }
+   h1 {
+     font-size: 1rem;
+   }
+   .goal__modal__type {
+     font-size: 1rem;
+   }
+   .goal__deadline--label{
+     font-size: 1rem;
+   }
+   .goal__deadline__container{
+     right: 8.5rem;
+   }
+   .vdp-datepicker * {
+     position: absolute;
+     bottom: 6rem;
+   }
+}
+
 </style>
