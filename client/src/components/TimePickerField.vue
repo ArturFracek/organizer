@@ -130,4 +130,20 @@ li:hover {
 .char:hover {
   color: red;
 }
+
+@media(max-width: 760px) {
+  .time-picker {
+    width: 5rem;
+    margin: 0.1rem;
+  }
+  .timePicker__mainContainer{
+    width: 5rem;
+    margin: 0.1rem;
+  }
+  .display-time {
+    position: relative;
+    width: 5rem !important;
+    right: 0.5rem;
+  }
+}
 </style>

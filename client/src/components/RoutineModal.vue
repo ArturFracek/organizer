@@ -460,5 +460,36 @@ input:hover ~ .routine__showModalButton {
     padding: 0.2rem;
     backdrop-filter: none;
   }
+  .routine__modal {
+    width: 100%;
+    height: 100%;
+  }
+  .routine__bottomSection{
+    margin-top: auto;
+  }
+  .routine__activitiesOccurences{
+    height: 100%;
+  }
+  .routine__button--save{
+    width: 6rem;
+    position: relative;
+    right: -2.1rem;
+  }
+  .routine__bottomContainer{
+  margin-left: auto;
+  }
+  .routine__title {
+    font-size: 1rem;
+  }
+  .routine__createdAt {
+    font-size: 0.8rem;
+  }
+  .routine__modal__type {
+    font-size: 0.9rem;
+  }
+  .routine__button__delete{
+    right: 0rem;
+    top: -0.2rem;
+  }
 }
 </style>

@@ -103,4 +103,11 @@ select:focus {
   z-index: 1;
 }
 
+@media(max-width: 760px) {
+  .select {
+    width: 5rem;
+    margin: 0.1rem;
+  }
+}
+
 </style>

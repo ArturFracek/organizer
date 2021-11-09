@@ -309,5 +309,12 @@ h1 {
     padding: 0.2rem;
     text-shadow: none;
   }
+  .activity__modal{
+    width: 100%;
+    height: 70%;
+  }
+  .activity__button--save {
+    width: 6rem;
+  }
 }
 </style>

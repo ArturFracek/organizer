@@ -225,4 +225,18 @@ select {
   top: -0.1rem;
   width: 1rem;
 }
+
+@media(max-width:760px) {
+  .occurences__mainContainer{
+    height: 24rem;
+    box-sizing: border-box;
+  }
+  .occurences__label{
+    font-size: 0.6rem;
+    width: 5rem;
+    margin: 0.1rem;
+    left: -3.5rem;
+    font-weight: bold;
+  }
+}
 </style>
