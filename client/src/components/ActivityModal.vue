@@ -303,13 +303,13 @@ h1 {
 .activity__modal__title:focus {
   outline: none;
 }
-@media(max-width: 760px) {
-  .activity__showModalButton{
+@media (max-width: 760px) {
+  .activity__showModalButton {
     font-weight: 500;
     padding: 0.2rem;
     text-shadow: none;
   }
-  .activity__modal{
+  .activity__modal {
     width: 100%;
     height: 70%;
   }

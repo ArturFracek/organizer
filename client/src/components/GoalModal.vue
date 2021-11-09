@@ -202,6 +202,10 @@ h1 {
   margin-bottom: 15px;
   text-shadow: 0 0 1rem rgba(211, 255, 253, 0.945);
 }
+h1:hover {
+  color: rgba(255, 0, 0, 0.712);
+  cursor: pointer;
+}
 
 .goal__createdAt {
   color: rgba(211, 255, 253, 0.945);
@@ -328,7 +332,7 @@ ul {
   top: 0.1rem;
   right: 7.5rem;
   width: 6rem;
-  }
+}
 .datePicker__container {
   width: 7rem;
 }
@@ -342,30 +346,50 @@ ul {
   transition: 0.3s;
 }
 
-@media(max-width: 760px) {
+@media (max-width: 760px) {
   .goal__modal {
     width: 100%;
     height: 100%;
   }
   .goal__button {
     width: 5rem;
-   }
-   h1 {
-     font-size: 1rem;
-   }
-   .goal__modal__type {
-     font-size: 1rem;
-   }
-   .goal__deadline--label{
-     font-size: 1rem;
-   }
-   .goal__deadline__container{
-     right: 8.5rem;
-   }
-   .vdp-datepicker * {
-     position: absolute;
-     bottom: 6rem;
-   }
+  }
+  h1 {
+    font-size: 1rem;
+  }
+  .goal__modal__type {
+    font-size: 1rem;
+  }
+  .goal__deadline--label {
+    font-size: 1rem;
+  }
+  .goal__deadline__container {
+    right: 9.5rem;
+  }
+  .vdp-datepicker * {
+    position: absolute;
+    bottom: 6rem;
+  }
+  .goal__bottomContainer {
+    margin-top: auto;
+    margin-bottom: 1rem;
+  }
+  .slider__container {
+    position: relative;
+    top: 7rem;
+    right: -1rem;
+  }
+  .textArea__container {
+    position: relative;
+    top: 5rem;
+  }
+  h1 {
+    position: relative;
+    top: 5rem;
+  }
+  .goal__buttonsContainer {
+    position: relative;
+    right: -1.5rem;
+  }
 }
-
 </style>

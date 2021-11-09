@@ -74,7 +74,7 @@ option {
   font-weight: 600;
   text-shadow: 0 0 3px rgb(0, 255, 157);
   background: rgb(2, 16, 17);
-  text-align: center;;
+  text-align: center;
 }
 
 select:hover {
@@ -103,7 +103,7 @@ select:focus {
   z-index: 1;
 }
 
-@media(max-width: 760px) {
+@media (max-width: 760px) {
   .select {
     width: 4.5rem;
     margin: 0.1rem;
@@ -111,5 +111,4 @@ select:focus {
     font-size: 0.8rem;
   }
 }
-
 </style>

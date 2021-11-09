@@ -3,7 +3,7 @@
     <button
       type="button"
       class="routine__button routine__showModalButton"
-      :class="{routine__showModalButtonActive: localRoutine.is_active}"
+      :class="{ routine__showModalButtonActive: localRoutine.is_active }"
       @click="showModal = true"
     >
       {{ routineObject.title }}
@@ -167,7 +167,7 @@ export default {
 }
 
 .routine__buttonsContainer {
-    position: relative;
+  position: relative;
   margin-left: 5%;
   width: 100%;
   height: 3rem;
@@ -454,8 +454,8 @@ input:hover ~ .routine__showModalButton {
   outline: none;
 }
 
-@media(max-width: 760px){
-    .routine__showModalButton{
+@media (max-width: 760px) {
+  .routine__showModalButton {
     font-weight: 600;
     padding: 0.2rem;
     backdrop-filter: none;
@@ -464,19 +464,19 @@ input:hover ~ .routine__showModalButton {
     width: 100%;
     height: 100%;
   }
-  .routine__bottomSection{
+  .routine__bottomSection {
     margin-top: auto;
   }
-  .routine__activitiesOccurences{
+  .routine__activitiesOccurences {
     height: 100%;
   }
-  .routine__button--save{
+  .routine__button--save {
     width: 6rem;
     position: relative;
     right: -2.1rem;
   }
-  .routine__bottomContainer{
-  margin-left: auto;
+  .routine__bottomContainer {
+    margin-left: auto;
   }
   .routine__title {
     font-size: 1rem;
@@ -487,7 +487,7 @@ input:hover ~ .routine__showModalButton {
   .routine__modal__type {
     font-size: 0.9rem;
   }
-  .routine__button__delete{
+  .routine__button__delete {
     right: 0rem;
     top: -0.2rem;
   }

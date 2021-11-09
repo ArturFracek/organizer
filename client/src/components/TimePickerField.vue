@@ -131,13 +131,13 @@ li:hover {
   color: red;
 }
 
-@media(max-width: 760px) {
+@media (max-width: 760px) {
   .time-picker {
     width: 5rem;
     margin: 0.1rem;
     font-size: 0.8rem;
   }
-  .timePicker__mainContainer{
+  .timePicker__mainContainer {
     width: 4.5rem;
     margin: 0.1rem;
   }
@@ -150,9 +150,9 @@ li:hover {
     position: relative;
     right: 0.8rem;
   }
-  .bi-clock-history{
+  .bi-clock-history {
     position: relative;
-  left: 1.1rem;
+    left: 1.1rem;
   }
 }
 </style>

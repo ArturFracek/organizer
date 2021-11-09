@@ -291,7 +291,7 @@ export default {
   margin-left: auto;
   margin-right: auto;
   height: 3rem;
-  width: 30%;
+  width: 40%;
   color: rgb(255, 255, 255);
   font-weight: bold;
   border-left: 15px double rgba(41, 246, 212, 0.157);
@@ -299,7 +299,7 @@ export default {
   border-top: 2px double rgba(41, 246, 212, 0.157);
   border-bottom: 2px double rgba(41, 246, 212, 0.157);
   border-radius: 5px;
-  border-style:groove;
+  border-style: groove;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -326,7 +326,7 @@ export default {
   .net__minutesRow {
     overflow: hidden;
   }
-  .net__dayHeader{
+  .net__dayHeader {
     font-size: 0.8rem;
   }
 }

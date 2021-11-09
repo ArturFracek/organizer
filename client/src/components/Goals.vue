@@ -10,7 +10,7 @@
         @keyup.enter="addGoal"
       />
       <label class="goals__input__label">Add Goal</label>
-      <button class="goals__addGoal__button" @click="addGoal">Add Goal</button>
+      <button type="button" class="goals__addGoal__button" @click="addGoal">Add Goal</button>
     </div>
     <div class="goals__goalsHolder">
       <ul
@@ -299,7 +299,7 @@ li::marker {
   li {
     font-size: 0.9rem;
   }
-  .goals__addGoal__button{
+  .goals__addGoal__button {
     position: absolute;
     top: 1rem;
     left: 50vw;

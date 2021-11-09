@@ -1,7 +1,7 @@
 <template>
   <div class="datePicker__container">
     <Datepicker
-    class="datePicker__input"
+      class="datePicker__input"
       :value="value"
       @input="emitDate"
       placeholder="Set Deadline"
@@ -46,6 +46,8 @@ input {
   color: aquamarine;
   text-align: center;
   outline: none;
+  width: 7rem;
+  font-size: 1.1rem;
 }
 
 input:hover {
@@ -100,16 +102,16 @@ span {
 .datePicker__input {
   width: 6.5rem;
 }
-.datePicker__input:hover  ::placeholder{
+.datePicker__input:hover ::placeholder {
   color: red;
   cursor: pointer;
 }
-@media(max-width: 760px) {
-.vdp-datepicker__calendar {
-  position: absolute;
-  top: 10rem;
-  background: rgb(2, 1, 17, 0.8) !important;
-  border: 3px solid turquoise;
-}
+@media (max-width: 760px) {
+  .vdp-datepicker__calendar {
+    position: absolute;
+    top: 10rem;
+    background: rgb(2, 1, 17, 0.8) !important;
+    border: 3px solid turquoise;
+  }
 }
 </style>
