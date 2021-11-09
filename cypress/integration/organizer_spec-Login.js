@@ -21,6 +21,7 @@ describe("Login, add goal and customize it", () => {
     const goal = "Test Goal";
     const description =
       "This is test description. Testing if description text area works fine. Now we made some test goal so we can test whole process in app";
+    const rangeValue = 10;
 
     cy.get(".goals__andGoal__input").type(goal);
 
@@ -30,7 +31,7 @@ describe("Login, add goal and customize it", () => {
 
     cy.wait("@getGoals");
     // eslint-disable-next-line cypress/no-unnecessary-waiting
-    cy.wait(100);
+    cy.wait(200);
 
     cy.get(".goal__showModalButton[type='button']").contains(goal).click();
 
@@ -38,7 +39,12 @@ describe("Login, add goal and customize it", () => {
 
     cy.get(".textArea").type(description);
 
-				cy.get("[placeholder='Set Deadline']").click()
-    // cy.get("input").contains("Set Deadline").click();
+    cy.get("[placeholder='Set Deadline']").click();
+
+    cy.get(".cell").contains("10").click();
+
+    cy.get(".slider").invoke("val", rangeValue).trigger("input");
+
+    cy.get(".rangeValue").should("contain", rangeValue);
   });
 });
