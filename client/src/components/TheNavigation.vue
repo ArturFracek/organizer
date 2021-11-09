@@ -1,8 +1,5 @@
 <template>
   <div class="nav">
-    <router-link to="/" class="nav__link nav__link--toLeft" v-if="isLoggedIn"
-      >About Organizer</router-link
-    >
     <div class="nav__logo">
       <router-link to="/" class="nav__mainLink" v-if="!isLoggedIn"
         >About Organizer</router-link
@@ -16,6 +13,9 @@
       </router-link>
     </div>
     <div class="nav__lowerLinks" :class="islower_linksActive ? 'active' : ''">
+       <router-link  to="/" class="nav__link nav__link--toLeft" v-if="isLoggedIn"
+      >About Organizer</router-link
+    >
       <router-link :to="{ name: 'Login' }" class="nav__link" v-if="!isLoggedIn"
         >Sign in</router-link
       >
@@ -259,7 +259,9 @@ export default {
 }
 
 .nav__link--toLeft {
+  position: fixed;
   justify-self: flex-start;
+  left: 0;
 }
 
 .nav__link:hover {
@@ -396,5 +398,8 @@ export default {
   .nav__lowerLinks.active {
     display: flex;
   }
+  .nav__link--toLeft {
+  position: relative;
+}
 }
 </style>

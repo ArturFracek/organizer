@@ -229,6 +229,30 @@ input:not(:placeholder-shown) ~ .addActivity__button {
 @media(max-width: 765px) {
   .activities__title {
     top: 0;
+    font-size: 1.1rem;
   }
+  .input { 
+    height: 2rem;
+    width: 14rem;
+  }
+  .activities__form__label__addActivities{
+    top: -1.7rem;
+  }
+.activities__objectsHolder{
+  margin-top: 0.5rem;
+}
+.addActivity__button{
+  left: 8.7rem;
+  height: 2rem;
+  top: -3.9rem;
+  width: 4rem;
+  text-align: start;
+  border: none;
+}
+input:focus ~ .activities__form__label__addActivities,
+input:not(:placeholder-shown).input:not(:focus)
+  ~ .activities__form__label__addActivities {
+  top: -3.5rem;
+}
 }
 </style>

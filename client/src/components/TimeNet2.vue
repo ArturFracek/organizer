@@ -294,8 +294,12 @@ export default {
   width: 30%;
   color: rgb(255, 255, 255);
   font-weight: bold;
-  border-left: 1px solid aquamarine;
-  border-right: 1px solid aquamarine;
+  border-left: 15px double rgba(41, 246, 212, 0.157);
+  border-right: 15px double rgba(41, 246, 212, 0.157);
+  border-top: 2px double rgba(41, 246, 212, 0.157);
+  border-bottom: 2px double rgba(41, 246, 212, 0.157);
+  border-radius: 5px;
+  border-style:groove;
   display: flex;
   justify-content: center;
   align-items: center;

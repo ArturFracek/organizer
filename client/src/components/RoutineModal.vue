@@ -464,4 +464,12 @@ input:hover ~ .routine__showModalButton {
 .routine__title:focus {
   outline: none;
 }
+
+@media(max-width: 760px){
+    .routine__showModalButton{
+    font-weight: 600;
+    padding: 0.2rem;
+    backdrop-filter: none;
+  }
+}
 </style>

@@ -80,22 +80,23 @@ export default {
 
 <style scoped>
 .goals__background {
-  position: absolute;
+  position: fixed;
   box-sizing: border-box;
-  height: 100%;
-  width: 100%;
+  height: 30%;
+  width: 80%;
   background: transparent;
   backdrop-filter: drop-shadow(4px 4px 6px rgb(207, 17, 17)) hue-rotate(180deg)
     opacity(80%);
   right: 0%;
+  height: 100%;
+  z-index: -1;
+  overflow-y: scroll;
 }
 
 .goals__mainContainer {
-  display: flex;
   align-items: center;
   position: relative;
   height: 30%;
-  max-height: 60%;
   width: 80%;
   padding: 0.3rem 5%;
   border-style: solid;
@@ -109,21 +110,24 @@ export default {
 }
 
 .goals__addingGoalsContainer {
+  position: static;
   display: flex;
-  flex-flow: row;
   align-items: center;
   justify-content: center;
   width: 100%;
-  height: 5rem;
-  position: relative;
+  height: 6rem;
+  margin-bottom: 3rem;
 }
 
 .goals__goalsHolder {
+  top: -6.5rem;
   width: 100%;
   display: flex;
   flex-flow: column;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
+  box-sizing: border-box;
+  height:auto;
 }
 
 .goals__andGoal__input {
@@ -149,15 +153,14 @@ export default {
 }
 
 .goals__input__label {
-  position: relative;
+  position: absolute;
+  top: 1.5rem;
   color: whitesmoke;
   display: flex;
   cursor: text;
   transition: top 200ms ease-in;
   left: 200ms ease-in;
   font-size: 200ms ease-in;
-  top: 0.7rem;
-  right: 0;
   background-color: none;
   font-weight: bold;
   white-space: nowrap;
@@ -168,7 +171,6 @@ export default {
   color: rgb(255, 255, 255);
   text-shadow: 0 0 0.8rem rgb(255, 255, 255);
   pointer-events: none;
-  margin-bottom: 1.8rem;
 }
 
 .goals__addGoal__button {
@@ -177,8 +179,8 @@ export default {
   text-shadow: 0 0 8px rgb(51, 189, 175);
   font-weight: bold;
   position: relative;
-  right: -8.2rem;
-  top: -0.25rem;
+  right: -11.2rem;
+  top: 0rem;
   text-align: center;
   border-radius: 2px;
   padding: 0.7rem;
@@ -193,6 +195,7 @@ export default {
   display: none;
   height: 2.5rem;
 }
+
 .goals__addGoal__button:hover {
   color: rgb(240, 2, 2);
   border-color: rgb(233, 1, 1);
@@ -294,6 +297,10 @@ li::marker {
   }
   li {
     font-size: 0.9rem;
+  }
+  .goals__addGoal__button{
+    width: 4.8rem;
+    left: 9rem;
   }
 }
 </style>

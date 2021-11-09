@@ -234,6 +234,31 @@ input:not(:placeholder-shown) ~ .addRoutine__button {
 @media(max-width: 765px) {
   .routines__title {
     top: 0;
+    font-size: 1.1rem;
   }
+  .input { 
+    height: 2rem;
+    width: 14rem;
+  }
+  .routines__form__label__addRoutines{
+    top: -1.7rem;
+  }
+  .routines__objectsHolder{
+  margin-top: 0.5rem;
+}
+.addRoutine__button{
+  left: 8.7rem;
+  height: 2rem;
+  top: -4rem;
+  width: 4rem;
+  text-align: start;
+  border: none;
+  backdrop-filter: none;
+}
+input:focus ~ .routines__form__label__addRoutines,
+input:not(:placeholder-shown).input:not(:focus)
+  ~ .routines__form__label__addRoutines {
+  top: -3.5rem;
+}
 }
 </style>
