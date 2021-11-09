@@ -105,8 +105,10 @@ select:focus {
 
 @media(max-width: 760px) {
   .select {
-    width: 5rem;
+    width: 4.5rem;
     margin: 0.1rem;
+    text-shadow: 0px 0px 1px rgb(0, 255, 157);
+    font-size: 0.8rem;
   }
 }
 

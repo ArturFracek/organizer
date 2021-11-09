@@ -228,7 +228,9 @@ select {
 
 @media(max-width:760px) {
   .occurences__mainContainer{
+    position: relative;
     height: 24rem;
+    top: 1rem;
     box-sizing: border-box;
   }
   .occurences__label{
