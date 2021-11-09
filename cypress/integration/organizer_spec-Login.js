@@ -38,6 +38,7 @@ describe("Login, add goal and customize it", () => {
 
     cy.get(".textArea").type(description);
 
-    cy.get(".vdp-datepicker").contains("Set Deadline").click();
+				cy.get("[placeholder='Set Deadline']").click()
+    // cy.get("input").contains("Set Deadline").click();
   });
 });
