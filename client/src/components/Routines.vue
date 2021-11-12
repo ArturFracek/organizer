@@ -3,7 +3,7 @@
     <div class="routines__title">Routines</div>
     <div class="routines__addingRoutinesContainer">
       <input
-        class="input"
+        class="input routines__addRoutineInput"
         type="text"
         placeholder=" "
         v-model="title"
@@ -141,15 +141,15 @@ export default {
   padding: 0.7rem;
   background: none;
   outline: none;
-  border: 2px solid rgb(35, 166, 170);
+  border-top: 2px solid rgb(35, 166, 170);
+  border-bottom: 2px solid rgb(35, 166, 170);
   border-radius: 0.5rem;
   background: transparent;
   box-shadow: 0 25px 25px rgba(38, 221, 253, 0.1);
-  backdrop-filter: blur(10px) drop-shadow(4px 4px 2px rgb(17, 185, 207));
   display: none;
   height: 100%;
   width: 19%;
-  transition: ease-in-out 0.3s;
+  transition: ease-in-out 0.7s;
 }
 
 button:hover {
@@ -210,7 +210,7 @@ input:focus ~ .routines__form__label__addRoutines {
 input:focus ~ .routines__form__label__addRoutines,
 input:not(:placeholder-shown).input:not(:focus)
   ~ .routines__form__label__addRoutines {
-  top: -4.5rem;
+  top: -75px;
 }
 
 input:not(:placeholder-shown) ~ .addRoutine__button {

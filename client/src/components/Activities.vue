@@ -111,7 +111,6 @@ export default {
 }
 
 .addActivity__button {
-  border-radius: 0;
   color: rgb(88, 249, 255);
   text-shadow: 0 0 8px turquoise;
   font-weight: bold;
@@ -119,18 +118,19 @@ export default {
   left: 12.5rem;
   top: -4.7rem;
   text-align: center;
-  border-radius: 2px;
   padding: 0.7rem;
   background: none;
   outline: none;
-  border: 2px solid rgb(35, 166, 170);
+  border-top: 2px solid rgb(35, 166, 170);
+  border-bottom: 2px solid rgb(35, 166, 170);
   border-radius: 0.5rem;
   background: transparent;
   box-shadow: 0 25px 25px rgba(38, 221, 253, 0.1);
+  opacity: 0;
   display: none;
   height: 100%;
   width: 19%;
-  transition: ease-in-out 0.3s;
+  transition: ease-in-out 0.7s;
 }
 
 button:hover {
@@ -203,10 +203,11 @@ input:focus ~ .activities__form__label__addActivities {
 input:focus ~ .activities__form__label__addActivities,
 input:not(:placeholder-shown).input:not(:focus)
   ~ .activities__form__label__addActivities {
-  top: -4.5rem;
+  top: -75px;
 }
 
 input:not(:placeholder-shown) ~ .addActivity__button {
+  opacity: 1;
   display: block;
 }
 

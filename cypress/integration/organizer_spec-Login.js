@@ -3,7 +3,7 @@ describe("Login, add goal and customize it", () => {
     cy.intercept("GET", "http://localhost:5000/api/goals/").as("getGoals");
   });
 
-  it("should login me, add goal and customize it", () => {
+  it("should login me, add goal and customize it then check if backend and database works", () => {
     cy.visit("http://localhost:8080/Login");
 
     const password = "abc123";
@@ -92,5 +92,24 @@ describe("Login, add goal and customize it", () => {
     cy.get(".goals__goalsHolder").should("contain", goal);
 
     cy.get(".goals__goalsHolder").should("not.contain", goalToDelete);
+
+    // Check About Organizer
+  });
+
+  it("Should visit About Organizing page via nav, and check if links works", () => {
+    cy.get(".nav__link--toLeft").contains("About Organizer").click();
+  });
+
+  it("Should visit Organizing via nav, make a routine, add few activities, customize routine, activate it and check if activities display on timenet. Then Test if Timer works on this page", () => {
+    cy.get(".organize").contains("Organize").click();
+
+    cy.wait(200)
+
+    cy.get(".routines__addRoutineInput")
+      .focus()
+      .get(".routines__form__label__addRoutines")
+      .should("have.css", "top", "-75px")
+    
+      cy.type("Super New TEST Routine");
   });
 });

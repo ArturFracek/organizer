@@ -50,6 +50,13 @@
               >The Philosophy of Time Management | Brad Aeon | TEDxConcordia
             </a>
           </li>
+           <li>
+            <a
+              target="_blank"
+              href="https://www.youtube.com/watch?v=PZ7lDrwYdZc"
+              >How to become 37.78 times better at anything | Atomic Habits summary by James Clear
+            </a>
+          </li>
         </ul>
       </div>
       <div class="articles">
@@ -87,6 +94,9 @@
       <div class="books">
         <div class="title"><i class="bi bi-book"></i>Books</div>
         <ul>
+          <li>
+            <a>Attomic Habits by James Clear </a>
+          </li>
           <li>
             <a
               >The 7 Habits of Highly Effective People: Powerful Lessons in
@@ -375,6 +385,11 @@ li:hover {
 .bi {
   margin-right: 1rem;
   font-size: 1.5rem;
+}
+
+.movies > ul > li > a:hover, .articles > ul > li > a:hover {
+  color: red;
+  text-shadow: 0 0 20px rgba(255, 0, 0, 0.555);
 }
 
 @media (max-width: 1045px) {

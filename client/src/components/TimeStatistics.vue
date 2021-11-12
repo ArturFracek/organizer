@@ -129,7 +129,7 @@ i {
 }
 .TimeStatistics__statistic:hover {
   font-weight: bold;
-  color: rgb(255, 0, 0);
+  color: rgb(81, 255, 255);
 }
 
 .TimeStatistics__activityDuration {

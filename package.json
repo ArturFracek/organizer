@@ -10,7 +10,8 @@
     "start": "node app.js",
     "server": "nodemon app.js",
     "client": "npm run serve --prefix client",
-    "dev": "concurrently \"npm run server\" \"npm run client\""
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "test:unit": "vue-cli-service test:unit"
   },
   "dependencies": {
     "bcryptjs": "^2.4.3",
@@ -45,6 +46,7 @@
     "@vue/cli-plugin-babel": "~4.5.0",
     "@vue/cli-plugin-eslint": "~4.5.0",
     "@vue/cli-plugin-router": "~4.5.0",
+    "@vue/cli-plugin-unit-jest": "^4.5.15",
     "@vue/cli-plugin-vuex": "~4.5.0",
     "@vue/cli-service": "^4.5.13",
     "@vue/eslint-config-prettier": "^6.0.0",
@@ -69,6 +71,17 @@
       "no-console": "off",
       "no-unused-vars": "off"
     },
+    "overrides": [
+      {
+        "env": {
+          "jest": true
+        },
+        "files": [
+          "*/__tests__/.{j,t}s?(x)",
+          "*/tests/unit/**/.spec.{j,t}s?(x)"
+        ]
+      }
+    ],
     "extends": [
       "plugin:vue/essential",
       "eslint:recommended",
