@@ -134,10 +134,9 @@ export default {
   text-shadow: 0 0 8px turquoise;
   font-weight: bold;
   position: relative;
-  left: 12.5rem;
+  left: 13.5rem;
   top: -4.7rem;
   text-align: center;
-  border-radius: 2px;
   padding: 0.7rem;
   background: none;
   outline: none;
@@ -147,8 +146,8 @@ export default {
   background: transparent;
   box-shadow: 0 25px 25px rgba(38, 221, 253, 0.1);
   display: none;
-  height: 100%;
   width: 19%;
+  height: 100%;
   transition: ease-in-out 0.7s;
 }
 
@@ -161,7 +160,7 @@ button:hover {
 .input {
   margin-left: 0;
   text-align: center;
-  width: 100%;
+  width: 100% !important;
   height: 100%;
   border-radius: 2px;
   color: rgb(0, 0, 0);

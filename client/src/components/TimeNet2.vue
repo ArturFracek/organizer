@@ -275,8 +275,10 @@ export default {
 }
 
 .net__timerButton {
+  display: flex;
+  justify-content: center;
   z-index: 3;
-  width: 85%;
+  width: 100%;
   text-shadow: 0 0 2px rgba(130, 251, 211, 0.8);
   transition: 0.3s;
 }

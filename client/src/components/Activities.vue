@@ -115,7 +115,7 @@ export default {
   text-shadow: 0 0 8px turquoise;
   font-weight: bold;
   position: relative;
-  left: 12.5rem;
+  left: 13.5rem;
   top: -4.7rem;
   text-align: center;
   padding: 0.7rem;

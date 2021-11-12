@@ -33,6 +33,7 @@ beforeEach(() => {
         getters: {
           goals: "goals/goals",
         },
+        
       },
     },
     vuetify,
