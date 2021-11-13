@@ -1,6 +1,9 @@
 <template>
   <div class="TimeStatistics__container">
-    <div class="TimeStatistics__container__title">
+    <div
+      class="TimeStatistics__container__title"
+      data-test="timeStatisticsTitle"
+    >
       Time Statistics<i class="bi bi-clock-history"></i>
     </div>
     <div v-if="activeRoutine" class="TimeStatistics__activitiesContainer">
