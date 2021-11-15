@@ -3,14 +3,22 @@
     <div class="goals__background"></div>
     <div class="goals__addingGoalsContainer">
       <input
-        class="goals__andGoal__input"
+        class="goals__addGoal__input"
         type="text"
         placeholder=" "
         v-model="title"
         @keyup.enter="addGoal"
+        data-test="goalInputAdd"
       />
       <label class="goals__input__label">Add Goal</label>
-      <button type="button" class="goals__addGoal__button" @click="addGoal">Add Goal</button>
+      <button
+        type="button"
+        class="goals__addGoal__button"
+        @click="addGoal"
+        data-test="goalButtonAdd"
+      >
+        Add Goal
+      </button>
     </div>
     <div class="goals__goalsHolder">
       <ul
@@ -131,7 +139,7 @@ export default {
   box-sizing: border-box;
 }
 
-.goals__andGoal__input {
+.goals__addGoal__input {
   margin-top: 1rem;
   text-align: center;
   width: 15rem;
@@ -232,7 +240,7 @@ input:focus ~ .goals__input__label {
 }
 
 input:focus ~ .goals__input__label,
-input:not(:placeholder-shown).goals__andGoal__input:not(:focus)
+input:not(:placeholder-shown).goals__addGoal__input:not(:focus)
   ~ .goals__input__label {
   animation: shadow_fading 0.8s ease;
   opacity: 0;
@@ -280,7 +288,7 @@ li::marker {
 }
 
 @media (max-width: 765px) {
-  .goals__andGoal__input {
+  .goals__addGoal__input {
     width: 12rem;
   }
   .goals__mainContainer {

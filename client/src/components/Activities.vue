@@ -8,8 +8,13 @@
         placeholder=" "
         v-model="title"
         @keyup.enter="addActivity"
+        data-test="activityButtonAdd"
       />
-      <label class="activities__form__label__addActivities">Add Activity</label>
+      <label
+        class="activities__form__label__addActivities"
+        data-test="activityLabel"
+        >Add Activity</label
+      >
       <button class="addActivity__button" @click="addActivity">Add</button>
     </div>
     <div class="activities__objectsHolder">

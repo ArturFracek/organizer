@@ -4,6 +4,7 @@
       type="button"
       class="activity__button activity__showModalButton"
       @click="showModal = true"
+      data-test="activityShowModal"
     >
       {{ activityObject.title }}
     </button>

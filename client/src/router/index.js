@@ -60,7 +60,7 @@ router.beforeEach((to, from, next) => {
     }
   } else if (to.matched.some((record) => record.meta.requiresGuest)) {
     if (store.getters.isLoggedIn) {
-      next("/Profile");
+      next("/profile");
     } else {
       next();
     }

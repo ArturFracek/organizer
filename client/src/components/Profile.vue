@@ -1,13 +1,21 @@
 <template>
   <div class="profile__mainContainer">
     <div class="profile__UserInfo">
-      <input type="file" name="file" id="file" accept="image/*" />
+      <input
+        type="file"
+        name="file"
+        id="file"
+        accept="image/*"
+        data-test="imageInput"
+      />
       <div class="profile__picContainer" id="profile__picID">
         <img src="../assets/profile_cat.jpg" class="photo" />
         <label for="file" id="upload_btn">Upload Photo</label>
       </div>
       <div class="profile__UserInfo__card" v-if="user">
-        <li class="profile__UserInfo__card__item">Username: {{ user.username }}</li>
+        <li class="profile__UserInfo__card__item">
+          Username: {{ user.username }}
+        </li>
         <li class="profile__UserInfo__card__item">Name: {{ user.name }}</li>
         <li class="profile__UserInfo__card__item">Email: {{ user.email }}</li>
       </div>
@@ -18,7 +26,7 @@
 </template>
 
 <script>
-import TimeStatistics from "./TimeStatistics.vue"
+import TimeStatistics from "./TimeStatistics.vue";
 import { mapActions, mapGetters } from "vuex";
 import Goals from "./Goals.vue";
 
@@ -279,13 +287,12 @@ img:hover ~ #upload_btn,
 #upload_btn:hover {
   display: flex;
 }
-@media(max-width: 765px) {
- .profile__mainContainer{
-   overflow-y: scroll;
+@media (max-width: 765px) {
+  .profile__mainContainer {
+    overflow-y: scroll;
+  }
+  .profile__UserInfo__card__item {
+    font-size: 1rem;
+  }
 }
-.profile__UserInfo__card__item{
-  font-size: 1rem;
-}
-}
-
 </style>

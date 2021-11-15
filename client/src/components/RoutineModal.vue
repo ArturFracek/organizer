@@ -5,6 +5,7 @@
       class="routine__button routine__showModalButton"
       :class="{ routine__showModalButtonActive: localRoutine.is_active }"
       @click="showModal = true"
+      data-test="routineShowModal"
     >
       {{ routineObject.title }}
     </button>

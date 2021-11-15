@@ -4,6 +4,7 @@
       type="button"
       class="goal__showModalButton"
       @click="showModal = true"
+      data-test="goalModalButton"
     >
       {{ goalObject.title }}
     </button>
@@ -15,9 +16,9 @@
       ></div>
     </transition>
     <transition name="slide" appear>
-      <div class="goal__modal" v-if="showModal">
+      <div class="goal__modal" v-if="showModal" data-test="goalModal">
         <div class="goal__modal__type">Goal</div>
-        <h1>{{ goalObject.title }}</h1>
+        <h1 data-test="goalTitle">{{ goalObject.title }}</h1>
         <div class="goal__createdAt">Created at: <br />{{ date }}</div>
         <div class="goal__deadline__container">
           <div class="goal__deadline goal__deadline--label">Deadline:</div>
@@ -36,12 +37,15 @@
               class="goal__button goal__button--save"
               value="Save"
               @click="updateGoal"
+              data-test="goalSave"
             />
             <input
               type="submit"
               class="goal__button goal__button--save"
               value="Go back"
               @click="showModal = false"
+              data-test="goalGoBack"
+              
             />
           </div>
           <button

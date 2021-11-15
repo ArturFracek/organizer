@@ -13,8 +13,11 @@ log stands for login
               name="username"
               v-model="username"
               class="input"
+              data-test="loginUsername"
             />
-            <label for="username" class="form__label form__label--username">Username</label>
+            <label for="username" class="form__label form__label--username"
+              >Username</label
+            >
           </div>
           <div class="log__form__item">
             <input
@@ -24,25 +27,31 @@ log stands for login
               name="password"
               v-model="password"
               class="input"
+              data-test="loginPassword"
             />
-            <label for="password" class="form__label form__label--password">Password</label>
+            <label for="password" class="form__label form__label--password"
+              >Password</label
+            >
           </div>
           <div class="log__form__item">
             <input
               type="submit"
               class="log__button log__button--primary"
               value="Login"
+              data-test="loginLogin"
             />
           </div>
           <div class="log__registration__container">
             <router-link
               to="/register"
               class="log__registration__link log__registration__link--one"
+              data-test="loginToRegister"
               >Need an Account ?</router-link
             >
             <router-link
               to="/register"
               class="log__registration__link log__registration__link--two"
+              data-test="loginToRegisterHovered"
               >Register now</router-link
             >
           </div>

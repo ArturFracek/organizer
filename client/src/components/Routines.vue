@@ -8,8 +8,13 @@
         placeholder=" "
         v-model="title"
         @keyup.enter="addRoutine"
+        data-test="routinesButtonAdd"
       />
-      <label class="routines__form__label__addRoutines">Add Routine</label>
+      <label
+        class="routines__form__label__addRoutines"
+        data-test="RoutinesLabel"
+        >Add Routine</label
+      >
       <button class="addRoutine__button" @click="addRoutine">Add</button>
     </div>
     <div class="routines__objectsHolder">

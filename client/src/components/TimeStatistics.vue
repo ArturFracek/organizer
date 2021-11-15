@@ -13,7 +13,10 @@
         :key="index"
       >
         {{ getActivityNameById(occurence) }} {{ "~" }}
-        <div class="TimeStatistics__activityDuration">
+        <div
+          class="TimeStatistics__activityDuration"
+          data-test="activityDuration"
+        >
           {{ hourTimeFormat(getActivityDurationById(occurence)) || 0 }}
         </div>
       </div>
