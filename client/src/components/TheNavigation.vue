@@ -8,7 +8,7 @@
         >About Organizer</router-link
       >
       <router-link
-        :to="{ name: 'Organise' }"
+        :to="{ name: 'Organize' }"
         class="nav__mainLink organize"
         v-if="isLoggedIn"
       >

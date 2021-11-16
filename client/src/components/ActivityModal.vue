@@ -16,9 +16,13 @@
       ></div>
     </transition>
     <transition name="slide" appear>
-      <div class="activity__modal" v-if="showModal">
+      <div class="activity__modal" v-if="showModal" data-test="activityModal">
         <div class="activity__modal__type">Activity</div>
-        <input class="activity__modal__title" v-model="localActivity.title" />
+        <input
+          class="activity__modal__title"
+          v-model="localActivity.title"
+          data-test="activityModalTitle"
+        />
         <div class="activity__createdAt">Created at: <br />{{ date }}</div>
         <textArea v-model="localActivity.description" />
         <Slider v-model="localActivity.priority" />
@@ -29,12 +33,14 @@
               class="activity__button activity__button--save"
               @click="updateActivity"
               value="Save"
+              data-test="activitySave"
             />
             <input
               type="submit"
               class="activity__button activity__button--save"
               value="Go back"
               @click="showModal = false"
+              data-test="activityGoBack"
             />
           </div>
           <button
@@ -42,6 +48,7 @@
             type="button"
             value="Delete"
             @click="deleteActivity(activityObject._id)"
+            data-test="activityDelete"
           ></button>
         </div>
       </div>

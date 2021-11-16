@@ -78,7 +78,7 @@ describe("Login, add goal and customize it", () => {
     cy.get("[data-test='goalHolder']").should("not.contain", goalToDelete);
   });
 
-  it.only("Should visit About Organizing page via nav, and check if links works", () => {
+  it("Should visit About Organizing page via nav, and check if links works", () => {
     cy.visit("http://localhost:8080/About");
 
     cy.url().should("include", "http://localhost:8080/About");
@@ -99,16 +99,43 @@ describe("Login, add goal and customize it", () => {
     });
   });
 
-  it("should visit 'Organize' via  navbar, focus on input to see if css for labels work, write something to see it display after typing something", () => {
-    cy.get(".organize").contains("Organize").click();
-    cy.get(".routines__addRoutineInput")
+  it.only("should visit 'Organize', and add few activities, then customize them and check if saving to database properly", () => {
+    cy.visit("http://localhost:8080/Organize");
+
+    const activity1 = "TEST Running";
+    const description1 = "111This is first test activity111";
+    const rangeValue1 = 1;
+    const activity2 = "TEST Swimming";
+    const activity3 = "TEST Chess";
+
+    cy.get("[data-test='activityInputAdd']")
       .focus()
-      .get(".routines__form__label__addRoutines")
+      .get('[data-test="activityLabel"]')
       .should("have.css", "top", "-35.2px");
 
-    cy.get(".routines__addRoutineInput")
-      .type("Testing Button")
-      .get(".addRoutine__button")
-      .should("be.visible");
+    cy.get("[data-test='activityInputAdd']")
+      .type(activity1)
+      .get('[data-test="activityButtonAdd"]')
+      .should("be.visible")
+      .click();
+
+    cy.wait(200).get('[data-test="activityShowModal"]')
+      .last()
+      .contains(activity1)
+      .should("be.visible")
+      .click();
+
+    ////
+    cy.get("[data-test='activityModalTitle']").should("have.value", activity1);
+
+    cy.get("[data-test='textArea']").type(description1);
+
+    cy.get(".slider").invoke("val", rangeValue1).trigger("input");
+
+    cy.get(".rangeValue").should("contain", rangeValue1);
+
+    cy.get("[data-test='activitySave']").click();
+
+    cy.reload();
   });
 });
