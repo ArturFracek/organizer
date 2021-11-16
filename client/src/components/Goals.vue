@@ -26,6 +26,7 @@
         :item="goal"
         :index="index"
         :key="goal._id"
+        data-test="goalHolder"
       >
         <li>
           <GoalModal

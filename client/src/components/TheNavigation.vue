@@ -1,7 +1,10 @@
 <template>
   <div class="nav">
     <div class="nav__logo">
-      <router-link to="/" class="nav__mainLink" v-if="!isLoggedIn"
+      <router-link
+        :to="{ name: 'AboutOrganizing' }"
+        class="nav__mainLink"
+        v-if="!isLoggedIn"
         >About Organizer</router-link
       >
       <router-link
@@ -13,7 +16,10 @@
       </router-link>
     </div>
     <div class="nav__lowerLinks" :class="islower_linksActive ? 'active' : ''">
-      <router-link to="/" class="nav__link nav__link--toLeft" v-if="isLoggedIn"
+      <router-link
+        :to="{ name: 'AboutOrganizing' }"
+        class="nav__link nav__link--toLeft"
+        v-if="isLoggedIn"
         >About Organizer</router-link
       >
       <router-link :to="{ name: 'Login' }" class="nav__link" v-if="!isLoggedIn"

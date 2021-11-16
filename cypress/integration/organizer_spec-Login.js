@@ -46,7 +46,7 @@ describe("Login, add goal and customize it", () => {
 
     cy.reload();
 
-    cy.get("[data-test='goalButtonAdd']").last().contains(goal).click();
+    cy.get("[data-test='goalModalButton']").last().contains(goal).click();
 
     cy.get(".rangeValue").should("contain", rangeValue);
 
@@ -57,7 +57,7 @@ describe("Login, add goal and customize it", () => {
     const goalToDelete = "Goal to Delete";
     cy.get("[data-test='goalInputAdd']").type(goalToDelete);
 
-    cy.get("[data-test='goaButtonAdd']").should("be.visible").click();
+    cy.get("[data-test='goalButtonAdd']").should("be.visible").click();
 
     cy.wait("@getGoals");
     // eslint-disable-next-line cypress/no-unnecessary-waiting
@@ -78,8 +78,25 @@ describe("Login, add goal and customize it", () => {
     cy.get("[data-test='goalHolder']").should("not.contain", goalToDelete);
   });
 
-  it("Should visit About Organizing page via nav, and check if links works", () => {
-    cy.get(".nav__link--toLeft").contains("About Organizer").click();
+  it.only("Should visit About Organizing page via nav, and check if links works", () => {
+    cy.visit("http://localhost:8080/About");
+
+    cy.url().should("include", "http://localhost:8080/About");
+
+    cy.get("[data-test='aboutOrganizingUpperSection']").should(
+      "contain",
+      "In the Organizer, you create your activities"
+    );
+
+    cy.get("[data-test='aboutOrganizingLowerSection']").should(
+      "contain",
+      "The importance of structurizing time"
+    );
+
+    cy.get("a").each(($a) => {
+      const message = $a.text();
+      expect($a, message).to.have.attr("href").not.contain("undefined");
+    });
   });
 
   it("should visit 'Organize' via  navbar, focus on input to see if css for labels work, write something to see it display after typing something", () => {
