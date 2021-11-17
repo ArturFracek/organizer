@@ -23,7 +23,7 @@
         Add
       </button>
     </div>
-    <div class="activities__objectsHolder">
+    <div class="activities__objectsHolder" data-test="activitiesSection">
       <div
         class="activities__activityHolder"
         v-for="(activity, index) in activities"

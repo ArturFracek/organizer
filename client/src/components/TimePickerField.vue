@@ -36,6 +36,7 @@
       advanced-keyboard
       auto-scroll
       drop-direction="down"
+      data-test="timerPicker"
     >
     </VuePicker>
   </div>

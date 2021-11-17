@@ -4,6 +4,7 @@
       class="occurences__button occurences__button--addOccurence"
       type="button"
       @click="addNewAcctivityOccurence"
+      data-test="routineOccurencActivityAdd"
     >
       Add Activity
     </button>
@@ -32,6 +33,7 @@
         optionValueKey="_id"
         :value="occurence.activityId"
         @input="updateActivityOccurence(index, 'activityId', $event)"
+        data-test="activityNameOccurence"
       />
       <Select
         :options="weekdays"
@@ -39,15 +41,18 @@
         optionValueKey="dayNumber"
         :value="occurence.dayOfWeek"
         @input="updateActivityOccurence(index, 'dayOfWeek', $event)"
+        data-test="activityDayOccurence"
       />
       <TimePicker
         :value="occurence.startTime"
         @input="updateActivityOccurence(index, 'startTime', $event)"
         default="08:00"
+        data-test="timerPickerStart"
       />
       <TimePicker
         :value="occurence.endTime"
         @input="updateActivityOccurence(index, 'endTime', $event)"
+        data-test="timerPickerEnd"
       />
       <button
         @click="removeActivityOccurence(index)"
@@ -226,14 +231,14 @@ select {
   width: 1rem;
 }
 
-@media(max-width:760px) {
-  .occurences__mainContainer{
+@media (max-width: 760px) {
+  .occurences__mainContainer {
     position: relative;
     height: 24rem;
     top: 1rem;
     box-sizing: border-box;
   }
-  .occurences__label{
+  .occurences__label {
     font-size: 0.6rem;
     width: 5rem;
     margin: 0.1rem;

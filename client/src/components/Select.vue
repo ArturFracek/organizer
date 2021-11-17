@@ -8,6 +8,7 @@
       v-bind="$attrs"
       class="select"
       @click="changeOccurence"
+      data-test="customSelectButton"
     >
       <option v-for="(option, index) in options" :key="index" :value="index">
         {{ optionLabelKey ? option[optionLabelKey] : option }}

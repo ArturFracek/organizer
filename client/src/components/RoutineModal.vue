@@ -19,7 +19,11 @@
     <transition name="slide" appear>
       <div class="routine__modal" v-if="showModal">
         <div class="routine__modal__type">Routine</div>
-        <input class="routine__title" v-model="localRoutine.title" />
+        <input
+          class="routine__title"
+          v-model="localRoutine.title"
+          data-test="routineModalTitle"
+        />
         <div class="routine__createdAt">Created at: <br />{{ date }}</div>
         <div class="routine__modalUpperSection">
           <textArea v-model="localRoutine.description" />
@@ -44,12 +48,14 @@
                 class="routine__button routine__button--save"
                 @click="saveRoutine"
                 value="Save"
+                data-test="routineSave"
               />
               <input
                 type="button"
                 class="routine__button routine__button--save"
                 @click="showModal = false"
                 value="Go back"
+                data-test="routineGoBack"
               />
             </div>
             <button
@@ -57,6 +63,7 @@
               type="button"
               value="Delete"
               @click="deleteRoutine(routineObject._id)"
+              data-test="routineDelete"
             ></button>
           </div>
         </div>
