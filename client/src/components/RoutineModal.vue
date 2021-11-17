@@ -37,6 +37,7 @@
             @click="activation"
             class="routine_button routine__button--activation"
             :class="{ routine__isActive: localRoutine.is_active }"
+            data-test="activateRoutineButton"
           >
             <span v-if="!localRoutine.is_active">Activate this Routine</span>
             <span v-if="localRoutine.is_active">Active!</span>

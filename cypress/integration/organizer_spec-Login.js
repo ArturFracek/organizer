@@ -341,7 +341,7 @@ describe("Login, add goal and customize it", () => {
     cy.get('[data-test="timerPickerEnd"]')
       .children()
       .get(".display-time")
-      .first()
+      .eq(1)
       .invoke("val", "15:15")
       .trigger("input");
 
@@ -359,18 +359,25 @@ describe("Login, add goal and customize it", () => {
     //starting hour of second activity
     cy.get('[data-test="timerPickerStart"]')
       .children()
-      .contains(".display-time")
-      .last()
+      .get(".display-time")
+      .eq(2)
       .invoke("val", "10:00")
       .trigger("input");
     //end hour of second activity
     cy.get('[data-test="timerPickerEnd"]')
       .children()
-      .contains(".display-time")
-      .last()
+      .get(".display-time")
+      .eq(3)
       .invoke("val", "17:45")
       .trigger("input");
+    //activate and save routine
+    cy.get('[data-test="activateRoutineButton"]').click();
 
-    //cy.get("[data-test='routineSave']").click();
+    cy.get('[data-test="activateRoutineButton"]').should(
+      "have.class",
+      "routine__isActive"
+    );
+
+    cy.get("[data-test='routineSave']").click();
   });
 });
