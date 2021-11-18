@@ -330,20 +330,29 @@ describe("Login, add goal and customize it", () => {
       .children()
       .first()
       .select("Tuesday");
-    //start hour of first activity
+    //start hour of first activity -> set 07:15 a.m
     cy.get('[data-test="timerPickerStart"]')
       .children()
-      .get(".display-time")
+      .get(".hours>li[data-key='07']")
       .first()
-      .invoke("val", "10:30")
-      .trigger("input");
-    //end hour of first activity
+      .click({ force: true })
+      .get(".minutes>li[data-key='15']")
+      .first()
+      .click({ force: true })
+      
+    cy.get(".routine__modal__type").click();
+
+    //end hour of first activity -> set 15:45
     cy.get('[data-test="timerPickerEnd"]')
       .children()
-      .get(".display-time")
+      .get(".hours>li[data-key='15']")
       .eq(1)
-      .invoke("val", "15:15")
-      .trigger("input");
+      .click({ force: true })
+      .get(".minutes>li[data-key='45']")
+      .eq(1)
+      .click({ force: true })
+
+    cy.get(".routine__modal__type").click();
 
     // second activity occurence setting - Name first
     cy.get('[data-test="activityNameOccurence"]')
@@ -355,20 +364,29 @@ describe("Login, add goal and customize it", () => {
       .children()
       .last()
       .select("Friday");
-    //starting hour of second activity
+    //starting hour of second activity -> set 08:30
     cy.get('[data-test="timerPickerStart"]')
       .children()
-      .get(".display-time")
+      .get(".hours>li[data-key='08']")
       .eq(2)
-      .invoke("val", "10:00")
-      .trigger("input");
-    //end hour of second activity
+      .click({ force: true })
+      .get(".minutes>li[data-key='30']")
+      .eq(2)
+      .click({ force: true })
+
+    cy.get(".routine__modal__type").click();
+
+    //end hour of second activity -> set 12:15
     cy.get('[data-test="timerPickerEnd"]')
       .children()
-      .get(".display-time")
+      .get(".hours>li[data-key='12']")
       .eq(3)
-      .invoke("val", "17:45")
-      .trigger("input");
+      .click({ force: true })
+      .get(".minutes>li[data-key='15']")
+      .eq(3)
+      .click({ force: true })
+    cy.get(".routine__modal__type").click();
+
     //activate and save routine
     cy.get('[data-test="activateRoutineButton"]').click();
 
@@ -376,6 +394,8 @@ describe("Login, add goal and customize it", () => {
       "have.class",
       "routine__isActive"
     );
+
+    cy.wait(200)
 
     cy.get("[data-test='routineSave']").click();
 

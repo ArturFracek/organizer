@@ -21,46 +21,48 @@
       <div class="occurences__label occurences__label--Time">Start Time</div>
       <div class="occurences__label occurences__label--Time">End Time</div>
     </div>
-    <div
-      :class="{ occurences__showOccurences: value[0] }"
-      class="occurences__occurence"
-      v-for="(occurence, index) in value"
-      :key="index"
-    >
-      <Select
-        :options="activities"
-        optionLabelKey="title"
-        optionValueKey="_id"
-        :value="occurence.activityId"
-        @input="updateActivityOccurence(index, 'activityId', $event)"
-        data-test="activityNameOccurence"
-      />
-      <Select
-        :options="weekdays"
-        optionLabelKey="title"
-        optionValueKey="dayNumber"
-        :value="occurence.dayOfWeek"
-        @input="updateActivityOccurence(index, 'dayOfWeek', $event)"
-        data-test="activityDayOccurence"
-      />
-      <TimePicker
-        :value="occurence.startTime"
-        @input="updateActivityOccurence(index, 'startTime', $event)"
-        default="08:00"
-        data-test="timerPickerStart"
-      />
-      <TimePicker
-        :value="occurence.endTime"
-        @input="updateActivityOccurence(index, 'endTime', $event)"
-        data-test="timerPickerEnd"
-      />
-      <button
-        @click="removeActivityOccurence(index)"
-        class="occurences__button occurences__button--deleteOccurence"
-        type="button"
+    <div class="occurences__occurencesBox">
+      <div
+        :class="{ occurences__showOccurences: value[0] }"
+        class="occurences__occurence"
+        v-for="(occurence, index) in value"
+        :key="index"
       >
-        X
-      </button>
+        <Select
+          :options="activities"
+          optionLabelKey="title"
+          optionValueKey="_id"
+          :value="occurence.activityId"
+          @input="updateActivityOccurence(index, 'activityId', $event)"
+          data-test="activityNameOccurence"
+        />
+        <Select
+          :options="weekdays"
+          optionLabelKey="title"
+          optionValueKey="dayNumber"
+          :value="occurence.dayOfWeek"
+          @input="updateActivityOccurence(index, 'dayOfWeek', $event)"
+          data-test="activityDayOccurence"
+        />
+        <TimePicker
+          :value="occurence.startTime"
+          @input="updateActivityOccurence(index, 'startTime', $event)"
+          default="08:00"
+          data-test="timerPickerStart"
+        />
+        <TimePicker
+          :value="occurence.endTime"
+          @input="updateActivityOccurence(index, 'endTime', $event)"
+          data-test="timerPickerEnd"
+        />
+        <button
+          @click="removeActivityOccurence(index)"
+          class="occurences__button occurences__button--deleteOccurence"
+          type="button"
+        >
+          X
+        </button>
+      </div>
     </div>
   </div>
 </template>
@@ -135,14 +137,20 @@ export default {
   flex-flow: column;
   align-items: center;
   color: white;
-  overflow-y: auto;
-  height: 17.5rem;
+  overflow-y: hidden;
+  height: 45vh;
   overflow-x: hidden;
 }
 
 .occurences__selectContainer {
   align-self: flex-start;
   padding: 0.2rem 0.7rem;
+}
+
+.occurences__occurencesBox {
+  overflow-y: scroll;
+  overflow-x: hidden;
+  width: 100%;
 }
 
 .occurences__occurence {
