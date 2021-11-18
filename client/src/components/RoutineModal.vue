@@ -148,7 +148,7 @@ export default {
   flex-flow: column;
   background-color: transparent;
   width: 97%;
-  height: auto;
+  height: 100%;
   border-radius: 60px;
   border-bottom: 2px dotted turquoise;
   border-top: 2px dotted turquoise;
@@ -309,7 +309,7 @@ export default {
   z-index: 99;
   text-align: center;
   width: 80%;
-  height: 60%;
+  height: 80%;
   border-radius: 2px;
   color: rgb(0, 0, 0);
   padding: 0.7rem;

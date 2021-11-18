@@ -346,7 +346,6 @@ describe("Login, add goal and customize it", () => {
       .trigger("input");
 
     // second activity occurence setting - Name first
-
     cy.get('[data-test="activityNameOccurence"]')
       .children()
       .last()
@@ -379,5 +378,18 @@ describe("Login, add goal and customize it", () => {
     );
 
     cy.get("[data-test='routineSave']").click();
+
+    //reaload and see if routine saved properly
+    cy.reload();
+
+    cy.get('[data-test="routinesHolder"]').should("contain", testRoutine);
+
+    cy.get('[data-test="routineShowModal"]').contains(testRoutine).click();
+
+    cy.get("[data-test='textArea']").should("have.value", description);
+
+    cy.get(".rangeValue").should("contain", rangeValue);
+
+    cy.get('[data-test="routineGoBack"]').click();
   });
 });

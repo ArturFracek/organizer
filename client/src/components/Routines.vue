@@ -23,7 +23,7 @@
         Add
       </button>
     </div>
-    <div class="routines__objectsHolder">
+    <div class="routines__objectsHolder" data-test="routinesHolder">
       <div
         class="routine__routineHolder"
         v-for="(routine, index) in routines"
