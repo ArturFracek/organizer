@@ -64,6 +64,7 @@
                   tenMinutes
                 ),
               }"
+              :data-test="[`${day}-${hour}-${tenMinutes}`]"
             >
               <button
                 class="net__timerButton"

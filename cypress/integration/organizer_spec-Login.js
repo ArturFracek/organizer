@@ -261,7 +261,7 @@ describe("Login, add goal and customize it", () => {
       .should("not.contain", activity1);
   });
 
-  it.only("Should visit organazie, create a routine, create two activities, save them, add them to routine and customize it. Thensave a routine and check TimeNet", () => {
+  it("Should visit organazie, create a routine, create two activities, save them, add them to routine and customize it. Thensave a routine and check TimeNet", () => {
     cy.visit("http://localhost:8080/Organize");
 
     const activity1 = "TEST Running";
@@ -338,8 +338,8 @@ describe("Login, add goal and customize it", () => {
       .click({ force: true })
       .get(".minutes>li[data-key='15']")
       .first()
-      .click({ force: true })
-      
+      .click({ force: true });
+
     cy.get(".routine__modal__type").click();
 
     //end hour of first activity -> set 15:45
@@ -350,7 +350,7 @@ describe("Login, add goal and customize it", () => {
       .click({ force: true })
       .get(".minutes>li[data-key='45']")
       .eq(1)
-      .click({ force: true })
+      .click({ force: true });
 
     cy.get(".routine__modal__type").click();
 
@@ -372,7 +372,7 @@ describe("Login, add goal and customize it", () => {
       .click({ force: true })
       .get(".minutes>li[data-key='30']")
       .eq(2)
-      .click({ force: true })
+      .click({ force: true });
 
     cy.get(".routine__modal__type").click();
 
@@ -384,7 +384,7 @@ describe("Login, add goal and customize it", () => {
       .click({ force: true })
       .get(".minutes>li[data-key='15']")
       .eq(3)
-      .click({ force: true })
+      .click({ force: true });
     cy.get(".routine__modal__type").click();
 
     //activate and save routine
@@ -395,7 +395,7 @@ describe("Login, add goal and customize it", () => {
       "routine__isActive"
     );
 
-    cy.wait(200)
+    cy.wait(200);
 
     cy.get("[data-test='routineSave']").click();
 
@@ -411,5 +411,26 @@ describe("Login, add goal and customize it", () => {
     cy.get(".rangeValue").should("contain", rangeValue);
 
     cy.get('[data-test="routineGoBack"]').click();
+  });
+
+  it.only("should see if TIMENET displaying activities properly and if timer works as supposed - as stoper", () => {
+    cy.visit("http://localhost:8080/Organize");
+
+    const activity1 = "TEST Running";
+    const activity2 = "TEST Swimming";
+
+    //See if activity1 is in ordered cells in timeNet and if it is not in any others.
+    cy.get('[data-test="Tuesday-7-15"]').should("contain", activity1);
+    cy.get('[data-test="Tuesday-15-30"]').should("contain", activity1);
+
+    cy.get('[data-test="Tuesday-7-0"]').should("not.contain", activity1);
+    cy.get('[data-test="Tuesday-15-45"]').should("not.contain", activity1);
+
+    //See if activity1 is in ordered cells in timeNet and if it is not in any others.
+    cy.get('[data-test="Friday-8-30"]').should("contain", activity2);
+    cy.get('[data-test="Friday-12-0"]').should("contain", activity2);
+
+    cy.get('[data-test="Friday-8-15"]').should("not.contain", activity2);
+    cy.get('[data-test="Friday-12-15"]').should("not.contain", activity2);
   });
 });
