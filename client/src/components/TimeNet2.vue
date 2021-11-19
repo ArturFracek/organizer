@@ -3,6 +3,7 @@
     <div
       class="net__activityTimeDisplay"
       :class="{ net__activityTimeDisplayActive: toggled === true }"
+      data-test="netTimeDisplay"
     >
       {{ this.toggled !== true ? "" : activityTitle }}
       {{

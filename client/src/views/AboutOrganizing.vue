@@ -401,6 +401,7 @@ ul {
 }
 li {
   font-size: 1rem;
+  color: white !important;
 }
 
 @media (max-width: 720px) {

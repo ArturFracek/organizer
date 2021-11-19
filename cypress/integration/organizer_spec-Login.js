@@ -413,7 +413,7 @@ describe("Login, add goal and customize it", () => {
     cy.get('[data-test="routineGoBack"]').click();
   });
 
-  it.only("should see if TIMENET displaying activities properly and if timer works as supposed - as stoper", () => {
+  it("Should see if TIMENET displaying activities properly and if timer works as supposed - as stoper", () => {
     cy.visit("http://localhost:8080/Organize");
 
     const activity1 = "TEST Running";
@@ -432,5 +432,120 @@ describe("Login, add goal and customize it", () => {
 
     cy.get('[data-test="Friday-8-15"]').should("not.contain", activity2);
     cy.get('[data-test="Friday-12-15"]').should("not.contain", activity2);
+
+    //trigger timer button for activity1 and stop
+    cy.get('[data-test="netTimeDisplay"]').should(
+      "contain",
+      "Select Activity Below"
+    );
+
+    cy.get('[data-test="Tuesday-7-15"]').click();
+
+    cy.wait(1000);
+
+    cy.get('[data-test="netTimeDisplay"]').should(
+      "have.class",
+      "net__activityTimeDisplayActive"
+    );
+
+    cy.get('[data-test="Tuesday-7-15"]').click();
+
+    cy.get('[data-test="netTimeDisplay"]').should(
+      "not.have.class",
+      "net__activityTimeDisplayActive"
+    );
+
+    //toggle timer for activity2 and stop
+    cy.get('[data-test="netTimeDisplay"]').should(
+      "contain",
+      "Select Activity Below"
+    );
+
+    cy.get('[data-test="Friday-8-30"]').click();
+
+    cy.wait(1000);
+
+    cy.get('[data-test="netTimeDisplay"]').should(
+      "have.class",
+      "net__activityTimeDisplayActive"
+    );
+
+    cy.get('[data-test="Friday-8-30"]').click();
+
+    cy.get('[data-test="netTimeDisplay"]').should(
+      "not.have.class",
+      "net__activityTimeDisplayActive"
+    );
+  });
+
+  it("Should visit profile and see if values are correct for each activity in Time Statistics", () => {
+    cy.visit("http://localhost:8080/Profile");
+
+    const password = "abc123";
+    const activity1 = "TEST Running";
+    const activity2 = "TEST Swimming";
+
+    cy.get("[data-test='loginUsername']").type("Andrzej");
+
+    cy.get("[data-test='loginPassword']").type(password);
+
+    cy.get("[data-test='loginLogin']").click();
+
+    cy.get('[data-test="activityTitleTimeStatistic"]')
+      .first()
+      .should("contain", activity1);
+
+    cy.get('[data-test="activityTitleTimeStatistic"]')
+      .last()
+      .should("contain", activity2);
+
+    cy.get('[data-test="activityDuration"]').first().should("be.visible");
+
+    cy.get('[data-test="activityDuration"]').last().should("be.visible");
+  });
+
+  it("Should clear everything that was made during the tests", () => {
+    cy.visit("http://localhost:8080/Profile");
+
+    const password = "abc123";
+    const activity1 = "TEST Running";
+    const activity2 = "TEST Swimming";
+    const testRoutine = "Test Routine";
+
+    cy.get("[data-test='loginUsername']").type("Andrzej");
+
+    cy.get("[data-test='loginPassword']").type(password);
+
+    cy.get("[data-test='loginLogin']").click();
+
+    cy.get('[data-test="goalModalButton"]').contains("Test Goal").click();
+
+    cy.get(".bi-trash[type='button']").click();
+
+    cy.reload();
+
+    cy.get("[data-test='goalHolder']").should("not.contain", "Test Goal");
+
+    cy.visit("http://localhost:8080/Organize");
+
+    cy.get('[data-test="activityShowModal"]').contains(activity1).click();
+
+    cy.get(".bi-trash[type='button']").click();
+
+    cy.get('[data-test="activityShowModal"]').contains(activity2).click();
+
+    cy.get(".bi-trash[type='button']").click();
+
+    cy.get('[data-test="routineShowModal"]').contains(testRoutine).click();
+
+    cy.get(".bi-trash[type='button']").click();
+
+    cy.reload();
+
+    cy.get("[data-test='activitiesSection']").should("not.contain", activity1);
+
+    cy.get("[data-test='activitiesSection']").should("not.contain", activity2);
+
+    cy.get("[data-test='routinesHolder']").should("not.contain", testRoutine);
   });
 });

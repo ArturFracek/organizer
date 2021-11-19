@@ -11,6 +11,7 @@
         class="TimeStatistics__statistic"
         v-for="(occurence, index) in activeRoutine.activitiesOccurences"
         :key="index"
+        data-test="activityTitleTimeStatistic"
       >
         {{ getActivityNameById(occurence) }} {{ "~" }}
         <div
