@@ -5,7 +5,7 @@
       <Activities />
     </div>
     <div class="organize__TimeNetContainer">
-      <TimeNet2 v-if="this.routine"/>
+      <TimeNet2 v-if="this.routine" />
     </div>
   </div>
 </template>
@@ -211,10 +211,10 @@ export default {
 }
 
 @media (max-width: 765px) {
-.organize__mainContainer {
-  padding: 0;
-  margin: 0;
-  width: 100%;
-}
+  .organize__mainContainer {
+    padding: 0;
+    margin: 0;
+    width: 100%;
+  }
 }
 </style>

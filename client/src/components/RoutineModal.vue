@@ -295,32 +295,61 @@ export default {
 .fade-leave-to {
   opacity: 0;
 }
-
-.routine__modal {
-  display: flex;
-  flex-flow: column;
-  justify-content: flex-start;
-  align-items: center;
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background-color: rgb(100, 100, 100);
-  z-index: 99;
-  text-align: center;
-  width: 80%;
-  height: 80%;
-  border-radius: 2px;
-  color: rgb(0, 0, 0);
-  padding: 0.7rem;
-  background: none;
-  outline: none;
-  border: 2px solid rgb(35, 166, 170);
-  border-radius: 0.5rem;
-  background: transparent;
-  box-shadow: 0 25px 25px rgba(3, 96, 112, 0.1);
-  backdrop-filter: blur(10px) drop-shadow(4px 4px 10px rgb(17, 185, 207));
+@supports ((-webkit-backdrop-filter: none) or (backdrop-filter: none)) {
+  .routine__modal {
+    display: flex;
+    flex-flow: column;
+    justify-content: flex-start;
+    align-items: center;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgb(100, 100, 100);
+    z-index: 99;
+    text-align: center;
+    width: 80%;
+    height: 80%;
+    border-radius: 2px;
+    color: rgb(0, 0, 0);
+    padding: 0.7rem;
+    background: none;
+    outline: none;
+    border: 2px solid rgb(35, 166, 170);
+    border-radius: 0.5rem;
+    background: transparent;
+    box-shadow: 0 25px 25px rgba(3, 96, 112, 0.1);
+    backdrop-filter: blur(10px) drop-shadow(4px 4px 10px rgb(17, 185, 207));
+  }
 }
+
+@supports not ((-webkit-backdrop-filter: none) or (backdrop-filter: none)) {
+  .routine__modal {
+    display: flex;
+    flex-flow: column;
+    justify-content: flex-start;
+    align-items: center;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgb(100, 100, 100);
+    z-index: 99;
+    text-align: center;
+    width: 80%;
+    height: 80%;
+    border-radius: 2px;
+    color: rgb(0, 0, 0);
+    padding: 0.7rem;
+    outline: none;
+    border: 2px solid rgb(35, 166, 170);
+    border-radius: 0.5rem;
+    background-color: rgba(6, 0, 34, 0.678);
+    box-shadow: 0 25px 25px rgba(3, 96, 112, 0.1);
+    backdrop-filter: blur(10px) drop-shadow(4px 4px 10px rgb(17, 185, 207));
+  }
+}
+
 
 .routine__modal__type {
   color: white;

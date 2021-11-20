@@ -45,7 +45,6 @@
               value="Go back"
               @click="showModal = false"
               data-test="goalGoBack"
-              
             />
           </div>
           <button
@@ -154,6 +153,53 @@ export default {
   backdrop-filter: hue-rotate(180deg) opacity(80%) brightness(85%);
 }
 
+@supports ((-webkit-backdrop-filter: none) or (backdrop-filter: none)) {
+  .goal__modal {
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 50%;
+    left: 50.6%;
+    transform: translate(-50%, -50%);
+    background-color: rgb(100, 100, 100);
+    z-index: 99;
+    text-align: center;
+    width: 80%;
+    height: 60%;
+    border-radius: 2px;
+    color: rgb(0, 0, 0);
+    background: none;
+    outline: none;
+    border: 2px solid rgb(35, 166, 170);
+    border-radius: 0.5rem;
+    backdrop-filter: blur(8px);
+  }
+}
+@supports not ((-webkit-backdrop-filter: none) or (backdrop-filter: none)) {
+  .goal__modal {
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 50%;
+    left: 50.6%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(6, 0, 32, 0.658);
+    z-index: 99;
+    text-align: center;
+    width: 80%;
+    height: 60%;
+    border-radius: 2px;
+    color: rgb(0, 0, 0);
+    outline: none;
+    border: 2px solid rgb(35, 166, 170);
+    border-radius: 0.5rem;
+  }
+}
+
 .fade-enter-active,
 .fade-leave-active {
   transition: opacity 0.5s;
@@ -162,29 +208,6 @@ export default {
 .fade-enter,
 .fade-leave-to {
   opacity: 0;
-}
-
-.goal__modal {
-  display: flex;
-  flex-flow: column;
-  justify-content: center;
-  align-items: center;
-  position: fixed;
-  top: 50%;
-  left: 50.6%;
-  transform: translate(-50%, -50%);
-  background-color: rgb(100, 100, 100);
-  z-index: 99;
-  text-align: center;
-  width: 80%;
-  height: 60%;
-  border-radius: 2px;
-  color: rgb(0, 0, 0);
-  background: none;
-  outline: none;
-  border: 2px solid rgb(35, 166, 170);
-  border-radius: 0.5rem;
-  backdrop-filter: blur(8px);
 }
 
 .goal__modal__type {

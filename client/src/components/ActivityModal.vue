@@ -191,7 +191,7 @@ export default {
 .fade-leave-to {
   opacity: 0;
 }
-
+@supports ((-webkit-backdrop-filter: none) or (backdrop-filter: none)) {
 .activity__modal {
   display: flex;
   flex-flow: column;
@@ -216,6 +216,34 @@ export default {
   box-shadow: 0 25px 25px rgba(3, 96, 112, 0.1);
   backdrop-filter: blur(10px) drop-shadow(4px 4px 10px rgb(17, 185, 207));
   padding: 0;
+}
+}
+
+@supports not ((-webkit-backdrop-filter: none) or (backdrop-filter: none)) {
+.activity__modal {
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: rgb(100, 100, 100);
+  z-index: 99;
+  text-align: center;
+  width: 80%;
+  height: 60%;
+  border-radius: 2px;
+  color: rgb(0, 0, 0);
+  outline: none;
+  border: 2px solid rgb(35, 166, 170);
+  border-radius: 0.5rem;
+  background: rgba(1, 0, 34, 0.76);
+  box-shadow: 0 25px 25px rgba(3, 96, 112, 0.1);
+  backdrop-filter: blur(10px) drop-shadow(4px 4px 10px rgb(17, 185, 207));
+  padding: 0;
+}
 }
 
 .activity__modal__type {

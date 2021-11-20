@@ -68,6 +68,7 @@ select {
   align-items: center;
   box-shadow: 0px 5px 10px rgb(121, 244, 255, 0.3);
   transition: 0.6s;
+  text-align: center;
 }
 
 option {
