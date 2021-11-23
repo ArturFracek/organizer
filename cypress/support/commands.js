@@ -23,3 +23,14 @@
 //
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
+
+console.log(__dirname)
+const dbConfigFile = require('../../config/keys')
+
+
+Cypress.Commands.add('setup', () => {
+    const NODE_ENV = Cypress.env('NODE_ENV')
+    const dbConfig = dbConfigFile[NODE_ENV || "dev"] 
+    cy.exec(`mongo ${dbConfig.mongoURI} --eval "db.dropDatabase()"`)
+    cy.wait(1000)
+})

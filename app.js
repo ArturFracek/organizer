@@ -4,6 +4,9 @@ const bodyParser = require("body-parser");
 const path = require("path");
 const cors = require("cors");
 const passport = require("passport");
+const config = require('./config.js');
+
+const db = config.db.mongoURI;
 
 // Initialize the app
 const app = express();
@@ -33,7 +36,6 @@ app.use(passport.initialize());
 require("./config/passport")(passport);
 
 // Bring in the Database configuration adn connect with database
-const db = require("./config/keys").mongoURI;
 mongoose
   .connect(db, {
     useNewUrlParser: true,
@@ -65,7 +67,7 @@ app.use("/api/routines", routines);
 
 
 
-const PORT = process.env.PORT || 5000;
+const PORT = config.apps.be_port;
 
 app.listen(PORT, () => {
   console.log(`Server started on port ${PORT}`);

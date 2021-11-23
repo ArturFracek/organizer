@@ -99,6 +99,7 @@ const mutations = {
     state.status = "success";
   },
   register_error(state, err) {
+    console.log({ err })
     state.error = err.response.data.msg;
   },
   logout(state) {

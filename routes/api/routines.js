@@ -3,6 +3,9 @@ const express = require("express");
 const mongodb = require("mongodb");
 const loader = require("sass-loader");
 const Routine = require("../../model/Routine.model");
+const config = require('../../config.js');
+
+const db = config.db.mongoURI;
 
 const router = express.Router();
 
@@ -62,13 +65,13 @@ router.delete("/:id", async (req, res) => {
 
 async function loadRoutinesCollection() {
   const client = await mongodb.MongoClient.connect(
-    "mongodb://localhost:27017/organizer",
+    db,
     {
       useNewUrlParser: true,
       useUnifiedTopology: true,
     }
   );
-  return client.db("organizer").collection("routines");
+  return client.db().collection("routines");
 }
 
 module.exports = router;

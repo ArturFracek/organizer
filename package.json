@@ -7,10 +7,11 @@
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
     "client-install": "npm install --prefix client",
-    "start": "node app.js",
     "server": "nodemon app.js",
     "client": "npm run serve --prefix client",
-    "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "dev": "NODE_ENV=dev concurrently \"npm run server\" \"npm run client\"",
+    "test": "NODE_ENV=test concurrently \"npm run server\" \"npm run client\"",
+    "cy": "CYPRESS_NODE_ENV=test cypress open",
     "test:unit": "vue-cli-service test:unit"
   },
   "dependencies": {
