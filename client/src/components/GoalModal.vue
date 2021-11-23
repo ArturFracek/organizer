@@ -329,6 +329,7 @@ h1:hover {
   background: transparent;
   backdrop-filter: drop-shadow(4px 4px 10px rgba(248, 248, 248, 0));
   transition: 0.2s ease-in;
+  z-index: 3;
 }
 
 .goal__showModalButton:hover {

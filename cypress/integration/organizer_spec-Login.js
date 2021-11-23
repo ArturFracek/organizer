@@ -79,9 +79,9 @@ describe("Login, add goal and customize it", () => {
   });
 
   it("Should visit About Organizing page via nav, and check if links works", () => {
-    cy.visit("http://localhost:8080/About");
+    cy.visit("http://localhost:8080/");
 
-    cy.url().should("include", "http://localhost:8080/About");
+    cy.url().should("include", "http://localhost:8080/");
 
     cy.get("[data-test='aboutOrganizingUpperSection']").should(
       "contain",

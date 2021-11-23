@@ -350,7 +350,6 @@ export default {
   }
 }
 
-
 .routine__modal__type {
   color: white;
   position: absolute;

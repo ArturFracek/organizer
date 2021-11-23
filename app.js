@@ -13,7 +13,7 @@ const app = express();
 //Form Data Middleware
 app.use(
   express.urlencoded({
-    extended: true,
+    extended: false,
   })
 );
 

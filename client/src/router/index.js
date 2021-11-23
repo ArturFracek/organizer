@@ -6,12 +6,12 @@ Vue.use(VueRouter);
 
 const routes = [
   {
-    path: "/About",
+    path: "/",
     name: "AboutOrganizing",
     component: () => import("../views/AboutOrganizing.vue"),
   },
   {
-    path: "/Organize",
+    path: "/organize",
     name: "Organize",
     // route level code-splitting
     // this generates a separate chunk (about.[hash].js) for this route
@@ -19,7 +19,7 @@ const routes = [
     component: () => import("../views/Organise.vue"),
   },
   {
-    path: "/Login",
+    path: "/login",
     name: "Login",
     component: () => import("../components/Login.vue"),
     meta: {
@@ -27,7 +27,7 @@ const routes = [
     },
   },
   {
-    path: "/Register",
+    path: "/register",
     name: "Register",
     component: () => import("../components/Registration.vue"),
     meta: {
@@ -35,7 +35,7 @@ const routes = [
     },
   },
   {
-    path: "/Profile",
+    path: "/profile",
     name: "Profile",
     component: () => import("../components/Profile.vue"),
     meta: {
@@ -54,7 +54,7 @@ router.beforeEach((to, from, next) => {
   if (to.matched.some((record) => record.meta.requiresAuth)) {
     if (!store.getters.isLoggedIn) {
       // Redirect to the Login Page
-      next("/Login");
+      next("/login");
     } else {
       next();
     }

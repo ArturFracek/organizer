@@ -56,10 +56,6 @@
 
 <script>
 import { mapGetters, mapActions } from "vuex";
-//import { toggleButton, nav__link } from "../constants"
-
-const toggleButton = document.getElementsByClassName("toggle-button")[0];
-const lower_links = document.getElementsByClassName("lower_links")[0];
 
 export default {
   data() {

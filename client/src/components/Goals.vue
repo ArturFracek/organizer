@@ -96,10 +96,9 @@ export default {
   background: transparent;
   backdrop-filter: drop-shadow(4px 4px 6px rgb(207, 17, 17)) hue-rotate(180deg)
     opacity(80%);
-  right: 0%;
-  height: 100%;
-  z-index: -1;
-  overflow-y: scroll;
+  z-index: 0;
+  overflow-y: hidden;
+  transform: translateY(-3%);
 }
 
 .goals__mainContainer {
@@ -116,6 +115,7 @@ export default {
   display: flex;
   flex-flow: column;
   overflow-y: scroll;
+  background: none;
 }
 
 .goals__addingGoalsContainer {
@@ -313,6 +313,10 @@ li::marker {
     left: 50vw;
     width: 3rem;
     backdrop-filter: none;
+  }
+  .goals__background {
+    width: 100%;
+    background: transparent;
   }
 }
 </style>

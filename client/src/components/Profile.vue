@@ -78,6 +78,7 @@ export default {
 }
 
 .profile__mainContainer {
+  z-index: -3;
   display: flex;
   flex-flow: column;
   align-items: center;
