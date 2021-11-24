@@ -1,6 +1,6 @@
-import axios from "axios";
+import api from "@/api";
 
-const url = "http://localhost:5000/api/goals/";
+const url = "/goals/";
 
 class GoalsService {
   //get goals
@@ -8,7 +8,7 @@ class GoalsService {
     // eslint-disable-next-line no-async-promise-executor
     return new Promise(async (resolve, reject) => {
       try {
-        const res = await axios.get(url);
+        const res = await api.get(url);
         const data = res.data;
         resolve(
           data.map((goal) => ({
@@ -24,19 +24,18 @@ class GoalsService {
 
   //create goal
   static insertGoal(goal) {
-    return axios.post(url, goal);
+    return api.post(url, goal);
   }
-  
+
   //update goal
   static updateGoal(goal) {
-    return axios.put(`${url}${goal._id}`, goal);
+    return api.put(`${url}${goal._id}`, goal);
   }
 
   //delete goal
   static deleteGoal(id) {
-    return axios.delete(`${url}${id}`);
+    return api.delete(`${url}${id}`);
   }
-
 }
 
 export default GoalsService;

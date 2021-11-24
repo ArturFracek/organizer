@@ -8,11 +8,22 @@
         placeholder=" "
         v-model="title"
         @keyup.enter="addActivity"
+        data-test="activityInputAdd"
       />
-      <label class="activities__form__label__addActivities">Add Activity</label>
-      <button class="addActivity__button" @click="addActivity">Add</button>
+      <label
+        class="activities__form__label__addActivities"
+        data-test="activityLabel"
+        >Add Activity</label
+      >
+      <button
+        class="addActivity__button"
+        @click="addActivity"
+        data-test="activityButtonAdd"
+      >
+        Add
+      </button>
     </div>
-    <div class="activities__objectsHolder">
+    <div class="activities__objectsHolder" data-test="activitiesSection">
       <div
         class="activities__activityHolder"
         v-for="(activity, index) in activities"
@@ -111,26 +122,26 @@ export default {
 }
 
 .addActivity__button {
-  border-radius: 0;
   color: rgb(88, 249, 255);
   text-shadow: 0 0 8px turquoise;
   font-weight: bold;
   position: relative;
-  left: 12.5rem;
+  left: 13.5rem;
   top: -4.7rem;
   text-align: center;
-  border-radius: 2px;
   padding: 0.7rem;
   background: none;
   outline: none;
-  border: 2px solid rgb(35, 166, 170);
+  border-top: 2px solid rgb(35, 166, 170);
+  border-bottom: 2px solid rgb(35, 166, 170);
   border-radius: 0.5rem;
   background: transparent;
   box-shadow: 0 25px 25px rgba(38, 221, 253, 0.1);
+  opacity: 0;
   display: none;
   height: 100%;
   width: 19%;
-  transition: ease-in-out 0.3s;
+  transition: ease-in-out 0.7s;
 }
 
 button:hover {
@@ -203,10 +214,11 @@ input:focus ~ .activities__form__label__addActivities {
 input:focus ~ .activities__form__label__addActivities,
 input:not(:placeholder-shown).input:not(:focus)
   ~ .activities__form__label__addActivities {
-  top: -4.5rem;
+  top: -75px;
 }
 
 input:not(:placeholder-shown) ~ .addActivity__button {
+  opacity: 1;
   display: block;
 }
 
@@ -226,9 +238,33 @@ input:not(:placeholder-shown) ~ .addActivity__button {
   pointer-events: none;
 }
 
-@media(max-width: 765px) {
+@media (max-width: 765px) {
   .activities__title {
     top: 0;
+    font-size: 1.1rem;
+  }
+  .input {
+    height: 2rem;
+    width: 14rem;
+  }
+  .activities__form__label__addActivities {
+    top: -1.7rem;
+  }
+  .activities__objectsHolder {
+    margin-top: 0.5rem;
+  }
+  .addActivity__button {
+    left: 8.7rem;
+    height: 2rem;
+    top: -3.9rem;
+    width: 4rem;
+    text-align: start;
+    border: none;
+  }
+  input:focus ~ .activities__form__label__addActivities,
+  input:not(:placeholder-shown).input:not(:focus)
+    ~ .activities__form__label__addActivities {
+    top: -3.7rem;
   }
 }
 </style>

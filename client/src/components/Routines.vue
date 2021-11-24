@@ -3,16 +3,27 @@
     <div class="routines__title">Routines</div>
     <div class="routines__addingRoutinesContainer">
       <input
-        class="input"
+        class="input routines__addRoutineInput"
         type="text"
         placeholder=" "
         v-model="title"
         @keyup.enter="addRoutine"
+        data-test="routinesInputAdd"
       />
-      <label class="routines__form__label__addRoutines">Add Routine</label>
-      <button class="addRoutine__button" @click="addRoutine">Add</button>
+      <label
+        class="routines__form__label__addRoutines"
+        data-test="RoutinesLabel"
+        >Add Routine</label
+      >
+      <button
+        class="addRoutine__button"
+        @click="addRoutine"
+        data-test="routinesButtonAdd"
+      >
+        Add
+      </button>
     </div>
-    <div class="routines__objectsHolder">
+    <div class="routines__objectsHolder" data-test="routinesHolder">
       <div
         class="routine__routineHolder"
         v-for="(routine, index) in routines"
@@ -134,22 +145,21 @@ export default {
   text-shadow: 0 0 8px turquoise;
   font-weight: bold;
   position: relative;
-  left: 12.5rem;
+  left: 13.5rem;
   top: -4.7rem;
   text-align: center;
-  border-radius: 2px;
   padding: 0.7rem;
   background: none;
   outline: none;
-  border: 2px solid rgb(35, 166, 170);
+  border-top: 2px solid rgb(35, 166, 170);
+  border-bottom: 2px solid rgb(35, 166, 170);
   border-radius: 0.5rem;
   background: transparent;
   box-shadow: 0 25px 25px rgba(38, 221, 253, 0.1);
-  backdrop-filter: blur(10px) drop-shadow(4px 4px 2px rgb(17, 185, 207));
   display: none;
-  height: 100%;
   width: 19%;
-  transition: ease-in-out 0.3s;
+  height: 100%;
+  transition: ease-in-out 0.7s;
 }
 
 button:hover {
@@ -161,7 +171,7 @@ button:hover {
 .input {
   margin-left: 0;
   text-align: center;
-  width: 100%;
+  width: 100% !important;
   height: 100%;
   border-radius: 2px;
   color: rgb(0, 0, 0);
@@ -210,7 +220,7 @@ input:focus ~ .routines__form__label__addRoutines {
 input:focus ~ .routines__form__label__addRoutines,
 input:not(:placeholder-shown).input:not(:focus)
   ~ .routines__form__label__addRoutines {
-  top: -4.5rem;
+  top: -75px;
 }
 
 input:not(:placeholder-shown) ~ .addRoutine__button {
@@ -231,9 +241,34 @@ input:not(:placeholder-shown) ~ .addRoutine__button {
   pointer-events: none;
 }
 
-@media(max-width: 765px) {
+@media (max-width: 765px) {
   .routines__title {
     top: 0;
+    font-size: 1.1rem;
+  }
+  .input {
+    height: 2rem;
+    width: 14rem;
+  }
+  .routines__form__label__addRoutines {
+    top: -1.7rem;
+  }
+  .routines__objectsHolder {
+    margin-top: 0.5rem;
+  }
+  .addRoutine__button {
+    left: 8.7rem;
+    height: 2rem;
+    top: -4rem;
+    width: 4rem;
+    text-align: start;
+    border: none;
+    backdrop-filter: none;
+  }
+  input:focus ~ .routines__form__label__addRoutines,
+  input:not(:placeholder-shown).input:not(:focus)
+    ~ .routines__form__label__addRoutines {
+    top: -3.5rem;
   }
 }
 </style>

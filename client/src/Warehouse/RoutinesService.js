@@ -1,7 +1,7 @@
-import axios from "axios";
+import api from "@/api";
 import { boolean } from "joi";
 
-const url = "http://localhost:5000/api/routines/";
+const url = "/routines/";
 
 class RoutinesService {
   //get routine
@@ -9,7 +9,7 @@ class RoutinesService {
     // eslint-disable-next-line no-async-promise-executor
     return new Promise(async (resolve, reject) => {
       try {
-        const res = await axios.get(url);
+        const res = await api.get(url);
         const data = res.data;
         resolve(
           data.map((routine) => ({
@@ -25,17 +25,17 @@ class RoutinesService {
 
   //create routine
   static insertRoutine(routine) {
-    return axios.post(url, routine);
+    return api.post(url, routine);
   }
 
   //delete Routine
   static deleteRoutine(id) {
-    return axios.delete(`${url}${id}`);
+    return api.delete(`${url}${id}`);
   }
 
   //updateRoutine
   static updateRoutine(routine) {
-    return axios.put(`${url}${routine._id}`, routine);
+    return api.put(`${url}${routine._id}`, routine);
   }
 }
 

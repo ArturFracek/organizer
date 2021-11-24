@@ -11,15 +11,15 @@ const routes = [
     component: () => import("../views/AboutOrganizing.vue"),
   },
   {
-    path: "/Organise",
-    name: "Organise",
+    path: "/organize",
+    name: "Organize",
     // route level code-splitting
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
     component: () => import("../views/Organise.vue"),
   },
   {
-    path: "/Login",
+    path: "/login",
     name: "Login",
     component: () => import("../components/Login.vue"),
     meta: {
@@ -27,7 +27,7 @@ const routes = [
     },
   },
   {
-    path: "/Register",
+    path: "/register",
     name: "Register",
     component: () => import("../components/Registration.vue"),
     meta: {
@@ -35,7 +35,7 @@ const routes = [
     },
   },
   {
-    path: "/Profile",
+    path: "/profile",
     name: "Profile",
     component: () => import("../components/Profile.vue"),
     meta: {
@@ -54,13 +54,13 @@ router.beforeEach((to, from, next) => {
   if (to.matched.some((record) => record.meta.requiresAuth)) {
     if (!store.getters.isLoggedIn) {
       // Redirect to the Login Page
-      next("/Login");
+      next("/login");
     } else {
       next();
     }
   } else if (to.matched.some((record) => record.meta.requiresGuest)) {
     if (store.getters.isLoggedIn) {
-      next("/Profile");
+      next("/profile");
     } else {
       next();
     }

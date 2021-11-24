@@ -123,12 +123,11 @@ export default {
   height: 30px;
   width: 30px;
   border-radius: 50%;
-  background-color: #63f3f37a;
+  background-color: #16339581;
+  border-color: rgba(7, 38, 131, 0.966);
   cursor: pointer;
   -webkit-transition: all 0.9s ease-in;
   transition: all 0.7s ease-in;
-  box-shadow: 0 0 0.2rem white;
-  backdrop-filter: blur(9px) hue-rotate(180deg);
 }
 
 .slider__container .slider::-moz-range-thumb {
@@ -136,12 +135,12 @@ export default {
   appearance: none;
   height: 30px;
   width: 30px;
+  border-color: rgba(117, 248, 220, 0.829);
   border-radius: 50%;
-  background-color: #55ec1a;
+  background-color: #0b099096;
   cursor: pointer;
   -moz-transition: all 0.8s ease-in;
   transition: all 0.7s ease-in;
-  backdrop-filter: blur(9px) hue-rotate(180deg);
 }
 
 .slider__container .slider::webkit-slider-thumb:hover {

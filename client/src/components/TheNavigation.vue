@@ -1,14 +1,14 @@
 <template>
   <div class="nav">
-    <router-link to="/" class="nav__link nav__link--toLeft" v-if="isLoggedIn"
-      >About Organizer</router-link
-    >
     <div class="nav__logo">
-      <router-link to="/" class="nav__mainLink" v-if="!isLoggedIn"
+      <router-link
+        :to="{ name: 'AboutOrganizing' }"
+        class="nav__mainLink"
+        v-if="!isLoggedIn"
         >About Organizer</router-link
       >
       <router-link
-        :to="{ name: 'Organise' }"
+        :to="{ name: 'Organize' }"
         class="nav__mainLink organize"
         v-if="isLoggedIn"
       >
@@ -16,6 +16,12 @@
       </router-link>
     </div>
     <div class="nav__lowerLinks" :class="islower_linksActive ? 'active' : ''">
+      <router-link
+        :to="{ name: 'AboutOrganizing' }"
+        class="nav__link nav__link--toLeft"
+        v-if="isLoggedIn"
+        >About Organizer</router-link
+      >
       <router-link :to="{ name: 'Login' }" class="nav__link" v-if="!isLoggedIn"
         >Sign in</router-link
       >
@@ -50,10 +56,6 @@
 
 <script>
 import { mapGetters, mapActions } from "vuex";
-//import { toggleButton, nav__link } from "../constants"
-
-const toggleButton = document.getElementsByClassName("toggle-button")[0];
-const lower_links = document.getElementsByClassName("lower_links")[0];
 
 export default {
   data() {
@@ -259,7 +261,9 @@ export default {
 }
 
 .nav__link--toLeft {
+  position: fixed;
   justify-self: flex-start;
+  left: 0;
 }
 
 .nav__link:hover {
@@ -360,7 +364,7 @@ export default {
   }
 
   .nav__link {
-    font-size: 1.7rem;
+    font-size: 1.2rem;
     display: flex;
     width: 100%;
     text-align: center;
@@ -395,6 +399,9 @@ export default {
 
   .nav__lowerLinks.active {
     display: flex;
+  }
+  .nav__link--toLeft {
+    position: relative;
   }
 }
 </style>

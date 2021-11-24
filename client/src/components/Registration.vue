@@ -13,6 +13,7 @@ reg stands for registration
               name="username"
               v-model="email"
               class="input"
+              data-test="registerUsername"
             />
             <label for="email" class="form__label form__label--email"
               >Email</label
@@ -26,6 +27,7 @@ reg stands for registration
               name="Name"
               v-model="name"
               class="input"
+              data-test="registerName"
             />
             <label for="name" class="form__label form__label--name">Name</label>
           </div>
@@ -37,6 +39,7 @@ reg stands for registration
               name="username"
               v-model="username"
               class="input"
+              data-test="registerUsername"
             />
             <label for="username" class="form__label form__label--username"
               >Username</label
@@ -50,6 +53,7 @@ reg stands for registration
               name="password"
               v-model="password"
               class="input"
+              data-test="registerPassword"
             />
             <label for="password" class="form__label form__label--password"
               >Password</label
@@ -63,6 +67,7 @@ reg stands for registration
               name="confirm_password"
               v-model="confirm_password"
               class="input"
+              data-test="registerPasswordConfirm"
             />
             <label
               for="confirm_password"
@@ -75,17 +80,20 @@ reg stands for registration
               type="submit"
               class="reg__button reg__button--primary"
               value="Register"
+              data-test="registerRegister"
             />
           </div>
           <div class="reg__login__container">
             <router-link
               to="/login"
               class="reg__login__link reg__login__link--one"
+              data-test="registerToLogin"
               >Arleady have an account ?</router-link
             >
             <router-link
               to="/login"
               class="reg__login__link reg__login__link--two"
+              data-test="registerToLoginHovered"
               >Sign in now</router-link
             >
           </div>

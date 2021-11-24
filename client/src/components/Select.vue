@@ -8,6 +8,7 @@
       v-bind="$attrs"
       class="select"
       @click="changeOccurence"
+      data-test="customSelectButton"
     >
       <option v-for="(option, index) in options" :key="index" :value="index">
         {{ optionLabelKey ? option[optionLabelKey] : option }}
@@ -67,6 +68,7 @@ select {
   align-items: center;
   box-shadow: 0px 5px 10px rgb(121, 244, 255, 0.3);
   transition: 0.6s;
+  text-align: center;
 }
 
 option {
@@ -74,7 +76,7 @@ option {
   font-weight: 600;
   text-shadow: 0 0 3px rgb(0, 255, 157);
   background: rgb(2, 16, 17);
-  text-align: center;;
+  text-align: center;
 }
 
 select:hover {
@@ -103,4 +105,12 @@ select:focus {
   z-index: 1;
 }
 
+@media (max-width: 760px) {
+  .select {
+    width: 4.5rem;
+    margin: 0.1rem;
+    text-shadow: 0px 0px 1px rgb(0, 255, 157);
+    font-size: 0.8rem;
+  }
+}
 </style>

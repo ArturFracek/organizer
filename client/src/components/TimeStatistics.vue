@@ -1,19 +1,26 @@
 <template>
   <div class="TimeStatistics__container">
-    <div class="TimeStatistics__container__title">
+    <div
+      class="TimeStatistics__container__title"
+      data-test="timeStatisticsTitle"
+    >
       Time Statistics<i class="bi bi-clock-history"></i>
     </div>
     <div v-if="activeRoutine" class="TimeStatistics__activitiesContainer">
-      <button
-        class="TimeStatistics__activityTimerButton"
+      <div
+        class="TimeStatistics__statistic"
         v-for="(occurence, index) in activeRoutine.activitiesOccurences"
         :key="index"
+        data-test="activityTitleTimeStatistic"
       >
         {{ getActivityNameById(occurence) }} {{ "~" }}
-        <div class="TimeStatistics__activityDuration">
+        <div
+          class="TimeStatistics__activityDuration"
+          data-test="activityDuration"
+        >
           {{ hourTimeFormat(getActivityDurationById(occurence)) || 0 }}
         </div>
-      </button>
+      </div>
     </div>
     <button class="test" @click="test"></button>
   </div>
@@ -119,7 +126,7 @@ i {
   padding-bottom: 0.4rem;
 }
 
-.TimeStatistics__activityTimerButton {
+.TimeStatistics__statistic {
   display: flex;
   margin: 2px;
   color: rgb(7, 223, 151);
@@ -127,9 +134,9 @@ i {
   font-weight: bold;
   text-shadow: 2px 0 2px rgb(1, 8, 114);
 }
-.TimeStatistics__activityTimerButton:hover {
+.TimeStatistics__statistic:hover {
   font-weight: bold;
-  color: rgb(255, 0, 0);
+  color: rgb(81, 255, 255);
 }
 
 .TimeStatistics__activityDuration {
@@ -148,7 +155,7 @@ i {
     align-items: center;
     flex-wrap: nowrap;
   }
-  .TimeStatistics__activityTimerButton{
+  .TimeStatistics__statistic {
     font-size: 0.9rem;
   }
 }

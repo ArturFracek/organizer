@@ -36,6 +36,7 @@
       advanced-keyboard
       auto-scroll
       drop-direction="down"
+      data-test="timerPicker"
     >
     </VuePicker>
   </div>
@@ -129,5 +130,30 @@ li:hover {
 
 .char:hover {
   color: red;
+}
+
+@media (max-width: 760px) {
+  .time-picker {
+    width: 5rem;
+    margin: 0.1rem;
+    font-size: 0.8rem;
+  }
+  .timePicker__mainContainer {
+    width: 4.5rem;
+    margin: 0.1rem;
+  }
+  .display-time {
+    position: relative;
+    width: 5rem !important;
+    right: 0.5rem;
+  }
+  .char {
+    position: relative;
+    right: 0.8rem;
+  }
+  .bi-clock-history {
+    position: relative;
+    left: 1.1rem;
+  }
 }
 </style>

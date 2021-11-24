@@ -4,6 +4,7 @@
       type="button"
       class="goal__showModalButton"
       @click="showModal = true"
+      data-test="goalModalButton"
     >
       {{ goalObject.title }}
     </button>
@@ -15,9 +16,9 @@
       ></div>
     </transition>
     <transition name="slide" appear>
-      <div class="goal__modal" v-if="showModal">
+      <div class="goal__modal" v-if="showModal" data-test="goalModal">
         <div class="goal__modal__type">Goal</div>
-        <h1>{{ goalObject.title }}</h1>
+        <h1 data-test="goalTitle">{{ goalObject.title }}</h1>
         <div class="goal__createdAt">Created at: <br />{{ date }}</div>
         <div class="goal__deadline__container">
           <div class="goal__deadline goal__deadline--label">Deadline:</div>
@@ -36,12 +37,14 @@
               class="goal__button goal__button--save"
               value="Save"
               @click="updateGoal"
+              data-test="goalSave"
             />
             <input
               type="submit"
               class="goal__button goal__button--save"
               value="Go back"
               @click="showModal = false"
+              data-test="goalGoBack"
             />
           </div>
           <button
@@ -150,6 +153,53 @@ export default {
   backdrop-filter: hue-rotate(180deg) opacity(80%) brightness(85%);
 }
 
+@supports ((-webkit-backdrop-filter: none) or (backdrop-filter: none)) {
+  .goal__modal {
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 50%;
+    left: 50.6%;
+    transform: translate(-50%, -50%);
+    background-color: rgb(100, 100, 100);
+    z-index: 99;
+    text-align: center;
+    width: 80%;
+    height: 60%;
+    border-radius: 2px;
+    color: rgb(0, 0, 0);
+    background: none;
+    outline: none;
+    border: 2px solid rgb(35, 166, 170);
+    border-radius: 0.5rem;
+    backdrop-filter: blur(8px);
+  }
+}
+@supports not ((-webkit-backdrop-filter: none) or (backdrop-filter: none)) {
+  .goal__modal {
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 50%;
+    left: 50.6%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(6, 0, 32, 0.658);
+    z-index: 99;
+    text-align: center;
+    width: 80%;
+    height: 60%;
+    border-radius: 2px;
+    color: rgb(0, 0, 0);
+    outline: none;
+    border: 2px solid rgb(35, 166, 170);
+    border-radius: 0.5rem;
+  }
+}
+
 .fade-enter-active,
 .fade-leave-active {
   transition: opacity 0.5s;
@@ -158,29 +208,6 @@ export default {
 .fade-enter,
 .fade-leave-to {
   opacity: 0;
-}
-
-.goal__modal {
-  display: flex;
-  flex-flow: column;
-  justify-content: center;
-  align-items: center;
-  position: fixed;
-  top: 50%;
-  left: 50.6%;
-  transform: translate(-50%, -50%);
-  background-color: rgb(100, 100, 100);
-  z-index: 99;
-  text-align: center;
-  width: 80%;
-  height: 60%;
-  border-radius: 2px;
-  color: rgb(0, 0, 0);
-  background: none;
-  outline: none;
-  border: 2px solid rgb(35, 166, 170);
-  border-radius: 0.5rem;
-  backdrop-filter: blur(8px);
 }
 
 .goal__modal__type {
@@ -201,6 +228,10 @@ h1 {
   font-weight: 900;
   margin-bottom: 15px;
   text-shadow: 0 0 1rem rgba(211, 255, 253, 0.945);
+}
+h1:hover {
+  color: rgba(255, 0, 0, 0.712);
+  cursor: pointer;
 }
 
 .goal__createdAt {
@@ -298,6 +329,7 @@ h1 {
   background: transparent;
   backdrop-filter: drop-shadow(4px 4px 10px rgba(248, 248, 248, 0));
   transition: 0.2s ease-in;
+  z-index: 3;
 }
 
 .goal__showModalButton:hover {
@@ -328,7 +360,7 @@ ul {
   top: 0.1rem;
   right: 7.5rem;
   width: 6rem;
-  }
+}
 .datePicker__container {
   width: 7rem;
 }
@@ -342,4 +374,50 @@ ul {
   transition: 0.3s;
 }
 
+@media (max-width: 760px) {
+  .goal__modal {
+    width: 100%;
+    height: 100%;
+  }
+  .goal__button {
+    width: 5rem;
+  }
+  h1 {
+    font-size: 1rem;
+  }
+  .goal__modal__type {
+    font-size: 1rem;
+  }
+  .goal__deadline--label {
+    font-size: 1rem;
+  }
+  .goal__deadline__container {
+    right: 9.5rem;
+  }
+  .vdp-datepicker * {
+    position: absolute;
+    bottom: 6rem;
+  }
+  .goal__bottomContainer {
+    margin-top: auto;
+    margin-bottom: 1rem;
+  }
+  .slider__container {
+    position: relative;
+    top: 7rem;
+    right: -1rem;
+  }
+  .textArea__container {
+    position: relative;
+    top: 5rem;
+  }
+  h1 {
+    position: relative;
+    top: 5rem;
+  }
+  .goal__buttonsContainer {
+    position: relative;
+    right: -1.5rem;
+  }
+}
 </style>

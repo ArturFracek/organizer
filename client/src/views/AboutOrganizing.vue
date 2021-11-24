@@ -1,14 +1,17 @@
 <template>
   <div class="about__mainContainer">
     <div class="about__upperContainer">
-      <div class="about__aboutOrganizing">
+      <div
+        class="about__aboutOrganizing"
+        data-test="aboutOrganizingUpperSection"
+      >
         In the Organizer, you create your activities, prioritize and describe
         them, then create routines by setteling your activities in week time.
         After preparing first routine it's time to test it in practice, track
         activities time, and adjust everyting so you can get most out of your
         lifetime.
       </div>
-      <div class="about__aboutApp">
+      <div class="about__aboutApp" data-test="aboutOrganizingLowerSection">
         Why ?
         <br />The importance of structurizing time and balancing it with chaos
         is something most of us are aware, however we also know the first part
@@ -26,7 +29,7 @@
       </div>
     </div>
     <div class="about__info">
-      <div class="movies">
+      <div class="movies" data-test="movies">
         <div class="title"><i class="bi bi-camera-video"></i>Videos</div>
         <ul>
           <li>
@@ -48,6 +51,14 @@
               target="_blank"
               href="https://www.youtube.com/watch?v=WXBA4eWskrc"
               >The Philosophy of Time Management | Brad Aeon | TEDxConcordia
+            </a>
+          </li>
+          <li>
+            <a
+              target="_blank"
+              href="https://www.youtube.com/watch?v=PZ7lDrwYdZc"
+              >How to become 37.78 times better at anything | Atomic Habits
+              summary by James Clear
             </a>
           </li>
         </ul>
@@ -87,23 +98,14 @@
       <div class="books">
         <div class="title"><i class="bi bi-book"></i>Books</div>
         <ul>
+          <li>Attomic Habits by James Clear</li>
           <li>
-            <a
-              >The 7 Habits of Highly Effective People: Powerful Lessons in
-              Personal Change by Stephen R. Covey
-            </a>
+            The 7 Habits of Highly Effective People: Powerful Lessons in
+            Personal Change by Stephen R. Covey
           </li>
-          <li>
-            <a
-              >Essentialism: The Disciplined Pursuit of Less by Greg McKeown
-            </a>
-          </li>
-          <li>
-            <a>Eat That Frog! by Brian Tracy </a>
-          </li>
-          <li>
-            <a>Getting Things Done by David Allen </a>
-          </li>
+          <li>Essentialism: The Disciplined Pursuit of Less by Greg McKeown</li>
+          <li>Eat That Frog! by Brian Tracy</li>
+          <li>Getting Things Done by David Allen</li>
         </ul>
       </div>
     </div>
@@ -377,6 +379,12 @@ li:hover {
   font-size: 1.5rem;
 }
 
+.movies > ul > li > a:hover,
+.articles > ul > li > a:hover {
+  color: red;
+  text-shadow: 0 0 20px rgba(255, 0, 0, 0.555);
+}
+
 @media (max-width: 1045px) {
   .about__aboutOrganizing {
     color: rgb(125, 248, 236);
@@ -393,6 +401,7 @@ ul {
 }
 li {
   font-size: 1rem;
+  color: white !important;
 }
 
 @media (max-width: 720px) {

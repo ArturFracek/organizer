@@ -1,40 +1,30 @@
-import axios from "axios";
+import api from "@/api"
 
-const url = "http://localhost:5000/api/activities/";
+const url = "/activities/";
 
 class ActivitiesService {
   //get posts
-  static getActivities() {
-    // eslint-disable-next-line no-async-promise-executor
-    return new Promise(async (resolve, reject) => {
-      try {
-        const res = await axios.get(url);
-        const data = res.data;
-        resolve(
-          data.map((activity) => ({
-            ...activity,
-            createdAt: new Date(activity.createdAt),
-          }))
-        );
-      } catch (err) {
-        reject(err);
-      }
-    });
+  static async getActivities() {
+    const res = await api.get(url);
+    return res.data.map((activity) => ({
+      ...activity,
+      createdAt: new Date(activity.createdAt),
+    }));
   }
 
   //create post
   static insertActivity(activity) {
-    return axios.post(url, activity);
+    return api.post(url, activity);
   }
 
   //update activity
   static updateActivity(activity) {
-    return axios.put(`${url}${activity._id}`, activity);
+    return api.put(`${url}${activity._id}`, activity);
   }
 
   //delete post
   static deleteActivity(id) {
-    return axios.delete(`${url}${id}`);
+    return api.delete(`${url}${id}`);
   }
 }
 

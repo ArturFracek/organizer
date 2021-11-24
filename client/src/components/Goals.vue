@@ -3,14 +3,22 @@
     <div class="goals__background"></div>
     <div class="goals__addingGoalsContainer">
       <input
-        class="goals__andGoal__input"
+        class="goals__addGoal__input"
         type="text"
         placeholder=" "
         v-model="title"
         @keyup.enter="addGoal"
+        data-test="goalInputAdd"
       />
       <label class="goals__input__label">Add Goal</label>
-      <button class="goals__addGoal__button" @click="addGoal">Add Goal</button>
+      <button
+        type="button"
+        class="goals__addGoal__button"
+        @click="addGoal"
+        data-test="goalButtonAdd"
+      >
+        Add Goal
+      </button>
     </div>
     <div class="goals__goalsHolder">
       <ul
@@ -18,6 +26,7 @@
         :item="goal"
         :index="index"
         :key="goal._id"
+        data-test="goalHolder"
       >
         <li>
           <GoalModal
@@ -80,22 +89,22 @@ export default {
 
 <style scoped>
 .goals__background {
-  position: absolute;
+  position: fixed;
   box-sizing: border-box;
-  height: 100%;
-  width: 100%;
+  height: 30%;
+  width: 80%;
   background: transparent;
   backdrop-filter: drop-shadow(4px 4px 6px rgb(207, 17, 17)) hue-rotate(180deg)
     opacity(80%);
-  right: 0%;
+  z-index: 0;
+  overflow-y: hidden;
+  transform: translateY(-3%);
 }
 
 .goals__mainContainer {
-  display: flex;
   align-items: center;
   position: relative;
   height: 30%;
-  max-height: 60%;
   width: 80%;
   padding: 0.3rem 5%;
   border-style: solid;
@@ -106,27 +115,32 @@ export default {
   display: flex;
   flex-flow: column;
   overflow-y: scroll;
+  background: none;
 }
 
 .goals__addingGoalsContainer {
+  position: static;
   display: flex;
   flex-flow: row;
   align-items: center;
   justify-content: center;
   width: 100%;
-  height: 5rem;
-  position: relative;
+  height: 6rem;
+  margin-bottom: 3rem;
 }
 
 .goals__goalsHolder {
+  top: 70%;
   width: 100%;
+  height: 80%;
   display: flex;
   flex-flow: column;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
+  box-sizing: border-box;
 }
 
-.goals__andGoal__input {
+.goals__addGoal__input {
   margin-top: 1rem;
   text-align: center;
   width: 15rem;
@@ -149,15 +163,14 @@ export default {
 }
 
 .goals__input__label {
-  position: relative;
+  position: absolute;
+  top: 1.5rem;
   color: whitesmoke;
   display: flex;
   cursor: text;
   transition: top 200ms ease-in;
   left: 200ms ease-in;
   font-size: 200ms ease-in;
-  top: 0.7rem;
-  right: 0;
   background-color: none;
   font-weight: bold;
   white-space: nowrap;
@@ -168,7 +181,6 @@ export default {
   color: rgb(255, 255, 255);
   text-shadow: 0 0 0.8rem rgb(255, 255, 255);
   pointer-events: none;
-  margin-bottom: 1.8rem;
 }
 
 .goals__addGoal__button {
@@ -176,9 +188,9 @@ export default {
   color: rgb(78, 226, 231);
   text-shadow: 0 0 8px rgb(51, 189, 175);
   font-weight: bold;
-  position: relative;
-  right: -8.2rem;
-  top: -0.25rem;
+  position: absolute;
+  transform: translateX(190%);
+  top: 1rem;
   text-align: center;
   border-radius: 2px;
   padding: 0.7rem;
@@ -189,10 +201,10 @@ export default {
   border-radius: 0.5rem;
   background: transparent;
   box-shadow: 0 25px 25px rgba(38, 221, 253, 0.1);
-  backdrop-filter: blur(10px) drop-shadow(4px 4px 2px rgb(17, 185, 207));
   display: none;
   height: 2.5rem;
 }
+
 .goals__addGoal__button:hover {
   color: rgb(240, 2, 2);
   border-color: rgb(233, 1, 1);
@@ -229,7 +241,7 @@ input:focus ~ .goals__input__label {
 }
 
 input:focus ~ .goals__input__label,
-input:not(:placeholder-shown).goals__andGoal__input:not(:focus)
+input:not(:placeholder-shown).goals__addGoal__input:not(:focus)
   ~ .goals__input__label {
   animation: shadow_fading 0.8s ease;
   opacity: 0;
@@ -277,12 +289,12 @@ li::marker {
 }
 
 @media (max-width: 765px) {
-  .goals__andGoal__input {
+  .goals__addGoal__input {
     width: 12rem;
   }
   .goals__mainContainer {
     width: 100%;
-    height: 25%;
+    height: 30%;
     overflow: scroll;
   }
   .goals__input__label {
@@ -294,6 +306,17 @@ li::marker {
   }
   li {
     font-size: 0.9rem;
+  }
+  .goals__addGoal__button {
+    position: absolute;
+    top: 1rem;
+    left: 50vw;
+    width: 3rem;
+    backdrop-filter: none;
+  }
+  .goals__background {
+    width: 100%;
+    background: transparent;
   }
 }
 </style>

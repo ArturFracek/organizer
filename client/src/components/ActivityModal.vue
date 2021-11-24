@@ -4,6 +4,7 @@
       type="button"
       class="activity__button activity__showModalButton"
       @click="showModal = true"
+      data-test="activityShowModal"
     >
       {{ activityObject.title }}
     </button>
@@ -15,9 +16,13 @@
       ></div>
     </transition>
     <transition name="slide" appear>
-      <div class="activity__modal" v-if="showModal">
+      <div class="activity__modal" v-if="showModal" data-test="activityModal">
         <div class="activity__modal__type">Activity</div>
-        <input class="activity__modal__title" v-model="localActivity.title" />
+        <input
+          class="activity__modal__title"
+          v-model="localActivity.title"
+          data-test="activityModalTitle"
+        />
         <div class="activity__createdAt">Created at: <br />{{ date }}</div>
         <textArea v-model="localActivity.description" />
         <Slider v-model="localActivity.priority" />
@@ -28,12 +33,14 @@
               class="activity__button activity__button--save"
               @click="updateActivity"
               value="Save"
+              data-test="activitySave"
             />
             <input
               type="submit"
               class="activity__button activity__button--save"
               value="Go back"
               @click="showModal = false"
+              data-test="activityGoBack"
             />
           </div>
           <button
@@ -41,6 +48,7 @@
             type="button"
             value="Delete"
             @click="deleteActivity(activityObject._id)"
+            data-test="activityDelete"
           ></button>
         </div>
       </div>
@@ -106,8 +114,8 @@ export default {
   height: 100%;
   border-radius: 3px;
   color: rgba(253, 253, 250, 0.945);
-  font-weight: bold;
-  text-shadow: 0 0 4px rgb(235, 250, 251);
+  font-weight: 500;
+  text-shadow: 0 0 2px rgb(235, 250, 251);
   padding: 0.5rem;
   background: none;
   border-top: 2px solid rgb(255, 255, 255);
@@ -183,7 +191,7 @@ export default {
 .fade-leave-to {
   opacity: 0;
 }
-
+@supports ((-webkit-backdrop-filter: none) or (backdrop-filter: none)) {
 .activity__modal {
   display: flex;
   flex-flow: column;
@@ -208,6 +216,34 @@ export default {
   box-shadow: 0 25px 25px rgba(3, 96, 112, 0.1);
   backdrop-filter: blur(10px) drop-shadow(4px 4px 10px rgb(17, 185, 207));
   padding: 0;
+}
+}
+
+@supports not ((-webkit-backdrop-filter: none) or (backdrop-filter: none)) {
+.activity__modal {
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: rgb(100, 100, 100);
+  z-index: 99;
+  text-align: center;
+  width: 80%;
+  height: 60%;
+  border-radius: 2px;
+  color: rgb(0, 0, 0);
+  outline: none;
+  border: 2px solid rgb(35, 166, 170);
+  border-radius: 0.5rem;
+  background: rgba(1, 0, 34, 0.76);
+  box-shadow: 0 25px 25px rgba(3, 96, 112, 0.1);
+  backdrop-filter: blur(10px) drop-shadow(4px 4px 10px rgb(17, 185, 207));
+  padding: 0;
+}
 }
 
 .activity__modal__type {
@@ -302,5 +338,19 @@ h1 {
 
 .activity__modal__title:focus {
   outline: none;
+}
+@media (max-width: 760px) {
+  .activity__showModalButton {
+    font-weight: 500;
+    padding: 0.2rem;
+    text-shadow: none;
+  }
+  .activity__modal {
+    width: 100%;
+    height: 70%;
+  }
+  .activity__button--save {
+    width: 6rem;
+  }
 }
 </style>

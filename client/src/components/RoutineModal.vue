@@ -3,8 +3,9 @@
     <button
       type="button"
       class="routine__button routine__showModalButton"
-      :class="{routine__showModalButtonActive: localRoutine.is_active}"
+      :class="{ routine__showModalButtonActive: localRoutine.is_active }"
       @click="showModal = true"
+      data-test="routineShowModal"
     >
       {{ routineObject.title }}
     </button>
@@ -18,7 +19,11 @@
     <transition name="slide" appear>
       <div class="routine__modal" v-if="showModal">
         <div class="routine__modal__type">Routine</div>
-        <input class="routine__title" v-model="localRoutine.title" />
+        <input
+          class="routine__title"
+          v-model="localRoutine.title"
+          data-test="routineModalTitle"
+        />
         <div class="routine__createdAt">Created at: <br />{{ date }}</div>
         <div class="routine__modalUpperSection">
           <textArea v-model="localRoutine.description" />
@@ -32,6 +37,7 @@
             @click="activation"
             class="routine_button routine__button--activation"
             :class="{ routine__isActive: localRoutine.is_active }"
+            data-test="activateRoutineButton"
           >
             <span v-if="!localRoutine.is_active">Activate this Routine</span>
             <span v-if="localRoutine.is_active">Active!</span>
@@ -43,12 +49,14 @@
                 class="routine__button routine__button--save"
                 @click="saveRoutine"
                 value="Save"
+                data-test="routineSave"
               />
               <input
                 type="button"
                 class="routine__button routine__button--save"
                 @click="showModal = false"
                 value="Go back"
+                data-test="routineGoBack"
               />
             </div>
             <button
@@ -56,6 +64,7 @@
               type="button"
               value="Delete"
               @click="deleteRoutine(routineObject._id)"
+              data-test="routineDelete"
             ></button>
           </div>
         </div>
@@ -139,7 +148,7 @@ export default {
   flex-flow: column;
   background-color: transparent;
   width: 97%;
-  height: auto;
+  height: 100%;
   border-radius: 60px;
   border-bottom: 2px dotted turquoise;
   border-top: 2px dotted turquoise;
@@ -167,7 +176,7 @@ export default {
 }
 
 .routine__buttonsContainer {
-    position: relative;
+  position: relative;
   margin-left: 5%;
   width: 100%;
   height: 3rem;
@@ -178,37 +187,26 @@ export default {
 }
 
 .routine__showModalButton {
+  font-weight: bold;
   text-align: center;
   width: 100%;
   height: 100%;
-  border-radius: 2px;
   color: rgba(253, 253, 250, 0.945);
-  font-weight: bold;
-  text-shadow: 0 0 1rem white;
+  text-shadow: 0 0 2px white;
   padding: 0.5rem;
   background: none;
   outline: none;
   border: 2px solid rgb(217, 252, 255);
-  border-radius: 0.5rem;
+  border-radius: 7px;
   background: transparent;
   box-shadow: 0 25px 25px rgba(3, 96, 112, 0.1);
-  backdrop-filter: blur(10px) drop-shadow(4px 4px 10px rgb(0, 0, 0));
   transition: 0.1s ease-out;
 }
 .routine__showModalButtonActive {
-  text-align: center;
-  width: 100%;
-  height: 100%;
-  border-radius: 2px;
   color: rgb(125, 255, 216);
   font-weight: bold;
   text-shadow: 2px 0 30px rgb(15, 0, 228);
-  padding: 0.5rem;
-  background: none;
-  outline: none;
   border: 2px solid rgb(53, 255, 221);
-  border-radius: 0.5rem;
-  background: transparent;
   box-shadow: 0 5px 20px rgba(127, 255, 212, 0.472);
   backdrop-filter: blur(10px) drop-shadow(4px 4px 10px rgb(41, 2, 168));
   transition: 0.2s ease;
@@ -297,31 +295,59 @@ export default {
 .fade-leave-to {
   opacity: 0;
 }
+@supports ((-webkit-backdrop-filter: none) or (backdrop-filter: none)) {
+  .routine__modal {
+    display: flex;
+    flex-flow: column;
+    justify-content: flex-start;
+    align-items: center;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgb(100, 100, 100);
+    z-index: 99;
+    text-align: center;
+    width: 80%;
+    height: 80%;
+    border-radius: 2px;
+    color: rgb(0, 0, 0);
+    padding: 0.7rem;
+    background: none;
+    outline: none;
+    border: 2px solid rgb(35, 166, 170);
+    border-radius: 0.5rem;
+    background: transparent;
+    box-shadow: 0 25px 25px rgba(3, 96, 112, 0.1);
+    backdrop-filter: blur(10px) drop-shadow(4px 4px 10px rgb(17, 185, 207));
+  }
+}
 
-.routine__modal {
-  display: flex;
-  flex-flow: column;
-  justify-content: flex-start;
-  align-items: center;
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background-color: rgb(100, 100, 100);
-  z-index: 99;
-  text-align: center;
-  width: 80%;
-  height: 60%;
-  border-radius: 2px;
-  color: rgb(0, 0, 0);
-  padding: 0.7rem;
-  background: none;
-  outline: none;
-  border: 2px solid rgb(35, 166, 170);
-  border-radius: 0.5rem;
-  background: transparent;
-  box-shadow: 0 25px 25px rgba(3, 96, 112, 0.1);
-  backdrop-filter: blur(10px) drop-shadow(4px 4px 10px rgb(17, 185, 207));
+@supports not ((-webkit-backdrop-filter: none) or (backdrop-filter: none)) {
+  .routine__modal {
+    display: flex;
+    flex-flow: column;
+    justify-content: flex-start;
+    align-items: center;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgb(100, 100, 100);
+    z-index: 99;
+    text-align: center;
+    width: 80%;
+    height: 80%;
+    border-radius: 2px;
+    color: rgb(0, 0, 0);
+    padding: 0.7rem;
+    outline: none;
+    border: 2px solid rgb(35, 166, 170);
+    border-radius: 0.5rem;
+    background-color: rgba(6, 0, 34, 0.678);
+    box-shadow: 0 25px 25px rgba(3, 96, 112, 0.1);
+    backdrop-filter: blur(10px) drop-shadow(4px 4px 10px rgb(17, 185, 207));
+  }
 }
 
 .routine__modal__type {
@@ -463,5 +489,44 @@ input:hover ~ .routine__showModalButton {
 
 .routine__title:focus {
   outline: none;
+}
+
+@media (max-width: 760px) {
+  .routine__showModalButton {
+    font-weight: 600;
+    padding: 0.2rem;
+    backdrop-filter: none;
+  }
+  .routine__modal {
+    width: 100%;
+    height: 100%;
+  }
+  .routine__bottomSection {
+    margin-top: auto;
+  }
+  .routine__activitiesOccurences {
+    height: 100%;
+  }
+  .routine__button--save {
+    width: 6rem;
+    position: relative;
+    right: -2.1rem;
+  }
+  .routine__bottomContainer {
+    margin-left: auto;
+  }
+  .routine__title {
+    font-size: 1rem;
+  }
+  .routine__createdAt {
+    font-size: 0.8rem;
+  }
+  .routine__modal__type {
+    font-size: 0.9rem;
+  }
+  .routine__button__delete {
+    right: 0rem;
+    top: -0.2rem;
+  }
 }
 </style>

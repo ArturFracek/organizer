@@ -87,12 +87,17 @@ select:-webkit-autofill:focus {
   width: 10px;
 }
 ::-webkit-scrollbar-track {
-  background: rgb(71, 243, 255, 0.2);
+  background: rgb(108, 161, 163);
 }
 ::-webkit-scrollbar-thumb {
-  background: rgb(117, 255, 182, 0.4);
+  background: rgb(8, 112, 112);
+  border-style: solid;
+  border-width: 6px;
+  border-image: linear-gradient(to bottom, rgb(112, 238, 255), rgb(19, 93, 95))
+    1;
+  border-image-repeat: stretch;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: rgb(117, 255, 182, 0.6);
+  background: rgba(255, 255, 255, 0.6);
 }
 </style>

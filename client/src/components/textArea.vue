@@ -5,6 +5,7 @@
       @input="changeDescription"
       class="textArea"
       placeholder="Description"
+      data-test="textArea"
       :value="value"
     ></textarea>
   </div>
