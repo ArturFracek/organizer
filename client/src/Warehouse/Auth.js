@@ -1,4 +1,4 @@
-import api from "@/api"
+import api from "@/api";
 import router from "../router/index";
 
 const state = {
@@ -46,10 +46,7 @@ const actions = {
   async register({ commit }, userData) {
     try {
       commit("register_request");
-      let res = await api.post(
-        "/users/register",
-        userData
-      );
+      let res = await api.post("/users/register", userData);
       if (res.data.success !== undefined) {
         commit("register_success");
       }
@@ -99,7 +96,7 @@ const mutations = {
     state.status = "success";
   },
   register_error(state, err) {
-    console.log({ err })
+    console.log({ err });
     state.error = err.response.data.msg;
   },
   logout(state) {

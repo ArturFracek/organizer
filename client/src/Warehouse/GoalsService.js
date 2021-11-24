@@ -1,4 +1,4 @@
-import api from "@/api"
+import api from "@/api";
 
 const url = "/goals/";
 
@@ -26,7 +26,7 @@ class GoalsService {
   static insertGoal(goal) {
     return api.post(url, goal);
   }
-  
+
   //update goal
   static updateGoal(goal) {
     return api.put(`${url}${goal._id}`, goal);
@@ -36,7 +36,6 @@ class GoalsService {
   static deleteGoal(id) {
     return api.delete(`${url}${id}`);
   }
-
 }
 
 export default GoalsService;
