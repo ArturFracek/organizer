@@ -1,10 +1,11 @@
-const { request } = require("express");
 const express = require("express");
 const mongodb = require("mongodb");
 const loader = require("sass-loader");
 const Routine = require("../../model/Routine.model");
-const config = require('../../config.js');
+const config = require("../../config.js");
 const _auth = require("./_auth");
+const users = require("./users");
+
 
 const db = config.db.mongoURI;
 
@@ -17,9 +18,9 @@ router.get("/", _auth, async (req, res) => {
 });
 
 // Add Routines
-router.post("/", _auth.user._id, async (req, res) => {
+router.post("/", _auth, async (req, res) => {
   const { title } = req.body;
-  console.log(req.body.text);
+  console.log(req.user);
   const routines = await loadRoutinesCollection();
   await routines.insertOne({
     title,
@@ -27,6 +28,7 @@ router.post("/", _auth.user._id, async (req, res) => {
     is_active: false,
     priority: 5,
     activitiesOccurences: [],
+    createdBy: req.user._id,
   });
   res.status(201).send();
 });
@@ -65,13 +67,10 @@ router.delete("/:id", async (req, res) => {
 });
 
 async function loadRoutinesCollection() {
-  const client = await mongodb.MongoClient.connect(
-    db,
-    {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
-    }
-  );
+  const client = await mongodb.MongoClient.connect(db, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  });
   return client.db().collection("routines");
 }
 

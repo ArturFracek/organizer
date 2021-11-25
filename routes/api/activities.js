@@ -9,13 +9,12 @@ const router = express.Router();
 
 // Get Posts
 router.get("/", _auth, async (req, res) => {
-  const activities = await loadActivitiesCollection();
-  res.send(await activities.find({}).toArray());
-  console.log(_auth)
+  const activitiesdb = await loadActivitiesCollection();
+  res.send(await activitiesdb.find({ createdBy: req.user._id }).toArray());
 });
 
 // Add Post
-router.post("/", async (req, res) => {
+router.post("/", _auth, async (req, res) => {
   const { title } = req.body;
   const activities = await loadActivitiesCollection();
   await activities.insertOne({
@@ -23,15 +22,18 @@ router.post("/", async (req, res) => {
     priority: 5,
     createdAt: new Date(),
     duration: 0,
+    createdBy: req.user._id,
   });
   res.status(201).send();
 });
 
 //Update Activity
-router.put("/:id", async (req, res) => {
+router.put("/:id", _auth, async (req, res) => {
   const activities = await loadActivitiesCollection();
   await activities.updateOne(
-    { _id: new mongodb.ObjectID(req.params.id) },
+    {
+      _id: new mongodb.ObjectID(req.params.id, req.user._id),
+    },
     {
       $set: {
         title: req.body.title,
@@ -45,9 +47,11 @@ router.put("/:id", async (req, res) => {
 });
 
 // Delete Post
-router.delete("/:id", async (req, res) => {
+router.delete("/:id", _auth, async (req, res) => {
   const activities = await loadActivitiesCollection();
-  await activities.deleteOne({ _id: new mongodb.ObjectID(req.params.id) });
+  await activities.deleteOne({
+    _id: new mongodb.ObjectID(req.params.id, req.user._id),
+  });
   res.status(200).send();
 });
 
