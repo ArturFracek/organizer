@@ -20,13 +20,12 @@
         Add Goal
       </button>
     </div>
-    <div class="goals__goalsHolder">
+    <div class="goals__goalsHolder" data-test="goalsHolder">
       <ul
         v-for="(goal, index) in goals"
         :item="goal"
         :index="index"
         :key="goal._id"
-        data-test="goalHolder"
       >
         <li>
           <GoalModal

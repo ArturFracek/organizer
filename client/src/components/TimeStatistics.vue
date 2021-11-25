@@ -22,7 +22,6 @@
         </div>
       </div>
     </div>
-    <button class="test" @click="test"></button>
   </div>
 </template>
 

@@ -1,20 +1,22 @@
 const express = require("express");
 const mongodb = require("mongodb");
-const config = require('../../config.js');
+const config = require("../../config.js");
+const _auth = require("./_auth");
 
 const db = config.db.mongoURI;
 
 const router = express.Router();
 
 // Get Posts
-router.get("/", async (req, res) => {
+router.get("/", _auth, async (req, res) => {
   const activities = await loadActivitiesCollection();
   res.send(await activities.find({}).toArray());
+  console.log(_auth)
 });
 
 // Add Post
 router.post("/", async (req, res) => {
-  const { title, description, priority } = req.body;
+  const { title } = req.body;
   const activities = await loadActivitiesCollection();
   await activities.insertOne({
     title,
@@ -50,13 +52,10 @@ router.delete("/:id", async (req, res) => {
 });
 
 async function loadActivitiesCollection() {
-  const client = await mongodb.MongoClient.connect(
-    db,
-    {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
-    }
-  );
+  const client = await mongodb.MongoClient.connect(db, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  });
   return client.db().collection("activities");
 }
 

@@ -29,8 +29,7 @@ const dbConfigFile = require('../../config/keys')
 
 
 Cypress.Commands.add('setup', () => {
-    const NODE_ENV = Cypress.env('NODE_ENV')
-    const dbConfig = dbConfigFile[NODE_ENV || "dev"] 
+    const dbConfig = dbConfigFile.test
     cy.exec(`mongo ${dbConfig.mongoURI} --eval "db.dropDatabase()"`)
     cy.wait(1000)
 })

@@ -4,13 +4,14 @@ const mongodb = require("mongodb");
 const loader = require("sass-loader");
 const Routine = require("../../model/Routine.model");
 const config = require('../../config.js');
+const _auth = require("./_auth");
 
 const db = config.db.mongoURI;
 
 const router = express.Router();
 
 // Get Routines
-router.get("/", async (req, res) => {
+router.get("/", _auth, async (req, res) => {
   const routines = await loadRoutinesCollection();
   res.send(await routines.find({}).toArray());
 });

@@ -4,7 +4,7 @@ const bodyParser = require("body-parser");
 const path = require("path");
 const cors = require("cors");
 const passport = require("passport");
-const config = require('./config.js');
+const config = require("./config.js");
 
 const db = config.db.mongoURI;
 
@@ -54,18 +54,16 @@ app.use("/api/goals", goals);
 //Bring in the Users route
 const users = require("./routes/api/users");
 app.use("/api/users", users);
-//Bring in the Activities route 
+//Bring in the Activities route
 const activities = require("./routes/api/activities");
 app.use("/api/activities", activities);
-//Bring in the Routines route 
+//Bring in the Routines route
 const routines = require("./routes/api/routines");
 app.use("/api/routines", routines);
 
 //app.get("*", (req,res) => {
 //  res.sendFile(path.join(__dirname, "public/index.html"));
 //})
-
-
 
 const PORT = config.apps.be_port;
 

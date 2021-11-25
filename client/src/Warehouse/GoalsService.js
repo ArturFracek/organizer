@@ -1,25 +1,14 @@
 import api from "@/api";
 
 const url = "/goals/";
-
 class GoalsService {
-  //get goals
-  static getGoals() {
-    // eslint-disable-next-line no-async-promise-executor
-    return new Promise(async (resolve, reject) => {
-      try {
-        const res = await api.get(url);
-        const data = res.data;
-        resolve(
-          data.map((goal) => ({
-            ...goal,
-            createdAt: new Date(goal.createdAt),
-          }))
-        );
-      } catch (err) {
-        reject(err);
-      }
-    });
+  //get posts
+  static async getGoals() {
+    const res = await api.get(url);
+    return res.data.map((goal) => ({
+      ...goal,
+      createdAt: new Date(goal.createdAt),
+    }));
   }
 
   //create goal

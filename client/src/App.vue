@@ -49,6 +49,7 @@ body {
   margin: 0;
   padding: 0;
   height: 100%;
+  font-size: 16px;
 }
 
 #app {
@@ -99,5 +100,10 @@ select:-webkit-autofill:focus {
 }
 ::-webkit-scrollbar-thumb:hover {
   background: rgba(255, 255, 255, 0.6);
+}
+
+.scroller {
+  overflow-y: scroll;
+  scrollbar-color: #0478fd #C2D2E4;
 }
 </style>

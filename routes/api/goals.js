@@ -1,6 +1,6 @@
 const express = require("express");
 const mongodb = require("mongodb");
-const config = require('../../config.js');
+const config = require("../../config.js");
 
 const db = config.db.mongoURI;
 
@@ -30,7 +30,13 @@ router.put("/:id", async (req, res) => {
   const goals = await loadGoalsCollection();
   await goals.updateOne(
     { _id: new mongodb.ObjectID(req.params.id) },
-    { $set: { description: req.body.description, priority: req.body.priority, deadline: req.body.deadline } }
+    {
+      $set: {
+        description: req.body.description,
+        priority: req.body.priority,
+        deadline: req.body.deadline,
+      },
+    }
   );
   res.status(200).send();
 });
@@ -43,13 +49,10 @@ router.delete("/:id", async (req, res) => {
 });
 
 async function loadGoalsCollection() {
-  const client = await mongodb.MongoClient.connect(
-    db,
-    {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
-    }
-  );
+  const client = await mongodb.MongoClient.connect(db, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  });
   return client.db().collection("goals");
 }
 

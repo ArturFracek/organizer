@@ -1,10 +1,28 @@
 describe("Login, add goal and customize it", () => {
   beforeEach(() => {
-    cy.intercept("GET", "http://localhost:5000/api/goals/").as("getGoals");
+    cy.intercept("GET", "http://localhost:3000/api/goals/").as("getGoals");
+  });
+
+  it("should allow people to sign up", () => {
+    cy.visit("http://localhost:9090/Register");
+
+    cy.get("#email").type("test@email.com");
+
+    const password = "abc123";
+
+    cy.get("#name").type("Gołota");
+
+    cy.get("#username").type("Andrzej", { force: true });
+
+    cy.get("#password").type(password);
+
+    cy.get("#confirm_password").type(password, { force: true });
+
+    cy.get("input[type='submit']").click();
   });
 
   it("should visit login page, and log in and check if we are redirected to profile page", () => {
-    cy.visit("http://localhost:8080/Login");
+    cy.visit("http://localhost:9090/Login");
 
     const goal = "Test Goal";
     const description =
@@ -18,7 +36,7 @@ describe("Login, add goal and customize it", () => {
 
     cy.get("[data-test='loginLogin']").click();
 
-    cy.url().should("include", "http://localhost:8080/profile");
+    cy.url().should("include", "http://localhost:9090/profile");
 
     cy.get("[data-test='goalInputAdd']").type(goal);
 
@@ -73,15 +91,15 @@ describe("Login, add goal and customize it", () => {
 
     cy.reload();
 
-    cy.get("[data-test='goalHolder']").should("contain", goal);
+    cy.get("[data-test='goalsHolder']").should("contain", goal);
 
-    cy.get("[data-test='goalHolder']").should("not.contain", goalToDelete);
+    cy.get("[data-test='goalsHolder']").should("not.contain", goalToDelete);
   });
 
   it("Should visit About Organizing page via nav, and check if links works", () => {
-    cy.visit("http://localhost:8080/");
+    cy.visit("http://localhost:9090/");
 
-    cy.url().should("include", "http://localhost:8080/");
+    cy.url().should("include", "http://localhost:9090/");
 
     cy.get("[data-test='aboutOrganizingUpperSection']").should(
       "contain",
@@ -100,7 +118,7 @@ describe("Login, add goal and customize it", () => {
   });
 
   it("should visit 'Organize', and add few activities, then customize them and check if saving to database properly", () => {
-    cy.visit("http://localhost:8080/Organize");
+    cy.visit("http://localhost:9090/Organize");
 
     const activity1 = "TEST Running";
     const description1 = "111This is first test activity111";
@@ -122,7 +140,7 @@ describe("Login, add goal and customize it", () => {
       .get('[data-test="activityButtonAdd"]')
       .should("be.visible")
       .click();
-
+// eslint-disable-next-line cypress/no-unnecessary-waiting
     cy.wait(200)
       .get('[data-test="activityShowModal"]')
       .last()
@@ -151,7 +169,7 @@ describe("Login, add goal and customize it", () => {
       .get('[data-test="activityButtonAdd"]')
       .should("be.visible")
       .click();
-
+// eslint-disable-next-line cypress/no-unnecessary-waiting
     cy.wait(200)
       .get('[data-test="activityShowModal"]')
       .last()
@@ -181,7 +199,7 @@ describe("Login, add goal and customize it", () => {
       .get('[data-test="activityButtonAdd"]')
       .should("be.visible")
       .click();
-
+// eslint-disable-next-line cypress/no-unnecessary-waiting
     cy.wait(200)
       .get('[data-test="activityShowModal"]')
       .last()
@@ -262,7 +280,7 @@ describe("Login, add goal and customize it", () => {
   });
 
   it("Should visit organazie, create a routine, create two activities, save them, add them to routine and customize it. Thensave a routine and check TimeNet", () => {
-    cy.visit("http://localhost:8080/Organize");
+    cy.visit("http://localhost:9090/Organize");
 
     const activity1 = "TEST Running";
     const activity2 = "TEST Swimming";
@@ -274,7 +292,7 @@ describe("Login, add goal and customize it", () => {
       .get('[data-test="activityButtonAdd"]')
       .should("be.visible")
       .click();
-
+// eslint-disable-next-line cypress/no-unnecessary-waiting
     cy.wait(200)
       .get('[data-test="activityShowModal"]')
       .last()
@@ -287,7 +305,7 @@ describe("Login, add goal and customize it", () => {
       .get('[data-test="activityButtonAdd"]')
       .should("be.visible")
       .click();
-
+// eslint-disable-next-line cypress/no-unnecessary-waiting
     cy.wait(200)
       .get('[data-test="activityShowModal"]')
       .last()
@@ -304,7 +322,7 @@ describe("Login, add goal and customize it", () => {
       .get('[data-test="routinesButtonAdd"]')
       .should("be.visible")
       .click();
-
+// eslint-disable-next-line cypress/no-unnecessary-waiting
     cy.wait(200);
 
     cy.get('[data-test="routineShowModal"]').contains(testRoutine).click();
@@ -394,7 +412,7 @@ describe("Login, add goal and customize it", () => {
       "have.class",
       "routine__isActive"
     );
-
+// eslint-disable-next-line cypress/no-unnecessary-waiting
     cy.wait(200);
 
     cy.get("[data-test='routineSave']").click();
@@ -414,7 +432,7 @@ describe("Login, add goal and customize it", () => {
   });
 
   it("Should see if TIMENET displaying activities properly and if timer works as supposed - as stoper", () => {
-    cy.visit("http://localhost:8080/Organize");
+    cy.visit("http://localhost:9090/Organize");
 
     const activity1 = "TEST Running";
     const activity2 = "TEST Swimming";
@@ -440,7 +458,7 @@ describe("Login, add goal and customize it", () => {
     );
 
     cy.get('[data-test="Tuesday-7-15"]').click();
-
+// eslint-disable-next-line cypress/no-unnecessary-waiting
     cy.wait(1000);
 
     cy.get('[data-test="netTimeDisplay"]').should(
@@ -462,7 +480,7 @@ describe("Login, add goal and customize it", () => {
     );
 
     cy.get('[data-test="Friday-8-30"]').click();
-
+// eslint-disable-next-line cypress/no-unnecessary-waiting
     cy.wait(1000);
 
     cy.get('[data-test="netTimeDisplay"]').should(
@@ -479,7 +497,7 @@ describe("Login, add goal and customize it", () => {
   });
 
   it("Should visit profile and see if values are correct for each activity in Time Statistics", () => {
-    cy.visit("http://localhost:8080/Profile");
+    cy.visit("http://localhost:9090/Profile");
 
     const password = "abc123";
     const activity1 = "TEST Running";
@@ -505,7 +523,7 @@ describe("Login, add goal and customize it", () => {
   });
 
   it("Should clear everything that was made during the tests", () => {
-    cy.visit("http://localhost:8080/Profile");
+    cy.visit("http://localhost:9090/Profile");
 
     const password = "abc123";
     const activity1 = "TEST Running";
@@ -524,9 +542,9 @@ describe("Login, add goal and customize it", () => {
 
     cy.reload();
 
-    cy.get("[data-test='goalHolder']").should("not.contain", "Test Goal");
+    cy.get("[data-test='goalsHolder']").should("not.contain", "Test Goal");
 
-    cy.visit("http://localhost:8080/Organize");
+    cy.visit("http://localhost:9090/Organize");
 
     cy.get('[data-test="activityShowModal"]').contains(activity1).click();
 

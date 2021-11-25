@@ -5,6 +5,6 @@ module.exports = {
   },
   test: {
     fe_port: 9090,
-    be_port: 6000,
+    be_port: 3000,
   },
 };

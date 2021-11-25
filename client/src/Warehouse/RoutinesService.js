@@ -2,25 +2,14 @@ import api from "@/api";
 import { boolean } from "joi";
 
 const url = "/routines/";
-
 class RoutinesService {
-  //get routine
-  static getRoutines() {
-    // eslint-disable-next-line no-async-promise-executor
-    return new Promise(async (resolve, reject) => {
-      try {
-        const res = await api.get(url);
-        const data = res.data;
-        resolve(
-          data.map((routine) => ({
-            ...routine,
-            createdAt: new Date(routine.createdAt),
-          }))
-        );
-      } catch (err) {
-        reject(err);
-      }
-    });
+  //get posts
+  static async getRoutines() {
+    const res = await api.get(url);
+    return res.data.map((routine) => ({
+      ...routine,
+      createdAt: new Date(routine.createdAt),
+    }));
   }
 
   //create routine
