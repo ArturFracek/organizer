@@ -17,7 +17,7 @@ router.get("/", _auth, async (req, res) => {
 });
 
 // Add Routines
-router.post("/", async (req, res) => {
+router.post("/", _auth.user._id, async (req, res) => {
   const { title } = req.body;
   console.log(req.body.text);
   const routines = await loadRoutinesCollection();
