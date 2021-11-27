@@ -24,10 +24,6 @@
 - [Installation](#installation)
   - [Prerequisites](#prerequisites)
   - [Running Locally](#running-locally)
-- [Configuration](#configuration)
-  - [JWT](#json-web-token)
-  - [MongoDB](#mongodb)
-  - [Environment variables](#environment-variables)
 - [Tests](#tests)
   - [Client](#client-tests)
   - [Server](#server-tests)
@@ -113,34 +109,7 @@ Run npm install for root, client and server directories to install required node
 npm install
 ```
 
-- Install dependencies for the client directory
-
-```console
-cd client
-npm install
-```
-
-- Install dependencies for the server directory
-
-```console
-cd server
-npm install
-```
-
-3. Create a .env file in the server directory according to the configuration
-
-Go to [configuration section](#configuration) or check a .env.example file inside the repository.
-
-4. Set properly environment variables and database
-
-_Note: To run code locally variables must be set following the code below:_
-
-```bash
-NODE_ENV='development'
-HEROKU_DEPLOYMENT=false
-```
-
-5. Run the application
+3. Run the application
 
 >Be sure to run a [script](#available-scripts) in the project root folder.
 
@@ -163,30 +132,6 @@ The application use JWT-based authentication. To take advantage of this solution
 ### MongoDB
 
 The application uses the MongoDB database. Generate MongoDB URL and store it in a .env file. To do so follow [MongoDB guide](https://docs.mongodb.com/guides/server/install/).
-
-### Environment variables
-
-To start using the application create a .env file in the server directory and setup variables following the guide below.
-
-_Note: Never expose those variables. The wrong configuration will result in an error_
-
-```bash
-DATABASE_URL=DATABASE_URL
-TESTDB_URL=TESTDB_URL
-SALT_WORK_FACTOR=SALT_WORK_FACTOR
-
-# JWT secret
-JWT_KEY=JWT_KEY
-
-# JWT expire time
-JWT_EXPIRE=JWT_EXPIRE
-
-NODE_ENV='development'
-HEROKU_DEPLOYMENT=false
-PORT=PORT
-```
-<hr>
-<br>
 
 ## Tests
 
@@ -222,13 +167,13 @@ _Note: Set NODE_ENV to 'test' to run those tests_
 Open Cypress Test Runner:
 ```console
 cd client
-npm run test:e2e-open
+npm open cy
 ```
 
 Run all tests headlessly in the Electron browser:
 ```console
 cd client
-npm run test:e2e-run
+npm run cy-run
 ```
 <hr>
 <br>

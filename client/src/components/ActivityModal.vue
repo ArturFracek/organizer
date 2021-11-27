@@ -128,7 +128,6 @@ export default {
 .activity__bottomContainer {
   width: 95%;
   height: 10%;
-  margin-left: 5%;
   display: flex;
   justify-content: center;
   align-items: flex-end;

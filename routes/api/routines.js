@@ -6,7 +6,6 @@ const config = require("../../config.js");
 const _auth = require("./_auth");
 const users = require("./users");
 
-
 const db = config.db.mongoURI;
 
 const router = express.Router();
@@ -14,7 +13,7 @@ const router = express.Router();
 // Get Routines
 router.get("/", _auth, async (req, res) => {
   const routines = await loadRoutinesCollection();
-  res.send(await routines.find({}).toArray());
+  res.send(await routines.find({ createdBy: req.user._id }).toArray());
 });
 
 // Add Routines

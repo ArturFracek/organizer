@@ -12,6 +12,7 @@
     "dev": "NODE_ENV=dev concurrently \"npm run server\" \"npm run client\"",
     "test": "NODE_ENV=test concurrently \"npm run server\" \"npm run client\"",
     "cy": "CYPRESS_NODE_ENV=test cypress open",
+    "cy-run": "CYPRESS_NODE_ENV=test cypress run",
     "test:unit": "vue-cli-service test:unit"
   },
   "dependencies": {

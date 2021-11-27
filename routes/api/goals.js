@@ -10,7 +10,7 @@ const router = express.Router();
 // Get Goals
 router.get("/", _auth, async (req, res) => {
   const goals = await loadGoalsCollection();
-  res.send(await goals.find({}).toArray());
+  res.send(await goals.find({ createdBy: req.user._id }).toArray());
 });
 
 // Add Goal

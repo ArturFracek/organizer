@@ -32,7 +32,8 @@ router.put("/:id", _auth, async (req, res) => {
   const activities = await loadActivitiesCollection();
   await activities.updateOne(
     {
-      _id: new mongodb.ObjectID(req.params.id, req.user._id),
+      _id: new mongodb.ObjectID(req.params.id),
+      createdBy: req.user._id,
     },
     {
       $set: {
@@ -50,7 +51,8 @@ router.put("/:id", _auth, async (req, res) => {
 router.delete("/:id", _auth, async (req, res) => {
   const activities = await loadActivitiesCollection();
   await activities.deleteOne({
-    _id: new mongodb.ObjectID(req.params.id, req.user._id),
+    _id: new mongodb.ObjectID(req.params.id),
+    createdBy: req.user._id,
   });
   res.status(200).send();
 });

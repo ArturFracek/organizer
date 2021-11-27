@@ -448,7 +448,7 @@ input:hover ~ .routine__showModalButton {
 
 .routine__button__delete {
   position: relative;
-  right: -1rem;
+  right: 0rem;
   top: 0%;
   border-radius: 2px;
   color: rgba(253, 253, 250, 0.945);
