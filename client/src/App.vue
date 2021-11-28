@@ -14,6 +14,9 @@ import Errors from "@/components/Errors.vue";
 import { mapGetters, mapMutations } from "vuex";
 
 export default {
+  metaInfo: {
+    title: "Organizer",
+  },
   data() {
     return {
       interval: "running",
@@ -104,6 +107,6 @@ select:-webkit-autofill:focus {
 
 .scroller {
   overflow-y: scroll;
-  scrollbar-color: #0478fd #C2D2E4;
+  scrollbar-color: #0478fd #c2d2e4;
 }
 </style>

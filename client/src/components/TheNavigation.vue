@@ -11,6 +11,7 @@
         :to="{ name: 'Organize' }"
         class="nav__mainLink organize"
         v-if="isLoggedIn"
+        data-test="organize"
       >
         Organize
       </router-link>

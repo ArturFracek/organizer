@@ -101,12 +101,12 @@ cd organiser
 
 2. Install dependencies
 
-Run npm install for root, client and server directories to install required node modules.
+Run npm ci to install required node modules.
 
 - Install dependencies for the project root folder
 
 ```console
-npm install
+npm ci
 ```
 
 3. Run the application
@@ -121,22 +121,9 @@ Visit application on: [localhost:8080](http://localhost:8080/).
 <hr>
 <br>
 
-## Configuration
-
-To run the application basic configuration is required. This step includes generating JWT, setting the database and adding environment variables.
-
-### JSON Web Token
-
-The application use JWT-based authentication. To take advantage of this solution generate JWT secret and store it in a .env file.
-
-### MongoDB
-
-The application uses the MongoDB database. Generate MongoDB URL and store it in a .env file. To do so follow [MongoDB guide](https://docs.mongodb.com/guides/server/install/).
-
 ## Tests
 
-The application contains both client and server tests. Thanks to the [cross-env](https://github.com/kentcdodds/cross-env#readme/) module user can skip seeding manually data for all tests or setting NODE_ENV to 'test' for all tests except E2E.
-
+The application contains E2E and unit tests, using Cypress and Jest.js
 >Be sure to run [scripts](#available-scripts) in the right directory
 
 ### Client tests
