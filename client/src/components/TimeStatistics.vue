@@ -9,7 +9,7 @@
     <div v-if="activeRoutine" class="TimeStatistics__activitiesContainer">
       <div
         class="TimeStatistics__statistic"
-        v-for="(occurence, index) in activeRoutine.activitiesOccurences"
+        v-for="(occurence, index) in getUniqueOccurences()"
         :key="index"
         data-test="activityTitleTimeStatistic"
       >
@@ -63,15 +63,26 @@ export default {
       );
       return activity ? activity.duration : "";
     },
+    // getUniqueOccurencesIds() {
+    //   const occurences = this.activeRoutine.activitiesOccurences;
+    //   const uniqueOccurencesIds = [
+    //     ...new Set(occurences.map((o) => o.activityId)),
+    //   ];
+    //   return uniqueOccurencesIds;
+    // },
+    getUniqueOccurences() {
+      const occurences = this.activeRoutine.activitiesOccurences;
+      const uniqueOccurences = [
+        ...new Map(occurences.map((o) => [o.activityId, o])).values(),
+      ];
+      return uniqueOccurences;
+    },
     hourTimeFormat(seconds) {
       const diff = moment.duration(seconds, "seconds");
       const diffHours = Math.floor(diff.asHours());
       const diffHoursFormatted = diffHours < 10 ? `0${diffHours}` : diffHours;
       const mmss = moment.utc(diff.as("milliseconds")).format("mm:ss");
       return `${diffHoursFormatted}:${mmss}`;
-    },
-    test() {
-      console.log();
     },
   },
 };
@@ -99,6 +110,8 @@ export default {
   backdrop-filter: drop-shadow(4px 4px 6px rgb(207, 17, 17)) hue-rotate(180deg)
     opacity(80%);
   margin-bottom: 2rem;
+  overflow-y: scroll;
+  overflow-x: hidden;
 }
 
 .TimeStatistics__container__title {
@@ -108,6 +121,7 @@ export default {
   letter-spacing: 1px;
   text-shadow: 0 0 10px rgb(255, 255, 255);
   cursor: unset;
+  justify-self: center;
 }
 i {
   position: relative;
@@ -123,6 +137,8 @@ i {
   flex-wrap: wrap;
   align-content: space-around;
   padding-bottom: 0.4rem;
+  box-sizing: content-box;
+  min-width: 40rem;
 }
 
 .TimeStatistics__statistic {

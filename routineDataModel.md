@@ -4,12 +4,13 @@ routine {
     description: String,
     priority: Number,
     active: Boolean,
-    activities: [
+    activitieOccurencess: [
         {
             activityId: String -> activity.id,
             dayOfWeek: Number,
             startTime: Number,
             endTime: Number,
+            duration
         },
         {
             activityId: String -> activity.id,
@@ -25,6 +26,7 @@ activity {
     name: String,
     description: String,
     priority: Number,
+    duration
 }
 
 

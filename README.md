@@ -25,8 +25,6 @@
   - [Prerequisites](#prerequisites)
   - [Running Locally](#running-locally)
 - [Tests](#tests)
-  - [Client](#client-tests)
-  - [Server](#server-tests)
   - [E2E](#e2e-tests)
 - [Available scripts](#available-scripts)
   - [Root](#root-folder-scripts)
@@ -126,42 +124,27 @@ Visit application on: [localhost:8080](http://localhost:8080/).
 The application contains E2E and unit tests, using Cypress and Jest.js
 >Be sure to run [scripts](#available-scripts) in the right directory
 
-### Client tests
-
-Client directory unit tests written using [Vue Test Utils](https://vue-test-utils.vuejs.org/) with [Jest](https://jestjs.io/). To run client tests open the terminal and run the code below:
+Run tests on testing server with separate database:
 
 ```console
-cd client
-npm run test:unit
+npm run test
+```
+### E2E Tests
+
+E2E tests are written in [Cypress](https://www.cypress.io/). Those tests simulate the real user scenario and interact with dummy data. To run E2E tests open the terminal and run the code below:
+
+```console
+npm run cy
 ```
 
-### Server tests
+### Unit Tests
 
 Mostly API routes unit tests written in [Jest](https://jestjs.io/). All of them use seeded data. To run server tests open the terminal and run the code below:
 
 ```console
 cd server
 npm run test:watch
-```
 
-### E2E tests
-
-E2E tests are written in [Cypress](https://www.cypress.io/). Those tests simulate the real user scenario and interact with dummy data. To run E2E tests open the terminal and run the code below:
-
-_Note: Set NODE_ENV to 'test' to run those tests_
-<br>
-
-Open Cypress Test Runner:
-```console
-cd client
-npm open cy
-```
-
-Run all tests headlessly in the Electron browser:
-```console
-cd client
-npm run cy-run
-```
 <hr>
 <br>
 
@@ -178,71 +161,3 @@ npm run dev
 ```
 
 ### Client scripts
-
-Run client development server with Hot-Module-Replacement:
-
-```console
-npm run serve
-```
-
-Lint and fix client files:
-
-```console
-npm run lint
-```
-
-Run client tests with Jest:
-
-```console
-npm run test:unit
-```
-
-Launch Cypress in interactive mode with a GUI:
-
-```console
-npm run test:e2e-open
-```
-
-Run client E2E tests in headless mode with Cypress:
-
-```console
-npm run test:e2e-run
-```
-
-Insert initial data into a database:
-
-```console
-npm run db:seed
-```
-
-Initialize Vue UI and project manager:
-
-```console
-npm run ui
-```
-
-Produce a client production-ready bundle in the dist/ directory:
-
-```console
-npm run build
-```
-
-### Server scripts
-
-Start and reload the application automatically:
-
-```console
-npm run dev:watch
-```
-
-Run and reload server tests with Jest Start automatically:
-
-```console
-npm run test:watch
-```
-
-Insert initial data into a database:
-
-```console
-npm run db:seed
-```
