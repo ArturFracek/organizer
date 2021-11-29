@@ -105,6 +105,7 @@ reg stands for registration
 
 <script>
 import { mapActions } from "vuex";
+
 export default {
   data() {
     return {
@@ -127,7 +128,7 @@ export default {
       };
       this.register(user).then((res) => {
         if (res.data.succes) {
-          this.$router.push("login");
+          this.$router.push("/login");
         }
       });
     },

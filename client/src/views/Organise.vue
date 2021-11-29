@@ -185,7 +185,7 @@ export default {
   margin: 0;
   padding: 0 10%;
   width: 100vw;
-  height: auto;
+  height: fit-content;
   overflow-y: scroll;
 }
 .organize__upperContainer {
