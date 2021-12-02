@@ -3,14 +3,14 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "client": "VUE_CLI_SERVICE_CONFIG_PATH=$PWD/client/vue.config.js vue-cli-service serve",
     "build": "VUE_CLI_SERVICE_CONFIG_PATH=$PWD/client/vue.config.js vue-cli-service build",
     "lint": "VUE_CLI_SERVICE_CONFIG_PATH=$PWD/client/vue.config.js vue-cli-service lint",
-    "server": "nodemon app.js",
-    "dev": "NODE_ENV=dev concurrently \"npm run server\" \"npm run client\"",
-    "test": "NODE_ENV=test concurrently \"npm run server\" \"npm run client\"",
+    "client": "VUE_CLI_SERVICE_CONFIG_PATH=$PWD/client/vue.config.js vue-cli-service serve",
     "cy": "CYPRESS_NODE_ENV=test cypress open",
-    "jest": "VUE_CLI_SERVICE_CONFIG_PATH=$PWD/client/vue.config.js vue-cli-service test:unit"
+    "dev": "NODE_ENV=dev concurrently \"npm run server\" \"npm run client\"",
+    "jest": "VUE_CLI_SERVICE_CONFIG_PATH=$PWD/client/vue.config.js vue-cli-service test:unit --config client/jest.config.js",
+    "server": "nodemon app.js",
+    "test": "NODE_ENV=test concurrently \"npm run server\" \"npm run client\""
   },
   "dependencies": {
     "axios": "^0.24.0",

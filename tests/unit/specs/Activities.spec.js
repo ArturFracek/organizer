@@ -1,4 +1,9 @@
-import Vuetify from "vuetify/lib";
-import {mount, createLocalVue} from '@vue/test-tils'
-import Vuex from 'vuex'
-import Activities from '@/compontents/Activities.vue'
+import { mount, createLocalVue } from "@vue/test-utils";
+import Vuex from "vuex";
+import Activities from "@/components/Activities.vue";
+
+describe('test', () => {
+  it('do nothing', () => {
+    expect(1).toBe(1);
+  });
+});
