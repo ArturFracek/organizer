@@ -335,6 +335,7 @@ h1 {
   padding: 0 11.2px;
   border-radius: 8px;
   top: -16px;
+  border-style: none;
 }
 
 .activity__modal__title:focus {

@@ -485,6 +485,7 @@ input:hover ~ .routine__showModalButton {
   text-align: center;
   padding: 0 11.2px;
   border-radius: 8px;
+  border-style: none;
 }
 
 .routine__title:focus {

@@ -1,3 +1,0 @@
-{
-  ("inline-source-map");
-}
