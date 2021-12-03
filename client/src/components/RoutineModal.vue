@@ -161,8 +161,8 @@ export default {
   display: flex;
   justify-content: center;
   align-items: flex-end;
-  margin-top: 1.5rem;
-  margin-bottom: 0.5rem;
+  margin-top: 24px;
+  margin-bottom: 8px;
   box-sizing: border-box;
 }
 
@@ -179,11 +179,11 @@ export default {
   position: relative;
   margin-left: 5%;
   width: 100%;
-  height: 3rem;
+  height: 48px;
   display: flex;
   justify-content: center;
   align-items: flex-end;
-  right: 2rem;
+  right: 32px;
 }
 
 .routine__showModalButton {
@@ -193,7 +193,7 @@ export default {
   height: 100%;
   color: rgba(253, 253, 250, 0.945);
   text-shadow: 0 0 2px white;
-  padding: 0.5rem;
+  padding: 8px;
   background: none;
   outline: none;
   border: 2px solid rgb(217, 252, 255);
@@ -215,17 +215,17 @@ export default {
 .routine__button--activation {
   text-align: center;
   width: 50%;
-  height: 2.5rem;
+  height: 40px;
   border-radius: 2px;
   color: rgba(255, 255, 255, 0.945);
   font-weight: bold;
-  text-shadow: 0 0 1rem rgb(255, 255, 255);
-  padding: 0.5rem;
+  text-shadow: 0 0 16px rgb(255, 255, 255);
+  padding: 8px;
   background: none;
   outline: none;
   border-top: 2px solid rgba(255, 255, 255, 0.5);
   border-bottom: 2px solid rgba(255, 255, 255, 0.5);
-  border-radius: 0.5rem;
+  border-radius: 8px;
   background: transparent;
   box-shadow: 0 25px 25px rgba(3, 96, 112, 0.1);
   backdrop-filter: blur(10px) drop-shadow(4px 4px 10px rgb(248, 248, 248));
@@ -236,7 +236,7 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 1.5rem;
+  font-size: 24px;
   color: rgb(69, 241, 204);
   text-shadow: 3px 0 5px rgb(67, 253, 213);
   border: 2px solid rgb(26, 255, 186);
@@ -245,11 +245,11 @@ export default {
 
 @keyframes text1 {
   0% {
-    font-size: 1rem;
+    font-size: 16px;
     color: rgb(0, 0, 0);
     opacity: 0;
-    text-shadow: 0.6rem 0rem 0.8rem turquoise, -0.6rem 0rem 0.8rem turquoise,
-      0rem 0.6rem 0.8rem turquoise, 0rem -0.6rem 0.8rem turquoise;
+    text-shadow: 9.6px 0px 12.8px turquoise, -9.6px 0px 12.8px turquoise,
+      0px 9.6px 12.8px turquoise, 0px -9.6px 12.8px turquoise;
     filter: hue-rotate(0deg);
   }
   20% {
@@ -258,20 +258,20 @@ export default {
   }
   70% {
     opacity: 1;
-    text-shadow: 0.3rem 0rem 0.8rem turquoise, -0.3rem 0rem 0.8rem turquoise,
-      0rem 0.3rem 0.8rem turquoise, 0rem -0.3rem 0.8rem turquoise;
+    text-shadow: 4.8px 0px 12.8px turquoise, -4.8px 0px 12.8px turquoise,
+      0px 4.8px 12.8px turquoise, 0px -4.8px 12.8px turquoise;
     filter: hue-rotate(180deg);
   }
   80% {
-    font-size: 2.3rem;
+    font-size: 36.8px;
     opacity: 1;
-    text-shadow: 0.2rem 0rem 1.4rem turquoise, -0.2rem 0rem 1.4rem turquoise,
-      0rem 0.2rem 1.4em turquoise, 0rem -0.2rem 1.4rem turquoise;
+    text-shadow: 3.2px 0px 22.4px turquoise, -3.2px 0px 22.4px turquoise,
+      0px 3.2px 1.4em turquoise, 0px -3.2px 22.4px turquoise;
     filter: hue-rotate(180deg);
   }
   100% {
     opacity: 1;
-    text-shadow: 0.2rem 0px 0.2rem turquoise;
+    text-shadow: 3.2px 0px 3.2px turquoise;
     filter: hue-rotate(0deg);
   }
 }
@@ -312,11 +312,11 @@ export default {
     height: 80%;
     border-radius: 2px;
     color: rgb(0, 0, 0);
-    padding: 0.7rem;
+    padding: 11.2px;
     background: none;
     outline: none;
     border: 2px solid rgb(35, 166, 170);
-    border-radius: 0.5rem;
+    border-radius: 8px;
     background: transparent;
     box-shadow: 0 25px 25px rgba(3, 96, 112, 0.1);
     backdrop-filter: blur(10px) drop-shadow(4px 4px 10px rgb(17, 185, 207));
@@ -340,10 +340,10 @@ export default {
     height: 80%;
     border-radius: 2px;
     color: rgb(0, 0, 0);
-    padding: 0.7rem;
+    padding: 11.2px;
     outline: none;
     border: 2px solid rgb(35, 166, 170);
-    border-radius: 0.5rem;
+    border-radius: 8px;
     background-color: rgba(6, 0, 34, 0.678);
     box-shadow: 0 25px 25px rgba(3, 96, 112, 0.1);
     backdrop-filter: blur(10px) drop-shadow(4px 4px 10px rgb(17, 185, 207));
@@ -354,9 +354,9 @@ export default {
   color: white;
   position: absolute;
   top: 0;
-  left: 1rem;
+  left: 16px;
   text-shadow: 0 0 3px white;
-  font-size: 1.2rem;
+  font-size: 19.2px;
 }
 
 h1 {
@@ -364,19 +364,19 @@ h1 {
   justify-content: center;
   align-items: center;
   color: rgb(255, 255, 255);
-  font-size: 1.5rem;
+  font-size: 24px;
   font-weight: 900;
   margin-bottom: 15px;
-  text-shadow: 0 0 1rem white;
+  text-shadow: 0 0 16px white;
 }
 
 .routine__createdAt {
   color: white;
   position: fixed;
-  top: 0rem;
-  right: 1rem;
+  top: 0px;
+  right: 16px;
   text-shadow: 0 0 3px white;
-  font-size: 1rem;
+  font-size: 16px;
 }
 
 .modalElement {
@@ -425,7 +425,7 @@ input:hover ~ .routine__showModalButton {
 }
 
 .routine__button--save {
-  height: 2.5rem;
+  height: 40px;
   width: 20%;
   text-justify: auto;
   text-align: center;
@@ -433,26 +433,26 @@ input:hover ~ .routine__showModalButton {
   border-radius: 2px;
   color: rgba(253, 253, 250, 0.945);
   font-weight: bold;
-  text-shadow: 0 0 1rem white;
+  text-shadow: 0 0 16px white;
   background: none;
   outline: none;
   border: 2px solid rgb(255, 255, 255);
-  border-radius: 0.5rem;
+  border-radius: 8px;
   background: transparent;
   box-shadow: 0 25px 25px rgba(3, 96, 112, 0.1);
   backdrop-filter: blur(10px) drop-shadow(4px 4px 10px rgb(248, 248, 248));
   transition: 0.2s ease-out;
-  margin: 0 1.2rem;
+  margin: 0 19.2px;
   white-space: nowrap;
 }
 
 .routine__button__delete {
   position: relative;
-  right: 0rem;
+  right: 0px;
   top: 0%;
   border-radius: 2px;
   color: rgba(253, 253, 250, 0.945);
-  font-size: 2rem;
+  font-size: 32px;
   background: none;
   outline: none;
   display: flex;
@@ -477,13 +477,13 @@ input:hover ~ .routine__showModalButton {
 
 .routine__title {
   color: rgb(255, 255, 255);
-  font-size: 1.5rem;
+  font-size: 24px;
   font-weight: 700;
   text-shadow: none;
-  margin-bottom: 0.5rem;
+  margin-bottom: 8px;
   width: 70%;
   text-align: center;
-  padding: 0 0.7rem;
+  padding: 0 11.2px;
   border-radius: 8px;
 }
 
@@ -494,7 +494,7 @@ input:hover ~ .routine__showModalButton {
 @media (max-width: 760px) {
   .routine__showModalButton {
     font-weight: 600;
-    padding: 0.2rem;
+    padding: 3.2px;
     backdrop-filter: none;
   }
   .routine__modal {
@@ -508,25 +508,25 @@ input:hover ~ .routine__showModalButton {
     height: 100%;
   }
   .routine__button--save {
-    width: 6rem;
+    width: 96px;
     position: relative;
-    right: -2.1rem;
+    right: -33.6px;
   }
   .routine__bottomContainer {
     margin-left: auto;
   }
   .routine__title {
-    font-size: 1rem;
+    font-size: 16px;
   }
   .routine__createdAt {
-    font-size: 0.8rem;
+    font-size: 12.8px;
   }
   .routine__modal__type {
-    font-size: 0.9rem;
+    font-size: 14.4px;
   }
   .routine__button__delete {
-    right: 0rem;
-    top: -0.2rem;
+    right: 0px;
+    top: -3.2px;
   }
 }
 </style>

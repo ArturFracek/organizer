@@ -144,7 +144,7 @@ export default {
 
 .occurences__selectContainer {
   align-self: flex-start;
-  padding: 0.2rem 0.7rem;
+  padding: 3.2px 11.2px;
 }
 
 .occurences__occurencesBox {
@@ -167,7 +167,7 @@ export default {
 }
 select {
   color: white;
-  font-size: 1.2rem;
+  font-size: 19.2px;
   transition: 1s;
 }
 
@@ -177,13 +177,13 @@ select {
 
 .occurences__generalLabels {
   position: relative;
-  margin-top: 0.5rem;
+  margin-top: 8px;
   display: flex;
   justify-content: center;
   width: 100%;
   opacity: 0;
   transition: 0.6s;
-  left: 3.3rem;
+  left: 52.8px;
 }
 .occurences__showLabels {
   opacity: 1;
@@ -194,13 +194,13 @@ select {
   display: flex;
   justify-content: center;
   align-items: flex-end;
-  font-size: 1.1rem;
+  font-size: 17.6px;
   white-space: nowrap;
-  width: 10rem;
-  margin: 0 1rem;
+  width: 160px;
+  margin: 0 16px;
   color: rgb(255, 146, 112);
   text-shadow: 0 0 4px rgb(27, 8, 134);
-  left: -2.9rem;
+  left: -46.4px;
   letter-spacing: 1px;
   font-weight: 500;
   transition: 1s ease-in;
@@ -210,7 +210,7 @@ select {
   display: flex;
   align-items: center;
   background: transparent;
-  font-size: 1.3rem;
+  font-size: 20.8px;
   color: aquamarine;
 }
 
@@ -226,31 +226,31 @@ select {
   border-left: 2px dotted turquoise;
   border-right: 2px dotted turquoise;
   white-space: nowrap;
-  width: 10rem;
+  width: 160px;
   transition: 0.4s;
-  padding-bottom: 0.2rem;
+  padding-bottom: 3.2px;
 }
 
 .occurences__button--deleteOccurence {
   position: relative;
   height: 100%;
   display: flex;
-  top: -0.1rem;
-  width: 1rem;
+  top: -1.6px;
+  width: 16px;
 }
 
 @media (max-width: 760px) {
   .occurences__mainContainer {
     position: relative;
-    height: 24rem;
-    top: 1rem;
+    height: 384px;
+    top: 16px;
     box-sizing: border-box;
   }
   .occurences__label {
-    font-size: 0.6rem;
-    width: 5rem;
-    margin: 0.1rem;
-    left: -3.5rem;
+    font-size: 9.6px;
+    width: 80px;
+    margin: 1.6px;
+    left: -56px;
     font-weight: bold;
   }
 }

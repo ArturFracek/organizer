@@ -25,7 +25,7 @@
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
 
 console.log(__dirname);
-const dbConfigFile = require("../../config/keys");
+const dbConfigFile = require("@/../../config/keys");
 
 Cypress.Commands.add("setup", () => {
   const dbConfig = dbConfigFile.test;

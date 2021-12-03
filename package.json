@@ -6,7 +6,7 @@
     "build": "VUE_CLI_SERVICE_CONFIG_PATH=$PWD/client/vue.config.js vue-cli-service build",
     "lint": "VUE_CLI_SERVICE_CONFIG_PATH=$PWD/client/vue.config.js vue-cli-service lint",
     "client": "VUE_CLI_SERVICE_CONFIG_PATH=$PWD/client/vue.config.js vue-cli-service serve",
-    "cy": "CYPRESS_NODE_ENV=test cypress open",
+    "cy": "CYPRESS_NODE_ENV=test cypress open --project tests/E2E",
     "dev": "NODE_ENV=dev concurrently \"npm run server\" \"npm run client\"",
     "jest": "VUE_CLI_SERVICE_CONFIG_PATH=$PWD/client/vue.config.js vue-cli-service test:unit --config client/jest.config.js",
     "server": "nodemon app.js",

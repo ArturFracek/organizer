@@ -233,9 +233,9 @@ export default {
       rgba(1, 1, 1, 0.19) 69px
     ),
     linear-gradient(180deg, rgb(2, 137, 137), rgb(9, 9, 9));
-  padding: 0.5rem;
+  padding: 8px;
   border-bottom: 3px solid rgba(15, 210, 224, 0.1);
-  box-shadow: 15px 10px 0.5rem turquoise;
+  box-shadow: 15px 10px 8px turquoise;
 }
 
 .nav__logo {
@@ -247,12 +247,12 @@ export default {
 
 .nav__lowerLinks {
   margin-left: auto;
-  margin-right: 1rem;
+  margin-right: 16px;
 }
 
 .nav__link {
-  font-size: 1.2rem;
-  padding: 0rem 1rem;
+  font-size: 19.2px;
+  padding: 0px 16px;
   text-decoration: none;
   color: whitesmoke;
   font-weight: bold;
@@ -273,18 +273,18 @@ export default {
   border-top: 1px solid red;
   border-bottom: 1px solid red;
   border-radius: 8px;
-  padding: 0.4rem 1rem;
+  padding: 6.4px 16px;
 }
 
 .nav__mainLink {
-  letter-spacing: 0.1rem;
-  font-size: 2rem;
-  margin: 0.5rem;
+  letter-spacing: 1.6px;
+  font-size: 32px;
+  margin: 8px;
   font-weight: bold;
   color: rgba(255, 254, 254, 0.938);
   font-weight: bold;
-  text-shadow: 0rem 0rem 0.2rem rgb(75, 252, 243),
-    0rem 0rem 0.2rem rgb(75, 252, 243);
+  text-shadow: 0px 0px 3.2px rgb(75, 252, 243),
+    0px 0px 3.2px rgb(75, 252, 243);
   text-decoration: none;
   transition: 0.5s;
 }
@@ -305,8 +305,8 @@ export default {
   0% {
     color: rgb(0, 0, 0);
     opacity: 0;
-    text-shadow: 0.6rem 0rem 0.8rem turquoise, -0.6rem 0rem 0.8rem turquoise,
-      0rem 0.6rem 0.8rem turquoise, 0rem -0.6rem 0.8rem turquoise;
+    text-shadow: 9.6px 0px 12.8px turquoise, -9.6px 0px 12.8px turquoise,
+      0px 9.6px 12.8px turquoise, 0px -9.6px 12.8px turquoise;
     filter: hue-rotate(0deg);
   }
   20% {
@@ -315,27 +315,27 @@ export default {
   }
   70% {
     opacity: 1;
-    text-shadow: 0.3rem 0rem 0.8rem turquoise, -0.3rem 0rem 0.8rem turquoise,
-      0rem 0.3rem 0.8rem turquoise, 0rem -0.3rem 0.8rem turquoise;
+    text-shadow: 4.8px 0px 12.8px turquoise, -4.8px 0px 12.8px turquoise,
+      0px 4.8px 12.8px turquoise, 0px -4.8px 12.8px turquoise;
     filter: hue-rotate(180deg);
   }
   90% {
     opacity: 1;
-    text-shadow: 0.2rem 0rem 1.4rem turquoise, -0.2rem 0rem 1.4rem turquoise,
-      0rem 0.2rem 1.4em turquoise, 0rem -0.2rem 1.4rem turquoise;
+    text-shadow: 3.2px 0px 22.4px turquoise, -3.2px 0px 22.4px turquoise,
+      0px 3.2px 1.4em turquoise, 0px -3.2px 22.4px turquoise;
     filter: hue-rotate(180deg);
   }
   100% {
     opacity: 1;
-    text-shadow: 0.2rem 0px 0.2rem turquoise;
+    text-shadow: 3.2px 0px 3.2px turquoise;
     filter: hue-rotate(0deg);
   }
 }
 
 .toggle-button {
   position: absolute;
-  top: 0.75rem;
-  right: 1rem;
+  top: 12px;
+  right: 16px;
   display: none;
   flex-direction: column;
   justify-content: space-between;
@@ -365,11 +365,11 @@ export default {
   }
 
   .nav__link {
-    font-size: 1.2rem;
+    font-size: 19.2px;
     display: flex;
     width: 100%;
     text-align: center;
-    padding: 0.3rem;
+    padding: 4.8px;
     justify-content: center;
     cursor: pointer;
   }

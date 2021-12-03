@@ -56,9 +56,9 @@ export default {
 
 <style scoped>
 select {
-  height: 2.2rem;
-  width: 10rem;
-  margin: 0.2rem 1rem;
+  height: 35.2px;
+  width: 160px;
+  margin: 3.2px 16px;
   color: rgb(84, 245, 178);
   text-shadow: 0px 0px 3px rgb(0, 255, 157);
   border-style: solid;
@@ -69,14 +69,19 @@ select {
   box-shadow: 0px 5px 10px rgb(121, 244, 255, 0.3);
   transition: 0.6s;
   text-align: center;
+  background-color: transparent;
 }
 
 option {
-  font-size: 1rem;
+  font-size: 16px;
   font-weight: 600;
   text-shadow: 0 0 3px rgb(0, 255, 157);
   background: rgb(2, 16, 17);
   text-align: center;
+}
+
+select {
+  
 }
 
 select:hover {
@@ -107,10 +112,10 @@ select:focus {
 
 @media (max-width: 760px) {
   .select {
-    width: 4.5rem;
-    margin: 0.1rem;
+    width: 72px;
+    margin: 1.6px;
     text-shadow: 0px 0px 1px rgb(0, 255, 157);
-    font-size: 0.8rem;
+    font-size: 12.8px;
   }
 }
 </style>

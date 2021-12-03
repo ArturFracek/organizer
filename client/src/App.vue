@@ -50,9 +50,14 @@ export default {
 
 html,
 body {
-  margin: 0;
-  padding: 0;
+  margin: 0px;
+  padding: 0px;
   height: 100%;
+  font-size: 16px;
+}
+
+*{
+   box-sizing: inherit;
 }
 
 

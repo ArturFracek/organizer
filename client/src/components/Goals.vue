@@ -105,7 +105,7 @@ export default {
   position: relative;
   height: 30%;
   width: 80%;
-  padding: 0.3rem 5%;
+  padding: 4.8px 5%;
   border-style: solid;
   border-width: 2px;
   border-image: linear-gradient(to top, rgb(164, 253, 249), rgb(248, 120, 120))
@@ -124,8 +124,8 @@ export default {
   align-items: center;
   justify-content: center;
   width: 100%;
-  height: 6rem;
-  margin-bottom: 3rem;
+  height: 96px;
+  margin-bottom: 48px;
 }
 
 .goals__goalsHolder {
@@ -140,30 +140,30 @@ export default {
 }
 
 .goals__addGoal__input {
-  margin-top: 1rem;
+  margin-top: 16px;
   text-align: center;
-  width: 15rem;
-  height: 2.5rem;
+  width: 240px;
+  height: 40px;
   border-radius: 2px;
   color: rgb(0, 0, 0);
   font-weight: bold;
-  text-shadow: 0 0 1rem turquoise;
-  padding: 0.7rem;
+  text-shadow: 0 0 16px turquoise;
+  padding: 11.2px;
   background: none;
   outline: none;
   border-top: 2px solid rgb(41, 154, 158);
   border-bottom: 2px solid rgb(41, 154, 158);
-  border-radius: 0.5rem;
+  border-radius: 8px;
   background: transparent;
   position: absolute;
-  top: 0rem;
+  top: 0px;
   display: flex;
   justify-content: center;
 }
 
 .goals__input__label {
   position: absolute;
-  top: 1.5rem;
+  top: 24px;
   color: whitesmoke;
   display: flex;
   cursor: text;
@@ -178,7 +178,7 @@ export default {
   font-size: 200ms ease-in;
   opacity: 0.9;
   color: rgb(255, 255, 255);
-  text-shadow: 0 0 0.8rem rgb(255, 255, 255);
+  text-shadow: 0 0 12.8px rgb(255, 255, 255);
   pointer-events: none;
 }
 
@@ -189,19 +189,19 @@ export default {
   font-weight: bold;
   position: absolute;
   transform: translateX(190%);
-  top: 1rem;
+  top: 16px;
   text-align: center;
   border-radius: 2px;
-  padding: 0.7rem;
+  padding: 11.2px;
   background: none;
   outline: none;
   border-top: 2px solid rgb(35, 166, 170);
   border-bottom: 2px solid rgb(35, 166, 170);
-  border-radius: 0.5rem;
+  border-radius: 8px;
   background: transparent;
   box-shadow: 0 25px 25px rgba(38, 221, 253, 0.1);
   display: none;
-  height: 2.5rem;
+  height: 40px;
 }
 
 .goals__addGoal__button:hover {
@@ -236,7 +236,7 @@ textarea {
 
 input:focus ~ .goals__input__label {
   color: turquoise;
-  text-shadow: 0px 0px 0.1rem turquoise;
+  text-shadow: 0px 0px 1.6px turquoise;
 }
 
 input:focus ~ .goals__input__label,
@@ -256,25 +256,25 @@ input:not(:placeholder-shown) ~ .goals__addGoal__button {
   0% {
     color: rgb(116, 255, 248);
     opacity: 1;
-    text-shadow: 0.6rem 0rem 0.8rem turquoise, -0.6rem 0rem 0.8rem turquoise,
-      0rem 0.6rem 0.8rem turquoise, 0rem -0.6rem 0.8rem turquoise;
+    text-shadow: 9.6px 0px 12.8px turquoise, -9.6px 0px 12.8px turquoise,
+      0px 9.6px 12.8px turquoise, 0px -9.6px 12.8px turquoise;
   }
   20% {
     opacity: 0.8;
   }
   70% {
     opacity: 0.3;
-    text-shadow: 0.3rem 0rem 0.8rem turquoise, -0.3rem 0rem 0.8rem turquoise,
-      0rem 0.3rem 0.8rem turquoise, 0rem -0.3rem 0.8rem turquoise;
+    text-shadow: 4.8px 0px 12.8px turquoise, -4.8px 0px 12.8px turquoise,
+      0px 4.8px 12.8px turquoise, 0px -4.8px 12.8px turquoise;
   }
   90% {
     opacity: 0.1;
-    text-shadow: 0.2rem 0rem 1.4rem turquoise, -0.2rem 0rem 1.4rem turquoise,
-      0rem 0.2rem 1.4em turquoise, 0rem -0.2rem 1.4rem turquoise;
+    text-shadow: 3.2px 0px 22.4px turquoise, -3.2px 0px 22.4px turquoise,
+      0px 3.2px 1.4em turquoise, 0px -3.2px 22.4px turquoise;
   }
   100% {
     opacity: 0;
-    text-shadow: 0.2rem 0px 0.2rem turquoise;
+    text-shadow: 3.2px 0px 3.2px turquoise;
   }
 }
 
@@ -289,7 +289,7 @@ li::marker {
 
 @media (max-width: 765px) {
   .goals__addGoal__input {
-    width: 12rem;
+    width: 192px;
   }
   .goals__mainContainer {
     width: 100%;
@@ -297,20 +297,20 @@ li::marker {
     overflow: scroll;
   }
   .goals__input__label {
-    top: 1.5rem;
+    top: 24px;
   }
   .goals__addGoal__button {
-    top: 0.6rem;
-    left: 7rem;
+    top: 9.6px;
+    left: 112px;
   }
   li {
-    font-size: 0.9rem;
+    font-size: 14.4px;
   }
   .goals__addGoal__button {
     position: absolute;
-    top: 1rem;
+    top: 16px;
     left: 50vw;
-    width: 3rem;
+    width: 48px;
     backdrop-filter: none;
   }
   .goals__background {

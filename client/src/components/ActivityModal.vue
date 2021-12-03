@@ -116,7 +116,7 @@ export default {
   color: rgba(253, 253, 250, 0.945);
   font-weight: 500;
   text-shadow: 0 0 2px rgb(235, 250, 251);
-  padding: 0.5rem;
+  padding: 8px;
   background: none;
   border-top: 2px solid rgb(255, 255, 255);
   border-bottom: 2px solid rgb(255, 255, 255);
@@ -135,7 +135,7 @@ export default {
 
 .activity__buttonsContainer {
   width: 100%;
-  height: 3rem;
+  height: 48px;
   display: flex;
   justify-content: center;
   align-items: flex-end;
@@ -151,16 +151,16 @@ export default {
   border-radius: 2px;
   color: rgba(253, 253, 250, 0.945);
   font-weight: bold;
-  text-shadow: 0 0 1rem white;
+  text-shadow: 0 0 16px white;
   background: none;
   outline: none;
   border: 2px solid rgb(255, 255, 255);
-  border-radius: 0.5rem;
+  border-radius: 8px;
   background: transparent;
   box-shadow: 0 25px 25px rgba(3, 96, 112, 0.1);
   backdrop-filter: blur(10px) drop-shadow(4px 4px 10px rgb(248, 248, 248));
   transition: 0.2s ease-out;
-  margin: 0 1.2rem;
+  margin: 0 19.2px;
 }
 
 .activity__showModalButton:focus {
@@ -210,7 +210,7 @@ export default {
     background: none;
     outline: none;
     border: 2px solid rgb(35, 166, 170);
-    border-radius: 0.5rem;
+    border-radius: 8px;
     background: transparent;
     box-shadow: 0 25px 25px rgba(3, 96, 112, 0.1);
     backdrop-filter: blur(10px) drop-shadow(4px 4px 10px rgb(17, 185, 207));
@@ -237,7 +237,7 @@ export default {
     color: rgb(0, 0, 0);
     outline: none;
     border: 2px solid rgb(35, 166, 170);
-    border-radius: 0.5rem;
+    border-radius: 8px;
     background: rgba(1, 0, 34, 0.76);
     box-shadow: 0 25px 25px rgba(3, 96, 112, 0.1);
     backdrop-filter: blur(10px) drop-shadow(4px 4px 10px rgb(17, 185, 207));
@@ -248,10 +248,10 @@ export default {
 .activity__modal__type {
   color: white;
   position: absolute;
-  top: 0.2rem;
-  left: 1rem;
+  top: 3.2px;
+  left: 16px;
   text-shadow: 0 0 3px white;
-  font-size: 1.3rem;
+  font-size: 20.8px;
 }
 
 h1 {
@@ -259,17 +259,17 @@ h1 {
   justify-content: center;
   align-items: center;
   color: rgb(255, 255, 255);
-  font-size: 1.5rem;
+  font-size: 24px;
   font-weight: 900;
   margin-bottom: 15px;
-  text-shadow: 0 0 1rem white;
+  text-shadow: 0 0 16px white;
 }
 
 .activity__createdAt {
   color: white;
   position: fixed;
-  top: 0.2rem;
-  right: 1rem;
+  top: 3.2px;
+  right: 16px;
   text-shadow: 0 0 3px white;
 }
 
@@ -300,8 +300,8 @@ h1 {
   text-align: center;
   font-weight: bold;
   color: rgba(253, 253, 250, 0.945);
-  font-size: 2rem;
-  text-shadow: 0 0 1rem white;
+  font-size: 32px;
+  text-shadow: 0 0 16px white;
   background: none;
   outline: none;
   transition: 0.2s ease-out;
@@ -324,15 +324,17 @@ h1 {
 }
 
 .activity__modal__title {
+  position: relative;
   color: rgb(255, 255, 255);
-  font-size: 1.5rem;
+  font-size: 24px;
   font-weight: 700;
   text-shadow: none;
-  margin-bottom: 0.5rem;
+  margin-bottom: 8px;
   width: 70%;
   text-align: center;
-  padding: 0 0.7rem;
+  padding: 0 11.2px;
   border-radius: 8px;
+  top: -16px;
 }
 
 .activity__modal__title:focus {
@@ -341,7 +343,7 @@ h1 {
 @media (max-width: 760px) {
   .activity__showModalButton {
     font-weight: 500;
-    padding: 0.2rem;
+    padding: 3.2px;
     text-shadow: none;
   }
   .activity__modal {
@@ -349,7 +351,7 @@ h1 {
     height: 70%;
   }
   .activity__button--save {
-    width: 6rem;
+    width: 96px;
   }
 }
 </style>

@@ -198,13 +198,6 @@ export default {
   height: 90vh;
 }
 
-.organise_element {
-  font-size: 2.2em;
-  text-decoration: none;
-  color: black;
-  font-weight: bold;
-}
-
 .TimeNet {
   width: 100%;
   height: 100%;
