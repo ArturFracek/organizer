@@ -20,4 +20,3 @@ describe("should add activity, see if it appears and if input is cleared after s
     expect(wrapper.findAll("[data-test=activityShowModal]")).toHaveLength(1);
   });
 });
-123
