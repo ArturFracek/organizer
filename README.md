@@ -26,10 +26,7 @@
   - [Running Locally](#running-locally)
 - [Tests](#tests)
   - [E2E](#e2e-tests)
-- [Available scripts](#available-scripts)
-  - [Root](#root-folder-scripts)
-  - [Client](#client-scripts)
-  - [Server](#server-scripts)
+  - [Unit Tests](#unit-tests)
 <hr>
 <br>
 
