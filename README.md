@@ -36,7 +36,7 @@
 ## Demo
 
 <p align="center">Try <a href="https://gemverse.herokuapp.com/"><b>Organizer</b></a> by yourself:</p>
-<p align="center"><code><a href="https://gemverse.herokuapp.com/"><img height="400" src="client\src\assets\img\usageexample.gif" alt="usage example"></a></code></p>
+<p align="center"><code><a href="https://gemverse.herokuapp.com/"><img height="400" src="client/src/assets/Organizer.gif" alt="usage example"></a></code></p>
 <hr>
 <br>
 
