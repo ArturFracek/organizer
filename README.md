@@ -3,7 +3,7 @@
 [![Organizer](https://img.shields.io/endpoint?url=https://dashboard.cypress.io/badge/simple/g42uwf&style=flat&logo=cypress)](https://dashboard.cypress.io/projects/v3ww2g/runs/3/overview)
 [![Codacy Badge](https://app.codacy.com/project/badge/Grade/b579256de9794b9dadf521dded359088)](https://www.codacy.com/gh/Karol-Witkowski/Gemverse/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=Karol-Witkowski/Gemverse&amp;utm_campaign=Badge_Grade)
 
-<p align="center"><code><img alt="Organizer logo" height="110" title="Organizer Logo" src="../organiser/client/src/assets/LOGO.png"><img alt="MEVN logo" height="110" title="MEVN logo" src="../organiser/client/src/assets/mevnLogo.png"></code></p>
+<p align="center"><code><img alt="Organizer logo" height="110" title="Organizer Logo" src="../organiser/client/src/assets/LOGO.png"><img alt="MEVN logo" height="110" title="MEVN logo" src="https://github.com/ArturFracek/organizer/blob/organiser/client/src/assets/LOGO.png"></code></p>
 
 <b>Organizer</b> is an app that allows to make a personal, well suited weekly and daily routines based on user's activities. The app's aim is to help user plan future in higly time controling order. The following task can be obtained by using Organizer [features](#features):
 
