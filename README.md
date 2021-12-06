@@ -1,9 +1,9 @@
 # Organizer
 
 [![Organizer](https://img.shields.io/endpoint?url=https://dashboard.cypress.io/badge/simple/g42uwf&style=flat&logo=cypress)](https://dashboard.cypress.io/projects/v3ww2g/runs/3/overview)
-[![Codacy Badge](https://app.codacy.com/project/badge/Grade/b579256de9794b9dadf521dded359088)](https://www.codacy.com/gh/Karol-Witkowski/Gemverse/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=Karol-Witkowski/Gemverse&amp;utm_campaign=Badge_Grade)
+[![Codacy Badge](https://app.codacy.com/project/badge/Grade/b579256de9794b9dadf521dded359088)](https://app.codacy.com/gh/ArturFracek/organiser/dashboard)
 
-<p align="center"><code><img alt="Organizer logo" height="110" title="Organizer Logo" src="../organiser/client/src/assets/LOGO.png"><img alt="MEVN logo" height="110" title="MEVN logo" src="https://github.com/ArturFracek/organizer/blob/organiser/client/src/assets/LOGO.png"></code></p>
+<p align="center"><code><img alt="Organizer logo" height="110" title="Organizer Logo" src="client/src/assets/LOGO.png"><img alt="MEVN logo" height="110" title="MEVN logo" src="client/src/assets/mevnLogo.png"></code></p>
 
 <b>Organizer</b> is an app that allows to make a personal, well suited weekly and daily routines based on user's activities. The app's aim is to help user plan future in higly time controling order. The following task can be obtained by using Organizer [features](#features):
 
@@ -36,7 +36,7 @@
 ## Demo
 
 <p align="center">Try <a href="https://gemverse.herokuapp.com/"><b>Organizer</b></a> by yourself:</p>
-<p align="center"><code><a href="https://gemverse.herokuapp.com/"><img height="400" src="client\src\assets\img\usageexample.gif" alt="usage example"></a></code></p>
+<p align="center"><code><a href="https://gemverse.herokuapp.com/"><img height="400" src="client/src/assets/Organizer.gif" alt="usage example"></a></code></p>
 <hr>
 <br>
 
@@ -139,7 +139,8 @@ npm run cy
 
 ### Unit Tests
 
-Mostly API routes unit tests written in [Jest](https://jestjs.io/). All of them use seeded data. To run server tests open the terminal and run the code below:
+Mostly API routes unit tests written in [Jest](https://jestjs.io/). To run server tests open the terminal and run the code below:
 
-
-### Client scripts
+```console
+npm run jest
+```

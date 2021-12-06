@@ -1,21 +1,62 @@
 import { mount, createLocalVue } from "@vue/test-utils"; //test-utils
 import Vuex from "vuex";
 import Activities from "@/components/Activities.vue";
+import axios from "axios";
+import {jest} from '@jest/globals'
 
-const localVue = createLocalVue()
-localVue.use(Vuex)
+const localVue = createLocalVue();
+const url = "http://localhost:3000/api/activities";
+let wrapper;
+const error = {
+  response: {
+    data: {
+      error: "Try again",
+    },
+  },
+};
+const mockRouter = {
+  push: jest.fn(),
+};
+const mockStore = {
+  dispatch: jest.fn(),
+  getters: {
+    activities: {
+      title: "Activity1",
+      priority: 5,
+      createdAt: new Date(),
+      duration: 0,
+      createdBy: "testid123",
+    },
+  },
+};
 
+document.body.setAttribute("data-app", true);
+jest.mock("axios");
+jest.spyOn(Object.getPrototypeOf(window.localStorage), "clear");
 
+beforeEach(() => {
+  wrapper = mount(Activities, {
+    localVue,
+    mocks: {
+      $router: mockRouter,
+      $store: mockStore,
+    },
+    data() {
+      return {
+        deleteError: "",
+        deleteUserModal: false,
+      };
+    },
+  });
+});
 
-describe("should add activity, see if it appears and if input is cleared after submit", () => {
+afterEach(() => {
+  jest.resetAllMocks();
+  wrapper.destroy();
+});
 
-  it("add activity", () => {
-    const store = new Vuex.Store()
-    const wrapper = mount(Activities, {
-      mocks: {
-
-      }
-    });
+describe("test", () => {
+  it("test", () => {
 
     wrapper
       .get('[data-test="activityInputAdd"]')
