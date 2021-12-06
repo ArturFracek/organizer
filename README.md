@@ -1,6 +1,6 @@
 # Organizer
 
-[![Organizer](https://img.shields.io/endpoint?url=https://dashboard.cypress.io/badge/simple/g42uwf&style=flat&logo=cypress)](https://dashboard.cypress.io/projects/g42uwf/runs)
+[![Organizer](https://img.shields.io/endpoint?url=https://dashboard.cypress.io/badge/simple/g42uwf&style=flat&logo=cypress)](https://dashboard.cypress.io/projects/v3ww2g/runs/3/overview)
 [![Codacy Badge](https://app.codacy.com/project/badge/Grade/b579256de9794b9dadf521dded359088)](https://www.codacy.com/gh/Karol-Witkowski/Gemverse/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=Karol-Witkowski/Gemverse&amp;utm_campaign=Badge_Grade)
 
 <p align="center"><code><img alt="Organizer logo" height="110" title="Organizer Logo" src="../organiser/client/src/assets/LOGO.png"><img alt="MEVN logo" height="110" title="MEVN logo" src="../organiser/client/src/assets/mevnLogo.png"></code></p>
@@ -122,7 +122,7 @@ Visit application on: [localhost:8080](http://localhost:8080/).
 ## Tests
 
 The application contains E2E and unit tests, using Cypress and Jest.js
->Be sure to run [scripts](#available-scripts) in the right directory
+>Be sure to run scripts in the right directory
 
 Run tests on testing server with separate database:
 
@@ -131,7 +131,7 @@ npm run test
 ```
 ### E2E Tests
 
-E2E tests are written in [Cypress](https://www.cypress.io/). Those tests simulate the real user scenario and interact with dummy data. To run E2E tests open the terminal and run the code below:
+E2E tests are written in [Cypress](https://www.cypress.io/). Those tests simulate the real user scenario and interact with dummy data. To run E2E tests, after running [test server](#tests), open the terminal and run the code below:
 
 ```console
 npm run cy
@@ -141,23 +141,5 @@ npm run cy
 
 Mostly API routes unit tests written in [Jest](https://jestjs.io/). All of them use seeded data. To run server tests open the terminal and run the code below:
 
-```console
-cd server
-npm run test:watch
-
-<hr>
-<br>
-
-## Available scripts
-
-Scripts are divided into three parts: root folder, client and server scripts.
-
-### Root folder scripts
-
-Run application in the development mode:
-
-```console
-npm run dev
-```
 
 ### Client scripts

@@ -1,4 +1,6 @@
 {
   "viewportWidth": 1000,
-  "viewportHeight": 900
+  "viewportHeight": 900,
+  "projectId": "v3ww2g",
+  "integrationFolder": "./tests/E2E/cypress/integration/"
 }

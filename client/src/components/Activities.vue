@@ -178,7 +178,8 @@ button:hover {
   backdrop-filter: blur(10px) drop-shadow(4px 4px 10px rgb(17, 185, 207));
 }
 
-input, button {
+input,
+button {
   font: inherit;
   font-size: 17.6px;
   border-style: none;
