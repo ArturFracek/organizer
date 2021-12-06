@@ -139,7 +139,8 @@ npm run cy
 
 ### Unit Tests
 
-Mostly API routes unit tests written in [Jest](https://jestjs.io/). All of them use seeded data. To run server tests open the terminal and run the code below:
+Mostly API routes unit tests written in [Jest](https://jestjs.io/). To run server tests open the terminal and run the code below:
 
-
-### Client scripts
+```console
+npm run jest
+```
