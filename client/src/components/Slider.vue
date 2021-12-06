@@ -69,7 +69,7 @@ export default {
   position: absolute;
   transform: translateY(0%);
   transform: translateX(5%);
-  font-size: 1.2rem;
+  font-size: 19.2px;
   font-weight: 800;
   color: #000000;
   z-index: 3;
@@ -148,7 +148,7 @@ export default {
 }
 
 .rangeValue {
-  margin: 0.5rem;
+  margin: 8px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -163,7 +163,7 @@ export default {
 }
 
 .rangeValue-warning {
-  font-size: 1.8rem;
+  font-size: 28.8px;
   animation: shake 0.3s;
   color: hsl(160, 100%, 53%);
   position: relative;
@@ -176,31 +176,31 @@ export default {
   }
   10% {
     transform: translateY(-7px);
-    font-size: 1.4rem;
+    font-size: 22.4px;
   }
   25% {
     transform: translateX(7px);
-    font-size: 1.5rem;
+    font-size: 24px;
   }
   40% {
     transform: translateY(7px);
-    font-size: 1.6rem;
+    font-size: 25.6px;
   }
   50% {
     transform: translateX(-7px);
-    font-size: 1.7rem;
+    font-size: 27.2px;
   }
   70% {
     transform: translateY(-7px);
-    font-size: 1.8rem;
+    font-size: 28.8px;
   }
   90% {
     transform: translateX(5px);
-    font-size: 1.9rem;
+    font-size: 30.4px;
   }
   100% {
     transform: translateY(5px);
-    font-size: 2rem;
+    font-size: 32px;
   }
 }
 </style>

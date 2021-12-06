@@ -98,19 +98,25 @@ export default {
   border-top: 2px solid rgb(35, 166, 170);
   border-left: 2px solid rgb(35, 166, 170);
   border-right: 2px solid rgb(35, 166, 170);
-  border-radius: 0.5rem;
-  padding: 0 1rem 1rem 1rem;
-  margin: 1rem 0 1rem;
+  border-radius: 8px;
+  padding: 0 16px 16px 16px;
+  margin: 16px 0 16px;
+}
+
+input, button {
+  font: inherit;
+  font-size: 17.6px;
+  border-style: none;
 }
 
 .routines__title {
   position: relative;
-  top: 0.5rem;
+  top: 8px;
   align-self: flex-start;
   color: white;
-  margin-bottom: 2rem;
+  margin-bottom: 32px;
   font-weight: bold;
-  font-size: 1.4rem;
+  font-size: 22.4px;
   letter-spacing: 1px;
 }
 
@@ -119,7 +125,7 @@ export default {
   flex-flow: column;
   justify-content: center;
   align-items: center;
-  margin: 2rem 0 2rem 0;
+  margin: 32px 0 32px 0;
   position: absolute;
 }
 
@@ -129,7 +135,7 @@ export default {
   justify-content: center;
   align-items: flex-end;
   flex-wrap: wrap;
-  margin-top: 2.5rem;
+  margin-top: 40px;
 }
 
 .routine__routineHolder {
@@ -145,15 +151,15 @@ export default {
   text-shadow: 0 0 8px turquoise;
   font-weight: bold;
   position: relative;
-  left: 13.5rem;
-  top: -4.7rem;
+  left: 216px;
+  top: -75.2px;
   text-align: center;
-  padding: 0.7rem;
+  padding: 11.2px;
   background: none;
   outline: none;
   border-top: 2px solid rgb(35, 166, 170);
   border-bottom: 2px solid rgb(35, 166, 170);
-  border-radius: 0.5rem;
+  border-radius: 8px;
   background: transparent;
   box-shadow: 0 25px 25px rgba(38, 221, 253, 0.1);
   display: none;
@@ -176,13 +182,13 @@ button:hover {
   border-radius: 2px;
   color: rgb(0, 0, 0);
   font-weight: bold;
-  text-shadow: 0 0 1rem turquoise;
-  padding: 0.7rem;
+  text-shadow: 0 0 16px turquoise;
+  padding: 11.2px;
   background: none;
   outline: none;
   border-top: 2px solid rgb(35, 166, 170);
   border-bottom: 2px solid rgb(35, 166, 170);
-  border-radius: 0.5rem;
+  border-radius: 8px;
   background: transparent;
   transition: 0.4s ease;
 }
@@ -214,7 +220,7 @@ textarea {
 
 input:focus ~ .routines__form__label__addRoutines {
   color: turquoise;
-  text-shadow: 0px 0px 0.1rem turquoise;
+  text-shadow: 0px 0px 1.6px turquoise;
 }
 
 input:focus ~ .routines__form__label__addRoutines,
@@ -234,8 +240,8 @@ input:not(:placeholder-shown) ~ .addRoutine__button {
   transition: top 200ms ease-in;
   left: 200ms ease-in;
   font-size: 200ms ease-in;
-  top: -2.2rem;
-  left: 0.2rem;
+  top: -35.2px;
+  left: 3.2px;
   background-color: none;
   font-weight: bold;
   pointer-events: none;
@@ -244,23 +250,23 @@ input:not(:placeholder-shown) ~ .addRoutine__button {
 @media (max-width: 765px) {
   .routines__title {
     top: 0;
-    font-size: 1.1rem;
+    font-size: 17.6px;
   }
   .input {
-    height: 2rem;
-    width: 14rem;
+    height: 32px;
+    width: 224px;
   }
   .routines__form__label__addRoutines {
-    top: -1.7rem;
+    top: -27.2px;
   }
   .routines__objectsHolder {
-    margin-top: 0.5rem;
+    margin-top: 8px;
   }
   .addRoutine__button {
-    left: 8.7rem;
-    height: 2rem;
-    top: -4rem;
-    width: 4rem;
+    left: 139.2px;
+    height: 32px;
+    top: -64px;
+    width: 64px;
     text-align: start;
     border: none;
     backdrop-filter: none;
@@ -268,7 +274,7 @@ input:not(:placeholder-shown) ~ .addRoutine__button {
   input:focus ~ .routines__form__label__addRoutines,
   input:not(:placeholder-shown).input:not(:focus)
     ~ .routines__form__label__addRoutines {
-    top: -3.5rem;
+    top: -56px;
   }
 }
 </style>

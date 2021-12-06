@@ -69,9 +69,9 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 10rem;
-  height: 2.2rem;
-  margin: 0.2rem 1rem;
+  width: 160px;
+  height: 35.2px;
+  margin: 3.2px 16px;
   color: rgb(255, 255, 255);
   border-style: dotted;
   border-width: 2px;
@@ -92,6 +92,7 @@ input {
   text-shadow: 0px 0px 2px rgb(0, 255, 157);
   text-align: center;
   transition: 0.3s;
+  background-color: transparent;
 }
 
 input:hover {
@@ -101,12 +102,12 @@ input:hover {
 
 .time-picker {
   margin-right: 10%;
-  width: 10rem;
+  width: 160px;
   transition: 0.6s;
 }
 
 li {
-  font-size: 1.1rem;
+  font-size: 17.6px;
   font-weight: 500;
   color: rgb(84, 245, 178) !important;
   transition: 0.6s;
@@ -134,26 +135,26 @@ li:hover {
 
 @media (max-width: 760px) {
   .time-picker {
-    width: 5rem;
-    margin: 0.1rem;
-    font-size: 0.8rem;
+    width: 80px;
+    margin: 1.6px;
+    font-size: 12.8px;
   }
   .timePicker__mainContainer {
-    width: 4.5rem;
-    margin: 0.1rem;
+    width: 72px;
+    margin: 1.6px;
   }
   .display-time {
     position: relative;
-    width: 5rem !important;
-    right: 0.5rem;
+    width: 80px !important;
+    right: 8px;
   }
   .char {
     position: relative;
-    right: 0.8rem;
+    right: 12.8px;
   }
   .bi-clock-history {
     position: relative;
-    left: 1.1rem;
+    left: 17.6px;
   }
 }
 </style>

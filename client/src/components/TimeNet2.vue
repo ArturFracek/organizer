@@ -178,7 +178,7 @@ export default {
 }
 
 .net__emptyCell {
-  width: 3rem;
+  width: 48px;
 }
 
 .net__dayHeader {
@@ -189,14 +189,14 @@ export default {
   font-weight: bold;
   backdrop-filter: blur(10px) drop-shadow(4px 4px 20px rgb(10, 194, 207));
   border: 0.1px solid turquoise;
-  border-radius: 0.4rem;
+  border-radius: 6.4px;
 }
 
 .net__hour {
   display: flex;
   flex-flow: column;
   color: white;
-  font-size: 0.9rem;
+  font-size: 14.4px;
   font-weight: 500;
   text-shadow: 2px 2px 10px rgb(255, 255, 255);
   border-bottom: 1px dashed turquoise;
@@ -223,14 +223,14 @@ export default {
 .net__hourInDay {
   text-align: center;
   border: 0.1px solid turquoise;
-  border-radius: 0.4rem;
+  border-radius: 6.4px;
 }
 
 .net__cell {
-  padding: 0rem;
+  padding: 0px;
   margin: 0;
   white-space: nowrap;
-  height: 2rem;
+  height: 32px;
 }
 
 .net__minutesRow {
@@ -284,17 +284,21 @@ export default {
   text-shadow: 0 0 2px rgba(130, 251, 211, 0.8);
   transition: 0.3s;
 }
+button {
+  background-color: transparent;
+  border-style: none;
+}
 .net__timerButton:hover {
   color: rgb(255, 0, 0);
   text-shadow: 0 0 7px rgb(255, 0, 0);
 }
 .net__activityTimeDisplay {
   position: relative;
-  font-size: 1.2rem;
+  font-size: 19.2px;
   left: 1%;
   margin-left: auto;
   margin-right: auto;
-  height: 3rem;
+  height: 48px;
   width: 40%;
   color: rgb(255, 255, 255);
   font-weight: bold;
@@ -318,20 +322,20 @@ export default {
 @media (max-width: 765px) {
   .net__activityTimeDisplay {
     width: 80%;
-    font-size: 1rem;
+    font-size: 16px;
   }
   .net__hour {
-    width: 1rem;
-    font-size: 0.7rem;
+    width: 16px;
+    font-size: 11.2px;
   }
   .net__emptyCell {
-    width: 1.7rem;
+    width: 27.2px;
   }
   .net__minutesRow {
     overflow: hidden;
   }
   .net__dayHeader {
-    font-size: 0.8rem;
+    font-size: 12.8px;
   }
 }
 </style>

@@ -1,4 +1,3 @@
-import moment from "moment";
 export const W = [
   "Monday",
   "Tuesday",
@@ -34,11 +33,8 @@ export const hours = [
   2,
 ];
 
-export const minutes = [parseInt("00"), 15, 30, 45];
+export const minutes = [0, 15, 30, 45];
 
 export const minutesDisplay = [15, 30, 45];
 
 export const DEFAULT_TIME_FORMAT = "HH:mm";
-
-export const toggleButton = document.getElementsByClassName("toggle-button")[0];
-export const nav_link = document.getElementsByClassName("nav_link")[0];

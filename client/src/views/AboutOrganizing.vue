@@ -288,11 +288,11 @@ a:hover {
   justify-content: center;
   white-space: pre-wrap;
   color: rgb(125, 248, 236);
-  padding: 2rem 15rem 1rem 15rem;
-  padding-bottom: 1rem;
+  padding: 32px 240px 16px 240px;
+  padding-bottom: 16px;
   margin-top: 0;
   font-weight: bold;
-  font-size: 1.1rem;
+  font-size: 17.6px;
   text-shadow: 0 0 8px turquoise;
   letter-spacing: 1px;
 }
@@ -304,9 +304,9 @@ a:hover {
   justify-content: center;
   align-items: flex-start;
   color: rgb(125, 248, 236);
-  padding: 1.5rem 15rem 1rem 15rem;
+  padding: 24px 240px 16px 240px;
   font-weight: 550;
-  font-size: 1.1rem;
+  font-size: 17.6px;
   text-shadow: 0 0 8px turquoise;
   letter-spacing: 1px;
 }
@@ -314,16 +314,16 @@ a:hover {
 .movies {
   border-top: 3px solid rgba(72, 234, 255, 0.2);
   border-right: 3px solid rgba(72, 234, 255, 0.2);
-  padding: 0.3rem 0.5rem;
+  padding: 4.8px 8px;
 }
 .articles {
   border-top: 3px solid rgba(72, 234, 255, 0.2);
-  padding: 0.3rem 0.5rem;
+  padding: 4.8px 8px;
 }
 .books {
   border-top: 3px solid rgba(72, 234, 255, 0.2);
   border-left: 3px solid rgba(72, 234, 255, 0.2);
-  padding: 0.3rem 0.5rem;
+  padding: 4.8px 8px;
 }
 
 ul > li {
@@ -332,7 +332,7 @@ ul > li {
   color: rgb(255, 255, 255);
   text-shadow: 0 0 2px rgb(248, 255, 254);
   font-weight: 500;
-  padding-bottom: 0.5rem;
+  padding-bottom: 8px;
 }
 
 li:hover {
@@ -365,18 +365,18 @@ li:hover {
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.2rem;
+  font-size: 19.2px;
   font-weight: bold;
   text-align: center;
   text-decoration: none;
   color: rgba(49, 255, 238, 0.8);
   text-shadow: 0 0 3px turquoise;
-  margin-bottom: 0.5rem;
+  margin-bottom: 8px;
 }
 
 .bi {
-  margin-right: 1rem;
-  font-size: 1.5rem;
+  margin-right: 16px;
+  font-size: 24px;
 }
 
 .movies > ul > li > a:hover,
@@ -388,11 +388,11 @@ li:hover {
 @media (max-width: 1045px) {
   .about__aboutOrganizing {
     color: rgb(125, 248, 236);
-    padding: 2rem 5rem 1rem 5rem;
+    padding: 32px 80px 16px 80px;
   }
   .about__aboutApp {
     color: rgb(125, 248, 236);
-    padding: 0 5rem 1rem 5rem;
+    padding: 0 80px 16px 80px;
   }
 }
 
@@ -400,7 +400,7 @@ ul {
   background: none;
 }
 li {
-  font-size: 1rem;
+  font-size: 16px;
   color: white !important;
 }
 
@@ -411,11 +411,11 @@ li {
 
   .about__aboutOrganizing {
     color: rgb(125, 248, 236);
-    padding: 2rem 1rem 1rem 1rem;
+    padding: 32px 16px 16px 16px;
   }
   .about__aboutApp {
     color: rgb(125, 248, 236);
-    padding: 0 1rem 1rem 1rem;
+    padding: 0 16px 16px 16px;
   }
   .about__info {
     display: flex;
@@ -427,20 +427,20 @@ li {
   .movies {
     text-align: center;
     width: 100vw;
-    padding: 0.3rem 0.5rem;
+    padding: 4.8px 8px;
   }
   .articles {
     text-align: center;
     width: 100vw;
     border-top: 3px solid rgba(72, 234, 255, 0.2);
-    padding: 0.3rem 0.5rem;
+    padding: 4.8px 8px;
   }
   .books {
     text-align: center;
     width: 100vw;
     border-top: 3px solid rgba(72, 234, 255, 0.2);
     border-left: none;
-    padding: 0.3rem 0.5rem;
+    padding: 4.8px 8px;
   }
 }
 </style>

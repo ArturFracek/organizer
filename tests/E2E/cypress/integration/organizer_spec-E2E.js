@@ -1,8 +1,4 @@
 describe("Login, add goal and customize it", () => {
-  beforeEach(() => {
-    cy.intercept("GET", "http://localhost:3000/api/goals/").as("getGoals");
-  });
-
   it("should allow people to sign up", () => {
     cy.visit("http://localhost:9090/Register");
 
@@ -42,7 +38,6 @@ describe("Login, add goal and customize it", () => {
 
     cy.get("[data-test='goalButtonAdd']").should("be.visible").click();
 
-    cy.wait("@getGoals");
     // eslint-disable-next-line cypress/no-unnecessary-waiting
     cy.wait(200);
 
@@ -77,7 +72,6 @@ describe("Login, add goal and customize it", () => {
 
     cy.get("[data-test='goalButtonAdd']").should("be.visible").click();
 
-    cy.wait("@getGoals");
     // eslint-disable-next-line cypress/no-unnecessary-waiting
     cy.wait(200);
 
@@ -118,8 +112,6 @@ describe("Login, add goal and customize it", () => {
   });
 
   it("should visit 'Organize', and add few activities, then customize them and check if saving to database properly", () => {
-    cy.visit("http://localhost:9090/Organize");
-
     const activity1 = "TEST Running";
     const description1 = "111This is first test activity111";
     const rangeValue1 = 1;
@@ -129,6 +121,18 @@ describe("Login, add goal and customize it", () => {
     const activity3 = "TEST Chess";
     const description3 = "3333          33333";
     const rangeValue3 = 3;
+    const password = "abc123";
+
+    cy.visit("http://localhost:9090/Login");
+
+    cy.get("[data-test='loginUsername']").type("Andrzej");
+
+    cy.get("[data-test='loginPassword']").type(password);
+
+    cy.get("[data-test='loginLogin']").click();
+
+    cy.get("[data-test='organize']").click();
+
     //Create and customize first Activity
     cy.get("[data-test='activityInputAdd']")
       .focus()
@@ -140,9 +144,10 @@ describe("Login, add goal and customize it", () => {
       .get('[data-test="activityButtonAdd"]')
       .should("be.visible")
       .click();
-// eslint-disable-next-line cypress/no-unnecessary-waiting
-    cy.wait(200)
-      .get('[data-test="activityShowModal"]')
+    // eslint-disable-next-line cypress/no-unnecessary-waiting
+    cy.wait(200);
+
+    cy.get('[data-test="activityShowModal"]')
       .last()
       .contains(activity1)
       .should("be.visible")
@@ -169,9 +174,9 @@ describe("Login, add goal and customize it", () => {
       .get('[data-test="activityButtonAdd"]')
       .should("be.visible")
       .click();
-// eslint-disable-next-line cypress/no-unnecessary-waiting
-    cy.wait(200)
-      .get('[data-test="activityShowModal"]')
+    // eslint-disable-next-line cypress/no-unnecessary-waiting
+    cy.wait(200);
+    cy.get('[data-test="activityShowModal"]')
       .last()
       .contains(activity2)
       .should("be.visible")
@@ -199,9 +204,9 @@ describe("Login, add goal and customize it", () => {
       .get('[data-test="activityButtonAdd"]')
       .should("be.visible")
       .click();
-// eslint-disable-next-line cypress/no-unnecessary-waiting
-    cy.wait(200)
-      .get('[data-test="activityShowModal"]')
+    // eslint-disable-next-line cypress/no-unnecessary-waiting
+    cy.wait(200);
+    cy.get('[data-test="activityShowModal"]')
       .last()
       .contains(activity3)
       .should("be.visible")
@@ -284,6 +289,17 @@ describe("Login, add goal and customize it", () => {
 
     const activity1 = "TEST Running";
     const activity2 = "TEST Swimming";
+    const password = "abc123";
+
+    cy.visit("http://localhost:9090/Login");
+
+    cy.get("[data-test='loginUsername']").type("Andrzej");
+
+    cy.get("[data-test='loginPassword']").type(password);
+
+    cy.get("[data-test='loginLogin']").click();
+
+    cy.get("[data-test='organize']").click();
 
     //Create and customize first Activity
 
@@ -292,9 +308,9 @@ describe("Login, add goal and customize it", () => {
       .get('[data-test="activityButtonAdd"]')
       .should("be.visible")
       .click();
-// eslint-disable-next-line cypress/no-unnecessary-waiting
-    cy.wait(200)
-      .get('[data-test="activityShowModal"]')
+    // eslint-disable-next-line cypress/no-unnecessary-waiting
+    cy.wait(200);
+    cy.get('[data-test="activityShowModal"]')
       .last()
       .contains(activity1)
       .should("be.visible");
@@ -305,9 +321,9 @@ describe("Login, add goal and customize it", () => {
       .get('[data-test="activityButtonAdd"]')
       .should("be.visible")
       .click();
-// eslint-disable-next-line cypress/no-unnecessary-waiting
-    cy.wait(200)
-      .get('[data-test="activityShowModal"]')
+    // eslint-disable-next-line cypress/no-unnecessary-waiting
+    cy.wait(200);
+    cy.get('[data-test="activityShowModal"]')
       .last()
       .contains(activity2)
       .should("be.visible");
@@ -322,7 +338,7 @@ describe("Login, add goal and customize it", () => {
       .get('[data-test="routinesButtonAdd"]')
       .should("be.visible")
       .click();
-// eslint-disable-next-line cypress/no-unnecessary-waiting
+    // eslint-disable-next-line cypress/no-unnecessary-waiting
     cy.wait(200);
 
     cy.get('[data-test="routineShowModal"]').contains(testRoutine).click();
@@ -412,7 +428,7 @@ describe("Login, add goal and customize it", () => {
       "have.class",
       "routine__isActive"
     );
-// eslint-disable-next-line cypress/no-unnecessary-waiting
+    // eslint-disable-next-line cypress/no-unnecessary-waiting
     cy.wait(200);
 
     cy.get("[data-test='routineSave']").click();
@@ -436,6 +452,17 @@ describe("Login, add goal and customize it", () => {
 
     const activity1 = "TEST Running";
     const activity2 = "TEST Swimming";
+    const password = "abc123";
+
+    cy.visit("http://localhost:9090/Login");
+
+    cy.get("[data-test='loginUsername']").type("Andrzej");
+
+    cy.get("[data-test='loginPassword']").type(password);
+
+    cy.get("[data-test='loginLogin']").click();
+
+    cy.get("[data-test='organize']").click();
 
     //See if activity1 is in ordered cells in timeNet and if it is not in any others.
     cy.get('[data-test="Tuesday-7-15"]').should("contain", activity1);
@@ -458,7 +485,7 @@ describe("Login, add goal and customize it", () => {
     );
 
     cy.get('[data-test="Tuesday-7-15"]').click();
-// eslint-disable-next-line cypress/no-unnecessary-waiting
+    // eslint-disable-next-line cypress/no-unnecessary-waiting
     cy.wait(1000);
 
     cy.get('[data-test="netTimeDisplay"]').should(
@@ -480,7 +507,7 @@ describe("Login, add goal and customize it", () => {
     );
 
     cy.get('[data-test="Friday-8-30"]').click();
-// eslint-disable-next-line cypress/no-unnecessary-waiting
+    // eslint-disable-next-line cypress/no-unnecessary-waiting
     cy.wait(1000);
 
     cy.get('[data-test="netTimeDisplay"]').should(
@@ -522,7 +549,7 @@ describe("Login, add goal and customize it", () => {
     cy.get('[data-test="activityDuration"]').last().should("be.visible");
   });
 
-  it("Should clear everything that was made during the tests", () => {
+  it("Should clear everything that was made during the tests and see if deleteting works as supossed", () => {
     cy.visit("http://localhost:9090/Profile");
 
     const password = "abc123";

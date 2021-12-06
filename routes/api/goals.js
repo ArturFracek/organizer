@@ -1,19 +1,20 @@
 const express = require("express");
 const mongodb = require("mongodb");
 const config = require("../../config.js");
+const _auth = require("./_auth");
 
 const db = config.db.mongoURI;
 
 const router = express.Router();
 
 // Get Goals
-router.get("/", async (req, res) => {
+router.get("/", _auth, async (req, res) => {
   const goals = await loadGoalsCollection();
-  res.send(await goals.find({}).toArray());
+  res.send(await goals.find({ createdBy: req.user._id }).toArray());
 });
 
 // Add Goal
-router.post("/", async (req, res) => {
+router.post("/", _auth, async (req, res) => {
   const { title, description, priority } = req.body;
   console.log(req.body.text);
   const goals = await loadGoalsCollection();
@@ -21,6 +22,7 @@ router.post("/", async (req, res) => {
     title,
     createdAt: new Date(),
     priority: 5,
+    createdBy: req.user._id,
   });
   res.status(201).send();
 });

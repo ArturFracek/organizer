@@ -14,6 +14,9 @@ import Errors from "@/components/Errors.vue";
 import { mapGetters, mapMutations } from "vuex";
 
 export default {
+  metaInfo: {
+    title: "Organizer",
+  },
   data() {
     return {
       interval: "running",
@@ -44,13 +47,19 @@ export default {
 @import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css");
 @import url("https://fonts.googleapis.com/css2?family=Acme&family=Rubik+Beastly&display=swap");
 
+
 html,
 body {
-  margin: 0;
-  padding: 0;
+  margin: 0px;
+  padding: 0px;
   height: 100%;
   font-size: 16px;
 }
+
+*{
+   box-sizing: inherit;
+}
+
 
 #app {
   -webkit-font-smoothing: antialiased;
@@ -104,6 +113,6 @@ select:-webkit-autofill:focus {
 
 .scroller {
   overflow-y: scroll;
-  scrollbar-color: #0478fd #C2D2E4;
+  scrollbar-color: #0478fd #c2d2e4;
 }
 </style>

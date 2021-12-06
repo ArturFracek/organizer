@@ -39,15 +39,16 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 12rem;
+  width: 192px;
 }
 
 input {
   color: aquamarine;
   text-align: center;
   outline: none;
-  width: 7rem;
-  font-size: 1.1rem;
+  width: 112px;
+  font-size: 17.6px;
+  border-style: none;
 }
 
 input:hover {
@@ -66,7 +67,7 @@ span {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 8rem;
+  width: 128px;
   text-align: center;
 }
 .day__month_btn {
@@ -100,7 +101,7 @@ span {
 }
 
 .datePicker__input {
-  width: 6.5rem;
+  width: 104px;
 }
 .datePicker__input:hover ::placeholder {
   color: red;
@@ -109,7 +110,7 @@ span {
 @media (max-width: 760px) {
   .vdp-datepicker__calendar {
     position: absolute;
-    top: 10rem;
+    top: 160px;
     background: rgb(2, 1, 17, 0.8) !important;
     border: 3px solid turquoise;
   }

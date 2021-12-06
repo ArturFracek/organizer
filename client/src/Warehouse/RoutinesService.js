@@ -1,5 +1,4 @@
 import api from "@/api";
-import { boolean } from "joi";
 
 const url = "/routines/";
 class RoutinesService {

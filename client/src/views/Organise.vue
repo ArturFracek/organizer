@@ -185,7 +185,7 @@ export default {
   margin: 0;
   padding: 0 10%;
   width: 100vw;
-  height: auto;
+  height: fit-content;
   overflow-y: scroll;
 }
 .organize__upperContainer {
@@ -196,13 +196,6 @@ export default {
 
 .organize__TimeNetContainer {
   height: 90vh;
-}
-
-.organise_element {
-  font-size: 2.2em;
-  text-decoration: none;
-  color: black;
-  font-weight: bold;
 }
 
 .TimeNet {

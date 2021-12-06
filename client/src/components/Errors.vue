@@ -17,7 +17,7 @@ export default {
   margin-bottom: auto;
   font-weight: bold;
   width: 100%;
-  height: 2rem;
+  height: 32px;
 }
 
 .alert-danger {

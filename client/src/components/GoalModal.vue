@@ -132,7 +132,7 @@ export default {
 
 .goal__buttonsContainer {
   width: 100%;
-  height: 3rem;
+  height: 48px;
   display: flex;
   justify-content: center;
   align-items: flex-end;
@@ -173,7 +173,7 @@ export default {
     background: none;
     outline: none;
     border: 2px solid rgb(35, 166, 170);
-    border-radius: 0.5rem;
+    border-radius: 8px;
     backdrop-filter: blur(8px);
   }
 }
@@ -196,7 +196,7 @@ export default {
     color: rgb(0, 0, 0);
     outline: none;
     border: 2px solid rgb(35, 166, 170);
-    border-radius: 0.5rem;
+    border-radius: 8px;
   }
 }
 
@@ -214,9 +214,9 @@ export default {
   color: rgba(211, 255, 253, 0.945);
   position: absolute;
   top: 4%;
-  left: 1rem;
+  left: 16px;
   text-shadow: 0 0 3px rgba(211, 255, 253, 0.945);
-  font-size: 1.3rem;
+  font-size: 20.8px;
 }
 
 h1 {
@@ -224,10 +224,10 @@ h1 {
   justify-content: center;
   align-items: center;
   color: rgba(211, 255, 253, 0.945);
-  font-size: 1.5rem;
+  font-size: 24px;
   font-weight: 900;
   margin-bottom: 15px;
-  text-shadow: 0 0 1rem rgba(211, 255, 253, 0.945);
+  text-shadow: 0 0 16px rgba(211, 255, 253, 0.945);
 }
 h1:hover {
   color: rgba(255, 0, 0, 0.712);
@@ -237,8 +237,8 @@ h1:hover {
 .goal__createdAt {
   color: rgba(211, 255, 253, 0.945);
   position: fixed;
-  top: 0.3rem;
-  right: 1rem;
+  top: 4.8px;
+  right: 16px;
   text-shadow: 0 0 3px rgba(211, 255, 253, 0.945);
 }
 
@@ -265,13 +265,13 @@ h1:hover {
 }
 
 .goal__button--delete {
-  right: -1rem;
+  right: -16px;
   text-justify: auto;
   text-align: center;
   font-weight: bold;
   border-radius: 2px;
   color: rgba(211, 255, 253, 0.945);
-  font-size: 2rem;
+  font-size: 32px;
   background: none;
   outline: none;
   transition: 0.2s ease-out;
@@ -288,14 +288,14 @@ h1:hover {
   border-radius: 2px;
   color: rgba(211, 255, 253, 0.945);
   font-weight: bold;
-  text-shadow: 0 0 1rem rgba(211, 255, 253, 0.945);
+  text-shadow: 0 0 16px rgba(211, 255, 253, 0.945);
   background: none;
   outline: none;
   border: 2px solid rgba(211, 255, 253, 0.945);
-  border-radius: 0.5rem;
+  border-radius: 8px;
   backdrop-filter: blur(10px) drop-shadow(4px 4px 10px rgb(248, 248, 248));
   transition: 0.1s ease-out;
-  margin: 0 1.2rem;
+  margin: 0 19.2px;
 }
 
 .goal__button {
@@ -322,8 +322,8 @@ h1:hover {
   border-radius: 2px;
   color: rgb(239, 255, 254);
   font-weight: bold;
-  text-shadow: 0 0 1rem rgb(250, 255, 255);
-  padding: 0.6rem;
+  text-shadow: 0 0 16px rgb(250, 255, 255);
+  padding: 9.6px;
   background: none;
   outline: none;
   background: transparent;
@@ -341,11 +341,11 @@ h1:hover {
 }
 
 .goal__datePicker {
-  width: 7rem;
+  width: 112px;
   color: white;
   position: fixed;
-  top: 1rem;
-  right: 10rem;
+  top: 16px;
+  right: 160px;
   text-shadow: 0 0 3px white;
 }
 
@@ -357,17 +357,17 @@ ul {
   flex-flow: column;
   align-items: center;
   position: fixed;
-  top: 0.1rem;
-  right: 7.5rem;
-  width: 6rem;
+  top: 1.6px;
+  right: 128px;
+  width: 96px;
 }
 .datePicker__container {
-  width: 7rem;
+  width: 112px;
 }
 
 .goal__deadline--label {
-  top: 2.2rem;
-  font-size: 1.2rem;
+  top: 35.2px;
+  font-size: 19.2px;
   color: rgb(84, 245, 178);
   text-shadow: 0px 0px 2px rgb(0, 255, 157);
   text-align: center;
@@ -380,44 +380,44 @@ ul {
     height: 100%;
   }
   .goal__button {
-    width: 5rem;
+    width: 80px;
   }
   h1 {
-    font-size: 1rem;
+    font-size: 16px;
   }
   .goal__modal__type {
-    font-size: 1rem;
+    font-size: 16px;
   }
   .goal__deadline--label {
-    font-size: 1rem;
+    font-size: 16px;
   }
   .goal__deadline__container {
-    right: 9.5rem;
+    right: 152px;
   }
   .vdp-datepicker * {
     position: absolute;
-    bottom: 6rem;
+    bottom: 96px;
   }
   .goal__bottomContainer {
     margin-top: auto;
-    margin-bottom: 1rem;
+    margin-bottom: 16px;
   }
   .slider__container {
     position: relative;
-    top: 7rem;
-    right: -1rem;
+    top: 112px;
+    right: -16px;
   }
   .textArea__container {
     position: relative;
-    top: 5rem;
+    top: 80px;
   }
   h1 {
     position: relative;
-    top: 5rem;
+    top: 80px;
   }
   .goal__buttonsContainer {
     position: relative;
-    right: -1.5rem;
+    right: -24px;
   }
 }
 </style>

@@ -232,13 +232,13 @@ export default {
 .profile__UserInfo {
   display: flex;
   justify-content: center;
-  padding: 1rem;
+  padding: 16px;
 }
 
 .profile__UserInfo__card {
-  margin: 0 0 0 1rem;
+  margin: 0 0 0 16px;
   list-style: none;
-  font-size: 1.2rem !important;
+  font-size: 19.2px !important;
   display: flex;
   flex-flow: column;
   justify-content: space-evenly;
@@ -247,12 +247,12 @@ export default {
 
 .profile__UserInfo__card__item {
   text-shadow: 2px 0px 3px rgb(243, 77, 48);
-  font-size: 1.2rem;
+  font-size: 19.2px;
 }
 
 .profile__picContainer {
-  height: 8rem;
-  width: 10rem;
+  height: 128px;
+  width: 160px;
 }
 .photo {
   height: inherit;
@@ -270,7 +270,7 @@ export default {
   position: relative;
   top: -60%;
   cursor: pointer;
-  font-size: 1.4rem;
+  font-size: 22.4px;
   color: rgb(241, 83, 83);
   display: none;
   font-weight: 800;
@@ -293,7 +293,7 @@ img:hover ~ #upload_btn,
     overflow-y: scroll;
   }
   .profile__UserInfo__card__item {
-    font-size: 1rem;
+    font-size: 16px;
   }
 }
 </style>

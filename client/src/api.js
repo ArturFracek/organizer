@@ -1,10 +1,10 @@
 import axios from "axios";
-import appsConfigFile from "../../config/apps"
+import appsConfigFile from "../../config/apps";
 
-const appsConfig = appsConfigFile[process.env.NODE_ENV || "dev"] 
+const appsConfig = appsConfigFile[process.env.NODE_ENV || "dev"];
 
 const api = axios.create({
-    baseURL: `http://localhost:${appsConfig.be_port}/api`,
+  baseURL: `http://localhost:${appsConfig.be_port}/api`,
 });
 
 //Load the token from the local storage

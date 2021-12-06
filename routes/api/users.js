@@ -2,9 +2,9 @@ const express = require("express");
 const router = express.Router();
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
-const passport = require("passport");
 const key = require("../../config/keys").secret;
 const User = require("../../model/User");
+const _auth = require("./_auth");
 
 /**
  * @route POST api/users/register
@@ -122,16 +122,10 @@ router.post("/login", (req, res) => {
  * @access Private
  */
 
-router.get(
-  "/profile",
-  passport.authenticate("jwt", {
-    session: false,
-  }),
-  (req, res) => {
-    return res.json({
-      user: req.user,
-    });
-  }
-);
+router.get("/profile", _auth, (req, res) => {
+  return res.json({
+    user: req.user,
+  });
+});
 
 module.exports = router;
