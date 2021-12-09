@@ -2,7 +2,7 @@ import { mount, createLocalVue } from "@vue/test-utils"; //test-utils
 import Vuex from "vuex";
 import Activities from "@/components/Activities.vue";
 import axios from "axios";
-import {jest} from '@jest/globals'
+import { jest } from '@jest/globals'
 
 const localVue = createLocalVue();
 const url = "http://localhost:3000/api/activities";

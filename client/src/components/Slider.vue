@@ -1,6 +1,7 @@
 <template>
   <div class="slider__container">
     <div
+      data-test="sliderPriorityDiv"
       :value="value"
       class="slider__priority"
       :class="{
@@ -11,6 +12,7 @@
       Priority
     </div>
     <input
+      data-test="sliderPrioritySlider"
       :value="value"
       type="range"
       class="slider"
@@ -19,7 +21,11 @@
       @input="input"
       :class="{ slider__highPriority: value > 6 }"
     />
-    <div class="rangeValue" :class="{ 'rangeValue-warning': value > 6 }">
+    <div
+      data-test="sliderPriorityValueNumber"
+      class="rangeValue"
+      :class="{ 'rangeValue-warning': value > 6 }"
+    >
       {{ value }}
     </div>
   </div>

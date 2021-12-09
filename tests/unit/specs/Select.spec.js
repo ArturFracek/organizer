@@ -1,4 +1,4 @@
-import { mount } from "@vue/test-utils"; //test-utils
+import { mount } from "@vue/test-utils";
 import Select from "@/components/Select.vue";
 
 const options = [
