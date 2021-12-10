@@ -56,7 +56,7 @@ afterEach(() => {
 });
 
 describe("test", () => {
-  it("test", () => {
+  it.only("test", () => {
 
     wrapper
       .get('[data-test="activityInputAdd"]')
