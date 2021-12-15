@@ -51,11 +51,14 @@ describe("Activities", () => {
   });
 
   it("fetches activities on mounted", () => {
+
+    //See fetching was not called before mount
     expect(actions.fetchAllActivities).not.toHaveBeenCalled();
     const wrapper = mount(Activities, {
       localVue,
       store,
     });
+    //See if action was called on mount
     expect(actions.fetchAllActivities).toHaveBeenCalledTimes(1);
   });
   it("renders activities titles", () => {
@@ -63,9 +66,12 @@ describe("Activities", () => {
       localVue,
       store,
     });
+    //Finds all elements that should have a dynamic title and gather those titles
     let titles = wrapper
       .findAll("[data-test='activityShowModal']")
       .wrappers.map((a) => a.text());
+
+    //See if array of titles is equal to existing/legacy titles
     expect(titles).toEqual(["A", "B"]);
   });
   it("creates activity on input trigger", async () => {
@@ -73,17 +79,19 @@ describe("Activities", () => {
       localVue,
       store,
     });
-
+    //Finds main input of activities component
     const activityInput = wrapper.find('[data-test="activityInputAdd"]');
-
+    //See if create vuex action was not called before any action/input/submit
     expect(actions.createActivity).not.toHaveBeenCalled();
-
+    //Setting value of input 
     await activityInput.setValue("C");
+    //See input text is clear(we sat value, but the input should be clear)
     expect(activityInput.text()).toBe("");
-
+    //Trigger one of activation methods of this input
     await activityInput.trigger("keyup.enter");
-
+    //See if action of creating have been called one time
     expect(actions.createActivity).toHaveBeenCalledTimes(1);
+    //See if the value is transferred correctly
     expect(actions.createActivity).toHaveBeenLastCalledWith(
       expect.any(Object),
       { title: "C" }
@@ -94,13 +102,13 @@ describe("Activities", () => {
       localVue,
       store,
     });
-
+    //See if update vuex action was not called before any action/input/submit
     expect(actions.updateActivity).not.toHaveBeenCalled();
-
+    //Calls a vuex action of updating activity with given values
     await wrapper.vm.updateActivity({ title: "D", description: "test" });
-
-    await wrapper.vm.$nextTick();
+    //See if action was called properly
     expect(actions.updateActivity).toHaveBeenCalledTimes(1);
+    //See if action was called with correct values
     expect(actions.updateActivity).toHaveBeenLastCalledWith(
       expect.any(Object),
       { title: "D", description: "test" }
@@ -111,7 +119,7 @@ describe("Activities", () => {
       localVue,
       store,
     });
-
+    //See if delete vuex action was not called before any action/input/submit
     expect(actions.deleteActivity).not.toHaveBeenCalled();
 
     await wrapper.vm.deleteActivity({ id: "123456abcd" });
