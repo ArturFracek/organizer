@@ -50,7 +50,6 @@ export default {
   data() {
     return {
       title: "",
-      error: "Try again",
     };
   },
   components: {

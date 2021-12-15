@@ -6,7 +6,7 @@ module.exports = {
   preset: "@vue/cli-plugin-unit-jest",
   setupFiles: ["./tests/unit/setup.js"],
   moduleFileExtensions: ["js", "jsx", "json", "vue"],
-  transformIgnorePatterns: ['/node_modules/'],
+  transformIgnorePatterns: [ "/node_modules/(?!vue2-timepicker)"],
   transform: {
     ".*\\.(vue)$": "vue-jest",
     "^.+\\.js$": "babel-jest",

@@ -67,7 +67,6 @@ describe("Activities", () => {
       .findAll("[data-test='activityShowModal']")
       .wrappers.map((a) => a.text());
     expect(titles).toEqual(["A", "B"]);
-    // expect(actions.fetchAllActivities).toHaveBeenCalledTimes(1);
   });
   it("creates activity on input trigger", async () => {
     const wrapper = mount(Activities, {
@@ -76,15 +75,13 @@ describe("Activities", () => {
     });
 
     const activityInput = wrapper.find('[data-test="activityInputAdd"]');
-    const addActivityButton = wrapper.find('[data-test="activityButtonAdd"]');
 
     expect(actions.createActivity).not.toHaveBeenCalled();
+
     await activityInput.setValue("C");
     expect(activityInput.text()).toBe("");
 
     await activityInput.trigger("keyup.enter");
-
-    await wrapper.vm.$nextTick();
 
     expect(actions.createActivity).toHaveBeenCalledTimes(1);
     expect(actions.createActivity).toHaveBeenLastCalledWith(
@@ -100,7 +97,7 @@ describe("Activities", () => {
 
     expect(actions.updateActivity).not.toHaveBeenCalled();
 
-    await wrapper.vm.updateActivity({title: "D", description: "test" });
+    await wrapper.vm.updateActivity({ title: "D", description: "test" });
 
     await wrapper.vm.$nextTick();
     expect(actions.updateActivity).toHaveBeenCalledTimes(1);
