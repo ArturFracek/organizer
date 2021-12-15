@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 import { shallowMount, mount, createLocalVue } from "@vue/test-utils"; //test-utils
 import Vuex from "vuex";
 import _cloneDeep from "lodash/cloneDeep";
@@ -34,7 +35,7 @@ describe("Activities", () => {
     actions = {
       fetchAllActivities: jest.fn(),
       updateActivity: jest.fn(),
-      removeActivity: jest.fn(),
+      deleteActivity: jest.fn(),
       createActivity: jest.fn(),
     };
     store = new Vuex.Store({
@@ -69,22 +70,62 @@ describe("Activities", () => {
     // expect(actions.fetchAllActivities).toHaveBeenCalledTimes(1);
   });
   it("creates activity on input trigger", async () => {
-    expect(actions.createActivity).not.toHaveBeenCalled();
     const wrapper = mount(Activities, {
       localVue,
       store,
     });
 
     const activityInput = wrapper.find('[data-test="activityInputAdd"]');
+    const addActivityButton = wrapper.find('[data-test="activityButtonAdd"]');
 
+    expect(actions.createActivity).not.toHaveBeenCalled();
     await activityInput.setValue("C");
-    await activityInput.trigger('$emit')
-    console.log(
-      wrapper
-        .findAll("[data-test='activityShowModal']")
-        .wrappers.map((a) => a.text())
-    );
+    expect(activityInput.text()).toBe("");
+
+    await activityInput.trigger("keyup.enter");
+
+    await wrapper.vm.$nextTick();
+
     expect(actions.createActivity).toHaveBeenCalledTimes(1);
+    expect(actions.createActivity).toHaveBeenLastCalledWith(
+      expect.any(Object),
+      { title: "C" }
+    );
+  });
+  it("updates activity on action-update", async () => {
+    const wrapper = mount(Activities, {
+      localVue,
+      store,
+    });
+
+    expect(actions.updateActivity).not.toHaveBeenCalled();
+
+    await wrapper.vm.updateActivity({title: "D", description: "test" });
+
+    await wrapper.vm.$nextTick();
+    expect(actions.updateActivity).toHaveBeenCalledTimes(1);
+    expect(actions.updateActivity).toHaveBeenLastCalledWith(
+      expect.any(Object),
+      { title: "D", description: "test" }
+    );
+  });
+  it("properly uses delete action", async () => {
+    const wrapper = mount(Activities, {
+      localVue,
+      store,
+    });
+
+    expect(actions.deleteActivity).not.toHaveBeenCalled();
+
+    await wrapper.vm.deleteActivity({ id: "123456abcd" });
+
+    await wrapper.vm.$nextTick();
+
+    expect(actions.deleteActivity).toHaveBeenCalledTimes(1);
+    expect(actions.deleteActivity).toHaveBeenLastCalledWith(
+      expect.any(Object),
+      { id: "123456abcd" }
+    );
   });
 });
 

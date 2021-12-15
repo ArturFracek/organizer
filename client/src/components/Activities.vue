@@ -32,8 +32,9 @@
         v-bind:key="activity._id"
       >
         <ActivityModal
+          data-test="activityModal"
           :activityObject="activity"
-          @deleteActivity="deleteActivity"
+          @deleteActivity="removeActivity"
           @updateActivity="saveActivity"
         />
       </div>
@@ -67,7 +68,7 @@ export default {
     ...mapActions({
       fetchAllActivities: "activities/fetchAllActivities",
       updateActivity: "activities/updateActivity",
-      removeActivity: "activities/deleteActivity",
+      deleteActivity: "activities/deleteActivity",
       createActivity: "activities/createActivity",
     }),
     async fetchActivities() {
@@ -77,8 +78,8 @@ export default {
       await this.createActivity({ title: this.title });
       this.title = "";
     },
-    async deleteActivity(id) {
-      await this.removeActivity({ id });
+    async removeActivity(id) {
+      await this.deleteActivity({ id });
     },
     async saveActivity(activity) {
       await this.updateActivity(activity);
