@@ -1,5 +1,6 @@
 import store from "@/store";
 import api from "@/api";
+import activities from "../../../client/src/store/modules/activities";
 
 function getMockedDataForGetResponse(url) {
   switch (url) {
@@ -35,19 +36,19 @@ function getMockedDataForPostResponse(url) {
 describe("Activities", () => {
   const temp = {};
   // eslint-disable-next-line no-undef
-  beforeAll(() => {
+  beforeEach(() => {
     temp.get = api.get;
     temp.post = api.post;
-    api.post = function post(url, data) {
+    api.post = jest.fn(function post(url, data) {
       return Promise.resolve({
         data: getMockedDataForPostResponse(url),
       });
-    };
-    api.get = function get(url) {
+    });
+    api.get = jest.fn(function get(url) {
       return Promise.resolve({
         data: getMockedDataForGetResponse(url),
       });
-    };
+    });
   });
   // eslint-disable-next-line no-undef
   afterAll(() => {
@@ -56,15 +57,18 @@ describe("Activities", () => {
   });
 
   it("adds activity", async () => {
-    expect(store.getters["activities/activities"].length).toBe(0);
+    expect(api.post).not.toHaveBeenCalled();
     await store.dispatch("activities/createActivity", {
       id: "3",
       title: "activity3",
-      createdAt: new Date(),
       description: "test",
     });
-    console.log(state.activities);
-    expect(store.getters["activities/activities"].length).toBe(3);
-    expect(store.state);
+    console.log(api.post)
+  
+    expect(api.post).toHaveBeenLastCalledWith("/activities/", {
+      id: "3",
+      title: "activity3",
+      description: "test",
+    });
   });
 });
