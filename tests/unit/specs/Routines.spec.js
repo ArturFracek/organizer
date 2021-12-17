@@ -3,8 +3,8 @@ import { shallowMount, mount, createLocalVue } from "@vue/test-utils"; //test-ut
 import Vuex from "vuex";
 import _cloneDeep from "lodash/cloneDeep";
 import Routines from "@/components/Routines.vue";
-import routinesModule from "../../../client/src/store/modules/routines";
-import routines from "../../../client/src/store/modules/routines";
+import routinesModule from "@/store/modules/routines";
+
 
 const localVue = createLocalVue();
 localVue.use(Vuex);

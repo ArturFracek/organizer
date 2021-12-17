@@ -3,9 +3,10 @@ import { shallowMount, mount, createLocalVue } from "@vue/test-utils"; //test-ut
 import Vuex from "vuex";
 import _cloneDeep from "lodash/cloneDeep";
 import Activities from "@/components/Activities.vue";
-import activitiesModule from "../../../client/src/store/modules/activities";
-import activities from "../../../client/src/store/modules/activities";
+import activitiesModule from "@/store/modules/activities";
 
+//Creating new Vue class so the global Vue Class won't get polluted
+//It's scoped Vue constructor
 const localVue = createLocalVue();
 localVue.use(Vuex);
 
@@ -15,7 +16,7 @@ describe("Activities", () => {
   let state;
   let actions;
   let store;
-
+  //Given state for each test
   beforeEach(() => {
     state = {
       // eslint-disable-next-line no-undef
@@ -32,12 +33,16 @@ describe("Activities", () => {
         },
       ],
     };
+
     actions = {
+      //jest.fn() tells those actions to do nothing, as we are
+      //not interested in what those do - vuex got its own tests
       fetchAllActivities: jest.fn(),
       updateActivity: jest.fn(),
       deleteActivity: jest.fn(),
       createActivity: jest.fn(),
     };
+    //Mocking store with mocked values
     store = new Vuex.Store({
       modules: {
         activities: {
@@ -51,7 +56,6 @@ describe("Activities", () => {
   });
 
   it("fetches activities on mounted", () => {
-
     //See fetching was not called before mount
     expect(actions.fetchAllActivities).not.toHaveBeenCalled();
     const wrapper = mount(Activities, {
@@ -66,12 +70,14 @@ describe("Activities", () => {
       localVue,
       store,
     });
-    //Finds all elements that should have a dynamic title and gather those titles
+    //Finds all elements that should have a dynamic title
+    //and gather those titles from the store.state -> it also means
+    //that getters works
     let titles = wrapper
       .findAll("[data-test='activityShowModal']")
       .wrappers.map((a) => a.text());
 
-    //See if array of titles is equal to existing/legacy titles
+    //See if array of titles is equal to existing titles
     expect(titles).toEqual(["A", "B"]);
   });
   it("creates activity on input trigger", async () => {
@@ -83,7 +89,7 @@ describe("Activities", () => {
     const activityInput = wrapper.find('[data-test="activityInputAdd"]');
     //See if create vuex action was not called before any action/input/submit
     expect(actions.createActivity).not.toHaveBeenCalled();
-    //Setting value of input 
+    //Setting value of input
     await activityInput.setValue("C");
     //See input text is clear(we sat value, but the input should be clear)
     expect(activityInput.text()).toBe("");
@@ -121,78 +127,14 @@ describe("Activities", () => {
     });
     //See if delete vuex action was not called before any action/input/submit
     expect(actions.deleteActivity).not.toHaveBeenCalled();
-
+    //Calls delete action with given value
     await wrapper.vm.deleteActivity({ id: "123456abcd" });
-
-    await wrapper.vm.$nextTick();
-
+    //See if delete action was called correctly ( once )
     expect(actions.deleteActivity).toHaveBeenCalledTimes(1);
+    //See if action was called with transferred values
     expect(actions.deleteActivity).toHaveBeenLastCalledWith(
       expect.any(Object),
       { id: "123456abcd" }
     );
   });
 });
-
-// const localVue = createLocalVue();
-// const url = "http://localhost:3000/api/activities";
-// let wrapper;
-// const error = {
-//   response: {
-//     data: {
-//       error: "Try again",
-//     },
-//   },
-// };
-// const mockRouter = {
-//   push: jest.fn(),
-// };
-// const mockStore = {
-//   dispatch: jest.fn(),
-//   getters: {
-//     activities: {
-//       title: "Activity1",
-//       priority: 5,
-//       createdAt: new Date(),
-//       duration: 0,
-//       createdBy: "testid123",
-//     },
-//   },
-// };
-
-// document.body.setAttribute("data-app", true);
-// jest.mock("axios");
-// jest.spyOn(Object.getPrototypeOf(window.localStorage), "clear");
-
-// beforeEach(() => {
-//   wrapper = mount(Activities, {
-//     localVue,
-//     mocks: {
-//       $router: mockRouter,
-//       $store: mockStore,
-//     },
-//     data() {
-//       return {
-//         deleteError: "",
-//         deleteUserModal: false,
-//       };
-//     },
-//   });
-// });
-
-// afterEach(() => {
-//   jest.resetAllMocks();
-//   wrapper.destroy();
-// });
-
-// describe("test", () => {
-//   it.only("test", () => {
-
-//     wrapper
-//       .get('[data-test="activityInputAdd"]')
-//       .setValue("Activity1")
-//       .trigger("submit");
-
-//     expect(wrapper.findAll("[data-test=activityShowModal]")).toHaveLength(1);
-//   });
-// });

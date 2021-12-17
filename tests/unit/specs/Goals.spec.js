@@ -3,8 +3,7 @@ import { shallowMount, mount, createLocalVue } from "@vue/test-utils"; //test-ut
 import Vuex from "vuex";
 import _cloneDeep from "lodash/cloneDeep";
 import Goals from "@/components/Goals.vue";
-import goalsModule from "../../../client/src/store/modules/goals";
-import goals from "../../../client/src/store/modules/goals";
+import goalsModule from "@/store/modules/goals";
 
 const localVue = createLocalVue();
 localVue.use(Vuex);
