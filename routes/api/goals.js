@@ -16,7 +16,6 @@ router.get("/", _auth, async (req, res) => {
 // Add Goal
 router.post("/", _auth, async (req, res) => {
   const { title, description, priority } = req.body;
-  console.log(req.body.text);
   const goals = await loadGoalsCollection();
   await goals.insertOne({
     title,

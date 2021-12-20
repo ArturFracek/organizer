@@ -55,8 +55,6 @@ describe("Select", () => {
     wrapper.findAll("option").at(1).trigger("click");
     await wrapper.vm.$nextTick();
 
-    console.log(wrapper.emitted());
-
     expect(Object.keys(wrapper.emitted()).length).toBe(1);
     expect(wrapper.emitted().input[0][0]).toBe("key-B");
   });

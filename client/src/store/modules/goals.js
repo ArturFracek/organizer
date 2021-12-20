@@ -31,7 +31,7 @@ export default {
     },
     async createGoal({ dispatch }, newGoal) {
       const { data } = await GoalsService.insertGoal(newGoal);
-      await dispatch("fetchAllGoals")
+      await dispatch("fetchAllGoals");
     },
   },
 

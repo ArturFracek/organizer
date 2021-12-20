@@ -11,7 +11,6 @@ describe("Slider", () => {
       },
     });
     const givenValue = wrapper.vm.value;
-    console.log(givenValue);
     expect(givenValue).toEqual(5);
   });
   it("see if classes are added dynamically(different class for value < 6)", () => {

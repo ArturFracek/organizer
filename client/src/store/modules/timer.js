@@ -65,6 +65,6 @@ export default {
     },
     activityTitle(state) {
       return state.timerActivityName;
-    }
+    },
   },
 };
