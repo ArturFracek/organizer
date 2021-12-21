@@ -31,7 +31,7 @@
           <GoalModal
             :goalObject="goal"
             @updateGoal="saveGoal"
-            @deleteGoal="deleteGoal"
+            @deleteGoal="removeGoal"
           />
         </li>
       </ul>
@@ -67,7 +67,7 @@ export default {
       fetchAllGoals: "goals/fetchAllGoals",
       createGoal: "goals/createGoal",
       updateGoal: "goals/updateGoal",
-      removeGoal: "goals/deleteGoal",
+      deleteGoal: "goals/deleteGoal",
     }),
     async fetchGoals() {
       await this.fetchAllGoals();
@@ -79,8 +79,8 @@ export default {
     async saveGoal(goal) {
       await this.updateGoal(goal);
     },
-    async deleteGoal(id) {
-      await this.removeGoal({ id });
+    async removeGoal(id) {
+      await this.deleteGoal({ id });
     },
   },
 };

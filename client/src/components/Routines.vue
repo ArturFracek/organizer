@@ -33,7 +33,7 @@
       >
         <RoutineModal
           :routineObject="routine"
-          @deleteRoutine="deleteRoutine"
+          @deleteRoutine="removeRoutine"
           @savingRoutine="saveRoutine"
         />
       </div>
@@ -67,7 +67,7 @@ export default {
     ...mapActions({
       fetchAllRoutines: "routines/fetchAllRoutines",
       updateRoutine: "routines/updateRoutine",
-      removeRoutine: "routines/deleteRoutine",
+      deleteRoutine: "routines/deleteRoutine",
       createRoutine: "routines/createRoutine",
     }),
     async fetchRoutines() {
@@ -77,8 +77,8 @@ export default {
       await this.createRoutine({ title: this.title });
       this.title = "";
     },
-    async deleteRoutine(id) {
-      await this.removeRoutine({ id });
+    async removeRoutine(id) {
+      await this.deleteRoutine({ id });
     },
     async saveRoutine(routine) {
       await this.updateRoutine(routine);
