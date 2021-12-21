@@ -1,6 +1,6 @@
 import store from "@/store";
 import api from "@/api";
-import activities from "../../../client/src/store/modules/activities";
+import activities from "@/store/modules/activities";
 
 function getMockedDataForGetResponse(url) {
   switch (url) {

@@ -14,7 +14,8 @@ module.exports = {
   rootDir: '..',
   moduleNameMapper: {
     // eslint-disable-next-line no-useless-escape
-    "^@/(.*)$": "<rootDir>/client/src/$1"
+    "^@/(.*)$": "<rootDir>/client/src/$1",
+    "^@root/(.*)$": "<rootDir>/$1"
   },
   "moduleDirectories": [
     "node_modules",
