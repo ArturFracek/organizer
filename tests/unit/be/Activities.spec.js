@@ -19,7 +19,13 @@ function updateActivity(token, _id, activity) {
     .expect(200);
 }
 
-
+function deleteActivity(token, _id, activity) {
+  return request(server)
+    .delete(`/api/activities/${_id}`)
+    .set("Authorization", token)
+    .send(activity)
+    .expect(200);
+}
 setupDb();
 describe("/api/activities", () => {
   describe("POST AND GET", () => {
@@ -52,7 +58,6 @@ describe("/api/activities", () => {
         .set("Authorization", token)
         .expect(200);
       expect(response.status).toBeTruthy();
-
       expect(typeof body).toBe("object");
       expect(body).toEqual([
         expect.objectContaining({
@@ -89,6 +94,30 @@ describe("/api/activities", () => {
       expect(bodyAfterUpdate[0].title).toEqual("Activity123");
       expect(bodyAfterUpdate[0]).not.toHaveProperty("bla");
       expect(bodyAfterUpdate[1]).toEqual(body[1]);
+    });
+  });
+  describe("POST AND DELETE", () => {
+    it("updates activity", async () => {
+      const token = await createUserAndLogin();
+      const activity1 = await createActvitiy(token, { title: "Activity1" });
+      const activity2 = await createActvitiy(token, { title: "Activity2" });
+      const { body } = await request(server)
+        .get("/api/activities")
+        .set("Authorization", token)
+        .expect(200);
+      expect(response.status).toBeTruthy();
+
+      const id = body[0]._id;
+      await deleteActivity(token, id, { title: "Activity1" });
+      const { body: bodyAfterUpdate } = await request(server)
+        .get("/api/activities")
+        .set("Authorization", token)
+        .expect(200);
+      expect(typeof bodyAfterUpdate).toBe("object");
+      expect(bodyAfterUpdate).toHaveLength(1)
+      expect(bodyAfterUpdate[0].title).toEqual("Activity2");
+      expect(bodyAfterUpdate[0]).not.toHaveProperty("bla");
+      expect(bodyAfterUpdate[0]).toEqual(body[1]);
     });
   });
 });
