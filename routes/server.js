@@ -5,6 +5,7 @@ const path = require("path");
 const cors = require("cors");
 const passport = require("passport");
 const config = require("../config.js");
+var favicon = require('serve-favicon');
 
 const db = config.db.mongoURI;
 
@@ -26,8 +27,10 @@ app.use(express.json());
 //Cors Middleware
 app.use(cors());
 
-//Setting up static directory
-app.use(express.static(path.join(__dirname, "public")));
+//Setting up static directory (for deployment)
+// const clientPath = path.join(process.cwd(), 'client')
+// app.use(express.static(path.join(clientPath, "public")));
+// app.use(favicon(path.join(clientPath, 'public', 'favicon.ico')));
 
 // User the passport Middlewere
 app.use(passport.initialize());

@@ -31,6 +31,7 @@
     "nodemon": "^2.0.7",
     "passport": "^0.4.1",
     "passport-jwt": "^4.0.0",
+    "serve-favicon": "^2.5.0",
     "uuid": "^8.3.2",
     "v-calendar": "^2.3.4",
     "vue": "^2.6.11",
