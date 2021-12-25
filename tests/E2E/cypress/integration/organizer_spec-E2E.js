@@ -242,7 +242,7 @@ describe("Login, add goal and customize it", () => {
       "have.value",
       "Will be deleted now"
     );
-    cy.get('[data-test="activityDelete"]').click();
+    cy.get('[data-test="activityDelete"]').click({ force: true });
 
     //checking second and deleting
     cy.get('[data-test="activityShowModal"]').contains(activity2).click();
@@ -257,7 +257,7 @@ describe("Login, add goal and customize it", () => {
       "have.value",
       "Will be deleted now"
     );
-    cy.get('[data-test="activityDelete"]').click();
+    cy.get('[data-test="activityDelete"]').click({ force: true });
 
     //checking first and deleting
     cy.get('[data-test="activityShowModal"]').contains(activity1).click();
@@ -272,7 +272,7 @@ describe("Login, add goal and customize it", () => {
       "have.value",
       "Will be deleted now"
     );
-    cy.get('[data-test="activityDelete"]').click();
+    cy.get('[data-test="activityDelete"]').click({ force: true });
 
     //reload and see if deleted
 

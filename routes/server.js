@@ -5,7 +5,7 @@ const path = require("path");
 const cors = require("cors");
 const passport = require("passport");
 const config = require("../config.js");
-var favicon = require('serve-favicon');
+var favicon = require("serve-favicon");
 
 const db = config.db.mongoURI;
 
