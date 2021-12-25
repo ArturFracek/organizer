@@ -1,5 +1,5 @@
 const config = require("./config.js");
-const server = require('./api/server');
+const server = require("./routes/server");
 
 const PORT = config.apps.be_port;
 

@@ -3,6 +3,7 @@ process.env.VUE_CLI_BABEL_TARGET_NODE = true;
 process.env.VUE_CLI_BABEL_TRANSPILE_MODULES = true;
 module.exports = {
   verbose: true,
+  maxWorkers: 1,
   preset: "@vue/cli-plugin-unit-jest",
   setupFiles: ["./tests/unit/setup.js"],
   moduleFileExtensions: ["js", "jsx", "json", "vue"],

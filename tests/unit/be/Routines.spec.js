@@ -3,39 +3,39 @@ import server from "@root/routes/server";
 import { setupDb, createUserAndLogin } from "../setupDb";
 import { response } from "express";
 
-function createActvitiy(token, activity) {
+function createRoutine(token, routine) {
   return request(server)
-    .post("/api/activities")
+    .post("/api/routines")
     .set("Authorization", token)
-    .send(activity)
+    .send(routine)
     .expect(201);
 }
 
-function updateActivity(token, _id, activity) {
+function updateRoutine(token, _id, routine) {
   return request(server)
-    .put(`/api/activities/${_id}`)
+    .put(`/api/routines/${_id}`)
     .set("Authorization", token)
-    .send(activity)
+    .send(routine)
     .expect(200);
 }
 
-function deleteActivity(token, _id, activity) {
+function deleteRoutine(token, _id, routine) {
   return request(server)
-    .delete(`/api/activities/${_id}`)
+    .delete(`/api/routines/${_id}`)
     .set("Authorization", token)
-    .send(activity)
+    .send(routine)
     .expect(200);
 }
 setupDb();
-describe("/api/activities", () => {
+describe("/api/routines", () => {
   describe("POST AND GET", () => {
     it("should return 401 for non-auth user", async () => {
-      await request(server).get("/api/activities").expect(401);
+      await request(server).get("/api/routines").expect(401);
     });
 
     it("should return 401 for wrong token", async () => {
       await request(server)
-        .get("/api/activities")
+        .get("/api/routines")
         .set("Authorization", "abc")
         .expect(401);
     });
@@ -43,18 +43,18 @@ describe("/api/activities", () => {
     it("returns empty array for empty db", async () => {
       const token = await createUserAndLogin();
       const { body } = await request(server)
-        .get("/api/activities")
+        .get("/api/routines")
         .set("Authorization", token)
         .expect(200);
       expect(body).toEqual([]);
     });
 
-    it("returns activities", async () => {
+    it("returns routines", async () => {
       const token = await createUserAndLogin();
-      await createActvitiy(token, { title: "A" });
-      await createActvitiy(token, { title: "B" });
+      await createRoutine(token, { title: "A" });
+      await createRoutine(token, { title: "B" });
       const { body } = await request(server)
-        .get("/api/activities")
+        .get("/api/routines")
         .set("Authorization", token)
         .expect(200);
       expect(response.status).toBeTruthy();
@@ -73,49 +73,49 @@ describe("/api/activities", () => {
   });
 
   describe("POST AND PUT", () => {
-    it("updates activity", async () => {
+    it("updates routine", async () => {
       const token = await createUserAndLogin();
-      const activity1 = await createActvitiy(token, { title: "Activity1" });
-      const activity2 = await createActvitiy(token, { title: "Activity2" });
+      const routine1 = await createRoutine(token, { title: "routine1" });
+      const routine2 = await createRoutine(token, { title: "routine2" });
       const { body } = await request(server)
-        .get("/api/activities")
+        .get("/api/routines")
         .set("Authorization", token)
         .expect(200);
       expect(response.status).toBeTruthy();
 
       const id = body[0]._id;
-      await updateActivity(token, id, { title: "Activity123", bla: "bla" });
+      await updateRoutine(token, id, { title: "routine123", bla: "bla" });
       const { body: bodyAfterUpdate } = await request(server)
-        .get("/api/activities")
+        .get("/api/routines")
         .set("Authorization", token)
         .expect(200);
       expect(typeof bodyAfterUpdate).toBe("object");
       expect(bodyAfterUpdate[0]._id).toEqual(id);
-      expect(bodyAfterUpdate[0].title).toEqual("Activity123");
+      expect(bodyAfterUpdate[0].title).toEqual("routine123");
       expect(bodyAfterUpdate[0]).not.toHaveProperty("bla");
       expect(bodyAfterUpdate[1]).toEqual(body[1]);
     });
   });
   describe("POST AND DELETE", () => {
-    it("deletes activity", async () => {
+    it("deletes routine", async () => {
       const token = await createUserAndLogin();
-      const activity1 = await createActvitiy(token, { title: "Activity1" });
-      const activity2 = await createActvitiy(token, { title: "Activity2" });
+      const routine1 = await createRoutine(token, { title: "routine1" });
+      const routine2 = await createRoutine(token, { title: "routine2" });
       const { body } = await request(server)
-        .get("/api/activities")
+        .get("/api/routines")
         .set("Authorization", token)
         .expect(200);
       expect(response.status).toBeTruthy();
 
       const id = body[0]._id;
-      await deleteActivity(token, id, { title: "Activity1" });
+      await deleteRoutine(token, id, { title: "routine1" });
       const { body: bodyAfterUpdate } = await request(server)
-        .get("/api/activities")
+        .get("/api/routines")
         .set("Authorization", token)
         .expect(200);
       expect(typeof bodyAfterUpdate).toBe("object");
-      expect(bodyAfterUpdate).toHaveLength(1)
-      expect(bodyAfterUpdate[0].title).toEqual("Activity2");
+      expect(bodyAfterUpdate).toHaveLength(1);
+      expect(bodyAfterUpdate[0].title).toEqual("routine2");
       expect(bodyAfterUpdate[0]).not.toHaveProperty("bla");
       expect(bodyAfterUpdate[0]).toEqual(body[1]);
     });
