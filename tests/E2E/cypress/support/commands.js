@@ -29,5 +29,6 @@ const dbConfigFile = require("@/../../config/keys");
 Cypress.Commands.add("setup", () => {
   const dbConfig = dbConfigFile.test;
   cy.exec(`mongo ${dbConfig.mongoURI} --eval "db.dropDatabase()"`);
+  // eslint-disable-next-line cypress/no-unnecessary-waiting
   cy.wait(1000);
 });

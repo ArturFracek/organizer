@@ -81,7 +81,7 @@ describe("Login, add goal and customize it", () => {
       .contains(goalToDelete)
       .should("be.visible");
 
-    cy.get(".bi-trash[type='button']").click();
+    cy.get(".bi-trash[type='button']").click({ force: true });
 
     cy.reload();
 
@@ -565,7 +565,7 @@ describe("Login, add goal and customize it", () => {
 
     cy.get('[data-test="goalModalButton"]').contains("Test Goal").click();
 
-    cy.get(".bi-trash[type='button']").click();
+    cy.get(".bi-trash[type='button']").click({ force: true });
 
     cy.reload();
 
@@ -575,15 +575,15 @@ describe("Login, add goal and customize it", () => {
 
     cy.get('[data-test="activityShowModal"]').contains(activity1).click();
 
-    cy.get(".bi-trash[type='button']").click();
+    cy.get(".bi-trash[type='button']").click({ force: true });
 
     cy.get('[data-test="activityShowModal"]').contains(activity2).click();
 
-    cy.get(".bi-trash[type='button']").click();
+    cy.get(".bi-trash[type='button']").click({ force: true });
 
     cy.get('[data-test="routineShowModal"]').contains(testRoutine).click();
 
-    cy.get(".bi-trash[type='button']").click();
+    cy.get(".bi-trash[type='button']").click({ force: true });
 
     cy.reload();
 
