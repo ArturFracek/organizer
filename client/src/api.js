@@ -3,8 +3,13 @@ import appsConfigFile from "../../config/apps";
 
 const appsConfig = appsConfigFile[process.env.NODE_ENV || "dev"];
 
+const baseURL =
+  process.env.NODE_ENV === "production"
+    ? `https://organizer-demo.herokuapp.com/api`
+    : `http://localhost:${appsConfig.be_port}/api`;
+
 const api = axios.create({
-  baseURL: `http://localhost:${appsConfig.be_port}/api`,
+  baseURL,
 });
 
 //Load the token from the local storage
