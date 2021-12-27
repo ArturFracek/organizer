@@ -32,8 +32,8 @@
 
 ## Demo
 
-<p align="center">Try <a href="https://gemverse.herokuapp.com/"><b>Organizer</b></a> by yourself:</p>
-<p align="center"><code><a href="https://gemverse.herokuapp.com/"><img height="400" src="client/src/assets/Organizer.gif" alt="usage example"></a></code></p>
+<p align="center">Try <a href="https://organizer-demo.herokuapp.com/"><b>Organizer</b></a> by yourself:</p>
+<p align="center"><code><a href="https://organizer-demo.herokuapp.com/"><img height="400" src="client/src/assets/Organizer.gif" alt="usage example"></a></code></p>
 <hr>
 <br>
 
@@ -136,7 +136,7 @@ npm run cy
 
 ### Unit Tests
 
-Vue components, Vuex store unit tests written in [Jest](https://jestjs.io/). To run server tests open the terminal and run the code below:
+Vue components, Vuex store, API unit tests written in [Jest](https://jestjs.io/). To run server tests open the terminal and run the code below:
 
 ```console
 npm run jest
