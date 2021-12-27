@@ -3,13 +3,14 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "build": "VUE_CLI_SERVICE_CONFIG_PATH=$PWD/client/vue.config.js vue-cli-service build",
+    "build": "NODE_ENV=production VUE_CLI_SERVICE_CONFIG_PATH=$PWD/client/vue.config.js vue-cli-service build",
     "lint": "VUE_CLI_SERVICE_CONFIG_PATH=$PWD/client/vue.config.js vue-cli-service lint",
     "client": "VUE_CLI_SERVICE_CONFIG_PATH=$PWD/client/vue.config.js vue-cli-service serve",
     "cy": "CYPRESS_NODE_ENV=test cypress open --project tests/E2E",
     "dev": "NODE_ENV=dev concurrently \"npm run server\" \"npm run client\"",
     "jest": "VUE_CLI_SERVICE_CONFIG_PATH=$PWD/client/vue.config.js vue-cli-service test:unit --config client/jest.config.js",
     "server": "nodemon app.js",
+    "prod": "NODE_ENV=production node app.js",
     "test": "NODE_ENV=test concurrently \"npm run server\" \"npm run client\""
   },
   "dependencies": {
@@ -31,6 +32,7 @@
     "nodemon": "^2.0.7",
     "passport": "^0.4.1",
     "passport-jwt": "^4.0.0",
+    "serve-favicon": "^2.5.0",
     "uuid": "^8.3.2",
     "v-calendar": "^2.3.4",
     "vue": "^2.6.11",

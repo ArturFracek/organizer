@@ -27,10 +27,10 @@ router.post("/", _auth, async (req, res) => {
 });
 
 //Update Goal
-router.put("/:id", async (req, res) => {
+router.put("/:id", _auth, async (req, res) => {
   const goals = await loadGoalsCollection();
   await goals.updateOne(
-    { _id: new mongodb.ObjectID(req.params.id) },
+    { _id: new mongodb.ObjectID(req.params.id), createdBy: req.user._id },
     {
       $set: {
         description: req.body.description,
@@ -43,9 +43,12 @@ router.put("/:id", async (req, res) => {
 });
 
 // Delete Goal
-router.delete("/:id", async (req, res) => {
+router.delete("/:id", _auth, async (req, res) => {
   const goals = await loadGoalsCollection();
-  await goals.deleteOne({ _id: new mongodb.ObjectID(req.params.id) });
+  await goals.deleteOne({
+    _id: new mongodb.ObjectID(req.params.id),
+    createdBy: req.user._id,
+  });
   res.status(200).send();
 });
 
