@@ -8,7 +8,7 @@ module.exports = {
     be_port: 3000,
   },
   production: {
-    fe_port: process.env.WEB_PORT || 8000,
-    be_port: process.env.WEB_PORT || 8000,
+    fe_port: process.env.PORT || 8000,
+    be_port: process.env.PORT || 8000,
   },
 };
