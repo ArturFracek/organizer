@@ -10,7 +10,8 @@
     "dev": "NODE_ENV=dev concurrently \"npm run server\" \"npm run client\"",
     "jest": "VUE_CLI_SERVICE_CONFIG_PATH=$PWD/client/vue.config.js vue-cli-service test:unit --config client/jest.config.js",
     "server": "nodemon app.js",
-    "prod": "NODE_ENV=production node app.js",
+    "postinstall": "npm run build",
+    "start": "NODE_ENV=production node app.js",
     "test": "NODE_ENV=test concurrently \"npm run server\" \"npm run client\""
   },
   "dependencies": {
