@@ -1,11 +1,9 @@
 const express = require("express");
 const mongoose = require("mongoose");
-const bodyParser = require("body-parser");
 const path = require("path");
 const cors = require("cors");
 const passport = require("passport");
 const config = require("../config.js");
-var favicon = require("serve-favicon");
 
 const db = config.db.mongoURI;
 
@@ -28,9 +26,10 @@ app.use(express.json());
 app.use(cors());
 
 //Setting up static directory (for deployment)
-// const clientPath = path.join(process.cwd(), 'client')
-// app.use(express.static(path.join(clientPath, "public")));
-// app.use(favicon(path.join(clientPath, 'public', 'favicon.ico')));
+const staticPath = path.join(process.cwd(), 'dist')
+app.use(express.static(staticPath));
+
+
 
 // User the passport Middlewere
 app.use(passport.initialize());
@@ -63,5 +62,11 @@ app.use("/api/activities", activities);
 //Bring in the Routines route
 const routines = require("./api/routines");
 app.use("/api/routines", routines);
+
+// All vue urls should return index.html and vue-router should be responsible
+// for loading actual view
+app.get(/^(?!\/api)[^.]*$/, function (req, res) {
+  res.sendFile(path.join(staticPath, 'index.html'));
+})
 
 module.exports = app;
