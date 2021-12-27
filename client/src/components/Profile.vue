@@ -290,10 +290,26 @@ img:hover ~ #upload_btn,
 }
 @media (max-width: 765px) {
   .profile__mainContainer {
+    max-height: 200vh;
+    position:static;
     overflow-y: scroll;
+    overflow-x: hidden;
   }
   .profile__UserInfo__card__item {
     font-size: 16px;
+    white-space: nowrap;
+  }
+  .profile__UserInfo {
+    height: 20%;
+  }
+
+  .photo {
+    height: 95%;
+    width: 95%;
+    margin-left: 15px;
+  }
+  .profile__picContainer {
+    align-self: center;
   }
 }
 </style>

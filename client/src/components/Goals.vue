@@ -294,7 +294,6 @@ li::marker {
   .goals__mainContainer {
     width: 100%;
     height: 30%;
-    overflow: scroll;
   }
   .goals__input__label {
     top: 24px;

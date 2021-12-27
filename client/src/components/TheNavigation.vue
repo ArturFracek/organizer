@@ -283,8 +283,7 @@ export default {
   font-weight: bold;
   color: rgba(255, 254, 254, 0.938);
   font-weight: bold;
-  text-shadow: 0px 0px 3.2px rgb(75, 252, 243),
-    0px 0px 3.2px rgb(75, 252, 243);
+  text-shadow: 0px 0px 3.2px rgb(75, 252, 243), 0px 0px 3.2px rgb(75, 252, 243);
   text-decoration: none;
   transition: 0.5s;
 }
@@ -365,11 +364,11 @@ export default {
   }
 
   .nav__link {
-    font-size: 19.2px;
+    font-size: 17px;
     display: flex;
     width: 100%;
     text-align: center;
-    padding: 4.8px;
+    padding: 0px;
     justify-content: center;
     cursor: pointer;
   }
@@ -381,6 +380,10 @@ export default {
   .nav__logo {
     position: relative;
     margin-right: auto;
+  }
+
+  .organize, .nav__mainLink {
+    font-size: 24px;
   }
 
   .nav__link:nth-child(1) {
@@ -400,6 +403,7 @@ export default {
 
   .nav__lowerLinks.active {
     display: flex;
+    position: relative;
   }
   .nav__link--toLeft {
     position: relative;

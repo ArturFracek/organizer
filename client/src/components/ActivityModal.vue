@@ -349,7 +349,7 @@ h1 {
   }
   .activity__modal {
     width: 100%;
-    height: 70%;
+    height: 100%;
   }
   .activity__button--save {
     width: 96px;

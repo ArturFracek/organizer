@@ -163,6 +163,7 @@ i {
     width: 100%;
     overflow-y: scroll;
     overflow-x: hidden;
+    margin-bottom: 10px;
   }
   .TimeStatistics__activitiesContainer {
     display: flex;

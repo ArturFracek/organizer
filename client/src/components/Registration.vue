@@ -584,12 +584,19 @@ input:not(:placeholder-shown).input:not(:focus)
 }
 
 @media (max-width: 660px) {
+  .reg__container {
+    overflow-y: scroll;
+  }
+
+  .reg__title {
+    margin-top: 20px;
+  }
   form {
     flex-flow: column;
   }
 
   .reg__form__item {
-    padding: 16px;
+    padding: 13px;
   }
 
   .reg__login__container {
@@ -597,12 +604,12 @@ input:not(:placeholder-shown).input:not(:focus)
   }
 
   .form__label--username {
-    top: 192px;
+    top: 180px;
     left: 195.2px;
   }
 
   .form__label--name {
-    top: 110.4px;
+    top: 104.4px;
     left: 195.2px;
   }
 
@@ -612,39 +619,39 @@ input:not(:placeholder-shown).input:not(:focus)
   }
 
   .form__label--password {
-    top: 272px;
+    top: 257px;
     left: 195.2px;
   }
 
   .form__label--confirmPassword {
-    top: 355.2px;
+    top: 333.2px;
     left: 195.2px;
   }
 
   input:focus ~ .form__label--username,
   input:not(:placeholder-shown).input:not(:focus) ~ .form__label--username {
-    top: 156.8px;
+    top: 144.8px;
   }
 
   input:focus ~ .form__label--name,
   input:not(:placeholder-shown).input:not(:focus) ~ .form__label--name {
-    top: 75.2px;
+    top: 68.2px;
   }
 
   input:focus ~ .form__label--email,
   input:not(:placeholder-shown).input:not(:focus) ~ .form__label--email {
-    top: -6.4px;
+    top: -8.4px;
   }
 
   input:focus ~ .form__label--password,
   input:not(:placeholder-shown).input:not(:focus) ~ .form__label--password {
-    top: 236.8px;
+    top: 220.8px;
   }
 
   input:focus ~ .form__label--confirmPassword,
   input:not(:placeholder-shown).input:not(:focus)
     ~ .form__label--confirmPassword {
-    top: 318.4px;
+    top: 298.4px;
   }
 }
 </style>

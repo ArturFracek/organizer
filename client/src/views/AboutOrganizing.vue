@@ -407,6 +407,7 @@ li {
 @media (max-width: 720px) {
   .about__upperContainer {
     overflow-y: scroll;
+    height: 70%;
   }
 
   .about__aboutOrganizing {
@@ -416,12 +417,13 @@ li {
   .about__aboutApp {
     color: rgb(125, 248, 236);
     padding: 0 16px 16px 16px;
+    height: 70vh;
   }
   .about__info {
     display: flex;
     flex-wrap: wrap;
     overflow-y: scroll;
-    height: 28vh;
+    min-height: 100%;
   }
 
   .movies {
@@ -441,6 +443,9 @@ li {
     border-top: 3px solid rgba(72, 234, 255, 0.2);
     border-left: none;
     padding: 4.8px 8px;
+  }
+  #app {
+    overflow-y: hidden;
   }
 }
 </style>
