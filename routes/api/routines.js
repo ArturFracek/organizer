@@ -1,10 +1,7 @@
 const express = require("express");
 const mongodb = require("mongodb");
-const loader = require("sass-loader");
-const Routine = require("../../model/Routine.model");
 const config = require("../../config.js");
 const _auth = require("./_auth");
-const users = require("./users");
 
 const db = config.db.mongoURI;
 
