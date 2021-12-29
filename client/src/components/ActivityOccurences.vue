@@ -242,16 +242,24 @@ select {
 @media (max-width: 760px) {
   .occurences__mainContainer {
     position: relative;
-    height: 384px;
+    height: 90%;
     top: 16px;
     box-sizing: border-box;
   }
   .occurences__label {
-    font-size: 9.6px;
-    width: 80px;
-    margin: 1.6px;
+    font-size: 9px;
+    width: 78px;
+    margin: 0.5px;
     left: -56px;
     font-weight: bold;
+  }
+  .occurences__label--Time {
+    right: 1px;
+  }
+  .occurences__button--addOccurence {
+    top: 0px;
+    position: relative;
+    font-size: 14px;
   }
 }
 </style>

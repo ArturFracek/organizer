@@ -103,7 +103,8 @@ export default {
   margin: 16px 0 16px;
 }
 
-input, button {
+input,
+button {
   font: inherit;
   font-size: 17.6px;
   border-style: none;

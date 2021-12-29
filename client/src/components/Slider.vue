@@ -214,14 +214,13 @@ export default {
   .slider__container .slider {
     height: 18px;
     width: 100%;
-    top: 0;
   }
   .slider__container .slider::-webkit-slider-thumb {
-  height: 25px;
-  width: 25px;
-}
-.slider__priority {
-right: 42%;
-}
+    height: 25px;
+    width: 25px;
+  }
+  .slider__priority {
+    right: 42%;
+  }
 }
 </style>

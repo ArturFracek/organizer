@@ -426,8 +426,8 @@ ul {
     width: 120px;
   }
   .goal__button--delete {
-    left: -6px;
-    top: 12px;
+    left: -1%;
+    top: 20%;
     position: relative;
   }
   .goal__deadline__container {
