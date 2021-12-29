@@ -56,4 +56,10 @@ textarea {
   background: transparent;
   box-shadow: 0 0px 16px rgba(49, 221, 252, 0.363);
 }
+
+@media (max-width: 765px) {
+.textArea__container {
+  min-height: 62%;
+}
+}
 </style>

@@ -17,16 +17,19 @@
     </transition>
     <transition name="slide" appear>
       <div class="goal__modal" v-if="showModal" data-test="goalModal">
-        <div class="goal__modal__type">Goal</div>
-        <h1 data-test="goalTitle">{{ goalObject.title }}</h1>
-        <div class="goal__createdAt">Created at: <br />{{ date }}</div>
-        <div class="goal__deadline__container">
-          <div class="goal__deadline goal__deadline--label">Deadline:</div>
-          <DeadlineDatePicker
-            class="goal__deadline"
-            v-model="localGoal.deadline"
-          />
+        <div class="goal__modal__upperContainer">
+          <div class="goal__modal__type">Goal</div>
+
+          <div class="goal__createdAt">Created at: <br />{{ date }}</div>
+          <div class="goal__deadline__container">
+            <div class="goal__deadline goal__deadline--label">Deadline:</div>
+            <DeadlineDatePicker
+              class="goal__deadline"
+              v-model="localGoal.deadline"
+            />
+          </div>
         </div>
+        <h1 data-test="goalTitle">{{ goalObject.title }}</h1>
 
         <textArea v-model="localGoal.description" />
         <Slider v-model="localGoal.priority" />
@@ -399,17 +402,16 @@ ul {
     bottom: 96px;
   }
   .goal__bottomContainer {
-    margin-top: auto;
+    margin-top: 5px;
     margin-bottom: 16px;
   }
   .slider__container {
     position: relative;
-    top: 112px;
     right: -16px;
   }
   .textArea__container {
     position: relative;
-    top: 80px;
+    top: 0px;
   }
   h1 {
     position: relative;
@@ -417,7 +419,34 @@ ul {
   }
   .goal__buttonsContainer {
     position: relative;
-    right: -24px;
+    right: -7px;
+  }
+  .goal__button {
+    height: 70%;
+    width: 120px;
+  }
+  .goal__button--delete {
+    left: -6px;
+    top: 12px;
+    position: relative;
+  }
+  .goal__deadline__container {
+    right: 38%;
+  }
+  .goal__modal__type {
+    top: 11px;
+    font-size: 150%;
+  }
+  .goal__modal__upperContainer {
+    border-bottom: 2px solid rgb(248, 250, 250);
+  }
+  .goal__modal__upperContainer {
+    margin-top: 0;
+    width: 100%;
+    height: 10%;
+  }
+  h1 {
+    top: 5px;
   }
 }
 </style>
