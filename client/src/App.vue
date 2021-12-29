@@ -113,5 +113,4 @@ select:-webkit-autofill:focus {
   overflow-y: scroll;
   scrollbar-color: #0478fd #c2d2e4;
 }
-
 </style>

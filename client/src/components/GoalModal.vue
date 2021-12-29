@@ -153,7 +153,7 @@ export default {
   right: 0;
   bottom: 0;
   z-index: 98;
-  backdrop-filter: hue-rotate(180deg) opacity(80%) brightness(85%);
+  backdrop-filter: hue-rotate(180deg) opacity(85%) brightness(85%);
 }
 
 @supports ((-webkit-backdrop-filter: none) or (backdrop-filter: none)) {
@@ -177,7 +177,7 @@ export default {
     outline: none;
     border: 2px solid rgb(35, 166, 170);
     border-radius: 8px;
-    backdrop-filter: blur(8px);
+    backdrop-filter: blur(12px);
   }
 }
 @supports not ((-webkit-backdrop-filter: none) or (backdrop-filter: none)) {
@@ -402,8 +402,12 @@ ul {
     bottom: 96px;
   }
   .goal__bottomContainer {
-    margin-top: 5px;
-    margin-bottom: 16px;
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+  .goal__buttonsContainer {
+    align-self: center;
+    margin-left: 0;
   }
   .slider__container {
     position: relative;
@@ -421,14 +425,17 @@ ul {
     position: relative;
     right: -7px;
   }
-  .goal__button {
+  .goal__button--save {
     height: 70%;
-    width: 120px;
+    width: 150px;
+    font-weight: 500;
+    border: 1px solid;
   }
   .goal__button--delete {
-    left: -1%;
-    top: 20%;
-    position: relative;
+    left: 0vh;
+    top: 7vh;
+    position: absolute;
+    font-size: 27px;
   }
   .goal__deadline__container {
     right: 38%;
@@ -438,7 +445,7 @@ ul {
     font-size: 150%;
   }
   .goal__modal__upperContainer {
-    border-bottom: 2px solid rgb(248, 250, 250);
+    border-bottom: 1px solid rgb(50, 238, 255);
   }
   .goal__modal__upperContainer {
     margin-top: 0;

@@ -257,9 +257,8 @@ export default {
 .photo {
   height: inherit;
   width: inherit;
-  border-radius: 30%;
-  border: 0.1px solid rgb(0, 0, 0);
-  box-shadow: 5px 5px 20px rgb(0, 0, 0);
+  border-radius: 15%;
+  box-shadow: 5px 10px 20px rgb(0, 0, 0);
 }
 
 #file {
@@ -289,9 +288,10 @@ img:hover ~ #upload_btn,
   display: flex;
 }
 @media (max-width: 765px) {
+  * {
+    height: 100%;
+  }
   .profile__mainContainer {
-    max-height: 200vh;
-    position:static;
     overflow-y: scroll;
     overflow-x: hidden;
   }
@@ -300,16 +300,19 @@ img:hover ~ #upload_btn,
     white-space: nowrap;
   }
   .profile__UserInfo {
-    height: 20%;
+    height: 14%;
   }
 
   .photo {
-    height: 95%;
-    width: 95%;
+    height: 90%;
+    width: 90%;
     margin-left: 15px;
+    border-radius: 15%;
   }
   .profile__picContainer {
     align-self: center;
+    height: 90px;
+    width: 140px;
   }
 }
 </style>

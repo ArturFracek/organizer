@@ -354,5 +354,27 @@ h1 {
   .activity__button--save {
     width: 96px;
   }
+   .activity__button--save {
+    height: 60%;
+    width: 150px;
+    font-weight: 500;
+  }
+  .activity__button--delete {
+    left: 5vh;
+    top: 5vh;
+    position: absolute;
+    font-size: 27px;
+  }
+  .activity__modal__title {
+    font-size: 18px;
+    margin-bottom: 0;
+  }
+  .activity__modal__type {
+    font-size: 16px;
+  }
+  .activity__createdAt {
+    font-size: 12px;
+    right: 2px;
+  }
 }
 </style>

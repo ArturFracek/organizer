@@ -586,10 +586,15 @@ input:not(:placeholder-shown).input:not(:focus)
 @media (max-width: 660px) {
   .reg__container {
     overflow-y: scroll;
+    position: fixed;
+  }
+  * {
+    height: 50%;
   }
 
   .reg__title {
     margin-top: 20px;
+    height: 10%;
   }
   form {
     flex-flow: column;

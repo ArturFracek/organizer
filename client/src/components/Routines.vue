@@ -277,5 +277,8 @@ input:not(:placeholder-shown) ~ .addRoutine__button {
     ~ .routines__form__label__addRoutines {
     top: -56px;
   }
+  .routines__addRoutineInput {
+    width: 224px !important;
+  }
 }
 </style>

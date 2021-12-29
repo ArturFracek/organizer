@@ -293,7 +293,7 @@ li::marker {
   }
   .goals__mainContainer {
     width: 100%;
-    height: 30%;
+    height: 37%;
   }
   .goals__input__label {
     top: 24px;
@@ -315,6 +315,14 @@ li::marker {
   .goals__background {
     width: 100%;
     background: transparent;
+    height: 37%;
+  }
+  .goals__addGoal__input {
+    height: 25px;
+  }
+  .goals__input__label {
+    top: 17px;
+    font-size: 16;
   }
 }
 </style>

@@ -21,6 +21,7 @@
         :to="{ name: 'AboutOrganizing' }"
         class="nav__link nav__link--toLeft"
         v-if="isLoggedIn"
+        @click="islower_linksActive = !islower_linksActive"
         >About Organizer</router-link
       >
       <router-link :to="{ name: 'Login' }" class="nav__link" v-if="!isLoggedIn"
@@ -32,7 +33,11 @@
         v-if="!isLoggedIn"
         >Register</router-link
       >
-      <router-link :to="{ name: 'Profile' }" class="nav__link" v-if="isLoggedIn"
+      <router-link
+        :to="{ name: 'Profile' }"
+        class="nav__link"
+        v-if="isLoggedIn"
+        @click="islower_linksActive = !islower_linksActive"
         >Profile</router-link
       >
       <a
@@ -40,6 +45,7 @@
         class="nav__link"
         v-if="isLoggedIn"
         @click.prevent="logoutUser"
+        @click="islower_linksActive = !islower_linksActive"
         >Logout</a
       >
     </div>
@@ -382,7 +388,8 @@ export default {
     margin-right: auto;
   }
 
-  .organize, .nav__mainLink {
+  .organize,
+  .nav__mainLink {
     font-size: 24px;
   }
 

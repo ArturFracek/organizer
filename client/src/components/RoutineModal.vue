@@ -514,7 +514,10 @@ input:hover ~ .routine__showModalButton {
     right: -33.6px;
   }
   .routine__bottomContainer {
-    margin-left: auto;
+   margin-left: 0;
+  }
+  .routine__buttonsContainer {
+    margin-left: 0;
   }
   .routine__title {
     font-size: 16px;
@@ -542,15 +545,17 @@ input:hover ~ .routine__showModalButton {
     justify-content: center;
     align-items: center;
   }
-  .routine__button {
-    height: 70%;
-    width: 120px;
+  .routine__button--save {
+    height: 60%;
+    width: 150px;
     border: 1px solid;
+    font-weight: 500;
   }
   .routine__button__delete {
-    left: -8px;
-    top: 0px;
-    position: relative;
+   left: 2vh;
+    top: 5vh;
+    position: absolute;
+    font-size: 27px;
   }
   .routine__modal__type {
     font-size: 16px;
