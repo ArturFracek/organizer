@@ -80,10 +80,6 @@ option {
   text-align: center;
 }
 
-select {
-  
-}
-
 select:hover {
   color: rgb(228, 89, 70);
   text-shadow: 0 0 3px red;

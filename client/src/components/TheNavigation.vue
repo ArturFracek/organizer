@@ -16,12 +16,15 @@
         Organize
       </router-link>
     </div>
-    <div class="nav__lowerLinks" :class="islower_linksActive ? 'active' : ''">
+    <div
+      class="nav__lowerLinks"
+      @click="islower_linksActive = !islower_linksActive"
+      :class="islower_linksActive ? 'active' : ''"
+    >
       <router-link
         :to="{ name: 'AboutOrganizing' }"
         class="nav__link nav__link--toLeft"
         v-if="isLoggedIn"
-        @click="islower_linksActive = !islower_linksActive"
         >About Organizer</router-link
       >
       <router-link :to="{ name: 'Login' }" class="nav__link" v-if="!isLoggedIn"
@@ -33,11 +36,7 @@
         v-if="!isLoggedIn"
         >Register</router-link
       >
-      <router-link
-        :to="{ name: 'Profile' }"
-        class="nav__link"
-        v-if="isLoggedIn"
-        @click="islower_linksActive = !islower_linksActive"
+      <router-link :to="{ name: 'Profile' }" class="nav__link" v-if="isLoggedIn"
         >Profile</router-link
       >
       <a
@@ -45,7 +44,6 @@
         class="nav__link"
         v-if="isLoggedIn"
         @click.prevent="logoutUser"
-        @click="islower_linksActive = !islower_linksActive"
         >Logout</a
       >
     </div>
@@ -77,6 +75,9 @@ export default {
     ...mapActions(["logout"]),
     logoutUser() {
       this.logout();
+    },
+    notActive() {
+      this.islower_linksActive = false;
     },
   },
 };
@@ -406,11 +407,32 @@ export default {
     display: none;
     width: 100%;
     flex-direction: column;
+    transition: 2s ease-in-out;
+    opacity: 0;
   }
 
   .nav__lowerLinks.active {
     display: flex;
     position: relative;
+    animation: text1 0.3s ease-in-out;
+    opacity: 1;
+  }
+  @keyframes text1 {
+    0% {
+      opacity: 0;
+    }
+    20% {
+      opacity: 0.2;
+    }
+    70% {
+      opacity: 0.7;
+    }
+    90% {
+      opacity: 0.9;
+    }
+    100% {
+      opacity: 1;
+    }
   }
   .nav__link--toLeft {
     position: relative;

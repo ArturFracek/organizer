@@ -294,6 +294,7 @@ img:hover ~ #upload_btn,
   .profile__mainContainer {
     overflow-y: scroll;
     overflow-x: hidden;
+    height: 100%;
   }
   .profile__UserInfo__card__item {
     font-size: 16px;
