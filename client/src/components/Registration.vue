@@ -611,26 +611,31 @@ input:not(:placeholder-shown).input:not(:focus)
   .form__label--username {
     top: 180px;
     left: 195.2px;
+    height: 40px;
   }
 
   .form__label--name {
     top: 104.4px;
     left: 195.2px;
+    height: 40px;
   }
 
   .form__label--email {
     top: 28.8px;
     left: 195.2px;
+    height: 40px;
   }
 
   .form__label--password {
     top: 257px;
     left: 195.2px;
+    height: 40px;
   }
 
   .form__label--confirmPassword {
     top: 333.2px;
     left: 195.2px;
+    height: 40px;
   }
 
   input:focus ~ .form__label--username,
@@ -657,6 +662,10 @@ input:not(:placeholder-shown).input:not(:focus)
   input:not(:placeholder-shown).input:not(:focus)
     ~ .form__label--confirmPassword {
     top: 298.4px;
+  }
+  .reg__login__link {
+    height: 50px;
+    align-items: center;
   }
 }
 </style>
