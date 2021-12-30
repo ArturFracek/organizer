@@ -26,10 +26,8 @@ app.use(express.json());
 app.use(cors());
 
 //Setting up static directory (for deployment)
-const staticPath = path.join(process.cwd(), 'dist')
+const staticPath = path.join(process.cwd(), "dist");
 app.use(express.static(staticPath));
-
-
 
 // User the passport Middlewere
 app.use(passport.initialize());
@@ -66,7 +64,7 @@ app.use("/api/routines", routines);
 // All vue urls should return index.html and vue-router should be responsible
 // for loading actual view
 app.get(/^(?!\/api)[^.]*$/, function (req, res) {
-  res.sendFile(path.join(staticPath, 'index.html'));
-})
+  res.sendFile(path.join(staticPath, "index.html"));
+});
 
 module.exports = app;

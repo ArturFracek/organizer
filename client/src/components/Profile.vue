@@ -315,5 +315,12 @@ img:hover ~ #upload_btn,
     height: 90px;
     width: 140px;
   }
+  #upload_btn {
+    top: -70%;
+    height: 50%;
+    width: 90%;
+    font-size: 12px;
+    left: 14px;
+  }
 }
 </style>

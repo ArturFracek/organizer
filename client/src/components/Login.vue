@@ -481,10 +481,10 @@ input:not(:placeholder-shown).input:not(:focus) ~ .form__label--password {
 }
 
 @media (max-width: 765px) {
- .log__title {
-   margin-top: 40px;
-   font-size: 20px;
-   margin-bottom: 0px;
- }
+  .log__title {
+    margin-top: 40px;
+    font-size: 20px;
+    margin-bottom: 0px;
+  }
 }
 </style>

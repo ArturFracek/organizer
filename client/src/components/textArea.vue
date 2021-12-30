@@ -58,8 +58,8 @@ textarea {
 }
 
 @media (max-width: 765px) {
-.textArea__container {
-  min-height: 62%;
-}
+  .textArea__container {
+    min-height: 62%;
+  }
 }
 </style>

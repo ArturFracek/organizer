@@ -514,7 +514,7 @@ input:hover ~ .routine__showModalButton {
     right: -33.6px;
   }
   .routine__bottomContainer {
-   margin-left: 0;
+    margin-left: 0;
   }
   .routine__buttonsContainer {
     margin-left: 0;
@@ -552,7 +552,7 @@ input:hover ~ .routine__showModalButton {
     font-weight: 500;
   }
   .routine__button__delete {
-   left: 2vh;
+    left: 2vh;
     top: 5vh;
     position: absolute;
     font-size: 27px;

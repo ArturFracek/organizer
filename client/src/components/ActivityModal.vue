@@ -354,7 +354,7 @@ h1 {
   .activity__button--save {
     width: 96px;
   }
-   .activity__button--save {
+  .activity__button--save {
     height: 60%;
     width: 150px;
     font-weight: 500;
