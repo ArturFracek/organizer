@@ -17,11 +17,6 @@ import TimeNet2 from "@/components/TimeNet2.vue";
 import { mapGetters } from "vuex";
 
 export default {
-  data() {
-    return {
-      dupa: null,
-    };
-  },
   name: "Organise",
   components: {
     Activities,

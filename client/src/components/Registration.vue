@@ -127,7 +127,7 @@ export default {
         name: this.name,
       };
       this.register(user).then((res) => {
-        if (res.data.succes) {
+        if (res.data.success) {
           this.$router.push("/login");
         }
       });
